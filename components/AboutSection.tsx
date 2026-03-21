@@ -1,119 +1,91 @@
-export default function AboutSection() {
+"use client";
+
+import { useTheme } from "../app/context/ThemeContext";
+import clsx from "clsx";
+
+type Theme = "soothing" | "flower" | "neon";
+
+export default function AboutSection(): JSX.Element {
+  const { theme, setTheme } = useTheme();
+
+  const nextTheme = () => {
+    setTheme((prev: Theme) =>
+      prev === "soothing" ? "flower" : prev === "flower" ? "neon" : "soothing"
+    );
+  };
+
+  const themeClasses: Record<Theme, string> = {
+    soothing:
+      "from-slate-950 via-slate-900 to-emerald-600/70 text-slate-50",
+
+    flower:
+      "from-rose-800 via-pink-800 to-amber-500/60 text-white",
+
+    neon:
+      "from-slate-900 via-emerald-600 to-cyan-400 text-white",
+  };
+
+  const accentText: Record<Theme, string> = {
+    soothing: "text-emerald-300",
+    flower: "text-rose-200",
+    neon: "text-cyan-300",
+  };
+
   return (
-    <section className="py-24 bg-slate-950">
-      <div className="max-w-6xl mx-auto px-6 md:px-10">
-        {/* Eyebrow + heading */}
-        <div className="text-center max-w-3xl mx-auto">
-          <p className="text-xs tracking-[0.2em] uppercase text-emerald-400">
-            About yourBrand
-          </p>
+    <section
+      className={clsx(
+        "relative min-h-screen flex items-center justify-center overflow-hidden transition-all duration-500",
+        "bg-gradient-to-br",
+        themeClasses[theme]
+      )}
+    >
+      {/* overlay */}
+      <div className="absolute inset-0 bg-black/30 backdrop-blur-[2px]" />
 
-          <h2 className="mt-3 text-3xl md:text-4xl font-semibold text-slate-50 leading-tight">
-            A modern{" "}
-            <span className="text-emerald-400">
-              creator‑first influencer agency
-            </span>{" "}
-            built for measurable growth
-          </h2>
+      {/* container */}
+      <div className="relative w-full max-w-6xl mx-auto px-6 text-center">
 
-          <p className="mt-4 text-slate-300 text-lg">
-            Since 2021, yourBrand has helped digital‑first brands turn creator
-            trust into predictable revenue across YouTube, Instagram, UGC and
-            meme campaigns.
-          </p>
+        {/* theme toggle */}
+        <div className="flex justify-end mb-6">
+          <button
+            onClick={nextTheme}
+            className="px-4 py-2 rounded-full border text-xs uppercase tracking-wider hover:scale-105 transition"
+          >
+            Theme: {theme}
+          </button>
         </div>
 
-        {/* Content */}
-        <div className="mt-16 grid md:grid-cols-2 gap-12 items-center">
-          {/* Left copy */}
-          <div className="space-y-6 text-slate-300 leading-relaxed">
-            <p>
-              Operating out of India, yourBrand works as an embedded growth
-              partner for D2C, fintech, SaaS and consumer brands. The team
-              handles everything from strategy and creator shortlisting to
-              contracts, go‑live and reporting.
-            </p>
+        {/* heading */}
+        <h2 className="text-3xl md:text-5xl font-bold leading-tight">
+          A{" "}
+          <span className={clsx("font-semibold", accentText[theme])}>
+            creator-first influencer agency
+          </span>{" "}
+          built for measurable growth
+        </h2>
 
-            <p>
-              Our vetted network spans 10+ categories including Finance,
-              Technology, Beauty, Gaming and Lifestyle, so campaigns feel native
-              to each audience instead of forced ads.
-            </p>
+        {/* subtext */}
+        <p className="mt-6 text-slate-300 max-w-2xl mx-auto text-base md:text-lg">
+          Since 2021, yourBrand has helped digital-first brands turn creator
+          trust into predictable revenue across YouTube, Instagram and UGC campaigns.
+        </p>
 
-            <p>
-              Every decision is backed by data: audience insights, funnel stage
-              and performance benchmarks, helping you scale what works and cut
-              what does not—fast.
-            </p>
-
-            {/* Mini stats strip */}
-            <div className="grid grid-cols-3 gap-4 text-sm">
-              <div>
-                <p className="text-2xl font-semibold text-slate-50">120+</p>
-                <p className="text-slate-400">brands partnered</p>
-              </div>
-              <div>
-                <p className="text-2xl font-semibold text-slate-50">5k+</p>
-                <p className="text-slate-400">vetted creators</p>
-              </div>
-              <div>
-                <p className="text-2xl font-semibold text-slate-50">3.5x</p>
-                <p className="text-slate-400">avg. ROAS on sprints</p>
-              </div>
-            </div>
+        {/* stats */}
+        <div className="mt-10 grid grid-cols-3 gap-6 text-sm md:text-base">
+          <div>
+            <p className="text-2xl font-semibold text-white">120+</p>
+            <p className="text-slate-400">brands partnered</p>
           </div>
-
-          {/* Right highlight cards */}
-          <div className="grid gap-5">
-            <div className="p-6 rounded-2xl bg-slate-900/70 border border-slate-800">
-              <h3 className="font-semibold text-slate-50 text-lg">
-                Data‑driven creator matching
-              </h3>
-              <p className="text-sm text-slate-400 mt-2">
-                Shortlists built on audience fit, past performance and category
-                expertise—not just follower count.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-2xl bg-slate-900/70 border border-slate-800">
-              <h3 className="font-semibold text-slate-50 text-lg">
-                Multi‑market, multi‑lingual
-              </h3>
-              <p className="text-sm text-slate-400 mt-2">
-                Run campaigns in Hindi, English and regional languages to reach
-                Bharat and metro audiences together.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-2xl bg-slate-900/70 border border-slate-800">
-              <h3 className="font-semibold text-slate-50 text-lg">
-                Full‑funnel focus
-              </h3>
-              <p className="text-sm text-slate-400 mt-2">
-                From awareness spikes to conversions and LTV, campaigns are
-                designed around your core business metrics.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-2xl bg-slate-900/70 border border-slate-800">
-              <h3 className="font-semibold text-slate-50 text-lg">
-                Reliable execution & support
-              </h3>
-              <p className="text-sm text-slate-400 mt-2">
-                Clear SLAs, structured feedback loops and a campaigns team that
-                lives inside your Slack or WhatsApp.
-              </p>
-            </div>
+          <div>
+            <p className="text-2xl font-semibold text-white">5k+</p>
+            <p className="text-slate-400">creators</p>
+          </div>
+          <div>
+            <p className="text-2xl font-semibold text-white">3.5x</p>
+            <p className="text-slate-400">avg ROAS</p>
           </div>
         </div>
 
-        {/* Bottom trust strip */}
-        <div className="mt-16 text-center">
-          <p className="text-sm text-slate-400">
-            Trusted by fast‑growing brands • 1000+ creator relationships • Built
-            for performance‑driven marketing teams
-          </p>
-        </div>
       </div>
     </section>
   );
