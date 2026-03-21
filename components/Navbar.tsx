@@ -1,18 +1,17 @@
 "use client";
 
 import { useState, useRef } from "react";
-import MegaMenu from "./MegaMenu";
 import Link from "next/link";
 import { ChevronDown, Menu, X } from "lucide-react";
+import MegaMenu from "./MegaMenu";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
   const [mobileDropdown, setMobileDropdown] = useState(false);
 
-  const timeoutRef = useRef(null);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Hover handlers
   const handleEnter = () => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
     setOpen(true);
@@ -21,125 +20,152 @@ export default function Navbar() {
   const handleLeave = () => {
     timeoutRef.current = setTimeout(() => {
       setOpen(false);
-    }, 200);
+    }, 160);
   };
 
   return (
-    <div className="w-full fixed top-0 left-0 z-50 bg-white/80 backdrop-blur-md border-b">
-      
-      {/* Top Bar */}
-      <div className="bg-blue-600 text-white text-sm text-center py-1">
+    <div className="w-full fixed top-0 left-0 z-50">
+      {/* Top alert bar */}
+      <div className="bg-amber-500/10 border-b border-amber-400/30 text-[11px] md:text-xs text-amber-200 text-center py-1 backdrop-blur">
         Alert: Verify fake offers promising profits.
       </div>
 
-      {/* Main Navbar */}
-      <div className="flex items-center justify-between px-6 md:px-10 py-4">
+      {/* Main navbar */}
+      <nav className="bg-slate-950/90 backdrop-blur-md border-b border-slate-800/80">
+        <div className="max-w-6xl mx-auto flex items-center justify-between px-4 md:px-6 py-3.5">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-1">
+            <span className="text-xl md:text-2xl font-semibold text-slate-50">
+              yourBrand
+            </span>
+            <span className="text-emerald-400 text-lg">✔</span>
+          </Link>
 
-        {/* Logo */}
-        <h1 className="text-2xl font-bold text-yellow-500">
-          yourBrand<span className="text-blue-600">✔</span>
-        </h1>
+          {/* Desktop menu */}
+          <div className="hidden md:flex gap-6 items-center text-sm text-slate-200">
+            {/* Dropdown trigger */}
+            <div
+              className="relative"
+              onMouseEnter={handleEnter}
+              onMouseLeave={handleLeave}
+            >
+              <button className="flex items-center gap-1 font-medium hover:text-emerald-300 transition">
+                Influencer marketing
+                <ChevronDown size={14} className="mt-[1px]" />
+              </button>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex gap-8 items-center">
-
-          {/* Dropdown */}
-          <div
-            className="relative"
-            onMouseEnter={handleEnter}
-            onMouseLeave={handleLeave}
-          >
-            <div className="flex items-center gap-1 cursor-pointer font-medium hover:text-blue-600">
-              Influencer Marketing <ChevronDown size={16} />
+              {/* Mega menu panel */}
+              <MegaMenu open={open} />
             </div>
 
-            <MegaMenu open={open} />
+            <Link
+              href="#tools"
+              className="hover:text-emerald-300 transition cursor-pointer"
+            >
+              Tools
+            </Link>
+
+            <Link
+              href="/work"
+              className="hover:text-emerald-300 transition cursor-pointer"
+            >
+              Our work
+            </Link>
+
+            <Link
+              href="/about"
+              className="hover:text-emerald-300 transition cursor-pointer"
+            >
+              About
+            </Link>
           </div>
 
-          <div className="hover:text-blue-600 cursor-pointer">Tools</div>
-          <div className="hover:text-blue-600 cursor-pointer">Our Work</div>
-
-          {/* ✅ About Link */}
-          <Link href="/about">
-            <div className="hover:text-blue-600 cursor-pointer">
-              About
-            </div>
+          {/* Desktop CTA */}
+          <Link
+            href="/contact"
+            className="hidden md:inline-flex bg-emerald-400 text-slate-950 px-5 py-2 rounded-full text-sm font-medium hover:bg-emerald-300 hover:shadow-[0_0_26px_rgba(52,211,153,0.6)] transition"
+          >
+            Contact
           </Link>
+
+          {/* Mobile menu button */}
+          <button
+            className="md:hidden text-slate-100"
+            onClick={() => setMobileMenu(true)}
+            aria-label="Open menu"
+          >
+            <Menu size={24} />
+          </button>
         </div>
+      </nav>
 
-        {/* CTA */}
-        <button className="hidden md:block bg-black text-white px-5 py-2 rounded-full hover:scale-105 transition">
-          Contact
-        </button>
-
-        {/* Mobile Button */}
-        <div
-          className="md:hidden cursor-pointer"
-          onClick={() => setMobileMenu(true)}
-        >
-          <Menu size={28} />
-        </div>
-      </div>
-
-      {/* MOBILE MENU */}
+      {/* Mobile full-screen menu */}
       <div
-        className={`fixed top-0 left-0 h-screen w-full z-50 transform transition-transform duration-500 ${
+        className={`fixed inset-0 z-40 transform transition-transform duration-400 ${
           mobileMenu ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <div className="h-full w-full bg-gradient-to-br from-black via-gray-900 to-gray-800 text-white">
-
-          {/* Top */}
-          <div className="flex justify-between items-center px-6 py-5 border-b border-gray-700">
-            <h1 className="text-xl font-semibold">yourBrand</h1>
-            <X onClick={() => setMobileMenu(false)} className="cursor-pointer" />
+        <div className="h-full w-full bg-slate-950 text-slate-50">
+          {/* top row */}
+          <div className="flex justify-between items-center px-6 py-4 border-b border-slate-800">
+            <span className="text-lg font-semibold">yourBrand</span>
+            <button
+              onClick={() => setMobileMenu(false)}
+              aria-label="Close menu"
+            >
+              <X size={22} />
+            </button>
           </div>
 
-          {/* Menu */}
-          <div className="flex flex-col px-8 py-10 space-y-8 text-lg">
-
-            {/* Dropdown */}
+          {/* links */}
+          <div className="flex flex-col px-8 py-8 space-y-7 text-base">
+            {/* dropdown group */}
             <div>
-              <div
-                className="flex justify-between items-center cursor-pointer"
-                onClick={() => setMobileDropdown(!mobileDropdown)}
+              <button
+                className="w-full flex justify-between items-center"
+                onClick={() => setMobileDropdown((v) => !v)}
               >
-                <span>Influencer Marketing</span>
+                <span>Influencer marketing</span>
                 <ChevronDown
                   className={`transition-transform ${
                     mobileDropdown ? "rotate-180" : ""
                   }`}
                 />
-              </div>
+              </button>
 
               <div
                 className={`overflow-hidden transition-all duration-300 ${
                   mobileDropdown ? "max-h-40 mt-4" : "max-h-0"
                 }`}
               >
-                <div className="flex flex-col gap-2 text-gray-400 ml-2">
-                  <span>YouTube</span>
-                  <span>Instagram</span>
-                  <span>UGC Videos</span>
-                  <span>Meme Marketing</span>
+                <div className="flex flex-col gap-2 text-sm text-slate-400 ml-1">
+                  <span>YouTube sprints</span>
+                  <span>Instagram & reels</span>
+                  <span>UGC content studio</span>
+                  <span>Meme marketing pods</span>
                 </div>
               </div>
             </div>
 
-            <div>Tools</div>
-            <div>Our Work</div>
-
-            {/* ✅ About Link (Mobile) */}
-            <Link href="/about">
-              <div className="cursor-pointer hover:text-white">
-                About
-              </div>
+            <Link href="#tools" onClick={() => setMobileMenu(false)}>
+              Tools
             </Link>
 
-            {/* CTA */}
-            <button className="mt-10 bg-white text-black py-3 rounded-full">
-              Contact Us
-            </button>
+            <Link href="/work" onClick={() => setMobileMenu(false)}>
+              Our work
+            </Link>
+
+            <Link href="/about" onClick={() => setMobileMenu(false)}>
+              About
+            </Link>
+
+            <Link
+              href="/contact"
+              onClick={() => setMobileMenu(false)}
+              className="mt-6 bg-emerald-400 text-slate-950 py-3 rounded-full text-center text-sm font-medium"
+            >
+              Contact us
+            </Link>
           </div>
         </div>
       </div>

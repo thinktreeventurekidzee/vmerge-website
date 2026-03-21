@@ -2,8 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom global styles */
+/* Global reset / base */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
 body {
   margin: 0;
   padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Segoe UI", sans-serif;
+  background-color: #020617; /* slate-950 */
+  color: #f9fafb; /* slate-50 */
+}
+
+/* Smooth scrolling for internal links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Optional: custom selection color */
+::selection {
+  background-color: #22c55e; /* emerald-500 */
+  color: #020617;
 }
