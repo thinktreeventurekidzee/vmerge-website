@@ -1,96 +1,104 @@
 const PROJECTS = [
   {
-    title: "Fintech app launch sprint",
+    title: "Fintech App Launch Campaign",
     tag: "YouTube · Finance",
     result: "2.9x ROAS · 1.4M+ views",
+    desc: "Executed a full-scale influencer launch with finance creators targeting high-intent users.",
   },
   {
-    title: "D2C skincare reels program",
+    title: "D2C Skincare Growth Program",
     tag: "Instagram · D2C",
     result: "+18% new customers",
+    desc: "Scaled customer acquisition using reels and micro-influencer collaborations.",
   },
   {
-    title: "UGC bank for SaaS tool",
+    title: "UGC Content Engine for SaaS",
     tag: "UGC · SaaS",
-    result: "60+ ad‑ready assets",
+    result: "60+ ad-ready assets",
+    desc: "Built a UGC pipeline to generate high-converting ad creatives.",
   },
   {
-    title: "Meme burst for gaming brand",
+    title: "Gaming Brand Meme Campaign",
     tag: "Memes · Gaming",
     result: "4.5M impressions in 7 days",
+    desc: "Leveraged meme pages and viral content for rapid brand awareness.",
   },
 ];
 
 export default function WorkGallery() {
   return (
-    <section className="py-20 bg-slate-950 text-slate-50">
+    <section className="relative py-24 bg-white overflow-hidden">
+
+      {/* 🌈 subtle aurora */}
+      <div className="absolute inset-0 -z-10">
+        <div className="aurora-bg w-full h-full opacity-20" />
+      </div>
+
       <div className="max-w-6xl mx-auto px-6">
-        {/* heading */}
+
+        {/* 🔝 HEADER */}
         <div className="text-center max-w-2xl mx-auto">
-          <p className="text-xs tracking-[0.25em] uppercase text-emerald-400">
-            Our work
+          <p className="text-xs tracking-[0.25em] uppercase text-cyan-600 font-semibold">
+            Case Studies
           </p>
-          <h2 className="mt-3 text-2xl md:text-3xl font-semibold">
-            Creator campaigns that look good and perform even better.
+
+          <h2 className="mt-3 text-3xl md:text-4xl font-bold text-slate-900">
+            Campaigns that{" "}
+            <span className="bg-gradient-to-r from-cyan-500 to-indigo-500 text-transparent bg-clip-text">
+              drive real results
+            </span>
           </h2>
-          <p className="mt-3 text-sm md:text-base text-slate-300">
-            A snapshot of launches, always‑on programs and UGC engines across
-            fintech, D2C, SaaS and gaming brands.
+
+          <p className="mt-4 text-slate-600">
+            A snapshot of how Vmerg helps brands scale using influencer-led
+            growth strategies across multiple industries.
           </p>
         </div>
 
-        {/* gallery grid */}
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
+        {/* 🧩 GRID */}
+        <div className="mt-14 grid gap-6 md:grid-cols-2">
+
           {PROJECTS.map((p, idx) => (
             <div
               key={idx}
-              className="group relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/70 shadow-[0_18px_45px_rgba(15,23,42,0.85)]"
+              className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-xl hover:border-cyan-400 transition"
             >
-              {/* animated border glow */}
-              <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <div className="absolute inset-[-1px] bg-gradient-to-r from-emerald-500/40 via-sky-500/40 to-purple-500/30 blur-[2px]" />
-              </div>
+              {/* TAG */}
+              <p className="text-[11px] uppercase tracking-[0.22em] text-cyan-600 font-semibold">
+                {p.tag}
+              </p>
 
-              {/* image placeholder with zoom */}
-              <div className="relative h-44 overflow-hidden rounded-t-2xl">
-                <div className="absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-900 to-slate-950" />
-                <div className="absolute inset-0 opacity-40 group-hover:opacity-60 transition-opacity duration-500 bg-[radial-gradient(circle_at_top,_rgba(52,211,153,0.9)_0,_transparent_55%),radial-gradient(circle_at_bottom,_rgba(56,189,248,0.8)_0,_transparent_55%)]" />
-                <div className="absolute inset-0 scale-100 group-hover:scale-105 transition-transform duration-500" />
-                <p className="absolute bottom-4 left-5 text-xs uppercase tracking-[0.22em] text-slate-200">
-                  Case study
-                </p>
-              </div>
+              {/* TITLE */}
+              <h3 className="mt-2 text-lg font-semibold text-slate-900 group-hover:text-cyan-600 transition">
+                {p.title}
+              </h3>
 
-              {/* content */}
-              <div className="relative px-5 py-5">
-                <p className="text-[11px] uppercase tracking-[0.22em] text-emerald-400">
-                  {p.tag}
-                </p>
-                <h3 className="mt-2 text-lg font-semibold group-hover:text-emerald-200 transition-colors">
-                  {p.title}
-                </h3>
-                <p className="mt-2 text-sm text-emerald-300">{p.result}</p>
-                <p className="mt-2 text-xs text-slate-400">
-                  See the strategy, creator mix and content that made this
-                  campaign work.
-                </p>
+              {/* RESULT */}
+              <p className="mt-2 text-sm font-medium text-indigo-600">
+                {p.result}
+              </p>
 
-                <button className="mt-4 inline-flex items-center text-xs font-medium text-emerald-300 group-hover:text-emerald-200">
-                  View full case study
-                  <span className="ml-1 transition-transform group-hover:translate-x-1">
-                    →
-                  </span>
-                </button>
-              </div>
+              {/* DESCRIPTION */}
+              <p className="mt-3 text-sm text-slate-600 leading-relaxed">
+                {p.desc}
+              </p>
+
+              {/* CTA */}
+              <button className="mt-4 inline-flex items-center text-sm font-medium text-cyan-600 group-hover:text-indigo-600 transition">
+                View full case study
+                <span className="ml-1 group-hover:translate-x-1 transition">
+                  →
+                </span>
+              </button>
             </div>
           ))}
         </div>
 
-        {/* bottom link */}
-        <div className="mt-10 text-center">
+        {/* 🔗 FOOTER LINK */}
+        <div className="mt-12 text-center">
           <a
             href="/work"
-            className="text-xs md:text-sm text-slate-300 hover:text-emerald-300 transition"
+            className="text-sm text-slate-600 hover:text-cyan-600 transition"
           >
             Explore all campaigns →
           </a>

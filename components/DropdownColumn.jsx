@@ -1,16 +1,17 @@
-// components/DropdownColumn.jsx
 import Link from "next/link";
 
 const badgeStyles = {
-  New: "bg-emerald-500/15 text-emerald-300 border border-emerald-400/40",
-  Hot: "bg-rose-500/15 text-rose-300 border border-rose-400/40",
-  Beta: "bg-sky-500/15 text-sky-300 border border-sky-400/40",
+  New: "bg-cyan-100 text-cyan-600",
+  Hot: "bg-rose-100 text-rose-600",
+  Beta: "bg-indigo-100 text-indigo-600",
 };
 
 export default function DropdownColumn({ title, subtitle, links }) {
   return (
-    <div className="min-w-[200px] max-w-xs">
-      <div className="mb-4">
+    <div className="min-w-[220px] max-w-xs">
+
+      {/* HEADER */}
+      <div className="mb-5">
         <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">
           {title}
         </p>
@@ -19,22 +20,25 @@ export default function DropdownColumn({ title, subtitle, links }) {
         )}
       </div>
 
+      {/* LINKS */}
       <ul className="space-y-2">
         {links?.map((item) => (
           <li key={item.href}>
             <Link
               href={item.href}
-              className="group flex items-start gap-3 rounded-xl px-3 py-2.5 hover:bg-slate-900/80 transition-colors"
+              className="group flex items-start gap-3 rounded-xl px-3 py-2.5 hover:bg-cyan-50 transition"
             >
-              <span className="mt-1 h-6 w-6 flex items-center justify-center rounded-full bg-slate-900 border border-slate-700 text-[10px] text-slate-400 group-hover:border-emerald-400 group-hover:text-emerald-300 transition-colors">
+              {/* icon dot */}
+              <span className="mt-1 h-6 w-6 flex items-center justify-center rounded-full bg-cyan-100 text-[10px] text-cyan-600">
                 ●
               </span>
 
               <div className="flex-1">
                 <div className="flex items-center gap-2">
-                  <span className="text-sm font-medium text-slate-100 group-hover:text-emerald-200 transition-colors">
+                  <span className="text-sm font-medium text-slate-800 group-hover:text-cyan-600 transition">
                     {item.label}
                   </span>
+
                   {item.badge && (
                     <span
                       className={
@@ -48,7 +52,7 @@ export default function DropdownColumn({ title, subtitle, links }) {
                 </div>
 
                 {item.description && (
-                  <p className="mt-1 text-xs text-slate-400 group-hover:text-slate-300 transition-colors">
+                  <p className="mt-1 text-xs text-slate-500">
                     {item.description}
                   </p>
                 )}

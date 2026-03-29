@@ -1,48 +1,51 @@
+"use client";
+
 export default function BrandsSection() {
   const brands = [
-    "BrandOne",
-    "FinTechCo",
-    "GlowD2C",
-    "SaaSFlow",
-    "PlayMore",
+    "D2C Brands",
+    "Fintech Startups",
+    "EdTech Platforms",
+    "Consumer Apps",
+    "Gaming Brands",
   ];
 
   return (
-    <section className="relative py-20 bg-slate-950 overflow-hidden">
-      {/* soft gradient background */}
-      <div className="pointer-events-none absolute inset-0 opacity-60">
-        <div className="absolute -top-32 -left-24 h-72 w-72 rounded-full bg-emerald-500/20 blur-3xl" />
-        <div className="absolute bottom-0 right-0 h-72 w-72 rounded-full bg-sky-500/20 blur-3xl" />
+    <section className="relative py-20 bg-white overflow-hidden">
+
+      {/* 🌈 subtle background */}
+      <div className="absolute inset-0 -z-10">
+        <div className="aurora-bg w-full h-full opacity-20" />
       </div>
 
-      <div className="relative max-w-6xl mx-auto px-4 text-center">
-        <p className="text-xs font-medium tracking-[0.2em] text-emerald-400 uppercase">
-          Trusted by brands that care about creator‑led growth
+      <div className="max-w-7xl mx-auto px-6 text-center">
+
+        {/* 🔝 HEADER */}
+        <p className="text-xs font-semibold tracking-[0.25em] text-cyan-600 uppercase">
+          Trusted Influencer Marketing Partner
         </p>
 
-        <h2 className="mt-3 text-2xl sm:text-3xl font-semibold text-slate-50">
-          Brands that bet on creators, bet on yourBrand.
+        <h2 className="mt-3 text-3xl md:text-4xl font-bold text-slate-900">
+          Brands scaling with{" "}
+          <span className="bg-gradient-to-r from-cyan-500 to-indigo-500 text-transparent bg-clip-text">
+            Vmerg
+          </span>
         </h2>
 
-        <p className="mt-3 text-sm text-slate-300 max-w-2xl mx-auto">
-          D2C, fintech and consumer apps use{" "}
-          <span className="font-medium text-emerald-400">yourBrand</span> for
-          always‑on influencer programs, launch bursts and UGC content engines.
+        <p className="mt-4 text-slate-600 max-w-2xl mx-auto leading-relaxed">
+          Vmerg provides end-to-end influencer marketing solutions — from
+          strategy and creator selection to campaign execution and 24×7 support.
+          We help brands launch, scale, and dominate across YouTube and Instagram.
         </p>
 
-        {/* Logos row */}
-        <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 items-center">
+        {/* 🧩 BRAND TYPES */}
+        <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 items-center">
           {brands.map((brand) => (
             <div
               key={brand}
-              className="relative group flex items-center justify-center"
+              className="group flex items-center justify-center"
             >
-              {/* shiny hover border */}
-              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-emerald-500/0 via-emerald-500/40 to-cyan-500/0 opacity-0 group-hover:opacity-100 blur transition-opacity duration-500" />
-              <div className="relative w-[120px] h-[40px] rounded-xl border border-slate-800 bg-slate-900/70 flex items-center justify-center overflow-hidden">
-                {/* sheen effect */}
-                <div className="pointer-events-none absolute -left-20 top-0 h-full w-16 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-0 group-hover:translate-x-[160px] transition-transform duration-700 ease-out" />
-                <span className="text-xs font-medium tracking-wide text-slate-300 group-hover:text-slate-50 transition-colors">
+              <div className="w-[130px] h-[45px] rounded-xl border border-slate-200 bg-white shadow-sm flex items-center justify-center hover:shadow-md hover:border-cyan-400 transition">
+                <span className="text-xs font-medium text-slate-600 group-hover:text-cyan-600 transition">
                   {brand}
                 </span>
               </div>
@@ -50,9 +53,10 @@ export default function BrandsSection() {
           ))}
         </div>
 
-        <p className="mt-8 text-xs text-slate-400">
-          Join 120+ growth‑focused brands that trust our influencer hunting and
-          campaign ops team.
+        {/* 💎 TRUST LINE */}
+        <p className="mt-10 text-sm text-slate-500 max-w-xl mx-auto">
+          Working with macro, micro, nano and large creators across India —
+          enabling brands to reach regional audiences with multi-lingual campaigns.
         </p>
       </div>
     </section>

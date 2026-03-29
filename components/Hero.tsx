@@ -1,124 +1,155 @@
 "use client";
 
-import { Play } from "lucide-react";
+import { Play, Phone, MessageCircle, Users, Globe } from "lucide-react";
 
-export default function Hero() {
+export default function AboutSection() {
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-slate-950">
-      {/* background glow */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-32 -left-24 h-72 w-72 rounded-full bg-emerald-500/25 blur-3xl" />
-        <div className="absolute bottom-0 right-0 h-80 w-80 rounded-full bg-sky-500/20 blur-3xl" />
+    <section className="relative py-24 md:py-32 to-blue-300 overflow-hidden">
+
+      {/* 🌈 LIGHT AURORA BACKGROUND */}
+      <div className="absolute inset-0 -z-10">
+        <div className="aurora-bg w-full h-full opacity-30" />
       </div>
 
-      <div className="relative max-w-6xl mx-auto px-6 md:px-10 py-28 flex flex-col md:flex-row items-center justify-between gap-14">
-        {/* LEFT SIDE */}
-        <div className="max-w-xl space-y-6">
-          <p className="text-xs md:text-sm tracking-[0.25em] uppercase text-emerald-400">
-            Creator‑first. Performance‑driven.
-          </p>
+      <div className="max-w-7xl mx-auto px-6 md:px-10">
+        
+        {/* 🔝 HEADER */}
+        <div className="text-center mb-20 max-w-4xl mx-auto">
+          
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+            Leading The Way In{" "}
+            <span className="bg-gradient-to-r bg-pink-400 via-indigo-500 to-purple-500 text-transparent bg-clip-text">
+              Creator Partnerships
+            </span>
+          </h2>
 
-          <h1 className="text-4xl md:text-6xl font-semibold leading-tight text-slate-50">
-            India’s leading{" "}
-            <span className="text-emerald-400">
-              influencer marketing partner
-            </span>{" "}
-            for modern brands.
-          </h1>
-
-          <p className="text-slate-300 text-sm md:text-base">
-            yourBrand connects growth‑focused brands with high‑intent creators
-            across YouTube, Instagram, UGC and meme pages—so every campaign is
-            built to move real business metrics, not just views.
+          <p className="text-lg md:text-xl from-pink-500 leading-relaxed">
+            We help brands grow globally with creator-first strategies,
+            combining deep market insights with performance-driven campaigns.
           </p>
 
           {/* CTA */}
-          <div className="flex flex-wrap items-center gap-4">
-            <button className="bg-emerald-400 text-slate-950 px-6 py-3 rounded-full text-sm font-medium hover:bg-emerald-300 hover:shadow-[0_0_40px_rgba(52,211,153,0.5)] transition">
-              Book a strategy call
+          <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <button className="flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-indigo-500 text-white px-6 py-3 rounded-full font-medium shadow hover:scale-105 transition">
+              <Play size={18} />
+              Watch Work
             </button>
 
-            <button className="flex items-center gap-2 border border-slate-700 px-6 py-3 rounded-full text-sm text-slate-200 hover:border-emerald-400 hover:bg-slate-900/60 transition">
-              <Play size={16} className="fill-slate-200" />
-              Watch how it works
-            </button>
-          </div>
-
-          {/* Stats row */}
-          <div className="mt-4 grid grid-cols-3 gap-4 text-xs md:text-sm text-slate-300">
-            <div>
-              <p className="text-xl md:text-2xl font-semibold text-slate-50">
-                120+
-              </p>
-              <p className="text-slate-400">brands partnered</p>
-            </div>
-            <div>
-              <p className="text-xl md:text-2xl font-semibold text-slate-50">
-                5k+
-              </p>
-              <p className="text-slate-400">vetted creators</p>
-            </div>
-            <div>
-              <p className="text-xl md:text-2xl font-semibold text-slate-50">
-                3.5x
-              </p>
-              <p className="text-slate-400">avg. campaign ROAS</p>
+            <div className="flex items-center gap-2 text-cyan-600 text-sm font-medium">
+              <span className="w-2 h-2 bg-cyan-500 rounded-full animate-ping" />
+              Live Support
             </div>
           </div>
         </div>
 
-        {/* RIGHT SIDE */}
-        <div className="relative mt-10 md:mt-0">
-          {/* main card */}
-          <div className="w-[320px] md:w-[420px] bg-slate-900/80 border border-slate-800 rounded-3xl shadow-[0_20px_80px_rgba(15,23,42,0.9)] overflow-hidden">
-            <div className="relative h-[240px]">
-              <img
-                src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=900&q=80"
-                alt="Creators collaborating"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-900/10 to-slate-900/0" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <button className="bg-white/15 backdrop-blur-md p-4 rounded-full border border-white/30 hover:scale-110 transition transform cursor-pointer">
-                  <Play size={28} className="text-white fill-white" />
-                </button>
+        {/* 🧩 MAIN GRID */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+          {/* LEFT CARD */}
+          <div className="bg-slate-400 border-slate-200 rounded-3xl shadow-md p-6 hover:shadow-xl transition">
+
+            <div className="h-64 bg-gradient-to-br from-cyan-100 to-indigo-100 rounded-2xl flex items-center justify-center">
+              <Users size={50} className="text-cyan-600" />
+            </div>
+
+            <div className="mt-6">
+              <h3 className="text-xl font-semibold text-slate-900">
+                Global Leadership
+              </h3>
+              <p className="text-slate-600 text-sm mt-2">
+                Building creator ecosystems across multiple markets with
+                consistent growth strategies.
+              </p>
+
+              {/* Stats */}
+              <div className="grid grid-cols-3 gap-4 mt-6 text-center">
+                <div>
+                  <p className="text-lg font-bold text-cyan-600">50+</p>
+                  <p className="text-xs text-slate-500">Partners</p>
+                </div>
+                <div>
+                  <p className="text-lg font-bold text-indigo-600">10+</p>
+                  <p className="text-xs text-slate-500">Markets</p>
+                </div>
+                <div>
+                  <p className="text-lg font-bold text-purple-600">2X</p>
+                  <p className="text-xs text-slate-500">Growth</p>
+                </div>
               </div>
             </div>
+          </div>
 
-            <div className="p-5 space-y-2">
-              <p className="text-xs uppercase tracking-[0.22em] text-emerald-400">
-                Live campaign snapshot
+          {/* RIGHT FEATURES */}
+          <div className="space-y-6">
+
+            {[
+              {
+                icon: Users,
+                title: "Global Network",
+                desc: "Strong creator ecosystem across multiple countries",
+              },
+              {
+                icon: Globe,
+                title: "Cross-Border Strategy",
+                desc: "Campaigns designed for international scale",
+              },
+              {
+                icon: MessageCircle,
+                title: "Real-Time Support",
+                desc: "Fast communication via chat & calls",
+              },
+              {
+                icon: Play,
+                title: "Performance Driven",
+                desc: "Focused on ROI & measurable growth",
+              },
+            ].map(({ icon: Icon, title, desc }) => (
+              <div
+                key={title}
+                className="flex gap-4 p-5 rounded-2xl border border-slate-200 hover:border-cyan-400 hover:bg-cyan-50 transition"
+              >
+                <div className="w-12 h-12 bg-cyan-100 rounded-xl flex items-center justify-center">
+                  <Icon size={20} className="text-cyan-600" />
+                </div>
+
+                <div>
+                  <h4 className="font-semibold text-slate-900">{title}</h4>
+                  <p className="text-sm text-slate-600">{desc}</p>
+                </div>
+              </div>
+            ))}
+
+            {/* TESTIMONIAL */}
+            <div className="p-6 rounded-2xl bg-gradient-to-r from-cyan-50 to-indigo-50 border border-slate-200">
+              <p className="italic text-slate-700">
+                “They helped us scale globally with the right creators and
+                strategy.”
               </p>
-              <h3 className="font-semibold text-lg text-slate-50">
-                27 creators · 3 platforms · 2.9x ROAS
-              </h3>
-              <p className="text-slate-400 text-sm">
-                Coordinated YouTube + reels + UGC sprint for a fintech app
-                targeting tier‑1 and tier‑2 audiences.
+              <p className="text-sm text-slate-500 mt-3">
+                — Brand Partner
               </p>
             </div>
-          </div>
-
-          {/* floating cards */}
-          <div className="absolute -left-16 top-10 w-[180px] bg-slate-900/80 backdrop-blur-md shadow-xl rounded-xl p-3 border border-slate-800 hidden md:block">
-            <p className="text-xs text-slate-400">Trending creator</p>
-            <p className="text-sm font-semibold text-slate-50">
-              @creator_handle
-            </p>
-            <p className="text-xs text-emerald-300 mt-1">+1.4M views · Finance</p>
-          </div>
-
-          <div className="absolute -right-10 bottom-10 w-[190px] bg-slate-900/80 backdrop-blur-md shadow-xl rounded-xl p-3 border border-slate-800 hidden md:block">
-            <p className="text-xs text-slate-400">Last campaign</p>
-            <p className="text-sm font-semibold text-slate-50">
-              +120% engagement
-            </p>
-            <p className="text-xs text-slate-400 mt-1">
-              38 creators · 4.7M impressions
-            </p>
           </div>
         </div>
       </div>
+
+      {/* 🌈 AURORA STYLE */}
+      <style jsx>{`
+        .aurora-bg {
+          background:
+            radial-gradient(circle at 20% 80%, rgba(34,211,238,0.25), transparent 60%),
+            radial-gradient(circle at 80% 20%, rgba(99,102,241,0.25), transparent 60%),
+            radial-gradient(circle at 50% 50%, rgba(139,92,246,0.15), transparent 60%);
+          background-size: 200% 200%;
+          animation: auroraShift 18s ease-in-out infinite;
+        }
+
+        @keyframes auroraShift {
+          0% { transform: translate(-10%, -10%); }
+          50% { transform: translate(10%, 10%); }
+          100% { transform: translate(-10%, -10%); }
+        }
+      `}</style>
     </section>
   );
 }

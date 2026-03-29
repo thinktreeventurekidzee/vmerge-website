@@ -1,7 +1,6 @@
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import { ThemeProvider } from "./context/ThemeContext";
+import Navbar from "@/components/Navbar";
 
 export default function RootLayout({
   children,
@@ -10,18 +9,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-slate-950 text-slate-50">
-
+      <body className="bg-white text-slate-900 antialiased">
         <ThemeProvider>
+          
+          {/* ✅ GLOBAL NAVBAR */}
           <Navbar />
 
-          <main className="min-h-screen">
+          {/* ✅ MAIN CONTENT (prevents overlap with fixed navbar) */}
+          <main className="pt-20">
             {children}
           </main>
 
-          <Footer />
         </ThemeProvider>
-
       </body>
     </html>
   );

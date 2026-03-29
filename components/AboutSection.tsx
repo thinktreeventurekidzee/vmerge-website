@@ -1,91 +1,93 @@
 "use client";
 
-import { useTheme } from "../app/context/ThemeContext";
-import clsx from "clsx";
-
-type Theme = "soothing" | "flower" | "neon";
-
-export default function AboutSection(): JSX.Element {
-  const { theme, setTheme } = useTheme();
-
-  const nextTheme = () => {
-    setTheme((prev: Theme) =>
-      prev === "soothing" ? "flower" : prev === "flower" ? "neon" : "soothing"
-    );
-  };
-
-  const themeClasses: Record<Theme, string> = {
-    soothing:
-      "from-slate-950 via-slate-900 to-emerald-600/70 text-slate-50",
-
-    flower:
-      "from-rose-800 via-pink-800 to-amber-500/60 text-white",
-
-    neon:
-      "from-slate-900 via-emerald-600 to-cyan-400 text-white",
-  };
-
-  const accentText: Record<Theme, string> = {
-    soothing: "text-emerald-300",
-    flower: "text-rose-200",
-    neon: "text-cyan-300",
-  };
-
+export default function AboutSection() {
   return (
-    <section
-      className={clsx(
-        "relative min-h-screen flex items-center justify-center overflow-hidden transition-all duration-500",
-        "bg-gradient-to-br",
-        themeClasses[theme]
-      )}
-    >
-      {/* overlay */}
-      <div className="absolute inset-0 bg-black/30 backdrop-blur-[2px]" />
+    <section className="relative py-24 bg-white overflow-hidden">
 
-      {/* container */}
-      <div className="relative w-full max-w-6xl mx-auto px-6 text-center">
+      {/* 🌈 subtle aurora */}
+      <div className="absolute inset-0 -z-10">
+        <div className="aurora-bg w-full h-full opacity-20" />
+      </div>
 
-        {/* theme toggle */}
-        <div className="flex justify-end mb-6">
-          <button
-            onClick={nextTheme}
-            className="px-4 py-2 rounded-full border text-xs uppercase tracking-wider hover:scale-105 transition"
-          >
-            Theme: {theme}
-          </button>
-        </div>
+      <div className="max-w-7xl mx-auto px-6 text-center">
 
-        {/* heading */}
-        <h2 className="text-3xl md:text-5xl font-bold leading-tight">
-          A{" "}
-          <span className={clsx("font-semibold", accentText[theme])}>
-            creator-first influencer agency
+        {/* HEADER */}
+        <h2 className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight">
+          End-to-End{" "}
+          <span className="bg-gradient-to-r from-cyan-500 to-indigo-500 text-transparent bg-clip-text">
+            Influencer Marketing
           </span>{" "}
-          built for measurable growth
+          for Modern Brands
         </h2>
 
-        {/* subtext */}
-        <p className="mt-6 text-slate-300 max-w-2xl mx-auto text-base md:text-lg">
-          Since 2021, yourBrand has helped digital-first brands turn creator
-          trust into predictable revenue across YouTube, Instagram and UGC campaigns.
+        <p className="mt-6 text-slate-600 max-w-2xl mx-auto text-lg leading-relaxed">
+          Vmerg is a full-service influencer marketing agency helping brands
+          across India scale through YouTube and Instagram creators. From
+          strategy and influencer selection to campaign execution and 24×7
+          support — we manage everything.
         </p>
 
-        {/* stats */}
-        <div className="mt-10 grid grid-cols-3 gap-6 text-sm md:text-base">
+        {/* 🔥 STATS */}
+        <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+
           <div>
-            <p className="text-2xl font-semibold text-white">120+</p>
-            <p className="text-slate-400">brands partnered</p>
+            <p className="text-2xl font-bold text-cyan-600">120+</p>
+            <p className="text-sm text-slate-500">Brands Served</p>
           </div>
+
           <div>
-            <p className="text-2xl font-semibold text-white">5k+</p>
-            <p className="text-slate-400">creators</p>
+            <p className="text-2xl font-bold text-indigo-600">5000+</p>
+            <p className="text-sm text-slate-500">Creators Network</p>
           </div>
+
           <div>
-            <p className="text-2xl font-semibold text-white">3.5x</p>
-            <p className="text-slate-400">avg ROAS</p>
+            <p className="text-2xl font-bold text-purple-600">24×7</p>
+            <p className="text-sm text-slate-500">Campaign Support</p>
+          </div>
+
+          <div>
+            <p className="text-2xl font-bold text-cyan-600">Pan India</p>
+            <p className="text-sm text-slate-500">Regional Reach</p>
           </div>
         </div>
 
+        {/* 🧩 FEATURES */}
+        <div className="mt-16 grid md:grid-cols-3 gap-8 text-left">
+
+          {[
+            {
+              title: "Creator Discovery & Selection",
+              desc: "Access a large dataset of macro, micro, nano and regional influencers across India.",
+            },
+            {
+              title: "Multi-Lingual Campaigns",
+              desc: "Target audiences across states with regional language creators and localized strategies.",
+            },
+            {
+              title: "End-to-End Execution",
+              desc: "From planning to launch — we handle complete campaign execution with performance tracking.",
+            },
+          ].map((item) => (
+            <div
+              key={item.title}
+              className="p-6 rounded-2xl border border-slate-200 hover:border-cyan-400 hover:bg-cyan-50 transition"
+            >
+              <h4 className="font-semibold text-slate-900">
+                {item.title}
+              </h4>
+              <p className="mt-2 text-sm text-slate-600">
+                {item.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* 💬 PROCESS */}
+        <div className="mt-16 max-w-3xl mx-auto">
+          <p className="text-sm text-slate-500">
+            Talk to expert → Design strategy → Choose influencers → Launch campaign
+          </p>
+        </div>
       </div>
     </section>
   );

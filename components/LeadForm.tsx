@@ -23,34 +23,48 @@ export default function LeadForm() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log(form);
-    alert("Form submitted!");
+    alert("Thanks! We'll reach out within 24 hours.");
   };
 
   return (
-    <section className="py-16 bg-slate-950 text-slate-50">
-      <div className="max-w-4xl mx-auto px-6">
+    <section className="relative py-24 bg-white overflow-hidden">
+
+      {/* 🌈 subtle aurora */}
+      <div className="absolute inset-0 -z-10">
+        <div className="aurora-bg w-full h-full opacity-20" />
+      </div>
+
+      <div className="max-w-5xl mx-auto px-6">
+
+        {/* 🔝 HEADER */}
         <div className="text-center max-w-2xl mx-auto">
-          <p className="text-xs tracking-[0.25em] uppercase text-emerald-400">
-            Work with us
+          <p className="text-xs tracking-[0.25em] uppercase text-cyan-600 font-semibold">
+            Start your campaign
           </p>
-          <h2 className="mt-3 text-2xl md:text-3xl font-semibold">
-            Tell us about your next creator‑led campaign.
+
+          <h2 className="mt-3 text-3xl md:text-4xl font-bold text-slate-900">
+            Let’s build your next{" "}
+            <span className="bg-gradient-to-r from-cyan-500 to-indigo-500 text-transparent bg-clip-text">
+              influencer campaign
+            </span>
           </h2>
-          <p className="mt-3 text-sm md:text-base text-slate-300">
-            Share a few details about your brand, budget and goals and our team
-            will respond within 24 hours with next steps.
+
+          <p className="mt-4 text-slate-600">
+            Share your brand goals and budget. Our team will connect within 24 hours
+            with a tailored influencer strategy.
           </p>
         </div>
 
+        {/* FORM */}
         <form
           onSubmit={handleSubmit}
-          className="mt-10 max-w-2xl mx-auto grid gap-4"
+          className="mt-12 max-w-3xl mx-auto grid gap-5"
         >
           {/* name + email */}
-          <div className="grid md:grid-cols-2 gap-4">
-            <div className="text-left">
-              <label className="text-xs text-slate-300 mb-1 block">
-                Full name
+          <div className="grid md:grid-cols-2 gap-5">
+            <div>
+              <label className="text-xs text-slate-500 mb-1 block">
+                Full Name
               </label>
               <input
                 type="text"
@@ -59,12 +73,13 @@ export default function LeadForm() {
                 value={form.name}
                 onChange={handleChange}
                 required
-                className="w-full rounded-lg border border-slate-800 bg-slate-900/80 px-3 py-2.5 text-sm text-slate-50 placeholder:text-slate-500 focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400"
+                className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 transition"
               />
             </div>
-            <div className="text-left">
-              <label className="text-xs text-slate-300 mb-1 block">
-                Work email
+
+            <div>
+              <label className="text-xs text-slate-500 mb-1 block">
+                Work Email
               </label>
               <input
                 type="email"
@@ -73,66 +88,70 @@ export default function LeadForm() {
                 value={form.email}
                 onChange={handleChange}
                 required
-                className="w-full rounded-lg border border-slate-800 bg-slate-900/80 px-3 py-2.5 text-sm text-slate-50 placeholder:text-slate-500 focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400"
+                className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 transition"
               />
             </div>
           </div>
 
           {/* company + budget */}
-          <div className="grid md:grid-cols-2 gap-4">
-            <div className="text-left">
-              <label className="text-xs text-slate-300 mb-1 block">
-                Brand / company
+          <div className="grid md:grid-cols-2 gap-5">
+            <div>
+              <label className="text-xs text-slate-500 mb-1 block">
+                Brand / Company
               </label>
               <input
                 type="text"
                 name="company"
-                placeholder="Brand name"
+                placeholder="Your brand name"
                 value={form.company}
                 onChange={handleChange}
-                className="w-full rounded-lg border border-slate-800 bg-slate-900/80 px-3 py-2.5 text-sm text-slate-50 placeholder:text-slate-500 focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400"
+                className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 transition"
               />
             </div>
-            <div className="text-left">
-              <label className="text-xs text-slate-300 mb-1 block">
-                Monthly budget (optional)
+
+            <div>
+              <label className="text-xs text-slate-500 mb-1 block">
+                Monthly Budget
               </label>
               <input
                 type="text"
                 name="budget"
-                placeholder="e.g. ₹2–10L"
+                placeholder="e.g. ₹1L – ₹10L"
                 value={form.budget}
                 onChange={handleChange}
-                className="w-full rounded-lg border border-slate-800 bg-slate-900/80 px-3 py-2.5 text-sm text-slate-50 placeholder:text-slate-500 focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400"
+                className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 transition"
               />
             </div>
           </div>
 
           {/* message */}
-          <div className="text-left">
-            <label className="text-xs text-slate-300 mb-1 block">
-              What are you looking to achieve?
+          <div>
+            <label className="text-xs text-slate-500 mb-1 block">
+              Campaign Goal
             </label>
             <textarea
               name="message"
-              placeholder="Share your goals, target platforms, timelines and anything else we should know."
+              placeholder="What are you trying to achieve? (Brand awareness, sales, app installs, etc.)"
               rows={4}
               value={form.message}
               onChange={handleChange}
-              className="w-full rounded-lg border border-slate-800 bg-slate-900/80 px-3 py-2.5 text-sm text-slate-50 placeholder:text-slate-500 focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 resize-none"
+              className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 resize-none transition"
             />
           </div>
 
-          <div className="mt-2 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          {/* CTA */}
+          <div className="mt-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+
             <button
               type="submit"
-              className="w-full sm:w-auto bg-emerald-400 text-slate-950 py-2.5 px-6 rounded-full text-sm font-medium hover:bg-emerald-300 hover:shadow-[0_0_30px_rgba(52,211,153,0.5)] transition"
+              className="w-full sm:w-auto bg-gradient-to-r from-cyan-500 to-indigo-500 text-white py-3 px-8 rounded-full text-sm font-medium shadow hover:scale-105 transition"
             >
-              Submit brief
+              Get Strategy Plan 🚀
             </button>
-            <p className="text-[11px] text-slate-500 text-left sm:text-right">
-              By submitting, you agree to be contacted by email or WhatsApp
-              about your enquiry. No spam—ever.
+
+            <p className="text-xs text-slate-500">
+              We typically respond within 24 hours. You may also be contacted via
+              WhatsApp for faster communication.
             </p>
           </div>
         </form>
