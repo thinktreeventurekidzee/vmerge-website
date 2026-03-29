@@ -1,3 +1,11 @@
+import { motion } from "framer-motion";
+
+<motion.div
+  initial={{ opacity: 0, y: 30 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6 }}
+></motion.div>
+
 export default function ProcessSection(): JSX.Element {
   return (
     <section

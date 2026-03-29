@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext, useState, useEffect } from "react";
-import { Sun, Moon } from "lucide-react";
+import { Phone, Mail, MessageCircle } from "lucide-react"; // ✅ ADD THIS
 
 const ThemeContext = createContext<any>(undefined);
 
@@ -13,18 +13,19 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     document.documentElement.classList.add(theme);
   }, [theme]);
 
-  const toggleTheme = () => setTheme((prev) => prev === "light" ? "dark" : "light");
+  const toggleTheme = () =>
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
 
   const vmerg = {
-    name: "vmerg",
+    name: "Vmerg",
     tagline: "End-to-End Influencer Marketing Powerhouse",
     founded: "2021",
     cin: "U74999KA2021PTC153669",
     contacts: {
       phone: "+91 86607 83740",
       whatsapp: "916362621090",
-      email: "vinay@vmerg.com"
-    }
+      email: "vinay@vmerg.com",
+    },
   };
 
   return (
@@ -38,36 +39,67 @@ export function useTheme() {
   return useContext(ThemeContext);
 }
 
-// Simple Components (No Context Dependency)
+//
+// 🔥 BRAND COMPONENTS (UPDATED)
+//
+
 export function VmergLogo({ size = "lg" }: { size?: string }) {
-  const sizes = { sm: "text-2xl", md: "text-3xl", lg: "text-4xl" };
+  const sizes = {
+    sm: "text-2xl",
+    md: "text-3xl",
+    lg: "text-4xl",
+  };
+
   return (
-    <div className={`font-black bg-gradient-to-r from-emerald-600 via-cyan-600 to-indigo-600 bg-clip-text text-transparent ${sizes[size as keyof typeof sizes] || sizes.lg} tracking-tight`}>
-      vmerg <span className="text-xs bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded-full font-bold">2021</span>
+    <div
+      className={`font-black tracking-tight bg-gradient-to-r from-cyan-500 via-indigo-500 to-purple-500 bg-clip-text text-transparent ${
+        sizes[size as keyof typeof sizes] || sizes.lg
+      }`}
+    >
+      Vmerg
     </div>
   );
 }
 
 export function VmergTagline() {
   return (
-    <p className="text-lg font-semibold text-slate-700 max-w-2xl mx-auto leading-relaxed">
-      End-to-End Influencer Marketing | 10+ Categories | 24/7 Global Operations | Bangalore
+    <p className="text-lg font-medium text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
+      End-to-End Influencer Marketing | 10+ Categories | 24/7 Global Operations
     </p>
   );
 }
 
 export function VmergContactRow() {
   return (
-    <div className="flex flex-wrap items-center gap-6 bg-white/60 backdrop-blur-sm p-4 rounded-2xl border border-slate-200 shadow-lg">
-      <a href="tel:+918660783740" className="flex items-center gap-2 font-bold text-emerald-700 hover:text-emerald-600">
-        📞 +91 86607 83740
+    <div className="flex flex-wrap items-center justify-center gap-6 bg-white/80 dark:bg-slate-800/70 backdrop-blur-xl p-4 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-md">
+
+      {/* 📞 PHONE */}
+      <a
+        href="tel:+918660783740"
+        className="flex items-center gap-2 font-semibold text-slate-800 dark:text-slate-200 hover:text-cyan-600 transition"
+      >
+        <Phone size={18} className="text-cyan-600" />
+        +91 86607 83740
       </a>
-      <a href="https://wa.me/916362621090" className="flex items-center gap-2 font-bold text-emerald-600 hover:text-emerald-500">
-        💬 WhatsApp
+
+      {/* 💬 WHATSAPP */}
+      <a
+        href="https://wa.me/916362621090"
+        className="flex items-center gap-2 font-semibold text-slate-800 dark:text-slate-200 hover:text-green-600 transition"
+      >
+        <MessageCircle size={18} className="text-green-500" />
+        WhatsApp
       </a>
-      <a href="mailto:vinay@vmerg.com" className="font-semibold text-slate-700 hover:text-emerald-600">
+
+      {/* 📧 EMAIL */}
+      <a
+        href="mailto:vinay@vmerg.com"
+        className="flex items-center gap-2 font-semibold text-slate-800 dark:text-slate-200 hover:text-indigo-600 transition"
+      >
+        <Mail size={18} className="text-indigo-500" />
         vinay@vmerg.com
       </a>
+
     </div>
   );
 }

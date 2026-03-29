@@ -93,4 +93,27 @@ html {
 
 .vmerg-glow {
   animation: vmerg-glow 2s ease-in-out infinite;
+} .aurora-bg {
+  background:
+    radial-gradient(circle at 20% 80%, rgba(34,211,238,0.25), transparent 60%),
+    radial-gradient(circle at 80% 20%, rgba(99,102,241,0.25), transparent 60%),
+    radial-gradient(circle at 50% 50%, rgba(139,92,246,0.15), transparent 60%);
+  background-size: 200% 200%;
+  animation: auroraShift 20s ease-in-out infinite;
+}
+
+@keyframes auroraShift {
+  0% { transform: translate(-10%, -10%); }
+  50% { transform: translate(10%, 10%); }
+  100% { transform: translate(-10%, -10%); }
+}
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradientShift 6s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
