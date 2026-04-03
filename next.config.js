@@ -4,7 +4,7 @@ const nextConfig = {
 
   // ✅ Image optimization (Vercel-friendly)
   images: {
-    unoptimized: true, // 🔥 safer for static assets / no config issues
+    unoptimized: false, // 🔥 safer for static assets / no config issues
   },
 
   // ✅ Fix for fs module issue (client-side)

@@ -69,7 +69,7 @@ export default function RootLayout({
           <Navbar />
 
           {/* 🔥 MAIN CONTENT */}
-          <main className="pt-[88px]">{children}</main>
+          <main className="pt-[72px] md:pt-[88px]">{children}</main>
 
         </ThemeProvider>
       </body>
