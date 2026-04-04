@@ -48,7 +48,7 @@ export default function HeroSection() {
             {...fadeUp}
             className="mt-6 text-base sm:text-lg text-slate-700 max-w-xl"
           >
-            <span className="font-semibold text-slate-900">VERGE</span> helps brands scale campaigns with better creator fit and stronger results.
+            <span className="font-semibold text-slate-900">VMERGE</span> helps brands scale campaigns with better creator fit and stronger results.
           </motion.p>
 
           <motion.div
