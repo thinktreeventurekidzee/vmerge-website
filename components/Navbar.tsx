@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
@@ -16,27 +16,30 @@ export default function Navbar({ activeSection }: NavbarProps) {
   const pathname = usePathname();
   const router = useRouter();
 
+  const navItems = useMemo(
+    () => [
+      { name: "Home", href: "/" },
+      { name: "Services", href: "/services" },
+      { name: "Work", href: "/work" },
+      { name: "About", href: "/about" },
+      { name: "Brands", href: "/brands" },
+      { name: "Creators", href: "/creators" },
+      { name: "Contact", href: "/contact" },
+    ],
+    []
+  );
+
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navItems = [
-    { name: "Home", href: "/" },
-    { name: "Services", href: "/services" },
-    { name: "Work", href: "/work" },
-    { name: "About", href: "/about" },
-    { name: "Brands", href: "/brands" },
-    { name: "Creators", href: "/creators" },
-    { name: "Contact", href: "/contact" },
-  ];
-
   useEffect(() => {
     navItems.forEach((item) => {
       router.prefetch(item.href);
     });
-  }, [router]);
+  }, [router, navItems]);
 
   const isActive = (href: string) => {
     if (activeSection) return activeSection === href;
@@ -54,15 +57,13 @@ export default function Navbar({ activeSection }: NavbarProps) {
       >
         <div className="mx-auto max-w-7xl px-4 py-3 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
-
-            {/* 🔥 LOGO */}
             <Link
               href="/"
               className="flex items-center gap-2"
               onClick={() => setMobileMenu(false)}
             >
               <Image
-                src="/vmerge.jpeg"   // 👈 ensure this file exists in /public
+                src="/vmerge.jpeg"
                 alt="Vmerg"
                 width={110}
                 height={40}
@@ -71,7 +72,6 @@ export default function Navbar({ activeSection }: NavbarProps) {
               />
             </Link>
 
-            {/* DESKTOP MENU */}
             <div className="hidden items-center gap-8 md:flex">
               {navItems.map((item) => (
                 <Link
@@ -103,11 +103,11 @@ export default function Navbar({ activeSection }: NavbarProps) {
               </Link>
             </div>
 
-            {/* MOBILE BUTTON */}
             <button
               type="button"
               className="rounded-lg p-2 transition-colors hover:bg-slate-100 md:hidden"
               onClick={() => setMobileMenu((prev) => !prev)}
+              aria-label="Toggle mobile menu"
             >
               {mobileMenu ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -115,16 +115,19 @@ export default function Navbar({ activeSection }: NavbarProps) {
         </div>
       </nav>
 
-      {/* MOBILE MENU */}
       {mobileMenu && (
         <div className="fixed inset-0 top-[70px] z-40 bg-white md:hidden">
-          <div className="px-6 pt-6 space-y-4">
+          <div className="space-y-4 px-6 pt-6">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
                 onClick={() => setMobileMenu(false)}
-                className="block text-lg font-semibold text-slate-900 hover:text-indigo-600"
+                className={`block text-lg font-semibold ${
+                  isActive(item.href)
+                    ? "text-indigo-600"
+                    : "text-slate-900 hover:text-indigo-600"
+                }`}
               >
                 {item.name}
               </Link>
@@ -133,7 +136,7 @@ export default function Navbar({ activeSection }: NavbarProps) {
             <Link
               href="/contact"
               onClick={() => setMobileMenu(false)}
-              className="block mt-6 text-center bg-indigo-600 text-white py-3 rounded-xl font-semibold"
+              className="mt-6 block rounded-xl bg-indigo-600 py-3 text-center font-semibold text-white"
             >
               Get Strategy →
             </Link>

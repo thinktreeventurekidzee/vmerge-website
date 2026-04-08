@@ -1,23 +1,23 @@
 {
   "compilerOptions": {
     "lib": ["dom", "dom.iterable", "esnext"],
-
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": false,
+    "strict": true,
     "noEmit": true,
     "incremental": true,
 
     "module": "esnext",
     "esModuleInterop": true,
-    "moduleResolution": "node",
+    "moduleResolution": "node",        // ✅ Changed back to "node"
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
+    "ignoreDeprecations": "6.0",
 
-    "baseUrl": ".",                // ✅ ADD THIS
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]               // ✅ ADD THIS
+      "@/*": ["./*"]
     },
 
     "plugins": [
@@ -33,5 +33,6 @@
     "**/*.ts",
     "**/*.tsx"
   ],
+
   "exclude": ["node_modules"]
 }
