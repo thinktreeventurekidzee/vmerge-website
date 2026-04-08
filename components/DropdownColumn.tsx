@@ -1,12 +1,30 @@
 import Link from "next/link";
 
-const badgeStyles = {
+const badgeStyles: Record<string, string> = {
   New: "bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200/50",
-  Hot: "bg-rose-50 text-rose-700 ring-1 ring-rose-200/50", 
+  Hot: "bg-rose-50 text-rose-700 ring-1 ring-rose-200/50",
   Beta: "bg-indigo-50 text-indigo-700 ring-1 ring-indigo-200/50",
 };
 
-export default function DropdownColumn({ title, subtitle, links }) {
+// ✅ Proper types
+type LinkItem = {
+  label: string;
+  href: string;
+  badge?: "New" | "Hot" | "Beta";
+  description?: string;
+};
+
+type DropdownColumnProps = {
+  title: string;
+  subtitle?: string;
+  links: LinkItem[];
+};
+
+export default function DropdownColumn({
+  title,
+  subtitle,
+  links,
+}: DropdownColumnProps) {
   return (
     <div className="min-w-[240px] max-w-sm">
       {/* HEADER */}
@@ -42,11 +60,9 @@ export default function DropdownColumn({ title, subtitle, links }) {
 
                   {item.badge && (
                     <span
-                      className={`
-                        text-xs px-2.5 py-1 rounded-full font-semibold uppercase 
-                        tracking-[0.05em] ring-1 shadow-sm h-6 flex items-center
-                        ${badgeStyles[item.badge]}
-                      `}
+                      className={`text-xs px-2.5 py-1 rounded-full font-semibold uppercase tracking-[0.05em] ring-1 shadow-sm h-6 flex items-center ${
+                        badgeStyles[item.badge]
+                      }`}
                     >
                       {item.badge}
                     </span>
