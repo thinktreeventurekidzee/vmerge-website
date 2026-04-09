@@ -47,7 +47,7 @@ export default function DropdownColumn({
               href={item.href}
               className="group flex items-start gap-3 rounded-2xl px-4 py-3 hover:bg-slate-50/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500/50 transition-all duration-200"
             >
-              {/* Status indicator */}
+              {/* Indicator */}
               <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-cyan-500 to-cyan-600 text-white text-[11px] font-bold shadow-sm ring-1 ring-white/30 group-hover:scale-105">
                 →
               </div>
