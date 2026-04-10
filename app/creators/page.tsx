@@ -75,7 +75,7 @@ Ready to collaborate with brands!`
 
   return (
     <>
-      <Navbar activeSection="/creators" />
+      <Navbar />
 
       <main className="relative min-h-screen overflow-hidden bg-gradient-to-br from-purple-50 via-pink-50/80 to-fuchsia-50/60">
         <div className="pointer-events-none absolute inset-0">

@@ -1,13 +1,19 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "./context/ThemeContext";
-import { Inter } from "next/font/google";
-import Navbar  from "@/components/Navbar";
+import { Inter, Poppins } from "next/font/google";
+import Navbar from "@/components/Navbar";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   weight: ["300", "400", "500", "600", "700"],
+});
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  variable: "--font-poppins",
+  weight: ["600", "700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -61,15 +67,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={inter.variable}>
-      <body className="min-h-[100dvh] bg-white font-sans antialiased text-slate-900">
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${inter.variable} ${poppins.variable}`}
+    >
+      <body className="min-h-[100dvh] bg-white font-inter antialiased text-slate-900">
         <ThemeProvider>
 
           {/* 🔥 GLOBAL NAVBAR */}
           <Navbar />
 
           {/* 🔥 MAIN CONTENT */}
-          <main className="pt-[72px] md:pt-[88px]">{children}</main>
+          <main className="pt-[72px] md:pt-[88px]">
+            {children}
+          </main>
 
         </ThemeProvider>
       </body>

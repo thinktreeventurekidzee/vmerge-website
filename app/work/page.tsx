@@ -128,9 +128,7 @@ export default function WorkPage() {
                   High-performing campaign delivering strong ROI through creators.
                 </p>
 
-                <button className="mt-4 text-cyan-600 font-semibold">
-                  View Case →
-                </button>
+               
               </div>
             </motion.div>
           ))}

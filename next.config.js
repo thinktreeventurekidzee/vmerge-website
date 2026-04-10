@@ -2,12 +2,12 @@
 const nextConfig = {
   reactStrictMode: true,
 
-  // ✅ Image optimization
   images: {
     unoptimized: false,
   },
-
-  // ✅ Fix fs issue
+typescript: {
+  ignoreBuildErrors: true,
+},
   webpack: (config, { isServer }) => {
     if (!isServer) {
       config.resolve.fallback = {
@@ -17,14 +17,8 @@ const nextConfig = {
     return config;
   },
 
-  // ✅ Ignore TypeScript errors (temporary)
   typescript: {
     ignoreBuildErrors: true,
-  },
-
-  // ✅ ADD THIS (VERY IMPORTANT)
-  eslint: {
-    ignoreDuringBuilds: true,
   },
 };
 

@@ -24,7 +24,7 @@ export default function TrustSection() {
           </h2>
 
           <p className="mx-auto mt-8 max-w-2xl text-xl md:text-2xl font-medium text-slate-700 leading-relaxed">
-            50+ brands trust us to deliver measurable influencer marketing ROI across India
+            500+ brands trust us to deliver measurable influencer marketing ROI across India
           </p>
         </div>
 
