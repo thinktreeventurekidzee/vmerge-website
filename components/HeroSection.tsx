@@ -2,8 +2,9 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { BadgeCheck } from "lucide-react";
 import { useEffect, useState } from "react";
+    import Link from "next/link";
+
 
 const rotatingWords = [
   "measurable growth",
@@ -71,10 +72,21 @@ export default function HeroSection() {
    <section className="relative min-h-screen flex items-center overflow-hidden">
 
   {/* BG */}
- <div
-  className="absolute inset-0 bg-no-repeat bg-center bg-contain md:bg-cover"
-  style={{ backgroundImage: "url('/hero-1.jpeg')" }}
-/>
+<div className="absolute inset-0">
+
+  {/* Desktop BG */}
+  <div
+    className="hidden md:block w-full h-full bg-cover bg-center"
+    style={{ backgroundImage: "url('/hero-1.jpeg')" }}
+  />
+
+  {/* Mobile BG */}
+  <div
+    className="block md:hidden w-full h-full bg-cover bg-center"
+    style={{ backgroundImage: "url('/mobile-pg.jpeg')" }} // agar jpeg hai toh .jpeg kar dena
+  />
+
+</div>
 
   {/* Overlay */}
   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-black/20" />
@@ -83,7 +95,7 @@ export default function HeroSection() {
   <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-center text-white">
 
     {/* LEFT */}
-    <div>
+  <div className="pt-20 sm:pt-24 md:pt-0">
 
       {/* Badge */}
       <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm mb-5 sm:mb-6">
@@ -105,16 +117,23 @@ export default function HeroSection() {
       </p>
 
       {/* CTA */}
-      <div className="mt-6 sm:mt-8 flex flex-wrap gap-3 sm:gap-4">
-        <button className="px-4 sm:px-6 py-2.5 sm:py-3 bg-indigo-600 rounded-xl hover:bg-indigo-500 transition text-sm sm:text-base">
-          Start Campaign
-        </button>
+   <div className="mt-6 sm:mt-8 flex flex-wrap gap-3 sm:gap-4">
 
-        <button className="px-4 sm:px-6 py-2.5 sm:py-3 border border-white/30 rounded-xl hover:bg-white/10 transition text-sm sm:text-base">
-          View Work
-        </button>
-      </div>
+  <Link
+    href="/contact"
+    className="px-4 sm:px-6 py-2.5 sm:py-3 bg-indigo-600 rounded-xl hover:bg-indigo-500 transition text-sm sm:text-base inline-block"
+  >
+    Start Campaign
+  </Link>
 
+  <Link
+    href="/work"
+    className="px-4 sm:px-6 py-2.5 sm:py-3 border border-white/30 rounded-xl hover:bg-white/10 transition text-sm sm:text-base inline-block"
+  >
+    View Work
+  </Link>
+
+</div>
       {/* Tags */}
       <div className="mt-5 sm:mt-6 flex flex-wrap gap-2">
         {["Strategy-led", "Creator-first", "Performance-driven"].map((tag) => (
