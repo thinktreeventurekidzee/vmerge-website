@@ -184,13 +184,13 @@ Ready to collaborate with brands!`
                   animate={{ y: 0, opacity: 1 }}
                 >
                   <div className="mb-10 text-center">
-                    <motion.p
-                      className="mb-4 inline-flex items-center gap-2 rounded-full bg-purple-100/80 px-6 py-2 text-sm font-black uppercase tracking-widest text-purple-700"
-                      whileHover={{ scale: 1.05 }}
-                    >
-                      <div className="h-2 w-2 rounded-full bg-purple-500" />
-                      Apply Now
-                    </motion.p>
+                <motion.div
+  className="mb-4 inline-flex items-center gap-2 rounded-full bg-purple-100/80 px-6 py-2 text-sm font-black uppercase tracking-widest text-purple-700"
+  whileHover={{ scale: 1.05 }}
+>
+  <span className="h-2 w-2 rounded-full bg-purple-500 inline-block" />
+  Apply Now
+</motion.div>
 
                     <motion.h3
                       className="mb-4 bg-gradient-to-r from-slate-950 via-slate-900 to-purple-800 bg-clip-text text-4xl font-black text-transparent md:text-5xl"

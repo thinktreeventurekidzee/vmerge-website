@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import { motion } from "framer-motion";
-import { div } from "framer-motion/client";
 
 export default function ContactPage() {
   const [form, setForm] = useState({
@@ -69,12 +68,12 @@ Message: ${form.message}`
         {/* BG GLOW */}
         <div className="absolute inset-0">
           <motion.div
-            className="absolute -left-32 top-1/3 h-80 w-80 rounded-full bg-indigo-400/20 blur-3xl"
+            className="absolute -left-32 top-1/3 h-80 w-80 rounded-full bg-indigo-600/20 blur-3xl"
             animate={{ y: [0, -30, 0] }}
             transition={{ duration: 6, repeat: Infinity }}
           />
           <motion.div
-            className="absolute right-0 bottom-20 h-96 w-96 rounded-full bg-purple-400/20 blur-3xl"
+            className="absolute right-0 bottom-20 h-96 w-96 rounded-full bg-purple-600/20 blur-3xl"
             animate={{ y: [0, 30, 0] }}
             transition={{ duration: 7, repeat: Infinity }}
           />
@@ -91,7 +90,8 @@ Message: ${form.message}`
               </span>
             </h1>
 
-            <p className="mt-6 text-lg text-slate-300 font-inter">
+            {/* 🔥 FIXED TEXT COLOR */}
+            <p className="mt-6 text-lg text-slate-200 font-inter">
               Share your goals, and we’ll help you plan, launch, and scale your influencer campaigns with clarity and speed.
             </p>
           </div>
@@ -112,10 +112,13 @@ Message: ${form.message}`
                       <h3 className="text-white font-pop text-lg">
                         {item.title}
                       </h3>
+
                       <p className="text-white font-semibold">
                         {item.value}
                       </p>
-                      <p className="text-slate-300 text-sm">
+
+                      {/* 🔥 FIXED VISIBILITY */}
+                      <p className="text-slate-200 text-sm leading-relaxed">
                         {item.desc}
                       </p>
                     </div>

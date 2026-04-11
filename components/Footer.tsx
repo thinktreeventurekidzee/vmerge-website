@@ -11,7 +11,7 @@ export default function Footer() {
 
   return (
     <>
-      {/* 🌧️ IMPROVED RAIN */}
+      {/* RAIN EFFECT */}
       <style jsx global>{`
         .footer-rain {
           position: absolute;
@@ -34,16 +34,16 @@ export default function Footer() {
 
       <footer className="relative mt-20 overflow-hidden">
 
-        {/* BG IMAGE */}
+        {/* BG */}
         <div
           className="absolute inset-0 bg-cover bg-center opacity-90"
           style={{ backgroundImage: "url('/Footer-1.jpeg')" }}
         />
 
-        {/* DARK OVERLAY */}
+        {/* Overlay */}
         <div className="absolute inset-0 bg-slate-900/65 backdrop-blur-[2px]" />
 
-        {/* RAIN */}
+        {/* Rain */}
         <div className="absolute inset-0 opacity-40">
           <div className="footer-rain" />
         </div>
@@ -56,27 +56,18 @@ export default function Footer() {
             {/* LEFT */}
             <div className="space-y-6">
 
-              {/* LOGO FIXED */}
-             <div
-  className={`
-    inline-block px-6 py-3 rounded-2xl
-    bg-gradient-to-br from-blue-400/20 to-indigo-500/20
-    border border-blue-300/30
-    shadow-[0_12px_35px_rgba(59,130,246,0.35)]
-    backdrop-blur-xl
-    hover:scale-105 transition-all duration-300
-  `}
->
-  <Image 
-    src="/vmerge.jpeg" 
-    alt="Vmerg" 
-    width={110} 
-    height={40} 
-    className="object-contain"
-  />
-</div>
+              {/* LOGO */}
+              <div className="inline-block px-6 py-3 rounded-2xl bg-gradient-to-br from-blue-400/20 to-indigo-500/20 border border-blue-300/30 shadow-[0_12px_35px_rgba(59,130,246,0.35)] backdrop-blur-xl hover:scale-105 transition-all duration-300">
+                <Image 
+                  src="/vmerge.jpeg" 
+                  alt="Vmerg" 
+                  width={110} 
+                  height={40} 
+                  className="object-contain"
+                />
+              </div>
 
-              <p className="text-slate-200 max-w-md leading-relaxed font-inter">
+              <p className="text-slate-200 max-w-md leading-relaxed">
                 Scale your brand with performance-driven influencer campaigns.
                 From creator discovery to execution, we manage everything end-to-end.
               </p>
@@ -93,6 +84,7 @@ export default function Footer() {
                 <a
                   href="https://wa.me/918660783740"
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="px-5 py-3 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-xl"
                 >
                   WhatsApp
@@ -104,7 +96,7 @@ export default function Footer() {
             <div className="grid grid-cols-2 gap-10">
 
               <div>
-                <h4 className="font-pop text-lg mb-4 text-white">Quick Links</h4>
+                <h4 className="text-lg mb-4">Quick Links</h4>
                 <ul className="space-y-3 text-slate-300">
                   {["About","Services","Work","Brands","Creators"].map((item)=>(
                     <li key={item}>
@@ -117,7 +109,7 @@ export default function Footer() {
               </div>
 
               <div>
-                <h4 className="font-pop text-lg mb-4 text-white">Contact</h4>
+                <h4 className="text-lg mb-4">Contact</h4>
 
                 <div className="space-y-4 text-slate-300">
 
@@ -131,9 +123,7 @@ export default function Footer() {
                     <span>vmergmedia@gmail.com</span>
                   </div>
 
-                  <div>
-                    Bengaluru, India
-                  </div>
+                  <div>Bengaluru, India</div>
 
                 </div>
               </div>
@@ -149,12 +139,29 @@ export default function Footer() {
               © 2026 Vmerg Media Pvt Ltd. All rights reserved.
             </p>
 
+            {/* SOCIAL */}
             <div className="flex gap-4">
-              {[Instagram, Twitter, Linkedin, Facebook].map((Icon,i)=>(
-                <div key={i} className="w-10 h-10 flex items-center justify-center rounded-lg bg-white/10 hover:bg-white/20 transition">
-                  <Icon size={18} />
-                </div>
-              ))}
+
+              <a href="https://www.instagram.com/vmerg_/" target="_blank" rel="noopener noreferrer"
+                className="w-10 h-10 flex items-center justify-center rounded-lg bg-white/10 hover:bg-pink-500 hover:scale-110 transition">
+                <Instagram size={18} />
+              </a>
+
+              <a href="https://x.com/vmerg_" target="_blank" rel="noopener noreferrer"
+                className="w-10 h-10 flex items-center justify-center rounded-lg bg-white/10 hover:bg-black hover:scale-110 transition">
+                <Twitter size={18} />
+              </a>
+
+              <a href="https://www.linkedin.com/company/vmerg/" target="_blank" rel="noopener noreferrer"
+                className="w-10 h-10 flex items-center justify-center rounded-lg bg-white/10 hover:bg-blue-600 hover:scale-110 transition">
+                <Linkedin size={18} />
+              </a>
+
+              <a href="https://www.facebook.com/people/Vmerg/100075742935785/" target="_blank" rel="noopener noreferrer"
+                className="w-10 h-10 flex items-center justify-center rounded-lg bg-white/10 hover:bg-blue-500 hover:scale-110 transition">
+                <Facebook size={18} />
+              </a>
+
             </div>
 
           </div>

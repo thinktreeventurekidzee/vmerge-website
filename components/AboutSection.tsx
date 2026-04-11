@@ -9,6 +9,7 @@ import {
   Zap,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const fadeUp = {
   initial: { opacity: 0, y: 20 },
@@ -58,127 +59,93 @@ const pillars = [
 
 export default function AboutSection() {
   return (
-    <section
-      className="relative overflow-hidden 
-      bg-gradient-to-br from-sky-50 via-blue-100/40 to-blue-50 
-      py-20 md:py-28"
-    >
-      {/* 🌤️ SKY GLOW */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-10 left-10 w-72 h-72 bg-sky-300/30 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 right-10 w-80 h-80 bg-blue-300/30 rounded-full blur-3xl" />
-      </div>
+    <section className="relative overflow-hidden bg-gradient-to-br from-sky-50 via-blue-100/40 to-blue-50 py-20 md:py-28">
 
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* HEADER */}
         <motion.div {...fadeUp} className="max-w-3xl">
-          <div className="inline-flex items-center gap-2 rounded-full border border-blue-200/40 px-4 py-2 text-sm font-semibold text-slate-700 bg-white/70 backdrop-blur-xl shadow-sm">
+          <div className="inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm bg-white/70">
             <BadgeCheck size={16} />
             Trusted by growth-focused brands
           </div>
 
-          <h2 className="mt-6 text-4xl md:text-5xl font-bold leading-tight text-slate-900">
+          <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900">
             Built for structured, high-performance campaign execution
           </h2>
 
-          <p className="mt-5 text-lg text-slate-600 leading-relaxed">
-            We design and execute creator-driven campaigns with a system-first approach — 
-            ensuring clarity in planning, speed in execution, and measurable business outcomes.
+          <p className="mt-5 text-base sm:text-lg text-slate-600">
+            We design and execute creator-driven campaigns with a system-first approach.
           </p>
         </motion.div>
 
-        {/* MAIN GRID */}
+        {/* GRID */}
         <div className="mt-16 grid lg:grid-cols-2 gap-12">
 
           {/* LEFT */}
           <motion.div {...fadeUp} className="space-y-8">
 
             <div>
-              <h3 className="text-2xl font-semibold text-slate-900">
+              <h3 className="text-xl sm:text-2xl font-semibold text-slate-900">
                 Built for brands that value execution clarity
               </h3>
-              <p className="mt-3 text-slate-600">
-                We combine creator discovery, campaign planning, and execution systems 
-                to make collaborations faster, cleaner, and easier to manage.
+              <p className="mt-3 text-slate-600 text-sm sm:text-base">
+                We combine creator discovery, campaign planning, and execution systems.
               </p>
             </div>
 
             {/* METRICS */}
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-3 gap-3 sm:gap-4">
               {metrics.map((item) => (
-                <div
-                  key={item.label}
-                  className="bg-white/70 backdrop-blur-xl border border-blue-200/40 p-5 rounded-xl shadow-sm text-center"
-                >
-                  <p className="text-2xl font-bold text-slate-900">{item.value}</p>
-                  <p className="text-sm text-slate-600 mt-1">{item.label}</p>
+                <div key={item.label} className="bg-white p-4 rounded-xl text-center">
+                  <p className="text-xl sm:text-2xl font-bold">{item.value}</p>
+                  <p className="text-xs sm:text-sm">{item.label}</p>
                 </div>
               ))}
             </div>
 
-            {/* CTA */}
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 bg-slate-900 text-white px-6 py-3 rounded-xl font-medium hover:bg-slate-800 transition"
+            {/* ✅ CTA FIX */}
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 bg-slate-900 text-white px-5 py-3 rounded-xl hover:bg-slate-800 transition"
             >
               Start a conversation
               <ArrowUpRight size={16} />
-            </a>
+            </Link>
+
           </motion.div>
 
-          {/* RIGHT - FEATURES */}
+          {/* RIGHT */}
           <div className="space-y-6">
             {features.map(({ icon: Icon, title, desc }) => (
-              <motion.div
-                key={title}
-                {...fadeUp}
-                className="p-6 bg-white/70 backdrop-blur-xl rounded-xl border border-blue-200/40 shadow-sm hover:shadow-md transition"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-lg bg-blue-100">
-                    <Icon size={20} />
-                  </div>
+              <motion.div key={title} {...fadeUp} className="p-5 bg-white rounded-xl">
+                <div className="flex gap-4">
+                  <Icon />
                   <div>
-                    <h4 className="font-semibold text-slate-900">{title}</h4>
-                    <p className="text-slate-600 mt-1 text-sm">{desc}</p>
+                    <h4 className="font-semibold">{title}</h4>
+                    <p className="text-sm text-slate-600">{desc}</p>
                   </div>
                 </div>
               </motion.div>
             ))}
           </div>
-        </div>
 
-        {/* PILLARS */}
-        <div className="mt-20 grid md:grid-cols-3 gap-6">
-          {pillars.map((item) => (
-            <motion.div
-              key={item.title}
-              {...fadeUp}
-              className="p-6 bg-white/70 backdrop-blur-xl rounded-xl border border-blue-200/40 shadow-sm"
-            >
-              <Zap className="mb-3 text-blue-700" />
-              <h4 className="font-semibold text-slate-900">{item.title}</h4>
-              <p className="text-slate-600 mt-2 text-sm">{item.desc}</p>
-            </motion.div>
-          ))}
         </div>
 
         {/* CTA BLOCK */}
-        <motion.div
-          {...fadeUp}
-          className="mt-20 bg-gradient-to-r from-slate-900 to-blue-900 text-white rounded-2xl p-8 md:p-12 text-center shadow-xl"
-        >
-          <h3 className="text-2xl md:text-3xl font-semibold">
+        <motion.div {...fadeUp} className="mt-20 text-center bg-slate-900 text-white p-8 rounded-2xl">
+
+          <h3 className="text-xl sm:text-2xl md:text-3xl">
             Ready to build something impactful?
           </h3>
 
-          <a
-            href="#contact"
-            className="inline-block mt-6 bg-white text-slate-900 px-6 py-3 rounded-xl font-medium hover:bg-slate-200 transition"
+          <Link
+            href="/contact"
+            className="inline-block mt-6 bg-white text-black px-6 py-3 rounded-xl"
           >
             Contact Now
-          </a>
+          </Link>
+
         </motion.div>
 
       </div>

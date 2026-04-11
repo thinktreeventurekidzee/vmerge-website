@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { ArrowUpRight, BadgeCheck } from "lucide-react";
+import { BadgeCheck } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const rotatingWords = [
@@ -18,6 +18,11 @@ const creatorImages = [
     desc: "Find creators aligned with your audience.",
   },
   {
+    src: "/creator-4.jpeg",
+    title: "Creator Discovery",
+    desc: "Find creators aligned with your audience.",
+  },
+  {
     src: "/creator-2.jpeg",
     title: "Campaign Execution",
     desc: "Structured workflows for faster launches.",
@@ -27,11 +32,25 @@ const creatorImages = [
     title: "Performance Scaling",
     desc: "Turn campaigns into real outcomes.",
   },
+  {
+    src: "/creator-5.jpeg",
+    title: "Creator Discovery",
+    desc: "Find creators aligned with your audience.",
+  },
 ];
 
 export default function HeroSection() {
   const [wordIndex, setWordIndex] = useState(0);
   const [currentImage, setCurrentImage] = useState(0);
+
+  // 🔥 Smart random (no repeat)
+  const getNextIndex = (prev: number) => {
+    let next;
+    do {
+      next = Math.floor(Math.random() * creatorImages.length);
+    } while (next === prev);
+    return next;
+  };
 
   useEffect(() => {
     const wordInterval = setInterval(() => {
@@ -39,8 +58,8 @@ export default function HeroSection() {
     }, 2600);
 
     const imageInterval = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % creatorImages.length);
-    }, 3200);
+      setCurrentImage((prev) => getNextIndex(prev));
+    }, 3500); // smoother timing
 
     return () => {
       clearInterval(wordInterval);
@@ -49,102 +68,104 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
+   <section className="relative min-h-screen flex items-center overflow-hidden">
 
-      {/* 🌄 BG IMAGE */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('/hero-1.jpeg')" }}
-      />
+  {/* BG */}
+ <div
+  className="absolute inset-0 bg-no-repeat bg-center bg-contain md:bg-cover"
+  style={{ backgroundImage: "url('/hero-1.jpeg')" }}
+/>
 
-      {/* 🌑 OVERLAY */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-black/20" />
+  {/* Overlay */}
+  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-black/20" />
 
-      {/* CONTENT */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center text-white">
+  {/* CONTENT */}
+  <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-center text-white">
 
-        {/* LEFT */}
-        <div>
+    {/* LEFT */}
+    <div>
 
-          {/* BADGE */}
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur px-4 py-2 rounded-full text-sm mb-6">
-            <BadgeCheck size={16} />
-            Trusted by growth-focused brands
-          </div>
+      {/* Badge */}
+      <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm mb-5 sm:mb-6">
+        Trusted by growth-focused brands
+      </div>
 
-          {/* HEADING */}
-          <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-            Turn creator marketing into
-            <span className="block text-indigo-400">
-              {rotatingWords[wordIndex]}
-            </span>
-          </h1>
+      {/* Heading */}
+      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+        Turn creator marketing into
+        <span className="block text-indigo-400">
+          {rotatingWords[wordIndex]}
+        </span>
+      </h1>
 
-          {/* TEXT */}
-          <p className="mt-6 text-lg text-slate-200 max-w-xl">
-            VMERG helps brands discover the right creators, launch campaigns faster,
-            and scale performance through structured execution.
-          </p>
+      {/* Text */}
+      <p className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg text-slate-200 max-w-xl">
+        VMERG helps brands discover the right creators, launch campaigns faster,
+        and scale performance through structured execution.
+      </p>
 
-          {/* CTA */}
-          <div className="mt-8 flex gap-4 flex-wrap">
-            <button className="px-6 py-3 bg-indigo-600 rounded-xl hover:bg-indigo-500 transition">
-              Start Campaign
-            </button>
+      {/* CTA */}
+      <div className="mt-6 sm:mt-8 flex flex-wrap gap-3 sm:gap-4">
+        <button className="px-4 sm:px-6 py-2.5 sm:py-3 bg-indigo-600 rounded-xl hover:bg-indigo-500 transition text-sm sm:text-base">
+          Start Campaign
+        </button>
 
-            <button className="px-6 py-3 border border-white/30 rounded-xl hover:bg-white/10 transition">
-              View Work
-            </button>
-          </div>
+        <button className="px-4 sm:px-6 py-2.5 sm:py-3 border border-white/30 rounded-xl hover:bg-white/10 transition text-sm sm:text-base">
+          View Work
+        </button>
+      </div>
 
-          {/* TAGS */}
-          <div className="mt-6 flex flex-wrap gap-2">
-            {["Strategy-led", "Creator-first", "Performance-driven"].map((tag) => (
-              <span
-                key={tag}
-                className="px-3 py-1 text-sm bg-white/10 rounded-full text-white/80"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        </div>
+      {/* Tags */}
+      <div className="mt-5 sm:mt-6 flex flex-wrap gap-2">
+        {["Strategy-led", "Creator-first", "Performance-driven"].map((tag) => (
+          <span
+            key={tag}
+            className="px-2.5 sm:px-3 py-1 text-[10px] sm:text-xs md:text-sm bg-white/10 rounded-full text-white/80"
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
+    </div>
 
-        {/* RIGHT IMAGE CARD */}
-        <div className="hidden lg:flex justify-center">
-          <div className="w-[420px] h-[380px] relative">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentImage}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.6 }}
-                className="absolute inset-0 rounded-2xl overflow-hidden shadow-xl"
-              >
-                <Image
-                  src={creatorImages[currentImage].src}
-                  alt={creatorImages[currentImage].title}
-                  fill
-                  className="object-cover"
-                />
+    {/* RIGHT IMAGE */}
+    <div className="flex justify-center lg:justify-end mt-10 lg:mt-0">
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+      <div className="w-full max-w-[320px] sm:max-w-[380px] lg:max-w-[420px] h-[240px] sm:h-[300px] md:h-[340px] lg:h-[380px] relative">
 
-                <div className="absolute bottom-0 p-6 text-white">
-                  <h3 className="text-xl font-semibold">
-                    {creatorImages[currentImage].title}
-                  </h3>
-                  <p className="text-sm mt-2">
-                    {creatorImages[currentImage].desc}
-                  </p>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-        </div>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentImage}
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+            className="absolute inset-0 rounded-2xl overflow-hidden shadow-xl"
+          >
+            <Image
+              src={creatorImages[currentImage].src}
+              alt={creatorImages[currentImage].title}
+              fill
+              className="object-cover"
+            />
+
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+
+            <div className="absolute bottom-0 p-3 sm:p-4 md:p-6 text-white">
+              <h3 className="text-base sm:text-lg md:text-xl font-semibold">
+                {creatorImages[currentImage].title}
+              </h3>
+              <p className="text-[11px] sm:text-xs md:text-sm mt-1 sm:mt-2">
+                {creatorImages[currentImage].desc}
+              </p>
+            </div>
+          </motion.div>
+        </AnimatePresence>
 
       </div>
-    </section>
+    </div>
+
+  </div>
+</section>
   );
 }
