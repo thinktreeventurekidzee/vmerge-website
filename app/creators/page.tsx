@@ -46,8 +46,7 @@ export default function CreatorsPage() {
 Name: ${form.name}
 Instagram: ${form.instagram}
 Niche: ${form.niche}
-Followers: ${form.followers}
-Ready to collaborate with brands!`
+Followers: ${form.followers}`
     );
 
     window.open(`https://wa.me/918660783740?text=${text}`, "_blank");
@@ -73,207 +72,134 @@ Ready to collaborate with brands!`
     "Food",
   ];
 
+  // 🔥 FIXED IMAGE MAPPING
+  const creators = [
+    { name: "Sushmita Sen", img: "/sushmita.jpeg" },
+    { name: "Garima Chaurasia", img: "/Garima chaurasia.jpeg"},
+    { name: "Rachana Ranade", img: "/Rachana Ranade.jpeg" },
+    { name: "Neha Nagar", img: "/Neha Nagar.jpeg" },
+    { name: "iam.savithri", img: "/iam.savithri.jpeg" },
+    { name: "Yashika Crypto", img: "/Yashika Crypto.jpeg" },
+    { name: "financebyankita", img: "/Financebyankita.jpeg" },
+    { name: "Ashish Chanchlani", img: "/Ashish Chanchlani.jpeg" },
+    { name: "Round2hell", img: "/Round2hell.jpeg" },
+    { name: "Dhruv Rathee", img: "/Dhruv Rathee.jpeg" },
+    { name: "Ankur Warikoo", img: "/Ankur Warikoo.jpeg" },
+    { name: "Sharan Hegde", img: "/Sharan Hegde.jpeg" },
+    { name: "Lakshay Chaudhary", img: "/Lakshay Chaudhary.jpeg" },
+    { name: "Crypto Aman", img: "/Crypto Aman.jpeg" },
+    { name: "Jeet Crypto", img: "/Jeet Crypto.jpeg" },
+    { name: "Markets With Mack", img: "/Markets With Mack.jpeg" },
+    { name: "Budhil Vyas", img: "/Budhil Vyas.jpeg" },
+    { name: "Prakash Gaba", img: "/Prakash Gaba.jpeg" },
+    { name: "Hold with Priyanka", img: "/Hold with Priyanka.jpeg" },
+    { name: "smit_thakkarrr", img: "/smit_thakkarrr.jpeg" },
+    { name: "Wealth in Whiteboard", img: "/Wealth in Whiteboard.jpeg" },
+  ];
+
   return (
     <>
       <Navbar />
 
-      <main className="relative min-h-screen overflow-hidden bg-gradient-to-br from-purple-50 via-pink-50/80 to-fuchsia-50/60">
-        <div className="pointer-events-none absolute inset-0">
-          <motion.div
-            className="absolute -left-40 top-1/4 h-80 w-80 rounded-full bg-gradient-to-r from-purple-200/40 to-pink-200/30 blur-3xl"
-            animate={{ y: [0, -30, 0], scale: [1, 1.05, 1] }}
-            transition={{
-              duration: 6,
-              repeat: Infinity,
-              repeatType: "reverse",
-              ease: "easeInOut",
-            }}
-          />
-          <motion.div
-            className="absolute -right-32 bottom-1/4 h-72 w-72 rounded-full bg-gradient-to-r from-fuchsia-200/40 to-pink-200/30 blur-3xl"
-            animate={{ y: [0, 30, 0], scale: [1, 1.03, 1] }}
-            transition={{
-              duration: 7,
-              repeat: Infinity,
-              repeatType: "reverse",
-              ease: "easeInOut",
-              delay: 1,
-            }}
-          />
-        </div>
+      <main className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-fuchsia-50">
 
-        <section className="relative z-10 mx-auto max-w-7xl px-4 pb-24 pt-28 md:pb-32 md:pt-36 lg:pb-40">
+        <section className="max-w-7xl mx-auto px-4 pt-24 pb-24">
+
+          {/* TOP */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="show"
-            className="grid items-start gap-16 lg:grid-cols-[1.2fr_1fr] lg:gap-20"
+            className="grid gap-16 lg:grid-cols-[1.2fr_1fr]"
           >
-            <motion.div variants={itemVariants} className="space-y-10 lg:max-w-2xl">
-              <motion.span
-                variants={itemVariants}
-                className="inline-flex items-center gap-3 rounded-3xl border-2 border-purple-200/70 bg-gradient-to-r from-purple-50/90 to-white/95 px-8 py-4 text-sm font-black uppercase tracking-[0.3em] text-slate-800 shadow-2xl backdrop-blur-xl transition-all duration-500 hover:scale-105 hover:bg-purple-50/80"
-              >
-                <div className="h-3 w-3 rounded-full bg-gradient-to-r from-purple-400 to-pink-400 shadow-lg" />
+            {/* LEFT */}
+            <motion.div variants={itemVariants} className="space-y-8">
+              <span className="bg-purple-100 px-4 py-2 rounded-full text-sm font-bold text-purple-700">
                 For Creators
-              </motion.span>
+              </span>
 
-              <motion.h1
-                variants={itemVariants}
-                className="text-5xl font-black leading-[0.92] tracking-[-0.05em] md:text-7xl lg:text-[8rem]"
-              >
-                <motion.span
-                  className="block bg-gradient-to-r from-slate-950 via-slate-900 to-slate-800 bg-clip-text text-transparent"
-                  whileHover={{ scale: 1.02 }}
-                >
-                  Join
-                </motion.span>
-                <motion.span
-                  className="block bg-gradient-to-r from-purple-800 via-pink-900 to-slate-900 bg-clip-text text-transparent"
-                  whileHover={{ scale: 1.02 }}
-                >
-                  10K+
-                </motion.span>
-                <motion.span className="inline-block bg-gradient-to-r from-fuchsia-700 via-pink-800 to-purple-900 bg-clip-text text-transparent">
-                  Creators
-                </motion.span>
-              </motion.h1>
+              <h1 className="text-4xl md:text-6xl font-black">
+                Join 10K+ Creators
+              </h1>
 
-              <motion.p
-                variants={itemVariants}
-                className="max-w-xl text-xl leading-8 text-slate-700 backdrop-blur-sm"
-              >
-                Get paid by 500+ trusted brands. Weekly payouts. Content support.
-                <strong className="font-semibold text-slate-900">
-                  {" "}₹50K+ monthly earnings potential.
-                </strong>
-              </motion.p>
+              <p className="text-slate-600 text-lg">
+                Get paid by 500+ brands. Weekly payouts.
+              </p>
 
-              <motion.div variants={itemVariants} className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-4">
                 {perks.map((perk) => (
-                  <motion.div
-                    key={perk}
-                    className="group flex items-center gap-3 rounded-2xl border border-purple-200/50 bg-white/90 p-6 shadow-xl backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:bg-purple-50/80 hover:shadow-2xl hover:shadow-purple-500/20"
-                    whileHover={{ scale: 1.02 }}
-                  >
-                    <div className="h-3 w-3 rounded-full bg-gradient-to-r from-purple-400 to-pink-400 shadow-lg transition-transform duration-300 group-hover:scale-125" />
-                    <span className="text-sm font-semibold text-slate-800 group-hover:text-purple-700">
-                      {perk}
-                    </span>
-                  </motion.div>
+                  <div key={perk} className="bg-white p-4 rounded-xl shadow">
+                    {perk}
+                  </div>
                 ))}
-              </motion.div>
-            </motion.div>
-
-            <motion.div variants={itemVariants}>
-              <div className="relative">
-                <motion.div
-                  className="absolute inset-0 -z-10 rounded-[2rem] bg-gradient-to-br from-purple-50/95 via-white/90 to-pink-50/80 shadow-2xl backdrop-blur-3xl"
-                  animate={{ scale: [1, 1.02, 1], rotate: [-0.5, 0.5, 0] }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    repeatType: "reverse",
-                    ease: "easeInOut",
-                  }}
-                />
-                <motion.form
-                  onSubmit={handleSubmit}
-                  className="relative rounded-[2rem] border-2 border-white/60 bg-gradient-to-br from-white/95 to-purple-50/95 p-8 shadow-2xl backdrop-blur-3xl transition-all duration-700 hover:-translate-y-2 md:p-12"
-                  initial={{ y: 50, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                >
-                  <div className="mb-10 text-center">
-                <motion.div
-  className="mb-4 inline-flex items-center gap-2 rounded-full bg-purple-100/80 px-6 py-2 text-sm font-black uppercase tracking-widest text-purple-700"
-  whileHover={{ scale: 1.05 }}
->
-  <span className="h-2 w-2 rounded-full bg-purple-500 inline-block" />
-  Apply Now
-</motion.div>
-
-                    <motion.h3
-                      className="mb-4 bg-gradient-to-r from-slate-950 via-slate-900 to-purple-800 bg-clip-text text-4xl font-black text-transparent md:text-5xl"
-                      whileHover={{ scale: 1.02 }}
-                    >
-                      Join VMerg Creators
-                    </motion.h3>
-
-                    <motion.p
-                      className="mx-auto max-w-md text-lg leading-relaxed text-slate-700"
-                      whileHover={{ scale: 1.01 }}
-                    >
-                      3 minute application. Get brand deals in 24hrs.
-                    </motion.p>
-                  </div>
-
-                  <div className="space-y-6">
-                    <motion.input
-                      name="name"
-                      placeholder="Full Name *"
-                      value={form.name}
-                      onChange={handleChange}
-                      className="w-full rounded-3xl border-2 border-slate-200/70 bg-white/95 px-6 py-5 text-lg font-semibold text-slate-900 shadow-lg backdrop-blur-xl transition-all duration-300 placeholder:text-slate-500 hover:border-purple-300/80 focus:border-purple-400 focus:outline-none focus:ring-4 focus:ring-purple-200/60"
-                      whileFocus={{ scale: 1.02, y: -2 }}
-                      required
-                    />
-
-                    <motion.input
-                      name="instagram"
-                      placeholder="@instagram handle *"
-                      value={form.instagram}
-                      onChange={handleChange}
-                      className="w-full rounded-3xl border-2 border-slate-200/70 bg-white/95 px-6 py-5 text-lg font-semibold text-slate-900 shadow-lg backdrop-blur-xl transition-all duration-300 placeholder:text-slate-500 hover:border-purple-300/80 focus:border-purple-400 focus:outline-none focus:ring-4 focus:ring-purple-200/60"
-                      whileFocus={{ scale: 1.02, y: -2 }}
-                      required
-                    />
-
-                    <motion.select
-                      name="niche"
-                      value={form.niche}
-                      onChange={handleChange}
-                      className="w-full appearance-none rounded-3xl border-2 border-slate-200/70 bg-white/95 px-6 py-5 text-lg font-semibold text-slate-900 shadow-lg backdrop-blur-xl transition-all duration-300 hover:border-purple-300/80 focus:border-purple-400 focus:outline-none focus:ring-4 focus:ring-purple-200/60"
-                      whileFocus={{ scale: 1.02, y: -2 }}
-                      required
-                    >
-                      <option value="" disabled>
-                        Select Your Niche
-                      </option>
-                      {niches.map((niche) => (
-                        <option key={niche} value={niche}>
-                          {niche}
-                        </option>
-                      ))}
-                    </motion.select>
-
-                    <motion.input
-                      name="followers"
-                      placeholder="Followers (e.g. 10K, 50K)"
-                      value={form.followers}
-                      onChange={handleChange}
-                      className="w-full rounded-3xl border-2 border-slate-200/70 bg-white/95 px-6 py-5 text-lg font-semibold text-slate-900 shadow-lg backdrop-blur-xl transition-all duration-300 placeholder:text-slate-500 hover:border-purple-300/80 focus:border-purple-400 focus:outline-none focus:ring-4 focus:ring-purple-200/60"
-                      whileFocus={{ scale: 1.02, y: -2 }}
-                      required
-                    />
-
-                    <motion.button
-                      type="submit"
-                      className="group relative w-full overflow-hidden rounded-[2rem] bg-gradient-to-r from-purple-600 via-pink-600 to-fuchsia-600 px-8 py-7 text-xl font-black text-white shadow-2xl transition-all duration-500 hover:shadow-2xl"
-                      whileHover={{
-                        scale: 1.03,
-                        boxShadow: "0 25px 50px -12px rgba(147, 51, 234, 0.4)",
-                      }}
-                      whileTap={{ scale: 0.97 }}
-                    >
-                      <span className="relative z-10 flex items-center justify-center gap-3 font-black tracking-wide">
-                        Join Creators Now
-                      </span>
-                    </motion.button>
-                  </div>
-                </motion.form>
               </div>
             </motion.div>
+
+            {/* FORM */}
+            <motion.form
+              onSubmit={handleSubmit}
+              className="bg-white p-6 rounded-2xl shadow-xl space-y-4"
+            >
+              <h3 className="text-xl font-bold text-center">Apply Now</h3>
+
+              <input name="name" placeholder="Name" onChange={handleChange} className="w-full p-3 border rounded-lg" />
+              <input name="instagram" placeholder="@instagram" onChange={handleChange} className="w-full p-3 border rounded-lg" />
+
+              <select name="niche" onChange={handleChange} className="w-full p-3 border rounded-lg">
+                <option>Select Niche</option>
+                {niches.map((n) => (
+                  <option key={n}>{n}</option>
+                ))}
+              </select>
+
+              <input name="followers" placeholder="Followers" onChange={handleChange} className="w-full p-3 border rounded-lg" />
+
+              <button className="w-full bg-purple-600 text-white py-3 rounded-xl">
+                Join Now
+              </button>
+            </motion.form>
           </motion.div>
+
+          {/* 🔥 CREATOR SHOWCASE */}
+          <div className="mt-24">
+
+            <h2 className="text-3xl md:text-4xl font-black text-center mb-6">
+              Creators Powering Brand Growth
+            </h2>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+
+              {creators.map((creator, i) => (
+                <div
+                  key={i}
+                  className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+                >
+
+                  <div className="relative">
+                    <img
+                      src={creator.img}
+                      alt={creator.name}
+                      className="w-full h-56 object-cover"
+                    />
+
+                    <div className="absolute top-3 left-3 bg-gradient-to-r from-purple-600 to-pink-500 text-white text-xs px-3 py-1 rounded-full">
+                      Creator
+                    </div>
+                  </div>
+
+                  <div className="p-4 text-center">
+                    <h3 className="text-sm font-bold text-slate-900">
+                      {creator.name}
+                    </h3>
+                  </div>
+
+                </div>
+              ))}
+
+            </div>
+
+          </div>
+
         </section>
       </main>
     </>
