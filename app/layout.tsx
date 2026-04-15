@@ -29,36 +29,6 @@ export const metadata: Metadata = {
     "brand campaigns",
     "influencer strategy",
   ],
-  authors: [{ name: "Vmerg" }],
-  creator: "Vmerg",
-  openGraph: {
-    title: "Vmerg - Influencer Marketing Platform",
-    description:
-      "Scale influencer campaigns with verified creators and data-driven strategies.",
-    url: "https://vmerg.com",
-    siteName: "Vmerg",
-    images: [
-      {
-        url: "https://vmerg.com/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Vmerg - Influencer Marketing",
-      },
-    ],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Vmerg - Influencer Marketing Platform",
-    description:
-      "Scale influencer campaigns with verified creators and data-driven strategies.",
-    images: ["https://vmerg.com/twitter-image.jpg"],
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
 };
 
 export default function RootLayout({
@@ -70,9 +40,9 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${inter.variable} ${poppins.variable}`}
+      className={`${inter.variable} ${poppins.variable} scroll-smooth`}
     >
-      <body className="min-h-[100dvh] bg-white font-inter antialiased text-slate-900">
+      <body className="min-h-[100dvh] bg-slate-50 text-slate-900 antialiased font-[var(--font-inter)]">
         <ThemeProvider>
 
           {/* 🔥 GLOBAL NAVBAR */}
@@ -80,7 +50,9 @@ export default function RootLayout({
 
           {/* 🔥 MAIN CONTENT */}
           <main className="pt-[72px] md:pt-[88px]">
-            {children}
+            <div className="max-w-7xl mx-auto px-6">
+              {children}
+            </div>
           </main>
 
         </ThemeProvider>

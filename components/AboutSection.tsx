@@ -37,8 +37,8 @@ const features = [
 ];
 
 const metrics = [
-  { value: "50+", label: "Brand collaborations" },
-  { value: "10+", label: "Content categories" },
+  { value: "500+", label: "Brand collaborations" },
+  { value: "100+", label: "Content categories" },
   { value: "2x", label: "Faster execution" },
 ];
 

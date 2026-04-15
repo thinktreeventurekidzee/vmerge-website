@@ -20,8 +20,16 @@ type ThemeContextType = {
 const ThemeContext = createContext<ThemeContextType | null>(null);
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("system");
+  const [theme, setThemeState] = useState<Theme>("system");
   const [resolvedTheme, setResolvedTheme] = useState<"light" | "dark">("light");
+
+  // 🔥 Load saved theme (no flicker)
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme") as Theme | null;
+    if (savedTheme) {
+      setThemeState(savedTheme);
+    }
+  }, []);
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-color-scheme: dark)");
@@ -35,6 +43,8 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
           : selectedTheme;
 
       setResolvedTheme(nextTheme);
+
+      // apply to DOM
       document.documentElement.setAttribute("data-theme", nextTheme);
     };
 
@@ -53,6 +63,12 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     };
   }, [theme]);
 
+  // 🔥 Wrapped setter (save to localStorage)
+  const setTheme = (newTheme: Theme) => {
+    localStorage.setItem("theme", newTheme);
+    setThemeState(newTheme);
+  };
+
   const value = useMemo(
     () => ({
       theme,
@@ -63,7 +79,9 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   );
 
   return (
-    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
+    <ThemeContext.Provider value={value}>
+      {children}
+    </ThemeContext.Provider>
   );
 }
 

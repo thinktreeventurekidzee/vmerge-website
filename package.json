@@ -20,12 +20,26 @@
     "react-tsparticles": "^2.12.2"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.2.2",
     "@types/node": "20.11.0",
     "@types/react": "18.2.0",
     "autoprefixer": "10.4.19",
     "postcss": "8.4.38",
     "tailwindcss": "3.4.1",
     "typescript": "^5.2.0"
-  }
+  },
+  "description": "",
+  "main": "next.config.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thinktreeventurekidzee/vmerge-website.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thinktreeventurekidzee/vmerge-website/issues"
+  },
+  "homepage": "https://github.com/thinktreeventurekidzee/vmerge-website#readme"
 }

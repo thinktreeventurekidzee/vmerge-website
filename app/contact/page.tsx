@@ -4,36 +4,16 @@ import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import { motion } from "framer-motion";
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 40 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as const },
-  },
-};
-
-export default function CreatorsPage() {
+export default function ContactPage() {
   const [form, setForm] = useState({
     name: "",
-    instagram: "",
-    niche: "",
-    followers: "",
+    email: "",
+    brand: "",
+    message: "",
   });
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -42,165 +22,168 @@ export default function CreatorsPage() {
     e.preventDefault();
 
     const text = encodeURIComponent(
-      `Creator Application - VMerg Media
+      `VMERG Campaign Inquiry
 Name: ${form.name}
-Instagram: ${form.instagram}
-Niche: ${form.niche}
-Followers: ${form.followers}`
+Email: ${form.email}
+Brand: ${form.brand}
+Message: ${form.message}`
     );
 
     window.open(`https://wa.me/918660783740?text=${text}`, "_blank");
   };
 
-  const perks = [
-    "₹50K+ monthly payouts",
-    "Weekly payments",
-    "500+ trusted brands",
-    "Content creation support",
-    "Performance analytics",
-    "24hr creator support",
-  ];
-
-  const niches = [
-    "Beauty",
-    "Fashion",
-    "Finance",
-    "Crypto",
-    "Fitness",
-    "Lifestyle",
-    "Tech",
-    "Food",
-  ];
-
-  // 🔥 FIXED IMAGE MAPPING
-  const creators = [
-    { name: "Sushmita Sen", img: "/sushmita.jpeg" },
-    { name: "Garima Chaurasia", img: "/Garima chaurasi.jpeg" },
-    { name: "Rachana Ranade", img: "/Rachana Ranade.jpeg" },
-    { name: "Neha Nagar", img: "/Neha Nagar.jpeg" },
-    { name: "iam.savithri", img: "/iam.savithri.jpeg" },
-    { name: "Yashika Crypto", img: "/Yashika Crypto.jpeg" },
-    { name: "financebyankita", img: "/Financebyankita.jpeg" },
-    { name: "Ashish Chanchlani", img: "/Ashish Chanchlani.jpeg" },
-    { name: "Round2hell", img: "/Round2hell.jpeg" },
-    { name: "Dhruv Rathee", img: "/Dhruv Rathee.jpeg" },
-    { name: "Ankur Warikoo", img: "/Ankur Warikoo.jpeg" },
-    { name: "Sharan Hegde", img: "/Sharan Hegde.jpeg" },
-    { name: "Lakshay Chaudhary", img: "/Lakshay Chaudhary.jpeg" },
-    { name: "Crypto Aman", img: "/Crypto Aman.jpeg" },
-    { name: "Jeet Crypto", img: "/Jeet Crypto.jpeg" },
-    { name: "Markets With Mack", img: "/Markets With Mack.jpeg" },
-    { name: "Budhil Vyas", img: "/Budhil Vyas.jpeg" },
-    { name: "threestocks", img: "/threestocks.jpeg" },
-    { name: "Prakash Gaba", img: "/Prakash Gaba.jpeg" },
-    { name: "Hold with Priyanka", img: "/Hold with Priyanka.jpeg" },
-    { name: "smit_thakkarrr", img: "/smit_thakkarrr.jpeg" },
-    { name: "Wealth in Whiteboard", img: "/Wealth in Whiteboard.jpeg" },
+  const contactItems = [
+    {
+      icon: "📧",
+      title: "Email",
+      value: "vmergmedia@gmail.com",
+      desc: "For brand campaigns and creator collaborations",
+    },
+    {
+      icon: "📱",
+      title: "WhatsApp",
+      value: "+91 86607 83740",
+      desc: "Quick response for campaign discussions",
+    },
+    {
+      icon: "📍",
+      title: "Location",
+      value: "Bengaluru, India",
+      desc: "Operating across India & global markets",
+    },
+    {
+      icon: "🆔",
+      title: "Company ID",
+      value: "U74999KA2021PTC153669",
+      desc: "VMERG Media Private Limited",
+    },
   ];
 
   return (
     <>
       <Navbar />
 
-      <main className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-fuchsia-50">
+      <main className="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-900 via-indigo-900/40 to-purple-900/30">
 
-        <section className="max-w-7xl mx-auto px-4 pt-24 pb-24">
-
-          {/* TOP */}
+        {/* BG GLOW */}
+        <div className="absolute inset-0">
           <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="show"
-            className="grid gap-16 lg:grid-cols-[1.2fr_1fr]"
-          >
-            {/* LEFT */}
-            <motion.div variants={itemVariants} className="space-y-8">
-              <span className="bg-purple-100 px-4 py-2 rounded-full text-sm font-bold text-purple-700">
-                For Creators
+            className="absolute -left-32 top-1/3 h-80 w-80 rounded-full bg-indigo-600/20 blur-3xl"
+            animate={{ y: [0, -30, 0] }}
+            transition={{ duration: 6, repeat: Infinity }}
+          />
+          <motion.div
+            className="absolute right-0 bottom-20 h-96 w-96 rounded-full bg-purple-600/20 blur-3xl"
+            animate={{ y: [0, 30, 0] }}
+            transition={{ duration: 7, repeat: Infinity }}
+          />
+        </div>
+
+        <section className="relative z-10 max-w-7xl mx-auto px-6 pt-28 pb-24">
+
+          {/* HERO */}
+          <div className="text-center text-white max-w-3xl mx-auto mb-16">
+            <h1 className="text-4xl md:text-6xl font-pop leading-tight">
+              Start your next
+              <span className="block bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+                creator campaign
               </span>
+            </h1>
 
-              <h1 className="text-4xl md:text-6xl font-black">
-                Join 10K+ Creators
-              </h1>
-
-              <p className="text-slate-600 text-lg">
-                Get paid by 500+ brands. Weekly payouts.
-              </p>
-
-              <div className="grid grid-cols-2 gap-4">
-                {perks.map((perk) => (
-                  <div key={perk} className="bg-white p-4 rounded-xl shadow">
-                    {perk}
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* FORM */}
-            <motion.form
-              onSubmit={handleSubmit}
-              className="bg-white p-6 rounded-2xl shadow-xl space-y-4"
-            >
-              <h3 className="text-xl font-bold text-center">Apply Now</h3>
-
-              <input name="name" placeholder="Name" onChange={handleChange} className="w-full p-3 border rounded-lg" />
-              <input name="instagram" placeholder="@instagram" onChange={handleChange} className="w-full p-3 border rounded-lg" />
-
-              <select name="niche" onChange={handleChange} className="w-full p-3 border rounded-lg">
-                <option>Select Niche</option>
-                {niches.map((n) => (
-                  <option key={n}>{n}</option>
-                ))}
-              </select>
-
-              <input name="followers" placeholder="Followers" onChange={handleChange} className="w-full p-3 border rounded-lg" />
-
-              <button className="w-full bg-purple-600 text-white py-3 rounded-xl">
-                Join Now
-              </button>
-            </motion.form>
-          </motion.div>
-
-          {/* 🔥 CREATOR SHOWCASE */}
-          <div className="mt-24">
-
-            <h2 className="text-3xl md:text-4xl font-black text-center mb-6">
-              Creators Powering Brand Growth
-            </h2>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-
-              {creators.map((creator, i) => (
-                <div
-                  key={i}
-                  className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
-                >
-
-                  <div className="relative">
-                    <img
-                      src={creator.img}
-                      alt={creator.name}
-                      className="w-full h-56 object-cover"
-                    />
-
-                    <div className="absolute top-3 left-3 bg-gradient-to-r from-purple-600 to-pink-500 text-white text-xs px-3 py-1 rounded-full">
-                      Creator
-                    </div>
-                  </div>
-
-                  <div className="p-4 text-center">
-                    <h3 className="text-sm font-bold text-slate-900">
-                      {creator.name}
-                    </h3>
-                  </div>
-
-                </div>
-              ))}
-
-            </div>
-
+            {/* 🔥 FIXED TEXT COLOR */}
+            <p className="mt-6 text-lg text-slate-200 font-inter">
+              Share your goals, and we’ll help you plan, launch, and scale your influencer campaigns with clarity and speed.
+            </p>
           </div>
 
+          {/* GRID */}
+          <div className="grid lg:grid-cols-2 gap-10">
+
+            {/* LEFT INFO */}
+            <div className="space-y-6">
+              {contactItems.map((item, i) => (
+                <div
+                  key={i}
+                  className="bg-white/10 backdrop-blur-xl border border-white/20 p-6 rounded-2xl hover:bg-white/20 transition"
+                >
+                  <div className="flex gap-4">
+                    <div className="text-2xl">{item.icon}</div>
+                    <div>
+                      <h3 className="text-white font-pop text-lg">
+                        {item.title}
+                      </h3>
+
+                      <p className="text-white font-semibold">
+                        {item.value}
+                      </p>
+
+                      {/* 🔥 FIXED VISIBILITY */}
+                      <p className="text-slate-200 text-sm leading-relaxed">
+                        {item.desc}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* RIGHT FORM */}
+            <div className="bg-white/10 backdrop-blur-xl border border-white/20 p-8 rounded-2xl">
+
+              <h2 className="text-2xl font-pop text-white text-center">
+                Start Campaign Discussion
+              </h2>
+
+              <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+
+                <input
+                  name="name"
+                  placeholder="Your Name"
+                  value={form.name}
+                  onChange={handleChange}
+                  className="w-full p-3 rounded-xl bg-white/20 text-white placeholder-slate-400 border border-white/30 focus:ring-2 focus:ring-indigo-400"
+                  required
+                />
+
+                <input
+                  name="email"
+                  type="email"
+                  placeholder="Email"
+                  value={form.email}
+                  onChange={handleChange}
+                  className="w-full p-3 rounded-xl bg-white/20 text-white placeholder-slate-400 border border-white/30 focus:ring-2 focus:ring-indigo-400"
+                  required
+                />
+
+                <input
+                  name="brand"
+                  placeholder="Brand / Company"
+                  value={form.brand}
+                  onChange={handleChange}
+                  className="w-full p-3 rounded-xl bg-white/20 text-white placeholder-slate-400 border border-white/30 focus:ring-2 focus:ring-indigo-400"
+                  required
+                />
+
+                <textarea
+                  name="message"
+                  rows={4}
+                  placeholder="Campaign details..."
+                  value={form.message}
+                  onChange={handleChange}
+                  className="w-full p-3 rounded-xl bg-white/20 text-white placeholder-slate-400 border border-white/30 focus:ring-2 focus:ring-indigo-400"
+                  required
+                />
+
+                <button
+                  type="submit"
+                  className="w-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-3 rounded-xl font-inter hover:opacity-90 transition"
+                >
+                  Continue on WhatsApp →
+                </button>
+
+              </form>
+            </div>
+          </div>
         </section>
       </main>
     </>
