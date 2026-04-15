@@ -4,16 +4,19 @@ import { ThemeProvider } from "./context/ThemeContext";
 import { Inter, Poppins } from "next/font/google";
 import Navbar from "@/components/Navbar";
 
+// 🔥 BODY FONT (Clean & readable)
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
-  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
 });
 
+// 🔥 HEADING FONT (Premium feel)
 const poppins = Poppins({
   subsets: ["latin"],
   variable: "--font-poppins",
   weight: ["600", "700", "800"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -23,12 +26,6 @@ export const metadata: Metadata = {
   },
   description:
     "Turn creator partnerships into measurable brand growth. Scale influencer campaigns with verified creators and data-driven strategies.",
-  keywords: [
-    "influencer marketing",
-    "creator partnerships",
-    "brand campaigns",
-    "influencer strategy",
-  ],
 };
 
 export default function RootLayout({
@@ -42,10 +39,10 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${inter.variable} ${poppins.variable} scroll-smooth`}
     >
-      <body className="min-h-[100dvh] bg-slate-50 text-slate-900 antialiased font-[var(--font-inter)]">
+      <body className="min-h-[100dvh] bg-slate-50 text-slate-900 antialiased font-sans">
         <ThemeProvider>
-
-          {/* 🔥 GLOBAL NAVBAR */}
+          
+          {/* 🔥 NAVBAR */}
           <Navbar />
 
           {/* 🔥 MAIN CONTENT */}

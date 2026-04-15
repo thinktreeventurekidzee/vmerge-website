@@ -6,7 +6,6 @@ import {
   ArrowUpRight,
   BadgeCheck,
   LineChart,
-  Zap,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -42,36 +41,27 @@ const metrics = [
   { value: "2x", label: "Faster execution" },
 ];
 
-const pillars = [
-  {
-    title: "Strategy-first approach",
-    desc: "Every campaign begins with a clear plan aligned to business goals and audience intent.",
-  },
-  {
-    title: "Execution clarity",
-    desc: "Structured workflows ensure smoother communication and faster delivery cycles.",
-  },
-  {
-    title: "Measured outcomes",
-    desc: "Campaign performance is tracked through engagement quality and business impact.",
-  },
-];
-
 export default function AboutSection() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-sky-50 via-blue-100/40 to-blue-50 py-20 md:py-28">
+    <section className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 py-20 md:py-28">
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* HEADER */}
         <motion.div {...fadeUp} className="max-w-3xl">
-          <div className="inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm bg-white/70">
-            <BadgeCheck size={16} />
-            Trusted by growth-focused brands
+          <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 px-4 py-2 text-sm bg-white">
+            <BadgeCheck size={16} className="text-blue-700" />
+            <span className="text-blue-700 font-medium">
+              Trusted by growth-focused brands
+            </span>
           </div>
 
-          <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900">
-            Built for structured, high-performance campaign execution
+          <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 leading-tight">
+            Built for{" "}
+            <span className="text-blue-700">
+              structured, high-performance
+            </span>{" "}
+            campaign execution
           </h2>
 
           <p className="mt-5 text-base sm:text-lg text-slate-600">
@@ -97,17 +87,24 @@ export default function AboutSection() {
             {/* METRICS */}
             <div className="grid grid-cols-3 gap-3 sm:gap-4">
               {metrics.map((item) => (
-                <div key={item.label} className="bg-white p-4 rounded-xl text-center">
-                  <p className="text-xl sm:text-2xl font-bold">{item.value}</p>
-                  <p className="text-xs sm:text-sm">{item.label}</p>
+                <div
+                  key={item.label}
+                  className="bg-white p-4 rounded-xl text-center shadow-sm border border-slate-100"
+                >
+                  <p className="text-xl sm:text-2xl font-bold text-blue-700">
+                    {item.value}
+                  </p>
+                  <p className="text-xs sm:text-sm text-slate-600">
+                    {item.label}
+                  </p>
                 </div>
               ))}
             </div>
 
-            {/* ✅ CTA FIX */}
+            {/* 🔴 CTA FIX */}
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 bg-slate-900 text-white px-5 py-3 rounded-xl hover:bg-slate-800 transition"
+              className="inline-flex items-center gap-2 bg-red-500 text-white px-6 py-3 rounded-xl hover:bg-red-600 transition font-semibold shadow-md hover:shadow-lg"
             >
               Start a conversation
               <ArrowUpRight size={16} />
@@ -118,11 +115,15 @@ export default function AboutSection() {
           {/* RIGHT */}
           <div className="space-y-6">
             {features.map(({ icon: Icon, title, desc }) => (
-              <motion.div key={title} {...fadeUp} className="p-5 bg-white rounded-xl">
+              <motion.div
+                key={title}
+                {...fadeUp}
+                className="p-5 bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition"
+              >
                 <div className="flex gap-4">
-                  <Icon />
+                  <Icon className="text-blue-700" />
                   <div>
-                    <h4 className="font-semibold">{title}</h4>
+                    <h4 className="font-semibold text-slate-900">{title}</h4>
                     <p className="text-sm text-slate-600">{desc}</p>
                   </div>
                 </div>
@@ -133,19 +134,20 @@ export default function AboutSection() {
         </div>
 
         {/* CTA BLOCK */}
-        <motion.div {...fadeUp} className="mt-20 text-center bg-slate-900 text-white p-8 rounded-2xl">
-
-          <h3 className="text-xl sm:text-2xl md:text-3xl">
+        <motion.div
+          {...fadeUp}
+          className="mt-20 text-center bg-gradient-to-r from-blue-900 to-slate-900 text-white p-10 rounded-2xl shadow-lg"
+        >
+          <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold leading-snug">
             Ready to build something impactful?
           </h3>
 
           <Link
             href="/contact"
-            className="inline-block mt-6 bg-white text-black px-6 py-3 rounded-xl"
+            className="inline-block mt-6 bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-xl font-semibold transition shadow-md"
           >
             Contact Now
           </Link>
-
         </motion.div>
 
       </div>
