@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 const projects = [
   {
@@ -26,19 +27,27 @@ const projects = [
   },
 ];
 
+const categories = ["All", "YouTube", "Instagram", "UGC", "Meme"];
+
 export default function WorkPage() {
+  const [active, setActive] = useState("All");
+
+  const filtered =
+    active === "All"
+      ? projects
+      : projects.filter((p) => p.category === active);
+
   return (
     <section className="relative py-24 bg-white overflow-hidden">
 
-      {/* 🔥 BACKGROUND GLOW */}
+      {/* BG */}
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,rgba(6,182,212,0.08),transparent_30%),radial-gradient(circle_at_bottom_left,rgba(139,92,246,0.08),transparent_30%)]" />
 
       <div className="max-w-7xl mx-auto px-6">
 
-        {/* 🔥 HERO SECTION */}
+        {/* HERO */}
         <div className="grid lg:grid-cols-2 gap-16 items-center">
 
-          {/* LEFT */}
           <div>
             <p className="inline-block bg-cyan-100 text-cyan-700 px-4 py-2 rounded-full text-sm font-semibold">
               CASE STUDIES
@@ -48,19 +57,24 @@ export default function WorkPage() {
               Campaigns that drive real growth
             </h1>
 
+            {/* 🔥 PROFESSIONAL EXPLANATION */}
             <p className="mt-6 text-lg text-slate-600 max-w-xl">
-              See how we help brands scale through influencer marketing and performance-driven campaigns.
+              Explore our work across multiple platforms and campaign formats.
+              Each case study reflects a data-driven approach to scaling brands
+              through creators, content, and performance marketing strategies.
             </p>
 
             {/* FILTER */}
             <div className="mt-8 flex gap-3 flex-wrap">
-              {["All", "YouTube", "Instagram", "UGC", "Meme"].map((item, i) => (
+              {categories.map((item) => (
                 <button
-                  key={i}
-                  className={`px-5 py-2 rounded-full border ${
-                    i === 0
-                      ? "bg-cyan-600 text-white"
-                      : "bg-white text-slate-700 hover:bg-slate-50"
+                  key={item}
+                  onClick={() => setActive(item)}
+                  className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300
+                  ${
+                    active === item
+                      ? "bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg scale-105"
+                      : "bg-white border text-slate-700 hover:bg-slate-50"
                   }`}
                 >
                   {item}
@@ -69,7 +83,7 @@ export default function WorkPage() {
             </div>
           </div>
 
-          {/* RIGHT IMAGE */}
+          {/* IMAGE */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -94,42 +108,58 @@ export default function WorkPage() {
           </motion.div>
         </div>
 
-        {/* 🔥 CASE STUDY GRID */}
+        {/* GRID */}
         <div className="mt-24 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-          {projects.map((item, i) => (
+          {filtered.map((item) => (
             <motion.div
-              key={i}
-              whileHover={{ y: -6 }}
-              className="group rounded-3xl overflow-hidden border bg-white shadow-sm hover:shadow-xl transition"
+              key={item.title}
+              whileHover={{ y: -8 }}
+              className="group relative rounded-3xl overflow-hidden"
             >
-              {/* IMAGE */}
-              <div className="relative">
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  width={400}
-                  height={300}
-                  className="w-full h-[220px] object-cover group-hover:scale-105 transition"
-                />
 
-                <span className="absolute top-3 left-3 bg-white px-3 py-1 text-xs rounded-full shadow">
-                  {item.category}
-                </span>
+              <div className="p-[1px] rounded-3xl bg-gradient-to-br from-cyan-400 to-purple-500">
+
+                <div className="rounded-3xl overflow-hidden bg-white">
+
+                  {/* IMAGE */}
+                  <div className="relative overflow-hidden">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      width={400}
+                      height={300}
+                      className="w-full h-[240px] object-cover group-hover:scale-110 transition duration-500"
+                    />
+
+                    {/* OVERLAY */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition" />
+
+                    {/* CATEGORY */}
+                    <span className="absolute top-3 left-3 bg-white/90 px-3 py-1 text-xs rounded-full shadow">
+                      {item.category}
+                    </span>
+
+                    {/* HOVER CTA */}
+                    <div className="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition">
+                      <p className="text-sm">View Case Study →</p>
+                    </div>
+                  </div>
+
+                  {/* CONTENT */}
+                  <div className="p-5">
+                    <h3 className="text-lg font-bold text-slate-900">
+                      {item.title}
+                    </h3>
+
+                    <p className="text-sm text-slate-600 mt-2">
+                      High-performing campaign delivering measurable growth and ROI.
+                    </p>
+                  </div>
+
+                </div>
               </div>
 
-              {/* CONTENT */}
-              <div className="p-5">
-                <h3 className="text-lg font-bold text-slate-900">
-                  {item.title}
-                </h3>
-
-                <p className="text-sm text-slate-600 mt-2">
-                  High-performing campaign delivering strong ROI through creators.
-                </p>
-
-               
-              </div>
             </motion.div>
           ))}
 

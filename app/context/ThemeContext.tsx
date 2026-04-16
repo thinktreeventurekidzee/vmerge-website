@@ -23,47 +23,49 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setThemeState] = useState<Theme>("system");
   const [resolvedTheme, setResolvedTheme] = useState<"light" | "dark">("light");
 
-  // 🔥 Load saved theme (no flicker)
+  // 🔥 Load theme before paint (no flicker)
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") as Theme | null;
-    if (savedTheme) {
-      setThemeState(savedTheme);
-    }
+    const saved = localStorage.getItem("theme") as Theme | null;
+    if (saved) setThemeState(saved);
   }, []);
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-color-scheme: dark)");
 
-    const applyTheme = (selectedTheme: Theme) => {
-      const nextTheme =
-        selectedTheme === "system"
+    const applyTheme = (selected: Theme) => {
+      const finalTheme =
+        selected === "system"
           ? media.matches
             ? "dark"
             : "light"
-          : selectedTheme;
+          : selected;
 
-      setResolvedTheme(nextTheme);
+      setResolvedTheme(finalTheme);
 
-      // apply to DOM
-      document.documentElement.setAttribute("data-theme", nextTheme);
+      // ✅ Tailwind dark mode support
+      document.documentElement.classList.remove("light", "dark");
+      document.documentElement.classList.add(finalTheme);
+
+      // optional: custom attribute (for CSS variables)
+      document.documentElement.setAttribute("data-theme", finalTheme);
     };
 
     applyTheme(theme);
 
-    const handleChange = () => {
-      if (theme === "system") {
-        applyTheme("system");
-      }
+    const listener = () => {
+      if (theme === "system") applyTheme("system");
     };
 
-    media.addEventListener("change", handleChange);
-
-    return () => {
-      media.removeEventListener("change", handleChange);
-    };
+    media.addEventListener("change", listener);
+    return () => media.removeEventListener("change", listener);
   }, [theme]);
 
-  // 🔥 Wrapped setter (save to localStorage)
+  // 🔥 Smooth transition effect
+  useEffect(() => {
+    document.documentElement.style.transition =
+      "background-color 0.3s ease, color 0.3s ease";
+  }, []);
+
   const setTheme = (newTheme: Theme) => {
     localStorage.setItem("theme", newTheme);
     setThemeState(newTheme);
@@ -87,10 +89,8 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
 export function useTheme() {
   const context = useContext(ThemeContext);
-
   if (!context) {
     throw new Error("useTheme must be used inside ThemeProvider");
   }
-
   return context;
 }

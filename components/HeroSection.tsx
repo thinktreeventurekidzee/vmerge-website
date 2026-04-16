@@ -1,7 +1,5 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
@@ -11,167 +9,96 @@ const rotatingWords = [
   "faster launches",
 ];
 
-const creatorImages = [
-  {
-    src: "/creator-1.jpeg",
-    title: "Creator Discovery",
-    desc: "Find creators aligned with your audience.",
-  },
-  {
-    src: "/creator-4.jpeg",
-    title: "Creator Discovery",
-    desc: "Find creators aligned with your audience.",
-  },
-  {
-    src: "/creator-2.jpeg",
-    title: "Campaign Execution",
-    desc: "Structured workflows for faster launches.",
-  },
-  {
-    src: "/creator-3.jpeg",
-    title: "Performance Scaling",
-    desc: "Turn campaigns into real outcomes.",
-  },
-  {
-    src: "/creator-5.jpeg",
-    title: "Creator Discovery",
-    desc: "Find creators aligned with your audience.",
-  },
+// 🔥 Right side images
+const heroImages = [
+  "/creator-1.jpeg",
+  "/creator-3.jpeg",
+  "/creator-5.jpeg",
 ];
 
 export default function HeroSection() {
   const [wordIndex, setWordIndex] = useState(0);
-  const [currentImage, setCurrentImage] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  const getNextIndex = (prev: number) => {
-    let next;
-    do {
-      next = Math.floor(Math.random() * creatorImages.length);
-    } while (next === prev);
-    return next;
-  };
-
+  // rotating text
   useEffect(() => {
     const wordInterval = setInterval(() => {
       setWordIndex((prev) => (prev + 1) % rotatingWords.length);
-    }, 2600);
+    }, 2500);
 
-    const imageInterval = setInterval(() => {
-      setCurrentImage((prev) => getNextIndex(prev));
-    }, 3500);
+    return () => clearInterval(wordInterval);
+  }, []);
 
-    return () => {
-      clearInterval(wordInterval);
-      clearInterval(imageInterval);
-    };
+  // image slider
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % heroImages.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
   }, []);
 
   return (
-    <section className="relative isolate min-h-screen flex items-center overflow-hidden">
-      {/* Background images */}
-      <div className="absolute inset-0 -z-10">
-        <Image
-          src="/hero-bg.jpg"
-          alt="Hero background"
-          fill
-          priority
-          sizes="100vw"
-         className="object-cover object-center"
-        />
-        <Image
-          src="/mobile-pg.jpeg"
-          alt="Hero background mobile"
-          fill
-          priority
-          sizes="100vw"
-          className="block md:hidden object-cover object-center"
-        />
-      </div>
+    <section className="relative min-h-screen flex items-center bg-gradient-to-br from-indigo-600 via-blue-500 to-cyan-400 overflow-hidden text-white">
 
-      {/* Overlay */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-t from-black/70 via-black/50 to-black/20" />
+      {/* LEFT CONTENT */}
+      <div className="max-w-7xl mx-auto px-6 w-full grid lg:grid-cols-2 gap-12 items-center">
 
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-center text-white">
-        {/* Left */}
-        <div className="pt-20 sm:pt-24 md:pt-0">
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm mb-5 sm:mb-6">
-            Trusted by growth-focused brands
-          </div>
-
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-            Turn creator marketing into
-            <span className="block text-indigo-400">
+        <div>
+          <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+            Influencer Marketing That Drives
+            <span className="block text-yellow-300 mt-2">
               {rotatingWords[wordIndex]}
             </span>
           </h1>
 
-          <p className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg text-slate-200 max-w-xl">
-            VMERG helps brands discover the right creators, launch campaigns
-            faster, and scale performance through structured execution.
+          <p className="mt-6 text-lg text-white/80 max-w-xl">
+            VMERG helps brands discover creators, execute campaigns, and scale
+            performance with measurable ROI.
           </p>
 
-          <div className="mt-6 sm:mt-8 flex flex-wrap gap-3 sm:gap-4">
+          <div className="mt-8 flex gap-4">
             <Link
               href="/contact"
-              className="px-4 sm:px-6 py-2.5 sm:py-3 bg-indigo-600 rounded-xl hover:bg-indigo-500 transition text-sm sm:text-base inline-block"
+              className="px-6 py-3 bg-white text-black rounded-xl font-semibold hover:scale-105 transition"
             >
               Start Campaign
             </Link>
 
             <Link
               href="/work"
-              className="px-4 sm:px-6 py-2.5 sm:py-3 border border-white/30 rounded-xl hover:bg-white/10 transition text-sm sm:text-base inline-block"
+              className="px-6 py-3 border border-white/40 rounded-xl hover:bg-white/10 transition"
             >
               View Work
             </Link>
           </div>
-
-          <div className="mt-5 sm:mt-6 flex flex-wrap gap-2">
-            {["Strategy-led", "Creator-first", "Performance-driven"].map((tag) => (
-              <span
-                key={tag}
-                className="px-2.5 sm:px-3 py-1 text-[10px] sm:text-xs md:text-sm bg-white/10 rounded-full text-white/80"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
         </div>
 
-        {/* Right */}
-        <div className="flex justify-center lg:justify-end mt-10 lg:mt-0">
-          <div className="w-full max-w-[320px] sm:max-w-[380px] lg:max-w-[420px] h-[240px] sm:h-[300px] md:h-[340px] lg:h-[380px] relative">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentImage}
-                initial={{ opacity: 0, scale: 0.96 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.6, ease: "easeInOut" }}
-                className="absolute inset-0 rounded-2xl overflow-hidden shadow-xl"
-              >
-                <Image
-                  src={creatorImages[currentImage].src}
-                  alt={creatorImages[currentImage].title}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 420px"
-                  className="object-cover"
-                />
+        {/* 🔥 RIGHT SIDE STACKED IMAGES */}
+        <div className="hidden lg:flex justify-end relative h-[420px] w-full">
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+          {heroImages.map((img, i) => {
+            const position =
+              (i - currentIndex + heroImages.length) %
+              heroImages.length;
 
-                <div className="absolute bottom-0 p-3 sm:p-4 md:p-6 text-white">
-                  <h3 className="text-base sm:text-lg md:text-xl font-semibold">
-                    {creatorImages[currentImage].title}
-                  </h3>
-                  <p className="text-[11px] sm:text-xs md:text-sm mt-1 sm:mt-2">
-                    {creatorImages[currentImage].desc}
-                  </p>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
+            return (
+              <img
+                key={i}
+                src={img}
+                className={`absolute w-[360px] h-[240px] object-cover rounded-2xl shadow-2xl transition-all duration-700
+
+                ${
+                  position === 0
+                    ? "z-30 opacity-100 scale-100 translate-x-0 rotate-0"
+                    : position === 1
+                    ? "z-20 opacity-50 scale-95 translate-x-10 rotate-6 blur-[1px]"
+                    : "z-10 opacity-30 scale-90 translate-x-20 rotate-12 blur-[2px]"
+                }
+                `}
+              />
+            );
+          })}
         </div>
       </div>
     </section>
