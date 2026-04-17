@@ -23,7 +23,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setThemeState] = useState<Theme>("system");
   const [resolvedTheme, setResolvedTheme] = useState<"light" | "dark">("light");
 
-  // 🔥 Load theme before paint (no flicker)
+  // 🔥 Load saved theme safely (no hydration mismatch)
   useEffect(() => {
     const saved = localStorage.getItem("theme") as Theme | null;
     if (saved) setThemeState(saved);
@@ -42,11 +42,11 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
       setResolvedTheme(finalTheme);
 
-      // ✅ Tailwind dark mode support
+      // ✅ Tailwind class
       document.documentElement.classList.remove("light", "dark");
       document.documentElement.classList.add(finalTheme);
 
-      // optional: custom attribute (for CSS variables)
+      // ✅ data attribute (optional)
       document.documentElement.setAttribute("data-theme", finalTheme);
     };
 
@@ -57,13 +57,20 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     };
 
     media.addEventListener("change", listener);
+
     return () => media.removeEventListener("change", listener);
   }, [theme]);
 
-  // 🔥 Smooth transition effect
+  // 🔥 Smooth transition (mobile optimized)
   useEffect(() => {
-    document.documentElement.style.transition =
-      "background-color 0.3s ease, color 0.3s ease";
+    const root = document.documentElement;
+
+    root.style.transition =
+      "background-color 0.25s ease, color 0.25s ease";
+
+    return () => {
+      root.style.transition = "";
+    };
   }, []);
 
   const setTheme = (newTheme: Theme) => {

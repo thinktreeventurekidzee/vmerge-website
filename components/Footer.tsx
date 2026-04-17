@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import {
   Phone,
   Mail,
@@ -15,33 +15,29 @@ export default function Footer() {
   return (
     <footer className="relative mt-24 overflow-hidden">
 
-      {/* 🌈 Animated Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-sky-300 via-indigo-200 to-pink-200 animate-gradient opacity-90" />
-
-      {/* 🔵 Glow Blobs */}
-      <div className="absolute top-[-80px] left-[-80px] w-72 h-72 bg-sky-400 opacity-30 blur-[120px] rounded-full" />
-      <div className="absolute bottom-[-80px] right-[-80px] w-72 h-72 bg-pink-400 opacity-30 blur-[120px] rounded-full" />
+      {/* 🔵 ANIMATED BG */}
+      <div className="absolute inset-0 animate-footer-gradient"></div>
 
       {/* CONTENT */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 text-slate-900">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 text-[#0b1a3a]">
 
-        {/* GRID */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
 
-          {/* BRAND */}
+          {/* 🔥 LOGO */}
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
             className="space-y-4"
           >
-            <Image
-              src="/vmerge.jpeg"
-              alt="Vmerg"
-              width={120}
-              height={40}
-              className="object-contain"
-            />
+
+            {/* CUSTOM LOGO */}
+            <div className="inline-block">
+              <div className="h-[3px] w-20 bg-red-500 mb-1 rounded-full"></div>
+
+              <div className="text-3xl font-bold tracking-wide text-[#1e3a8a]">
+                vmerg
+              </div>
+            </div>
 
             <p className="text-sm text-slate-700 leading-relaxed">
               Performance-driven influencer marketing platform helping brands
@@ -51,24 +47,22 @@ export default function Footer() {
 
           {/* COMPANY */}
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <h4 className="font-semibold mb-4 text-slate-900">
+            <h4 className="font-semibold mb-4 text-[#0b1a3a]">
               Company
             </h4>
 
             <ul className="space-y-2 text-sm text-slate-700">
               {["About", "Services", "Work", "Creators"].map((item) => (
                 <li key={item}>
-                  <a
+                  <Link
                     href={`/${item.toLowerCase()}`}
-                    className="relative group"
+                    className="hover:text-yellow-400 transition"
                   >
                     {item}
-                    <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-sky-500 transition-all group-hover:w-full"></span>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -76,56 +70,54 @@ export default function Footer() {
 
           {/* CONTACT */}
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h4 className="font-semibold mb-4 text-slate-900">
+            <h4 className="font-semibold mb-4 text-[#0b1a3a]">
               Contact
             </h4>
 
             <div className="space-y-3 text-sm text-slate-700">
 
-              <div className="flex items-center gap-3 hover:translate-x-1 transition">
-                <Phone size={16} />
+              <div className="flex items-center gap-3">
+                <Phone size={16} className="text-yellow-400" />
                 <span>+91 86607 83740</span>
               </div>
 
-              <div className="flex items-center gap-3 hover:translate-x-1 transition">
-                <Mail size={16} />
+              <div className="flex items-center gap-3">
+                <Mail size={16} className="text-yellow-400" />
                 <span>vmergmedia@gmail.com</span>
               </div>
 
-              <div className="hover:translate-x-1 transition">
-                Bengaluru, India
-              </div>
+              <div>Bengaluru, India</div>
 
             </div>
           </motion.div>
 
           {/* SOCIAL */}
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <h4 className="font-semibold mb-4 text-slate-900">
+            <h4 className="font-semibold mb-4 text-[#0b1a3a]">
               Follow Us
             </h4>
 
             <div className="flex gap-4">
 
               {[ 
-                { icon: <Instagram size={18} />, link: "https://www.instagram.com/vmerg_/", color: "hover:bg-pink-500" },
-                { icon: <Twitter size={18} />, link: "https://x.com/vmerg_", color: "hover:bg-black" },
-                { icon: <Linkedin size={18} />, link: "https://www.linkedin.com/company/vmerg/", color: "hover:bg-blue-600" },
-                { icon: <Facebook size={18} />, link: "https://www.facebook.com/people/Vmerg/100075742935785/", color: "hover:bg-blue-500" },
+                { icon: <Instagram size={18} />, link: "https://www.instagram.com/vmerg_/" },
+                { icon: <Twitter size={18} />, link: "https://x.com/vmerg_" },
+                { icon: <Linkedin size={18} />, link: "https://www.linkedin.com/company/vmerg/" },
+                { icon: <Facebook size={18} />, link: "https://www.facebook.com/people/Vmerg/100075742935785/" },
               ].map((item, i) => (
                 <a
                   key={i}
                   href={item.link}
                   target="_blank"
-                  className={`p-3 rounded-xl bg-white/50 backdrop-blur-md transition transform hover:scale-110 hover:-translate-y-1 ${item.color} hover:text-white shadow-md`}
+                  className="p-3 rounded-xl bg-white shadow-md 
+                  hover:bg-yellow-400 hover:text-black 
+                  transition hover:scale-110"
                 >
                   {item.icon}
                 </a>
@@ -137,42 +129,27 @@ export default function Footer() {
         </div>
 
         {/* BOTTOM */}
-        <div className="mt-16 border-t border-black/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-700">
+        <div className="mt-16 border-t border-blue-200 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-700">
 
-          <p className="text-center md:text-left">
+          <p>
             © 2026 Vmerg Media Pvt Ltd. All rights reserved.
           </p>
 
           <div className="flex gap-6">
-            <a href="#" className="relative group">
-              Privacy Policy
-              <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-sky-500 transition-all group-hover:w-full"></span>
-            </a>
 
-            <a href="#" className="relative group">
+            <Link href="/privacy-policy" className="hover:text-yellow-400 transition">
+              Privacy Policy
+            </Link>
+
+            <Link href="/terms" className="hover:text-yellow-400 transition">
               Terms
-              <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-sky-500 transition-all group-hover:w-full"></span>
-            </a>
+            </Link>
+
           </div>
 
         </div>
 
       </div>
-
-      {/* 🔥 Gradient Animation CSS */}
-      <style jsx>{`
-        .animate-gradient {
-          background-size: 300% 300%;
-          animation: gradientMove 10s ease infinite;
-        }
-
-        @keyframes gradientMove {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-      `}</style>
-
     </footer>
   );
 }

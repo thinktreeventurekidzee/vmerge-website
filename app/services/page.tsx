@@ -51,100 +51,99 @@ const services = [
 
 export default function ServicesSection() {
   return (
-<section className="relative overflow-hidden bg-[#eaf4ff] py-20 md:py-28">
+    <section className="relative overflow-hidden bg-[#eaf4ff] py-16 sm:py-20 md:py-28">
 
-  {/* SOFT BG GLOW */}
-  <div className="absolute inset-0 -z-10">
-    <div className="absolute top-10 left-10 w-72 h-72 bg-blue-300/20 rounded-full blur-3xl" />
-    <div className="absolute bottom-10 right-10 w-80 h-80 bg-sky-300/20 rounded-full blur-3xl" />
-  </div>
+      {/* BG */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-10 left-10 w-40 sm:w-72 h-40 sm:h-72 bg-blue-300/20 rounded-full blur-3xl" />
+        <div className="absolute bottom-10 right-10 w-48 sm:w-80 h-48 sm:h-80 bg-sky-300/20 rounded-full blur-3xl" />
+      </div>
 
-  <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
-    {/* HEADER */}
-    <div className="text-center max-w-3xl mx-auto mb-16">
-      <h2 className="text-4xl md:text-5xl font-bold text-yellow-400">
-        Services designed for growth
-      </h2>
-      <p className="mt-4 text-lg text-slate-700">
-        Everything you need to scale with creators.
-      </p>
-    </div>
+        {/* HEADER */}
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-yellow-400 leading-tight">
+            Services designed for growth
+          </h2>
 
-    {/* GRID */}
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <p className="mt-3 sm:mt-4 text-base sm:text-lg text-slate-700">
+            Everything you need to scale with creators.
+          </p>
+        </div>
 
-      {services.map((service) => (
-        <div key={service.id} className="group cursor-pointer">
+        {/* GRID */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
 
-          {/* BORDER GLOW */}
-          <div className="p-[1px] rounded-2xl bg-transparent 
-          group-hover:bg-gradient-to-br group-hover:from-yellow-400 group-hover:to-orange-400
-          transition-all duration-300">
+          {services.map((service) => (
+            <div key={service.id} className="group">
 
-            {/* CARD */}
-            <div className="rounded-2xl p-6 bg-white shadow-sm
-            transition-all duration-300 group-hover:shadow-2xl group-hover:-translate-y-1">
+              <div className="p-[1px] rounded-2xl bg-transparent 
+              sm:group-hover:bg-gradient-to-br sm:group-hover:from-yellow-400 sm:group-hover:to-orange-400
+              transition-all duration-300">
 
-              {/* ICON */}
-              <div className="w-12 h-12 flex items-center justify-center rounded-xl mb-4
-              bg-yellow-100 text-yellow-600
-              group-hover:bg-gradient-to-br group-hover:from-yellow-400 group-hover:to-orange-400 group-hover:text-white transition">
-                <service.icon />
-              </div>
+                <div className="rounded-2xl p-5 sm:p-6 bg-white shadow-sm
+                transition-all duration-300 sm:group-hover:shadow-2xl sm:group-hover:-translate-y-1">
 
-              {/* TITLE */}
-              <h3 className="text-xl font-semibold text-slate-900">
-                {service.title}
-              </h3>
+                  {/* ICON */}
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-xl mb-4
+                  bg-yellow-100 text-yellow-600
+                  sm:group-hover:bg-gradient-to-br sm:group-hover:from-yellow-400 sm:group-hover:to-orange-400 sm:group-hover:text-white transition">
+                    <service.icon size={20} />
+                  </div>
 
-              {/* DESC */}
-              <p className="mt-2 text-slate-600 text-sm leading-relaxed">
-                {service.desc}
-              </p>
+                  {/* TITLE */}
+                  <h3 className="text-lg sm:text-xl font-semibold text-slate-900">
+                    {service.title}
+                  </h3>
 
-              {/* CTA */}
-              <div className="mt-4 flex items-center gap-2 text-yellow-500 text-sm font-medium group-hover:translate-x-1 transition">
-                Learn more <ArrowRight size={16} />
-              </div>
+                  {/* DESC */}
+                  <p className="mt-2 text-slate-600 text-sm leading-relaxed">
+                    {service.desc}
+                  </p>
 
-              {/* HOVER EXPAND */}
-              <div className="overflow-hidden max-h-0 group-hover:max-h-40 transition-all duration-500">
+                  {/* CTA */}
+                  <div className="mt-3 sm:mt-4 flex items-center gap-2 text-yellow-500 text-sm font-medium sm:group-hover:translate-x-1 transition">
+                    Learn more <ArrowRight size={16} />
+                  </div>
 
-                <div className="border-t border-slate-200 pt-4 mt-4">
+                  {/* 🔥 MOBILE FIX (always visible) */}
+                  <div className="mt-4 sm:mt-0 sm:overflow-hidden sm:max-h-0 sm:group-hover:max-h-40 transition-all duration-500">
 
-                  <ul className="space-y-2 text-sm text-slate-600">
-                    {service.note.split("•").map((feature, i) => (
-                      <li key={i} className="flex gap-2">
-                        <span className="text-yellow-500">✔</span>
-                        <span>{feature.trim()}</span>
-                      </li>
-                    ))}
-                  </ul>
+                    <div className="border-t border-slate-200 pt-4 mt-4">
+
+                      <ul className="space-y-2 text-sm text-slate-600">
+                        {service.note.split("•").map((feature, i) => (
+                          <li key={i} className="flex gap-2">
+                            <span className="text-yellow-500">✔</span>
+                            <span>{feature.trim()}</span>
+                          </li>
+                        ))}
+                      </ul>
+
+                    </div>
+
+                  </div>
 
                 </div>
-
               </div>
 
             </div>
-          </div>
+          ))}
 
         </div>
-      ))}
 
-    </div>
+        {/* CTA */}
+        <div className="mt-12 sm:mt-20 text-center">
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 px-5 sm:px-6 py-3 rounded-xl bg-yellow-400 text-black font-semibold hover:bg-yellow-300 transition"
+          >
+            Start Your Project <ArrowRight size={16} />
+          </Link>
+        </div>
 
-    {/* CTA */}
-    <div className="mt-20 text-center">
-      <Link
-        href="/contact"
-        className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-yellow-400 text-black font-semibold hover:bg-yellow-300 transition"
-      >
-        Start Your Project <ArrowRight size={16} />
-      </Link>
-    </div>
-
-  </div>
-</section>
+      </div>
+    </section>
   );
 }

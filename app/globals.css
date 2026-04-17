@@ -149,3 +149,14 @@
   background-size: 400% 400%;
   animation: rainbowMove 6s linear infinite;
 }
+.animate-footer-gradient {
+  background: linear-gradient(270deg, #e0f2fe, #bae6fd, #93c5fd, #60a5fa, #1e3a8a);
+  background-size: 400% 400%;
+  animation: footerMove 12s ease infinite;
+}
+
+@keyframes footerMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
