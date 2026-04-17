@@ -168,4 +168,14 @@
 
 .animate-marquee {
   animation: marquee 18s linear infinite;
+}.input-style {
+  @apply w-full px-4 py-3 rounded-xl bg-[#0f2a5c] 
+  border border-yellow-400/40 text-yellow-200 
+  focus:border-yellow-400 focus:ring-2 focus:ring-yellow-300 
+  outline-none transition-all duration-300;
+}
+
+.input-style:hover {
+  transform: scale(1.03);
+  color: #fde047;
 }
