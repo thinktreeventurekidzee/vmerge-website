@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 
-const WHATSAPP_NUMBER = "916362621090";
+const WHATSAPP_NUMBER = "86607 83740";
 
 const budgetOptions = [
   "Below ₹50K",
