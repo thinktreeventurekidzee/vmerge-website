@@ -3,179 +3,149 @@
 @tailwind utilities;
 
 /* ================================
-   🔥 VMERG DESIGN SYSTEM (UPGRADED)
+   🔥 VMERG DESIGN SYSTEM (FIXED)
 ================================ */
 
 :root {
-  /* 🎨 BRAND COLORS */
-  --color-primary: #1e3a8a;        /* Dark Blue */
+  --color-primary: #1e3a8a;
   --color-primary-hover: #1e40af;
 
-  --color-accent: #ef4444;         /* Red CTA */
+  --color-accent: #ef4444;
   --color-accent-hover: #dc2626;
 
   --color-bg: #f8fafc;
   --color-text: #0f172a;
   --color-muted: #64748b;
   --color-border: #e2e8f0;
-
-  /* 🔤 FONTS */
-  --font-sans: var(--font-inter);
-  --font-heading: var(--font-poppins);
 }
 
 /* ================================
-   BASE RESET
+   BASE
 ================================ */
 
 @layer base {
-  *,
-  *::before,
-  *::after {
+  * {
     box-sizing: border-box;
-  }
-
-  html {
-    scroll-behavior: smooth;
-    -webkit-font-smoothing: antialiased;
   }
 
   body {
     margin: 0;
-    padding: 0;
-    font-family: var(--font-sans);
+    font-family: var(--font-inter);
     background: var(--color-bg);
     color: var(--color-text);
-    line-height: 1.6;
-  }
-
-  /* 🎯 TYPOGRAPHY SYSTEM */
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-heading);
-    letter-spacing: -0.02em;
-  }
-
-  h1 {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 700;
-  }
-
-  h2 {
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 600;
-  }
-
-  h3 {
-    font-size: 1.5rem;
-    font-weight: 600;
   }
 }
 
 /* ================================
-   🧩 COMPONENTS
+   COMPONENTS (IMPORTANT)
 ================================ */
 
 @layer components {
 
-  /* 🔥 Container */
   .container {
     @apply max-w-7xl mx-auto px-6;
   }
 
-  /* 🔥 Section spacing */
   .section {
     @apply py-20;
   }
 
-  /* 🔴 PRIMARY CTA (IMPORTANT) */
   .btn-primary {
-    @apply inline-flex items-center justify-center px-6 py-3 rounded-xl 
-           bg-[var(--color-accent)] text-white font-semibold 
-           hover:bg-[var(--color-accent-hover)] 
-           transition-all duration-200 ease-in-out;
+    @apply px-6 py-3 rounded-xl bg-red-500 text-white font-semibold 
+           hover:bg-red-600 transition-all;
   }
 
-  /* ⚪ SECONDARY */
-  .btn-secondary {
-    @apply inline-flex items-center justify-center px-6 py-3 rounded-xl 
-           border border-[var(--color-border)] text-[var(--color-text)]
-           hover:bg-slate-100 transition-all duration-200;
-  }
-
-  /* 🔥 Cards */
   .card {
-    @apply p-6 rounded-2xl border border-[var(--color-border)] bg-white 
-           shadow-sm hover:shadow-md transition-all duration-200;
+    @apply p-6 rounded-2xl bg-white shadow-sm border border-gray-200 
+           hover:shadow-md transition-all;
   }
 
-  /* 🔥 Form */
+  /* ✅ FIXED INPUT */
   .input {
-    @apply w-full px-4 py-3 rounded-xl border border-[var(--color-border)] 
-           focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)];
+    @apply w-full px-4 py-3 rounded-xl border border-gray-300 
+           focus:outline-none focus:ring-2 focus:ring-blue-500;
+  }
+
+  /* ✅ NEW INPUT (NO ERROR) */
+  .input-new {
+    @apply w-full px-4 py-3 rounded-xl border border-yellow-300 
+           focus:ring-2 focus:ring-yellow-400 focus:outline-none 
+           transition-all duration-300 bg-white;
   }
 }
 
 /* ================================
-   ⚡ UTILITIES
+   UTILITIES
 ================================ */
 
 @layer utilities {
+
   .text-muted {
     color: var(--color-muted);
   }
 
-  /* 🔥 BRAND GRADIENT TEXT */
   .gradient-text {
     background: linear-gradient(90deg, #1e3a8a, #3b82f6);
-    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
-  /* 🔥 CTA HOVER EFFECT */
-  .btn-glow:hover {
-    box-shadow: 0 10px 30px rgba(239, 68, 68, 0.3);
+  /* ❌ REMOVE @apply FROM HERE (was causing issues) */
+  .input-style {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 12px;
+    background: #0f2a5c;
+    border: 1px solid rgba(250, 204, 21, 0.4);
+    color: #fde047;
+    transition: all 0.3s ease;
+  }
+
+  .input-style:hover {
+    transform: scale(1.03);
+  }
+
+  /* 🔁 MARQUEE */
+  .animate-marquee {
+    animation: marquee 18s linear infinite;
+  }
+
+  /* 🌧 RAIN */
+  .rain {
+    width: 100%;
+    height: 100%;
+    background: url("https://i.ibb.co/7QpKsCX/rain.png");
+    animation: rain 0.3s linear infinite;
+    opacity: 0.25;
+  }
+
+  /* 🌈 RAINBOW CARD */
+  .rainbow-card {
+    background: linear-gradient(270deg, red, orange, yellow, green, blue, indigo, violet);
+    background-size: 400% 400%;
+    animation: rainbowMove 6s linear infinite;
   }
 }
 
-
-
-
-.rain {
-  width: 100%;
-  height: 100%;
-  background: url("https://i.ibb.co/7QpKsCX/rain.png");
-  animation: rain 0.3s linear infinite;
-  opacity: 0.25;
-}
+/* ================================
+   KEYFRAMES
+================================ */
 
 @keyframes rain {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: 0 100%;
-  }
+  from { background-position: 0 0; }
+  to { background-position: 0 100%; }
 }
+
 @keyframes marquee {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
 }
 
-.animate-marquee {
-  animation: marquee 18s linear infinite;
-}.input-style {
-  @apply w-full px-4 py-3 rounded-xl bg-[#0f2a5c] 
-  border border-yellow-400/40 text-yellow-200 
-  focus:border-yellow-400 focus:ring-2 focus:ring-yellow-300 
-  outline-none transition-all duration-300;
-}
-
-.input-style:hover {
-  transform: scale(1.03);
-  color: #fde047;
+@keyframes rainbowMove {
+  0% { background-position: 0%; }
+  100% { background-position: 100%; }
+}.rainbow-card {
+  background: linear-gradient(270deg, red, orange, yellow, green, blue, indigo, violet);
+  background-size: 400% 400%;
+  animation: rainbowMove 6s linear infinite;
 }

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
-import { motion } from "framer-motion";
+import { Mail, Phone, MapPin } from "lucide-react";
 
 export default function ContactPage() {
   const [form, setForm] = useState({
@@ -12,13 +12,11 @@ export default function ContactPage() {
     message: "",
   });
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: any) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
 
     const text = encodeURIComponent(
@@ -32,67 +30,26 @@ Message: ${form.message}`
     window.open(`https://wa.me/918660783740?text=${text}`, "_blank");
   };
 
-  const contactItems = [
-    {
-      icon: "📧",
-      title: "Email",
-      value: "vmergmedia@gmail.com",
-      desc: "For brand campaigns and creator collaborations",
-    },
-    {
-      icon: "📱",
-      title: "WhatsApp",
-      value: "+91 86607 83740",
-      desc: "Quick response for campaign discussions",
-    },
-    {
-      icon: "📍",
-      title: "Location",
-      value: "Bengaluru, India",
-      desc: "Operating across India & global markets",
-    },
-    {
-      icon: "🆔",
-      title: "Company ID",
-      value: "U74999KA2021PTC153669",
-      desc: "VMERG Media Private Limited",
-    },
-  ];
-
   return (
     <>
       <Navbar />
 
-      <main className="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-900 via-indigo-900/40 to-purple-900/30">
+      {/* 🔵 LIGHT BLUE BG */}
+      <main className="min-h-screen bg-gradient-to-br from-sky-100 via-blue-50 to-white">
 
-        {/* BG GLOW */}
-        <div className="absolute inset-0">
-          <motion.div
-            className="absolute -left-32 top-1/3 h-80 w-80 rounded-full bg-indigo-600/20 blur-3xl"
-            animate={{ y: [0, -30, 0] }}
-            transition={{ duration: 6, repeat: Infinity }}
-          />
-          <motion.div
-            className="absolute right-0 bottom-20 h-96 w-96 rounded-full bg-purple-600/20 blur-3xl"
-            animate={{ y: [0, 30, 0] }}
-            transition={{ duration: 7, repeat: Infinity }}
-          />
-        </div>
+        <section className="max-w-7xl mx-auto px-6 pt-28 pb-24">
 
-        <section className="relative z-10 max-w-7xl mx-auto px-6 pt-28 pb-24">
-
-          {/* HERO */}
-          <div className="text-center text-white max-w-3xl mx-auto mb-16">
-            <h1 className="text-4xl md:text-6xl font-pop leading-tight">
-              Start your next
-              <span className="block bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+          {/* 🟡 HEADING */}
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h1 className="text-4xl md:text-6xl font-bold text-[#0b1a3a]">
+              Start your next{" "}
+              <span className="text-yellow-400">
                 creator campaign
               </span>
             </h1>
 
-            {/* 🔥 FIXED TEXT COLOR */}
-            <p className="mt-6 text-lg text-slate-200 font-inter">
-              Share your goals, and we’ll help you plan, launch, and scale your influencer campaigns with clarity and speed.
+            <p className="mt-6 text-lg text-slate-600">
+              Share your goals, and we’ll help you plan, launch, and scale your campaigns.
             </p>
           </div>
 
@@ -101,36 +58,55 @@ Message: ${form.message}`
 
             {/* LEFT INFO */}
             <div className="space-y-6">
-              {contactItems.map((item, i) => (
-                <div
-                  key={i}
-                  className="bg-white/10 backdrop-blur-xl border border-white/20 p-6 rounded-2xl hover:bg-white/20 transition"
-                >
-                  <div className="flex gap-4">
-                    <div className="text-2xl">{item.icon}</div>
-                    <div>
-                      <h3 className="text-white font-pop text-lg">
-                        {item.title}
-                      </h3>
 
-                      <p className="text-white font-semibold">
-                        {item.value}
-                      </p>
-
-                      {/* 🔥 FIXED VISIBILITY */}
-                      <p className="text-slate-200 text-sm leading-relaxed">
-                        {item.desc}
-                      </p>
-                    </div>
+              {/* EMAIL */}
+              <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition">
+                <div className="flex gap-4 items-start">
+                  <Mail className="text-yellow-400" size={22} />
+                  <div>
+                    <h3 className="text-[#0b1a3a] font-semibold">Email</h3>
+                    <p className="text-[#0b1a3a] font-medium">vmergmedia@gmail.com</p>
+                    <p className="text-slate-500 text-sm">
+                      For brand campaigns and collaborations
+                    </p>
                   </div>
                 </div>
-              ))}
+              </div>
+
+              {/* PHONE */}
+              <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition">
+                <div className="flex gap-4 items-start">
+                  <Phone className="text-yellow-400" size={22} />
+                  <div>
+                    <h3 className="text-[#0b1a3a] font-semibold">WhatsApp</h3>
+                    <p className="text-[#0b1a3a] font-medium">+91 86607 83740</p>
+                    <p className="text-slate-500 text-sm">
+                      Quick response for campaigns
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* LOCATION */}
+              <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition">
+                <div className="flex gap-4 items-start">
+                  <MapPin className="text-yellow-400" size={22} />
+                  <div>
+                    <h3 className="text-[#0b1a3a] font-semibold">Location</h3>
+                    <p className="text-[#0b1a3a] font-medium">Bengaluru, India</p>
+                    <p className="text-slate-500 text-sm">
+                      Operating across India
+                    </p>
+                  </div>
+                </div>
+              </div>
+
             </div>
 
-            {/* RIGHT FORM */}
-            <div className="bg-white/10 backdrop-blur-xl border border-white/20 p-8 rounded-2xl">
+            {/* 🧾 FORM */}
+            <div className="bg-white rounded-3xl p-8 shadow-xl border border-blue-100">
 
-              <h2 className="text-2xl font-pop text-white text-center">
+              <h2 className="text-2xl font-semibold text-center text-[#0b1a3a]">
                 Start Campaign Discussion
               </h2>
 
@@ -141,7 +117,7 @@ Message: ${form.message}`
                   placeholder="Your Name"
                   value={form.name}
                   onChange={handleChange}
-                  className="w-full p-3 rounded-xl bg-white/20 text-white placeholder-slate-400 border border-white/30 focus:ring-2 focus:ring-indigo-400"
+                  className="input-new"
                   required
                 />
 
@@ -151,7 +127,7 @@ Message: ${form.message}`
                   placeholder="Email"
                   value={form.email}
                   onChange={handleChange}
-                  className="w-full p-3 rounded-xl bg-white/20 text-white placeholder-slate-400 border border-white/30 focus:ring-2 focus:ring-indigo-400"
+                  className="input-new"
                   required
                 />
 
@@ -160,7 +136,7 @@ Message: ${form.message}`
                   placeholder="Brand / Company"
                   value={form.brand}
                   onChange={handleChange}
-                  className="w-full p-3 rounded-xl bg-white/20 text-white placeholder-slate-400 border border-white/30 focus:ring-2 focus:ring-indigo-400"
+                  className="input-new"
                   required
                 />
 
@@ -170,19 +146,23 @@ Message: ${form.message}`
                   placeholder="Campaign details..."
                   value={form.message}
                   onChange={handleChange}
-                  className="w-full p-3 rounded-xl bg-white/20 text-white placeholder-slate-400 border border-white/30 focus:ring-2 focus:ring-indigo-400"
+                  className="input-new"
                   required
                 />
 
-                <button
-                  type="submit"
-                  className="w-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-3 rounded-xl font-inter hover:opacity-90 transition"
-                >
-                  Continue on WhatsApp →
-                </button>
+                {/* 🔴 CTA */}
+              <button
+  type="submit"
+  className="w-full bg-red-500 hover:bg-red-600 
+  text-white py-3 rounded-xl font-semibold 
+  transition hover:scale-105 shadow-md hover:shadow-lg"
+>
+  Continue on WhatsApp →
+</button>
 
               </form>
             </div>
+
           </div>
         </section>
       </main>

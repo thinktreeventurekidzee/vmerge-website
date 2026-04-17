@@ -119,115 +119,117 @@ export default function BrandsPage() {
         </section>
 
         {/* ================= CATEGORY ================= */}
-        <section className="py-28 bg-slate-50 border-t">
-          <div className="max-w-6xl mx-auto px-6">
-            <div className="text-center max-w-2xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-semibold text-slate-900">
-                Explore creators across categories
-              </h2>
-            </div>
+     {[
+  {
+    title: "High Growth Niches",
+    items: ["AI & Tech","Finance & Investing","Health & Wellness","Sustainability"],
+  },
+  {
+    title: "Lifestyle Niches",
+    items: ["Fashion","Beauty & Skincare","Travel","Food & Nutrition"],
+  },
+  {
+    title: "Emerging Niches",
+    items: ["Gaming","Education","Parenting","Personal Branding"],
+  },
+].map((cat, i) => (
 
-            <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-              {[
-                {
-                  title: "Finance & Crypto",
-                  items: ["Stock Influencers","Crypto Influencers","Trading Experts"],
-                },
-                {
-                  title: "Fashion & Beauty",
-                  items: ["Fashion Influencers","Makeup Artists","Models"],
-                },
-              ].map((cat) => (
-                <div key={cat.title}>
-                  <h3 className="font-semibold text-slate-900 mb-4">
-                    {cat.title}
-                  </h3>
+  <div key={cat.title} className={`rounded-2xl p-[2px] 
+    ${i % 2 === 0 ? "rainbow-card" : ""}`}>
 
-                  <div className="flex flex-wrap gap-3">
-                    {cat.items.map((item) => (
-                      <span
-                        key={item}
-                        className="text-sm px-3 py-1 rounded-full bg-white shadow-sm text-slate-600 hover:bg-sky-100 hover:text-sky-600 transition cursor-pointer"
-                      >
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+    <div className="bg-white p-6 rounded-2xl transition-all duration-300 
+    hover:shadow-xl hover:scale-[1.03]">
 
-        {/* ================= FORM ================= */}
-       <section className="py-28 bg-gradient-to-b from-white via-sky-50 to-white">
+      <h3 className="font-semibold text-slate-900 mb-4 
+      hover:text-yellow-400 transition cursor-pointer">
+        {cat.title}
+      </h3>
+
+      <div className="flex flex-wrap gap-3">
+        {cat.items.map((item) => (
+          <span
+            key={item}
+            className="text-sm px-3 py-1 rounded-full bg-slate-100 
+            text-slate-700 hover:bg-yellow-300 hover:text-black 
+            hover:scale-110 transition cursor-pointer"
+          >
+            {item}
+          </span>
+        ))}
+      </div>
+
+    </div>
+
+  </div>
+
+))}
+
+   
+{/* ================= FORM ================= */}
+<section className="py-28 bg-gradient-to-b from-white via-sky-50 to-white">
 
   <div className="max-w-5xl mx-auto px-6">
 
     {/* HEADER */}
     <div className="text-center max-w-2xl mx-auto">
-      <h2 className="text-3xl md:text-4xl font-semibold text-slate-900">
+      <h2 className="text-3xl md:text-4xl font-semibold text-slate-900 
+      hover:text-yellow-400 transition duration-300 hover:scale-105 cursor-pointer">
         Partner with us for your next campaign
       </h2>
+
       <p className="mt-3 text-slate-600">
         Share your goals — we’ll craft a high-performing influencer strategy.
       </p>
     </div>
 
-    {/* FORM CARD */}
-    <div className="mt-14 bg-gradient-to-br from-white/70 via-white/50 to-white/30 backdrop-blur-2xl border border-white/30 rounded-3xl p-8 shadow-xl">
+    {/* 🌈 RAINBOW CARD */}
+    <div className="mt-14 rainbow-card rounded-3xl p-[2px]">
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <div className="bg-white rounded-3xl p-8">
 
-        {/* ROW 1 */}
-        <div className="grid md:grid-cols-2 gap-4">
-          <input name="name" placeholder="Full Name" onChange={handleChange} className="input" />
-          <input name="email" placeholder="Work Email" onChange={handleChange} className="input" />
-        </div>
+        <form onSubmit={handleSubmit} className="space-y-6">
 
-        {/* ROW 2 */}
-        <div className="grid md:grid-cols-2 gap-4">
-          <input name="brand" placeholder="Brand Name" onChange={handleChange} className="input" />
-          <input name="website" placeholder="Website / App Link" onChange={handleChange} className="input" />
-        </div>
+          <div className="grid md:grid-cols-2 gap-4">
+            <input name="name" placeholder="Full Name" onChange={handleChange} className="input-new" />
+            <input name="email" placeholder="Work Email" onChange={handleChange} className="input-new" />
+          </div>
 
-        {/* ROW 3 */}
-        <div className="grid md:grid-cols-2 gap-4">
-          <select name="budget" onChange={handleChange} className="input">
-            <option>Campaign Budget</option>
-            <option>₹50K - ₹1L</option>
-            <option>₹1L - ₹5L</option>
-            <option>₹5L - ₹10L</option>
-            <option>₹10L+</option>
-          </select>
+          <div className="grid md:grid-cols-2 gap-4">
+            <input name="brand" placeholder="Brand Name" onChange={handleChange} className="input-new" />
+            <input name="website" placeholder="Website / App Link" onChange={handleChange} className="input-new" />
+          </div>
 
-          <select name="goal" onChange={handleChange} className="input">
-            <option>Campaign Goal</option>
-            <option>Brand Awareness</option>
-            <option>Sales</option>
-            <option>App Installs</option>
-            <option>Content Creation</option>
-          </select>
-        </div>
+          <div className="grid md:grid-cols-2 gap-4">
+            <select name="budget" onChange={handleChange} className="input-new">
+              <option>Campaign Budget</option>
+              <option>₹50K - ₹1L</option>
+              <option>₹1L - ₹5L</option>
+              <option>₹5L - ₹10L</option>
+              <option>₹10L+</option>
+            </select>
 
-        {/* MESSAGE */}
-        <textarea
-          name="message"
-          placeholder="Tell us about your campaign..."
-          onChange={handleChange}
-          className="input h-28"
-        />
+            <select name="goal" onChange={handleChange} className="input-new">
+              <option>Campaign Goal</option>
+              <option>Brand Awareness</option>
+              <option>Sales</option>
+              <option>App Installs</option>
+              <option>Content Creation</option>
+            </select>
+          </div>
 
-        {/* CTA */}
-        <button className="w-full bg-red-500 hover:bg-red-600 text-white py-3 rounded-xl font-semibold shadow-md transition">
-          Get Campaign Strategy →
-        </button>
+          <textarea
+            name="message"
+            placeholder="Tell us about your campaign..."
+            onChange={handleChange}
+            className="input-new h-28"
+          />
 
-        <p className="text-xs text-center text-slate-500">
-          ⚡ Quick response • No spam
-        </p>
+          <button className="w-full bg-red-500 hover:bg-red-600 text-white py-3 rounded-xl font-semibold shadow-md transition hover:scale-105">
+            Get Campaign Strategy →
+          </button>
 
-      </form>
+        </form>
+      </div>
     </div>
   </div>
 </section>

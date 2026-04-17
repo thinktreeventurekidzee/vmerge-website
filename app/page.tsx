@@ -3,12 +3,12 @@
 import { useEffect, useState } from "react";
 import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
-import TrustSection from "@/components/TrustSection";
+
 import WorkGallery from "@/components/WorkGallery";
 import AboutSection from "@/components/AboutSection";
 import Footer from "@/components/Footer";
 import ProcessSection from "@/components/ProcessSection";
-import LeadForm from "@/components/LeadForm";
+
 
 const ContactSection = () => (
   <section
@@ -110,13 +110,11 @@ export default function HomePage() {
     <div className="min-h-screen bg-white antialiased">
 
       <HeroSection />
-      <TrustSection />
       <ServicesSection />
-      <ProcessSection />
+
       <WorkGallery />
+      <ProcessSection />
       <AboutSection />
-      <LeadForm />
-      <ContactSection />
       <Footer />
 
     </div>
