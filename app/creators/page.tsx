@@ -1,14 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
 import Navbar from "@/components/Navbar";
-import Link from "next/link";
 import { motion } from "framer-motion";
 
 export default function CreatorsPage() {
-  const params = useSearchParams();
-  const type = params.get("type");
 
   const [form, setForm] = useState({
     name: "",
@@ -43,24 +39,6 @@ export default function CreatorsPage() {
     window.open("https://wa.me/918660783740");
   };
 
-  const data: any = {
-    growing: {
-      title: "Growing Creators 🚀",
-      desc: "Start monetizing your audience and land your first brand deals.",
-      benefits: ["Brand deals", "Growth guidance", "Fast scaling"],
-    },
-    established: {
-      title: "Established Creators 💼",
-      desc: "Scale your influence with premium partnerships.",
-      benefits: ["High payouts", "Long-term deals", "Priority access"],
-    },
-    niche: {
-      title: "Niche Experts 🎯",
-      desc: "Monetize your expertise with targeted campaigns.",
-      benefits: ["Authority deals", "Premium positioning", "Consistent work"],
-    },
-  };
-
   const niches = ["Fashion","Finance","Crypto","Tech","Fitness","Lifestyle"];
 
   return (
@@ -69,165 +47,249 @@ export default function CreatorsPage() {
 
       <main className="bg-gradient-to-br from-white via-purple-50 to-blue-50">
 
-        {/* ================= DETAIL PAGE ================= */}
-        {type && data[type] ? (
-          <section className="py-24 px-6 text-center">
+        {/* HERO */}
+        <section className="py-28 text-center px-6">
+          <motion.h1
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-5xl md:text-6xl font-bold"
+          >
+            Turn your content into{" "}
+            <span className="text-purple-600">income</span>
+          </motion.h1>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-4xl md:text-6xl font-bold"
+          <p className="mt-4 text-slate-600 max-w-xl mx-auto">
+            Join creators earning through brand collaborations.
+          </p>
+        </section>
+
+        {/* WHY JOIN */}
+        <section className="py-24 text-center">
+          <motion.h2 className="text-4xl font-bold text-purple-600">
+            Why creators choose us
+          </motion.h2>
+
+          <div className="mt-16 grid md:grid-cols-3 gap-8 max-w-6xl mx-auto px-6">
+            {[
+              "Consistent brand deals",
+              "Fast payouts",
+              "Growth support",
+            ].map((item) => (
+              <div
+                key={item}
+                className="p-6 bg-white rounded-2xl shadow hover:shadow-xl hover:-translate-y-1 transition"
+              >
+                {item}
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* BRANDS */}
+        <section className="py-20 text-center bg-white">
+          <h2 className="text-3xl font-semibold">
+            Brands our creators worked with
+          </h2>
+
+          <div className="mt-10 flex flex-wrap justify-center gap-6">
+            {["Zomato","Cred","Nykaa","Boat","Meesho","Groww"].map((brand) => (
+              <div key={brand} className="px-6 py-3 bg-slate-100 rounded-xl font-medium">
+                {brand}
+              </div>
+            ))}
+          </div>
+        </section>
+{/* ================= CREATOR SHOWCASE ================= */}
+<section className="py-28 bg-gradient-to-b from-white via-blue-50 to-white relative overflow-hidden">
+
+  {/* BG GLOW */}
+  <div className="absolute inset-0 -z-10">
+    <div className="absolute top-10 left-10 w-72 h-72 bg-purple-300/30 blur-3xl rounded-full" />
+    <div className="absolute bottom-10 right-10 w-80 h-80 bg-blue-300/30 blur-3xl rounded-full" />
+  </div>
+
+  <div className="max-w-7xl mx-auto px-6">
+
+    <h2 className="text-4xl md:text-5xl font-bold text-center text-blue-600">
+      Creators across categories
+    </h2>
+
+    <p className="text-center text-slate-600 mt-4 max-w-xl mx-auto">
+      Join creators from different niches working with top brands
+    </p>
+
+    <div className="mt-20 space-y-20">
+
+      {[
+        {
+          title: "Finance & Investing",
+          creators: [
+            { name: "Rachana Ranade", img: "/Rachana Ranade.jpeg" },
+            { name: "Neha Nagar", img: "/Neha Nagar.jpeg" },
+            { name: "Ankur Warikoo", img: "/Ankur Warikoo.jpeg" },
+            { name: "Prakash Gaba", img: "/Prakash Gaba.jpeg" },
+            { name: "Wealth in Whiteboard", img: "/Wealth in Whiteboard.jpeg" },
+          ],
+        },
+        {
+          title: "Crypto",
+          creators: [
+            { name: "Yashika Crypto", img: "/Yashika Crypto.jpeg" },
+            { name: "Crypto Aman", img: "/Crypto Aman.jpeg" },
+            { name: "Jeet Crypto", img: "/Jeet Crypto.jpeg" },
+            { name: "Markets With Mack", img: "/Markets With Mack.jpeg" },
+          ],
+        },
+        {
+          title: "Tech & Education",
+          creators: [
+            { name: "Dhruv Rathee", img: "/Dhruv Rathee.jpeg" },
+            { name: "Sharan Hegde", img: "/Sharan Hegde.jpeg" },
+            { name: "Budhil Vyas", img: "/Budhil Vyas.jpeg" },
+          ],
+        },
+        {
+          title: "Entertainment",
+          creators: [
+            { name: "Ashish Chanchlani", img: "/Ashish Chanchlani.jpeg" },
+            { name: "Round2hell", img: "/Round2hell.jpeg" },
+            { name: "Lakshay Chaudhary", img: "/Lakshay Chaudhary.jpeg" },
+          ],
+        },
+        {
+          title: "Lifestyle & Others",
+          creators: [
+            { name: "Garima Chaurasia", img: "/Garima chaurasia.jpeg" },
+            { name: "iam.savithri", img: "/iam.savithri.jpeg" },
+            { name: "smit_thakkarrr", img: "/smit_thakkarrr.jpeg" },
+            { name: "Hold with Priyanka", img: "/Hold with Priyanka.jpeg" },
+          ],
+        },
+      ].map((category) => (
+
+        <div key={category.title}>
+
+          {/* CATEGORY TITLE */}
+          <h3 className="text-2xl font-semibold text-slate-900 mb-8 border-l-4 border-blue-500 pl-4">
+            {category.title}
+          </h3>
+
+          {/* GRID */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+
+            {category.creators.map((creator) => (
+
+              <div
+                key={creator.name}
+                className="group relative rounded-2xl overflow-hidden cursor-pointer"
+              >
+
+                {/* GRADIENT BORDER */}
+                <div className="p-[1px] rounded-2xl bg-gradient-to-br from-blue-400 to-purple-500">
+
+                  <div className="rounded-2xl overflow-hidden bg-white">
+
+                    {/* IMAGE */}
+                    <div className="relative overflow-hidden">
+                      <img
+                        src={creator.img}
+                        alt={creator.name}
+                        className="w-full h-44 object-cover group-hover:scale-110 transition duration-500"
+                      />
+
+                      {/* OVERLAY */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition" />
+
+                      {/* BADGE */}
+                      <div className="absolute top-2 left-2 text-xs px-2 py-1 rounded-full bg-black/70 text-white">
+                        Creator
+                      </div>
+
+                      {/* NAME ON HOVER */}
+                      <div className="absolute bottom-3 left-3 text-white text-sm opacity-0 group-hover:opacity-100 transition">
+                        {creator.name}
+                      </div>
+                    </div>
+
+                    {/* NAME */}
+                    <div className="p-3 text-center">
+                      <h4 className="text-sm font-semibold text-slate-900">
+                        {creator.name}
+                      </h4>
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            ))}
+
+          </div>
+
+        </div>
+
+      ))}
+
+    </div>
+
+  </div>
+</section>
+       
+
+        {/* PROCESS */}
+        <section className="py-24 text-center">
+          <h2 className="text-3xl font-semibold">
+            How it works
+          </h2>
+
+          <div className="mt-10 grid md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+            {["Apply","Get Approved","Get Deals","Earn"].map((step) => (
+              <div key={step} className="p-6 bg-white rounded-xl shadow hover:shadow-xl">
+                {step}
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* FORM (KEEP PREMIUM) */}
+        <section className="py-28">
+
+          <div className="max-w-3xl mx-auto px-6 text-center">
+
+            <h2 className="text-3xl font-semibold">
+              Apply as a creator
+            </h2>
+
+            <form
+              onSubmit={handleSubmit}
+              className="mt-10 bg-white/60 backdrop-blur-xl p-8 rounded-3xl shadow-xl space-y-5"
             >
-              {data[type].title}
-            </motion.h1>
 
-            <p className="mt-4 text-slate-600 max-w-xl mx-auto">
-              {data[type].desc}
-            </p>
+              <input name="name" placeholder="Full Name" onChange={handleChange} className="input" />
+              <input name="email" placeholder="Email" onChange={handleChange} className="input" />
 
-            <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-              {data[type].benefits.map((b: string, i: number) => (
-                <motion.div
-                  key={b}
-                  initial={{ opacity: 0, y: 40 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                  className="p-6 bg-white/80 backdrop-blur-xl rounded-2xl shadow hover:shadow-xl transition"
-                >
-                  {b}
-                </motion.div>
-              ))}
-            </div>
+              <input
+                name="social"
+                placeholder={handles[placeholderIndex]}
+                onChange={handleChange}
+                className="input"
+              />
 
-            <div className="mt-16">
-              <Link href="/creators" className="text-purple-600 font-medium">
-                ← Back
-              </Link>
-            </div>
+              <select name="niche" onChange={handleChange} className="input">
+                {niches.map((n) => <option key={n}>{n}</option>)}
+              </select>
 
-          </section>
-        ) : (
-          <>
-            {/* ================= HERO ================= */}
-            <section className="py-24 text-center px-6">
-              <h1 className="text-4xl md:text-6xl font-bold">
-                Turn your content into <span className="text-purple-600">income</span>
-              </h1>
-              <p className="mt-4 text-slate-600 max-w-xl mx-auto">
-                Join creators earning through brand collaborations.
-              </p>
-            </section>
+              <button className="w-full bg-purple-600 text-white py-3 rounded-xl">
+                Apply →
+              </button>
 
-            {/* ================= WHO ================= */}
-            <section className="py-20 text-center">
-              <h2 className="text-3xl font-semibold">
-                Built for creators who want to grow & earn
-              </h2>
+            </form>
 
-              <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto px-4">
-                {[
-                  { title: "Growing creators", sub: "5K–100K", type: "growing" },
-                  { title: "Established creators", sub: "100K+", type: "established" },
-                  { title: "Niche experts", sub: "Specialized", type: "niche" },
-                ].map((item) => (
-                  <Link key={item.type} href={`/creators?type=${item.type}`}>
-                    <motion.div
-                      whileHover={{ y: -5 }}
-                      className="p-6 rounded-2xl bg-white shadow hover:shadow-xl transition cursor-pointer"
-                    >
-                      <h3 className="font-semibold text-lg">{item.title}</h3>
-                      <p className="text-sm text-slate-500 mt-1">{item.sub}</p>
-                    </motion.div>
-                  </Link>
-                ))}
-              </div>
-            </section>
+          </div>
 
-            {/* ================= EARNING ================= */}
-            <section className="py-20 text-center">
-              <h2 className="text-3xl font-semibold">
-                Real earning opportunities
-              </h2>
-
-              <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto px-4">
-                {[
-                  "₹50K – ₹2L / month",
-                  "Weekly payouts",
-                  "Long-term deals",
-                ].map((item) => (
-                  <div
-                    key={item}
-                    className="p-6 rounded-2xl bg-white shadow hover:shadow-lg transition"
-                  >
-                    {item}
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            {/* ================= PROCESS (FIXED) ================= */}
-            <section className="py-20 text-center">
-              <h2 className="text-3xl font-semibold">
-                How it works
-              </h2>
-
-              <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto px-4">
-                {["Apply","Get Approved","Get Deals","Earn"].map((step) => (
-                  <div
-                    key={step}   // ✅ FIXED HERE
-                    className="p-6 bg-white rounded-2xl shadow hover:shadow-xl hover:-translate-y-1 transition"
-                  >
-                    {step}
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            {/* ================= FORM ================= */}
-            <section className="py-24">
-              <div className="max-w-3xl mx-auto px-6 text-center">
-
-                <h2 className="text-3xl font-semibold">
-                  Apply as a creator
-                </h2>
-
-                <form
-                  onSubmit={handleSubmit}
-                  className="mt-10 bg-white/80 backdrop-blur-xl p-8 rounded-3xl shadow-xl space-y-5"
-                >
-                  <input name="name" placeholder="Full Name" onChange={handleChange} className="input" />
-                  <input name="email" placeholder="Email" onChange={handleChange} className="input" />
-
-                  <input
-                    name="social"
-                    placeholder={handles[placeholderIndex]}
-                    onChange={handleChange}
-                    className="input"
-                  />
-
-                  <select name="niche" onChange={handleChange} className="input">
-                    <option>Select your niche</option>
-                    {niches.map((n) => (
-                      <option key={n}>{n}</option>
-                    ))}
-                  </select>
-
-                  <select name="followers" onChange={handleChange} className="input">
-                    <option>Follower range</option>
-                    <option>5K – 20K</option>
-                    <option>20K – 100K</option>
-                    <option>100K+</option>
-                  </select>
-
-                  <button className="w-full bg-purple-600 text-white py-3 rounded-xl font-semibold hover:bg-purple-700 transition">
-                    Apply & Start Earning →
-                  </button>
-                </form>
-
-              </div>
-            </section>
-          </>
-        )}
+        </section>
 
       </main>
     </>
