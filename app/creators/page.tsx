@@ -11,7 +11,12 @@ export default function CreatorsPage() {
     email: "",
     social: "",
     niche: "",
-    followers: "",
+  });
+
+  const [errors, setErrors] = useState({
+    name: "",
+    email: "",
+    social: "",
   });
 
   const [placeholderIndex, setPlaceholderIndex] = useState(0);
@@ -34,91 +39,98 @@ export default function CreatorsPage() {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
+  // ✅ FIXED SUBMIT
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    window.open("https://wa.me/918660783740");
-  };
 
-  const niches = ["Fashion","Finance","Crypto","Tech","Fitness","Lifestyle"];
+    if (!form.name || !form.email || !form.social || !form.niche) {
+      setErrors({
+        name: !form.name ? "Required" : "",
+        email: !form.email ? "Required" : "",
+        social: !form.social ? "Required" : "",
+      });
+      return;
+    }
+
+    window.open("https://wa.me/918660783740");
+
+    setForm({
+      name: "",
+      email: "",
+      social: "",
+      niche: "",
+    });
+
+    setErrors({
+      name: "",
+      email: "",
+      social: "",
+    });
+  };
 
   return (
     <>
       <Navbar />
 
-      <main className="bg-gradient-to-br from-white via-purple-50 to-blue-50">
+      <main className="bg-[#eaf4ff]">
 
         {/* HERO */}
         <section className="py-28 text-center px-6">
+
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-6xl font-bold"
+            className="text-3xl sm:text-4xl md:text-6xl font-extrabold text-blue-900"
           >
-            Turn your content into{" "}
-            <span className="text-purple-600">income</span>
+            1 Million+ Influencers <br className="hidden sm:block" />
+            <span className="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
+              Across India
+            </span>
           </motion.h1>
 
-          <p className="mt-4 text-slate-600 max-w-xl mx-auto">
-            Join creators earning through brand collaborations.
+          <p className="mt-6 text-slate-600 max-w-2xl mx-auto text-lg">
+            Join creators who are building their audience and monetizing content.
           </p>
-        </section>
 
-        {/* WHY JOIN */}
-        <section className="py-24 text-center">
-          <motion.h2 className="text-4xl font-bold text-purple-600">
-            Why creators choose us
-          </motion.h2>
-
-          <div className="mt-16 grid md:grid-cols-3 gap-8 max-w-6xl mx-auto px-6">
-            {[
-              "Consistent brand deals",
-              "Fast payouts",
-              "Growth support",
-            ].map((item) => (
-              <div
-                key={item}
-                className="p-6 bg-white rounded-2xl shadow hover:shadow-xl hover:-translate-y-1 transition"
-              >
-                {item}
-              </div>
-            ))}
+          {/* ✅ FIXED MARQUEE */}
+          <div className="mt-10 overflow-hidden">
+            <div className="flex gap-10 w-max animate-marquee">
+              {[...[
+                "Fashion / Lifestyle","Travel","Food","Beauty","Fitness",
+                "Tech","Edutech","Parenting","Finance","Gaming"
+              ],
+              ...[
+                "Fashion / Lifestyle","Travel","Food","Beauty","Fitness",
+                "Tech","Edutech","Parenting","Finance","Gaming"
+              ]].map((item, i) => (
+                <span
+                  key={i}
+                  className="text-lg font-semibold whitespace-nowrap 
+                  bg-gradient-to-r from-red-500 via-yellow-400 via-green-400 via-blue-400 to-purple-500 
+                  bg-clip-text text-transparent"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
           </div>
+
         </section>
-
-        {/* BRANDS */}
-        <section className="py-20 text-center bg-white">
-          <h2 className="text-3xl font-semibold">
-            Brands our creators worked with
-          </h2>
-
-          <div className="mt-10 flex flex-wrap justify-center gap-6">
-            {["Zomato","Cred","Nykaa","Boat","Meesho","Groww"].map((brand) => (
-              <div key={brand} className="px-6 py-3 bg-slate-100 rounded-xl font-medium">
-                {brand}
-              </div>
-            ))}
-          </div>
-        </section>
-{/* ================= CREATOR SHOWCASE ================= */}
-<section className="py-28 bg-gradient-to-b from-white via-blue-50 to-white relative overflow-hidden">
-
-  {/* BG GLOW */}
-  <div className="absolute inset-0 -z-10">
-    <div className="absolute top-10 left-10 w-72 h-72 bg-purple-300/30 blur-3xl rounded-full" />
-    <div className="absolute bottom-10 right-10 w-80 h-80 bg-blue-300/30 blur-3xl rounded-full" />
-  </div>
+        {/* ================= CREATOR SHOWCASE ================= */}
+<section className="py-28 bg-white">
 
   <div className="max-w-7xl mx-auto px-6">
 
-    <h2 className="text-4xl md:text-5xl font-bold text-center text-blue-600">
+    <h2 className="text-4xl font-bold text-center text-blue-900">
       Creators across categories
     </h2>
 
-    <p className="text-center text-slate-600 mt-4 max-w-xl mx-auto">
-      Join creators from different niches working with top brands
+    <p className="text-center text-slate-600 mt-4 max-w-2xl mx-auto">
+      From finance to fashion to tech — creators are growing, building,
+      and monetizing their content with us.
     </p>
 
-    <div className="mt-20 space-y-20">
+    <div className="mt-16 space-y-16">
 
       {[
         {
@@ -128,7 +140,6 @@ export default function CreatorsPage() {
             { name: "Neha Nagar", img: "/Neha Nagar.jpeg" },
             { name: "Ankur Warikoo", img: "/Ankur Warikoo.jpeg" },
             { name: "Prakash Gaba", img: "/Prakash Gaba.jpeg" },
-            { name: "Wealth in Whiteboard", img: "/Wealth in Whiteboard.jpeg" },
           ],
         },
         {
@@ -137,7 +148,6 @@ export default function CreatorsPage() {
             { name: "Yashika Crypto", img: "/Yashika Crypto.jpeg" },
             { name: "Crypto Aman", img: "/Crypto Aman.jpeg" },
             { name: "Jeet Crypto", img: "/Jeet Crypto.jpeg" },
-            { name: "Markets With Mack", img: "/Markets With Mack.jpeg" },
           ],
         },
         {
@@ -145,7 +155,6 @@ export default function CreatorsPage() {
           creators: [
             { name: "Dhruv Rathee", img: "/Dhruv Rathee.jpeg" },
             { name: "Sharan Hegde", img: "/Sharan Hegde.jpeg" },
-            { name: "Budhil Vyas", img: "/Budhil Vyas.jpeg" },
           ],
         },
         {
@@ -153,16 +162,13 @@ export default function CreatorsPage() {
           creators: [
             { name: "Ashish Chanchlani", img: "/Ashish Chanchlani.jpeg" },
             { name: "Round2hell", img: "/Round2hell.jpeg" },
-            { name: "Lakshay Chaudhary", img: "/Lakshay Chaudhary.jpeg" },
           ],
         },
         {
-          title: "Lifestyle & Others",
+          title: "Lifestyle",
           creators: [
             { name: "Garima Chaurasia", img: "/Garima chaurasia.jpeg" },
             { name: "iam.savithri", img: "/iam.savithri.jpeg" },
-            { name: "smit_thakkarrr", img: "/smit_thakkarrr.jpeg" },
-            { name: "Hold with Priyanka", img: "/Hold with Priyanka.jpeg" },
           ],
         },
       ].map((category) => (
@@ -170,56 +176,28 @@ export default function CreatorsPage() {
         <div key={category.title}>
 
           {/* CATEGORY TITLE */}
-          <h3 className="text-2xl font-semibold text-slate-900 mb-8 border-l-4 border-blue-500 pl-4">
+          <h3 className="text-2xl font-semibold text-blue-900 mb-6 border-l-4 border-yellow-400 pl-4">
             {category.title}
           </h3>
 
-          {/* GRID */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+          {/* CREATOR GRID */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
 
             {category.creators.map((creator) => (
 
               <div
                 key={creator.name}
-                className="group relative rounded-2xl overflow-hidden cursor-pointer"
+                className="group rounded-2xl overflow-hidden bg-white shadow hover:shadow-xl transition duration-300"
               >
 
-                {/* GRADIENT BORDER */}
-                <div className="p-[1px] rounded-2xl bg-gradient-to-br from-blue-400 to-purple-500">
+                <img
+                  src={creator.img}
+                  alt={creator.name}
+                  className="w-full h-44 object-cover group-hover:scale-110 transition duration-500"
+                />
 
-                  <div className="rounded-2xl overflow-hidden bg-white">
-
-                    {/* IMAGE */}
-                    <div className="relative overflow-hidden">
-                      <img
-                        src={creator.img}
-                        alt={creator.name}
-                        className="w-full h-44 object-cover group-hover:scale-110 transition duration-500"
-                      />
-
-                      {/* OVERLAY */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition" />
-
-                      {/* BADGE */}
-                      <div className="absolute top-2 left-2 text-xs px-2 py-1 rounded-full bg-black/70 text-white">
-                        Creator
-                      </div>
-
-                      {/* NAME ON HOVER */}
-                      <div className="absolute bottom-3 left-3 text-white text-sm opacity-0 group-hover:opacity-100 transition">
-                        {creator.name}
-                      </div>
-                    </div>
-
-                    {/* NAME */}
-                    <div className="p-3 text-center">
-                      <h4 className="text-sm font-semibold text-slate-900">
-                        {creator.name}
-                      </h4>
-                    </div>
-
-                  </div>
-
+                <div className="p-3 text-center font-medium">
+                  {creator.name}
                 </div>
 
               </div>
@@ -235,54 +213,66 @@ export default function CreatorsPage() {
     </div>
 
   </div>
+
 </section>
-       
 
-        {/* PROCESS */}
-        <section className="py-24 text-center">
-          <h2 className="text-3xl font-semibold">
-            How it works
-          </h2>
-
-          <div className="mt-10 grid md:grid-cols-4 gap-6 max-w-5xl mx-auto">
-            {["Apply","Get Approved","Get Deals","Earn"].map((step) => (
-              <div key={step} className="p-6 bg-white rounded-xl shadow hover:shadow-xl">
-                {step}
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* FORM (KEEP PREMIUM) */}
-        <section className="py-28">
+        {/* FORM */}
+        <section className="py-20">
 
           <div className="max-w-3xl mx-auto px-6 text-center">
 
-            <h2 className="text-3xl font-semibold">
+            <h2 className="text-3xl md:text-4xl font-bold text-blue-900">
               Apply as a creator
             </h2>
 
+            <p className="text-slate-600 mt-3">
+              Start your journey with brands
+            </p>
+
+            {/* ✅ FIXED FORM */}
             <form
               onSubmit={handleSubmit}
-              className="mt-10 bg-white/60 backdrop-blur-xl p-8 rounded-3xl shadow-xl space-y-5"
+              className="mt-8 bg-white p-8 rounded-3xl shadow-xl space-y-5"
             >
 
-              <input name="name" placeholder="Full Name" onChange={handleChange} className="input" />
-              <input name="email" placeholder="Email" onChange={handleChange} className="input" />
+              <input
+                name="name"
+                value={form.name}
+                placeholder="Full Name"
+                onChange={handleChange}
+                className="w-full p-3 rounded-xl border border-yellow-300"
+              />
+
+              <input
+                name="email"
+                value={form.email}
+                placeholder="Email"
+                onChange={handleChange}
+                className="w-full p-3 rounded-xl border border-yellow-300"
+              />
 
               <input
                 name="social"
+                value={form.social}
                 placeholder={handles[placeholderIndex]}
                 onChange={handleChange}
-                className="input"
+                className="w-full p-3 rounded-xl border border-yellow-300"
               />
 
-              <select name="niche" onChange={handleChange} className="input">
-                {niches.map((n) => <option key={n}>{n}</option>)}
+              <select
+                name="niche"
+                value={form.niche}
+                onChange={handleChange}
+                className="w-full p-3 rounded-xl border border-yellow-300"
+              >
+                <option value="">Select Niche</option>
+                {["Fashion","Finance","Crypto","Tech","Fitness","Lifestyle"].map((n) => (
+                  <option key={n}>{n}</option>
+                ))}
               </select>
 
-              <button className="w-full bg-purple-600 text-white py-3 rounded-xl">
-                Apply →
+              <button className="w-full bg-red-500 text-white py-3 rounded-xl font-semibold">
+                Apply Now →
               </button>
 
             </form>
