@@ -43,20 +43,20 @@ const metrics = [
 
 export default function AboutSection() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 py-20 md:py-28">
+    <section className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 py-16 sm:py-20 md:py-28">
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* HEADER */}
         <motion.div {...fadeUp} className="max-w-3xl">
-          <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 px-4 py-2 text-sm bg-white">
+          <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 px-3 sm:px-4 py-2 text-xs sm:text-sm bg-white">
             <BadgeCheck size={16} className="text-blue-700" />
             <span className="text-blue-700 font-medium">
               Trusted by growth-focused brands
             </span>
           </div>
 
-          <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 leading-tight">
+          <h2 className="mt-5 sm:mt-6 text-2xl sm:text-3xl md:text-5xl font-bold text-slate-900 leading-tight">
             Built for{" "}
             <span className="text-blue-700">
               structured, high-performance
@@ -64,47 +64,47 @@ export default function AboutSection() {
             campaign execution
           </h2>
 
-          <p className="mt-5 text-base sm:text-lg text-slate-600">
+          <p className="mt-4 sm:mt-5 text-sm sm:text-base md:text-lg text-slate-600">
             We design and execute creator-driven campaigns with a system-first approach.
           </p>
         </motion.div>
 
         {/* GRID */}
-        <div className="mt-16 grid lg:grid-cols-2 gap-12">
+        <div className="mt-12 sm:mt-16 grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
 
           {/* LEFT */}
-          <motion.div {...fadeUp} className="space-y-8">
+          <motion.div {...fadeUp} className="space-y-6 sm:space-y-8">
 
             <div>
-              <h3 className="text-xl sm:text-2xl font-semibold text-slate-900">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-slate-900">
                 Built for brands that value execution clarity
               </h3>
-              <p className="mt-3 text-slate-600 text-sm sm:text-base">
+              <p className="mt-2 sm:mt-3 text-slate-600 text-sm sm:text-base">
                 We combine creator discovery, campaign planning, and execution systems.
               </p>
             </div>
 
             {/* METRICS */}
-            <div className="grid grid-cols-3 gap-3 sm:gap-4">
+            <div className="grid grid-cols-3 gap-2 sm:gap-4">
               {metrics.map((item) => (
                 <div
                   key={item.label}
-                  className="bg-white p-4 rounded-xl text-center shadow-sm border border-slate-100"
+                  className="bg-white p-3 sm:p-4 rounded-xl text-center shadow-sm border border-slate-100"
                 >
-                  <p className="text-xl sm:text-2xl font-bold text-blue-700">
+                  <p className="text-lg sm:text-2xl font-bold text-blue-700">
                     {item.value}
                   </p>
-                  <p className="text-xs sm:text-sm text-slate-600">
+                  <p className="text-[10px] sm:text-sm text-slate-600">
                     {item.label}
                   </p>
                 </div>
               ))}
             </div>
 
-            {/* 🔴 CTA FIX */}
+            {/* CTA */}
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 bg-red-500 text-white px-6 py-3 rounded-xl hover:bg-red-600 transition font-semibold shadow-md hover:shadow-lg"
+              className="inline-flex items-center justify-center w-full sm:w-auto gap-2 bg-red-500 text-white px-5 sm:px-6 py-3 rounded-xl hover:bg-red-600 transition font-semibold shadow-md hover:shadow-lg"
             >
               Start a conversation
               <ArrowUpRight size={16} />
@@ -113,18 +113,22 @@ export default function AboutSection() {
           </motion.div>
 
           {/* RIGHT */}
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             {features.map(({ icon: Icon, title, desc }) => (
               <motion.div
                 key={title}
                 {...fadeUp}
-                className="p-5 bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition"
+                className="p-4 sm:p-5 bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition"
               >
-                <div className="flex gap-4">
-                  <Icon className="text-blue-700" />
+                <div className="flex gap-3 sm:gap-4 items-start">
+                  <Icon size={20} className="text-blue-700 mt-1" />
                   <div>
-                    <h4 className="font-semibold text-slate-900">{title}</h4>
-                    <p className="text-sm text-slate-600">{desc}</p>
+                    <h4 className="font-semibold text-slate-900 text-sm sm:text-base">
+                      {title}
+                    </h4>
+                    <p className="text-xs sm:text-sm text-slate-600 mt-1">
+                      {desc}
+                    </p>
                   </div>
                 </div>
               </motion.div>
@@ -136,15 +140,15 @@ export default function AboutSection() {
         {/* CTA BLOCK */}
         <motion.div
           {...fadeUp}
-          className="mt-20 text-center bg-gradient-to-r from-blue-900 to-slate-900 text-white p-10 rounded-2xl shadow-lg"
+          className="mt-14 sm:mt-20 text-center bg-gradient-to-r from-blue-900 to-slate-900 text-white p-6 sm:p-10 rounded-2xl shadow-lg"
         >
-          <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold leading-snug">
+          <h3 className="text-lg sm:text-xl md:text-3xl font-semibold leading-snug">
             Ready to build something impactful?
           </h3>
 
           <Link
             href="/contact"
-            className="inline-block mt-6 bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-xl font-semibold transition shadow-md"
+            className="inline-block mt-5 sm:mt-6 bg-red-500 hover:bg-red-600 text-white px-5 sm:px-6 py-3 rounded-xl font-semibold transition shadow-md"
           >
             Contact Now
           </Link>

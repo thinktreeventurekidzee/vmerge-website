@@ -23,6 +23,7 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 const STORAGE_KEY = "theme-preference";
 
+/* 🔥 Get system theme safely */
 function getSystemTheme(): ResolvedTheme {
   if (typeof window === "undefined") return "light";
   return window.matchMedia("(prefers-color-scheme: dark)").matches
@@ -35,62 +36,76 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const [resolvedTheme, setResolvedTheme] = useState<ResolvedTheme>("light");
   const [mounted, setMounted] = useState(false);
 
+  /* 🔥 INITIAL LOAD (SSR SAFE) */
   useEffect(() => {
     setMounted(true);
 
-    const savedTheme = localStorage.getItem(STORAGE_KEY) as Theme | null;
+    if (typeof window === "undefined") return;
+
+    const saved = localStorage.getItem(STORAGE_KEY) as Theme | null;
+
     const initialTheme: Theme =
-      savedTheme === "light" || savedTheme === "dark" || savedTheme === "system"
-        ? savedTheme
+      saved === "light" || saved === "dark" || saved === "system"
+        ? saved
         : "system";
 
     setThemeState(initialTheme);
-    setResolvedTheme(
-      initialTheme === "system" ? getSystemTheme() : initialTheme
-    );
+
+    const final =
+      initialTheme === "system" ? getSystemTheme() : initialTheme;
+
+    setResolvedTheme(final);
   }, []);
 
+  /* 🔥 SYSTEM THEME LISTENER */
   useEffect(() => {
-    if (!mounted) return;
+    if (!mounted || typeof window === "undefined") return;
 
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const media = window.matchMedia("(prefers-color-scheme: dark)");
 
-    const handleChange = () => {
+    const handler = () => {
       if (theme === "system") {
-        setResolvedTheme(mediaQuery.matches ? "dark" : "light");
+        setResolvedTheme(media.matches ? "dark" : "light");
       }
     };
 
-    handleChange();
+    handler();
 
-    if (mediaQuery.addEventListener) {
-      mediaQuery.addEventListener("change", handleChange);
-    } else {
-      mediaQuery.addListener(handleChange);
-    }
+    media.addEventListener?.("change", handler);
+    media.addListener?.(handler); // fallback
 
     return () => {
-      if (mediaQuery.removeEventListener) {
-        mediaQuery.removeEventListener("change", handleChange);
-      } else {
-        mediaQuery.removeListener(handleChange);
-      }
+      media.removeEventListener?.("change", handler);
+      media.removeListener?.(handler);
     };
   }, [theme, mounted]);
 
+  /* 🔥 APPLY THEME */
   useEffect(() => {
-    if (!mounted) return;
+    if (!mounted || typeof window === "undefined") return;
 
     const root = document.documentElement;
-    const finalTheme = theme === "system" ? getSystemTheme() : theme;
+
+    const finalTheme =
+      theme === "system" ? getSystemTheme() : theme;
 
     setResolvedTheme(finalTheme);
 
-    root.setAttribute("data-theme", finalTheme);
+    // Apply classes
     root.classList.remove("light", "dark");
     root.classList.add(finalTheme);
 
+    root.setAttribute("data-theme", finalTheme);
+
+    // Save preference
     localStorage.setItem(STORAGE_KEY, theme);
+
+    // 🔥 Smooth transition (no jank)
+    root.style.transition = "background-color 0.25s ease, color 0.25s ease";
+
+    return () => {
+      root.style.transition = "";
+    };
   }, [theme, mounted]);
 
   const setTheme = (newTheme: Theme) => {
@@ -114,11 +129,12 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   );
 }
 
+/* 🔥 HOOK */
 export function useTheme() {
   const context = useContext(ThemeContext);
 
   if (!context) {
-    throw new Error("useTheme must be used within a ThemeProvider");
+    throw new Error("useTheme must be used within ThemeProvider");
   }
 
   return context;

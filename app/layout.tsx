@@ -3,15 +3,15 @@ import "./globals.css";
 import { ThemeProvider } from "./context/ThemeContext";
 import { Inter, Poppins } from "next/font/google";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
-// 🔥 BODY FONT (Clean & readable)
+// 🔤 FONTS
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
 });
 
-// 🔥 HEADING FONT (Premium feel)
 const poppins = Poppins({
   subsets: ["latin"],
   variable: "--font-poppins",
@@ -19,6 +19,7 @@ const poppins = Poppins({
   display: "swap",
 });
 
+// 📄 SEO
 export const metadata: Metadata = {
   title: {
     default: "Vmerg - Influencer Marketing Platform",
@@ -39,20 +40,25 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${inter.variable} ${poppins.variable} scroll-smooth`}
     >
-      <body className="min-h-[100dvh] bg-slate-50 text-slate-900 antialiased font-sans">
+      <body className="flex flex-col min-h-screen bg-slate-50 text-slate-900 antialiased font-sans">
+
         <ThemeProvider>
-          
-          {/* 🔥 NAVBAR */}
+
+          {/* NAVBAR */}
           <Navbar />
 
-          {/* 🔥 MAIN CONTENT */}
-          <main className="pt-[72px] md:pt-[88px]">
-            <div className="max-w-7xl mx-auto px-6">
+          {/* MAIN */}
+          <main className="flex-1 pt-[72px] md:pt-[88px]">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6">
               {children}
             </div>
           </main>
 
+          {/* FOOTER */}
+          <Footer />
+
         </ThemeProvider>
+
       </body>
     </html>
   );

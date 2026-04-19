@@ -6,7 +6,7 @@ import ServicesSection from "@/components/ServicesSection";
 
 import WorkGallery from "@/components/WorkGallery";
 import AboutSection from "@/components/AboutSection";
-import Footer from "@/components/Footer";
+
 import ProcessSection from "@/components/ProcessSection";
 
 
@@ -115,7 +115,7 @@ export default function HomePage() {
       <WorkGallery />
       <ProcessSection />
       <AboutSection />
-      <Footer />
+      
 
     </div>
   );
