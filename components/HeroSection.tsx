@@ -10,9 +10,11 @@ const rotatingWords = [
 ];
 
 const heroImages = [
-  "/creator-1.jpeg",
-  "/creator-3.jpeg",
-  "/creator-5.jpeg",
+  "/Rachana Ranade.jpeg",
+  "/Neha Nagar.jpeg",
+  "/Ankur Warikoo.jpeg",
+  "/Prakash Gaba.jpeg",
+  "/Financebyankita.jpeg",
 ];
 
 export default function HeroSection() {
@@ -75,36 +77,37 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* RIGHT IMAGES */}
-        <div className="relative h-[240px] sm:h-[300px] lg:h-[380px] w-full flex justify-center lg:justify-end">
+     
+       {/* RIGHT IMAGES */}
+<div className="relative h-[260px] sm:h-[320px] lg:h-[400px] w-full flex justify-center lg:justify-end">
 
-          {heroImages.map((img, i) => {
-            const position =
-              (i - currentIndex + heroImages.length) %
-              heroImages.length;
+  {heroImages.map((img, i) => {
+    const position =
+      (i - currentIndex + heroImages.length) %
+      heroImages.length;
 
-            return (
-              <img
-                key={i}
-                src={img}
-                alt="creator"
-                className={`absolute w-[220px] sm:w-[280px] lg:w-[340px] 
-                h-[150px] sm:h-[190px] lg:h-[220px] 
-                object-cover rounded-2xl shadow-2xl transition-all duration-700
+    return (
+      <img
+        key={i}
+        src={img}
+        alt="creator"
+        className={`absolute w-[220px] sm:w-[280px] lg:w-[340px] 
+        h-[180px] sm:h-[220px] lg:h-[260px] 
+        object-contain bg-white p-2 rounded-2xl shadow-2xl transition-all duration-700
 
-                ${
-                  position === 0
-                    ? "z-30 opacity-100 scale-100 translate-x-0 rotate-0"
-                    : position === 1
-                    ? "z-20 opacity-60 scale-95 translate-x-6 sm:translate-x-10 rotate-6 blur-[1px]"
-                    : "z-10 opacity-40 scale-90 translate-x-12 sm:translate-x-20 rotate-12 blur-[2px]"
-                }
-                `}
-              />
-            );
-          })}
+        ${
+          position === 0
+            ? "z-30 opacity-100 scale-100 translate-x-0 rotate-0"
+            : position === 1
+            ? "z-20 opacity-60 scale-95 translate-x-6 sm:translate-x-10 rotate-6 blur-[1px]"
+            : "z-10 opacity-40 scale-90 translate-x-12 sm:translate-x-20 rotate-12 blur-[2px]"
+        }
+        `}
+      />
+    );
+  })}
 
-        </div>
+</div>
 
       </div>
     </section>
