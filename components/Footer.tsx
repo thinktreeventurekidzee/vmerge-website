@@ -16,7 +16,7 @@ export default function Footer() {
     <footer className="relative mt-16 sm:mt-24 overflow-hidden">
 
       {/* BG */}
-      <div className="absolute inset-0 animate-footer-gradient"></div>
+      <div className="absolute inset-0 animate-gradient-sync"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-14 sm:py-20 text-[#0b1a3a]">
 
@@ -57,7 +57,7 @@ export default function Footer() {
                 <li key={item}>
                   <Link
                     href={`/${item.toLowerCase()}`}
-                    className="hover:text-yellow-400 transition"
+                    className="hover:text-black transition"
                   >
                     {item}
                   </Link>
@@ -78,12 +78,12 @@ export default function Footer() {
             <div className="space-y-2 sm:space-y-3 text-xs sm:text-sm text-slate-700">
 
               <div className="flex items-center justify-center sm:justify-start gap-2 sm:gap-3">
-                <Phone size={14} className="text-yellow-400" />
+                <Phone size={14} className="text-blue-800" />
                 <span>+91 86607 83740</span>
               </div>
 
               <div className="flex items-center justify-center sm:justify-start gap-2 sm:gap-3">
-                <Mail size={14} className="text-yellow-400" />
+                <Mail size={14} className="text-blue-800" />
                 <span className="break-all">vmergmedia@gmail.com</span>
               </div>
 
@@ -115,7 +115,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2.5 sm:p-3 rounded-xl bg-white shadow-md 
-                  hover:bg-yellow-400 hover:text-black 
+                  hover:bg-blue-600 hover:text-black 
                   transition hover:scale-110"
                 >
                   {item.icon}
@@ -136,11 +136,11 @@ export default function Footer() {
 
           <div className="flex gap-4 sm:gap-6">
 
-            <Link href="/privacy-policy" className="hover:text-yellow-400 transition">
+            <Link href="/privacy-policy" className="hover:text-blue-700 transition">
               Privacy Policy
             </Link>
 
-            <Link href="/terms" className="hover:text-yellow-400 transition">
+            <Link href="/terms" className="hover:text-blue-700 transition">
               Terms
             </Link>
 

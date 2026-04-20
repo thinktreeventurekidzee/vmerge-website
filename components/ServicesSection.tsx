@@ -149,7 +149,7 @@ export default function ServicesSection() {
           <Link
             href="/contact"
             className="inline-flex items-center gap-2 px-5 sm:px-7 py-3 rounded-full
-            bg-gradient-to-r from-slate-900 to-slate-700 text-white
+            bg-gradient-to-r from-blue-900 to-blue-700 text-white
             hover:scale-105 transition shadow-lg"
           >
             Start Your Project <ArrowRight size={16} />

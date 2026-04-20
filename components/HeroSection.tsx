@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 
 const rotatingWords = [
-  "measurable growth",
-  "better ROAS",
-  "faster launches",
+  "MEASURABLE GROWTH",
+  "BETTER ROAS",
+  "FASTER LAUNCHES",
 ];
 
 const heroImages = [
@@ -36,19 +36,19 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative min-h-[90vh] sm:min-h-screen flex items-center bg-gradient-to-br from-indigo-600 via-blue-500 to-cyan-400 overflow-hidden text-white">
+    <section className="relative min-h-[80vh] flex items-center bg-gradient-to-br from-indigo-600 via-blue-500 to-cyan-400 overflow-hidden text-white">
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 items-center">
 
         {/* LEFT */}
         <div className="text-center lg:text-left">
 
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold leading-tight">
-            Influencer Marketing That Drives
-            <span className="block text-yellow-300 mt-2">
-              {rotatingWords[wordIndex]}
-            </span>
-          </h1>
+<h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight md:whitespace-nowrap">
+  Influencer Marketing That Drives
+  <span className="block text-yellow-500 uppercase mt-2">
+    {rotatingWords[wordIndex]}
+  </span>
+</h1>
 
           <p className="mt-4 sm:mt-6 text-sm sm:text-lg text-white/80 max-w-xl mx-auto lg:mx-0">
             VMERG helps brands discover creators, execute campaigns, and scale
@@ -76,7 +76,7 @@ export default function HeroSection() {
         </div>
 
         {/* RIGHT IMAGES */}
-        <div className="relative h-[260px] sm:h-[320px] lg:h-[420px] w-full flex justify-center lg:justify-end">
+        <div className="relative h-[240px] sm:h-[300px] lg:h-[380px] w-full flex justify-center lg:justify-end">
 
           {heroImages.map((img, i) => {
             const position =
@@ -88,8 +88,8 @@ export default function HeroSection() {
                 key={i}
                 src={img}
                 alt="creator"
-                className={`absolute w-[240px] sm:w-[300px] lg:w-[360px] 
-                h-[160px] sm:h-[200px] lg:h-[240px] 
+                className={`absolute w-[220px] sm:w-[280px] lg:w-[340px] 
+                h-[150px] sm:h-[190px] lg:h-[220px] 
                 object-cover rounded-2xl shadow-2xl transition-all duration-700
 
                 ${

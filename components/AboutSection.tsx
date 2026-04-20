@@ -140,7 +140,7 @@ export default function AboutSection() {
         {/* CTA BLOCK */}
         <motion.div
           {...fadeUp}
-          className="mt-14 sm:mt-20 text-center bg-gradient-to-r from-blue-900 to-slate-900 text-white p-6 sm:p-10 rounded-2xl shadow-lg"
+          className="mt-14 sm:mt-20 text-center bg-gradient-to-r from-blue-700 to-blue-400 text-white p-6 sm:p-10 rounded-2xl shadow-lg"
         >
           <h3 className="text-lg sm:text-xl md:text-3xl font-semibold leading-snug">
             Ready to build something impactful?

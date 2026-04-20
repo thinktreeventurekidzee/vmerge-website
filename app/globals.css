@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 /* ================================
-   🔥 VMERG DESIGN SYSTEM (FIXED)
+   🔥 VMERG DESIGN SYSTEM
 ================================ */
 
 :root {
@@ -37,7 +37,7 @@
 }
 
 /* ================================
-   COMPONENTS (IMPORTANT)
+   COMPONENTS
 ================================ */
 
 @layer components {
@@ -60,17 +60,12 @@
            hover:shadow-md transition-all;
   }
 
-  /* ✅ FIXED INPUT */
-  .input {
-    @apply w-full px-4 py-3 rounded-xl border border-gray-300 
-           focus:outline-none focus:ring-2 focus:ring-blue-500;
-  }
-
-  /* ✅ NEW INPUT (NO ERROR) */
+  /* 🔵 FINAL INPUT STYLE */
   .input-new {
-    @apply w-full px-4 py-3 rounded-xl border border-yellow-300 
-           focus:ring-2 focus:ring-yellow-400 focus:outline-none 
-           transition-all duration-300 bg-white;
+    @apply w-full px-4 py-3 rounded-xl border border-blue-300 
+    placeholder:text-slate-400 text-[#0b1a3a]
+    focus:border-blue-500 focus:ring-2 focus:ring-blue-200 
+    outline-none transition;
   }
 }
 
@@ -90,19 +85,11 @@
     -webkit-text-fill-color: transparent;
   }
 
-  /* ❌ REMOVE @apply FROM HERE (was causing issues) */
-  .input-style {
-    width: 100%;
-    padding: 12px 16px;
-    border-radius: 12px;
-    background: #0f2a5c;
-    border: 1px solid rgba(250, 204, 21, 0.4);
-    color: #fde047;
-    transition: all 0.3s ease;
-  }
-
-  .input-style:hover {
-    transform: scale(1.03);
+  /* 🌈 RAINBOW CARD */
+  .rainbow-card {
+    background: linear-gradient(270deg, red, orange, yellow, green, blue, indigo, violet);
+    background-size: 400% 400%;
+    animation: rainbowMove 6s linear infinite;
   }
 
   /* 🔁 MARQUEE */
@@ -110,20 +97,16 @@
     animation: marquee 18s linear infinite;
   }
 
-  /* 🌧 RAIN */
-  .rain {
-    width: 100%;
-    height: 100%;
-    background: url("https://i.ibb.co/7QpKsCX/rain.png");
-    animation: rain 0.3s linear infinite;
-    opacity: 0.25;
-  }
-
-  /* 🌈 RAINBOW CARD */
-  .rainbow-card {
-    background: linear-gradient(270deg, red, orange, yellow, green, blue, indigo, violet);
+  /* 🌊 GLOBAL GRADIENT SYNC (USED FOR NAV + FOOTER) */
+  .animate-gradient-sync {
+    background: linear-gradient(
+      270deg,
+      #4f46e5,
+      #3b82f6,
+      #06b6d4
+    );
     background-size: 400% 400%;
-    animation: rainbowMove 6s linear infinite;
+    animation: gradientFlow 12s ease infinite;
   }
 }
 
@@ -131,9 +114,10 @@
    KEYFRAMES
 ================================ */
 
-@keyframes rain {
-  from { background-position: 0 0; }
-  to { background-position: 0 100%; }
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 @keyframes marquee {
@@ -144,19 +128,4 @@
 @keyframes rainbowMove {
   0% { background-position: 0%; }
   100% { background-position: 100%; }
-}.rainbow-card {
-  background: linear-gradient(270deg, red, orange, yellow, green, blue, indigo, violet);
-  background-size: 400% 400%;
-  animation: rainbowMove 6s linear infinite;
-}
-.animate-footer-gradient {
-  background: linear-gradient(270deg, #e0f2fe, #bae6fd, #93c5fd, #60a5fa, #1e3a8a);
-  background-size: 400% 400%;
-  animation: footerMove 12s ease infinite;
-}
-
-@keyframes footerMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
 }

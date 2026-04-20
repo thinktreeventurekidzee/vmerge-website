@@ -49,7 +49,7 @@ export default function Navbar() {
     <header className="fixed left-0 top-0 z-50 w-full">
 
       {/* NAV */}
-      <nav className="bg-gradient-to-r from-sky-200 via-blue-200 to-sky-100 shadow-sm">
+    <nav className="animate-gradient-sync shadow-md backdrop-blur-md">
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 py-3 flex items-center justify-between">
 
@@ -75,8 +75,8 @@ export default function Navbar() {
                   className={`text-sm font-semibold transition-all duration-300
                   ${
                     isActive(item.href)
-                      ? "text-yellow-500 scale-110"
-                      : "text-black hover:text-yellow-400 hover:scale-110"
+                      ? "text-blue-500 scale-110"
+                      : "text-black hover:text-blue-900 hover:scale-110"
                   }`}
                 >
                   {item.name}
@@ -99,7 +99,7 @@ export default function Navbar() {
                             key={i}
                             href="/services"
                             className="p-3 rounded-xl transition 
-                            hover:bg-yellow-300 hover:scale-105 hover:shadow-md"
+                            hover:bg-blue-500 hover:scale-105 hover:shadow-md"
                           >
                             <p className="font-semibold text-sm text-black">
                               {d.title}
@@ -156,7 +156,7 @@ export default function Navbar() {
               key={item.name}
               href={item.href}
               onClick={() => setMobileMenu(false)}
-              className="block text-lg font-medium text-black hover:text-yellow-500 transition"
+              className="block text-lg font-medium text-black hover:text-blue-500 transition"
             >
               {item.name}
             </Link>

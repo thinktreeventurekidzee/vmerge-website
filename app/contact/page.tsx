@@ -43,7 +43,7 @@ Message: ${form.message}`
 
             <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-[#0b1a3a] leading-tight">
               Start your next{" "}
-              <span className="text-yellow-400">
+              <span className="text-blue-600">
                 creator campaign
               </span>
             </h1>
@@ -62,7 +62,7 @@ Message: ${form.message}`
 
               <div className="bg-white rounded-2xl p-5 sm:p-6 shadow-sm hover:shadow-lg transition">
                 <div className="flex gap-3 sm:gap-4 items-start">
-                  <Mail className="text-yellow-400" size={20} />
+                  <Mail className="text-blue-600" size={20} />
                   <div>
                     <h3 className="text-[#0b1a3a] font-semibold text-sm sm:text-base">
                       Email
@@ -79,7 +79,7 @@ Message: ${form.message}`
 
               <div className="bg-white rounded-2xl p-5 sm:p-6 shadow-sm hover:shadow-lg transition">
                 <div className="flex gap-3 sm:gap-4 items-start">
-                  <Phone className="text-yellow-400" size={20} />
+                  <Phone className="text-blue-600" size={20} />
                   <div>
                     <h3 className="text-[#0b1a3a] font-semibold text-sm sm:text-base">
                       WhatsApp
@@ -96,7 +96,7 @@ Message: ${form.message}`
 
               <div className="bg-white rounded-2xl p-5 sm:p-6 shadow-sm hover:shadow-lg transition">
                 <div className="flex gap-3 sm:gap-4 items-start">
-                  <MapPin className="text-yellow-400" size={20} />
+                  <MapPin className="text-blue-600  " size={20} />
                   <div>
                     <h3 className="text-[#0b1a3a] font-semibold text-sm sm:text-base">
                       Location
