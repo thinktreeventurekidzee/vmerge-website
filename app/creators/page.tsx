@@ -133,44 +133,54 @@ export default function CreatorsPage() {
             <div className="mt-12 sm:mt-16 space-y-12 sm:space-y-16">
 
               {[
-                {
-                  title: "Finance & Investing",
-                  creators: [
-                    { name: "Rachana Ranade", img: "/Rachana Ranade.jpeg" },
-                    { name: "Neha Nagar", img: "/Neha Nagar.jpeg" },
-                    { name: "Ankur Warikoo", img: "/Ankur Warikoo.jpeg" },
-                    { name: "Prakash Gaba", img: "/Prakash Gaba.jpeg" },
-                  ],
-                },
-                {
-                  title: "Crypto",
-                  creators: [
-                    { name: "Yashika Crypto", img: "/Yashika Crypto.jpeg" },
-                    { name: "Crypto Aman", img: "/Crypto Aman.jpeg" },
-                    { name: "Jeet Crypto", img: "/Jeet Crypto.jpeg" },
-                  ],
-                },
-                {
-                  title: "Tech & Education",
-                  creators: [
-                    { name: "Dhruv Rathee", img: "/Dhruv Rathee.jpeg" },
-                    { name: "Sharan Hegde", img: "/Sharan Hegde.jpeg" },
-                  ],
-                },
-                {
-                  title: "Entertainment",
-                  creators: [
-                    { name: "Ashish Chanchlani", img: "/Ashish Chanchlani.jpeg" },
-                    { name: "Round2hell", img: "/Round2hell.jpeg" },
-                  ],
-                },
-                {
-                  title: "Lifestyle",
-                  creators: [
-                    { name: "Garima Chaurasia", img: "/Garima chaurasia.jpeg" },
-                    { name: "iam.savithri", img: "/iam.savithri.jpeg" },
-                  ],
-                },
+               {
+  title: "Finance & Investing",
+  creators: [
+    { name: "Rachana Ranade", img: "/Rachana Ranade.jpeg" },
+    { name: "Neha Nagar", img: "/Neha Nagar.jpeg" },
+    { name: "Ankur Warikoo", img: "/Ankur Warikoo.jpeg" },
+    { name: "Prakash Gaba", img: "/Prakash Gaba.jpeg" },
+    { name: "Finance by Ankita", img: "/Financebyankita.jpeg" },
+    { name: "Markets with M", img: "/Markets with M.jpeg" },
+    { name: "Wealth in Whiteboard", img: "/Wealth in Whiteboard.jpeg" },
+    { name: "Threestock", img: "/Threestock.jpeg" },
+  ],
+},
+{
+  title: "Crypto",
+  creators: [
+    { name: "Yashika Crypto", img: "/Yashika Crypto.jpeg" },
+    { name: "Crypto Aman", img: "/Crypto Aman.jpeg" },
+    { name: "Jeet Crypto", img: "/Jeet Crypto.jpeg" },
+    { name: "Lakshay Chaudhary", img: "/Lakshay Chaudhary.jpeg" },
+  ],
+},
+{
+  title: "Tech & Education",
+  creators: [
+    { name: "Dhruv Rathee", img: "/Dhruv Rathee.jpeg" },
+    { name: "Sharan Hegde", img: "/Sharan Hegde.jpeg" },
+    { name: "Navya Noor", img: "/Navyanoor.jpeg" },
+    { name: "Smit Thakkar", img: "/Smit Thakkar.jpeg" },
+  ],
+},
+{
+  title: "Entertainment",
+  creators: [
+    { name: "Ashish Chanchlani", img: "/Ashish Chanchlani.jpeg" },
+    { name: "Round2hell", img: "/Round2hell.jpeg" },
+  ],
+},
+{
+  title: "Lifestyle",
+  creators: [
+    { name: "Garima chaurasia", img: "/Garima chaurasia.jpeg" },
+    { name: "iam.savithri", img: "/iam.savithri.jpeg" },
+    { name: "Hold with Priya", img: "/Hold with Priya.jpeg" },
+    { name: "Bhagyashree", img: "/Bhagyashree Th.jpeg" },
+    { name: "Budhil Vyas", img: "/Budhil Vyass.jpeg" },
+  ],
+},
               ].map((category) => (
 
                 <div key={category.title}>

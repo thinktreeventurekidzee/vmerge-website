@@ -20,17 +20,40 @@ export default function BrandsPage() {
     window.open("https://wa.me/918660783740");
   };
 
+  // 🔥 BRAND LOGOS DATA (MATCH WITH /public/logo)
+  const brands = [
+    { name: "Bear House", img: "/logo/Bear House LOGO.jpeg" },
+
+  { name: "British Biologicals", img: "/logo/Britishbiological LOGO.jpeg" },
+  { name: "Kotak Mahindra", img: "/logo/Kotak Mahindra BANK LOGO.jpeg" },
+    { name: "Bybit", img: "/logo/bybit LOGO.jpeg" },
+    { name: "CoinSwitch", img: "/logo/CoinSwitch LOGO.jpeg" },
+    { name: "Density Exchange", img: "/logo/Density Exchange.jpeg" },
+    { name: "Divine Talk", img: "/logo/Divine Talk LOGO.jpeg" },
+    { name: "Fast&Up", img: "/logo/Fast&up LOGO.jpeg" },
+
+    { name: "KuKu FM", img: "/logo/KuKuFM LOGO.jpeg" },
+    { name: "Lenomm", img: "/logo/lenomm LOGO.jpeg" },
+    { name: "Masai School", img: "/logo/Masai School.jpeg" },
+    { name: "Oziva", img: "/logo/Oziva LOGO.jpeg" },
+    { name: "Porter", img: "/logo/PORTER LOGO.jpeg" },
+    { name: "Precize", img: "/logo/Precize LOGO.jpeg" },
+    { name: "Skydo", img: "/logo/Skydo LOGO.jpeg" },
+    { name: "Snitch", img: "/logo/Snitch LOGO.jpeg" },
+    { name: "Uniqlo", img: "/logo/Uniqlo LOGO.jpeg" },
+    { name: "Unocoin", img: "/logo/Unocoin LOGO.jpeg" },
+  ];
+
   return (
     <>
       <Navbar />
 
       <main>
-
         {/* HERO */}
         <section className="relative py-20 sm:py-28 px-4 sm:px-6 text-center text-white bg-gradient-to-br from-indigo-600 via-blue-500 to-cyan-400 overflow-hidden">
 
-          <div className="absolute top-[-100px] left-[-100px] w-[200px] sm:w-[300px] h-[200px] sm:h-[300px] bg-indigo-500 opacity-30 blur-[120px] rounded-full" />
-          <div className="absolute bottom-[-100px] right-[-100px] w-[200px] sm:w-[300px] h-[200px] sm:h-[300px] bg-cyan-400 opacity-30 blur-[120px] rounded-full" />
+          <div className="absolute top-[-100px] left-[-100px] w-[300px] h-[300px] bg-indigo-500 opacity-30 blur-[120px] rounded-full" />
+          <div className="absolute bottom-[-100px] right-[-100px] w-[300px] h-[300px] bg-cyan-400 opacity-30 blur-[120px] rounded-full" />
 
           <div className="relative z-10">
             <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold">
@@ -41,7 +64,6 @@ export default function BrandsPage() {
               Structured influencer campaigns designed for real business growth.
             </p>
           </div>
-
         </section>
 
         {/* AUTHORITY */}
@@ -67,7 +89,7 @@ export default function BrandsPage() {
           </div>
         </section>
 
-        {/* BRANDS */}
+        {/* 🔥 BRANDS WITH LOGOS */}
         <section className="py-16 sm:py-24 bg-white text-center">
 
           <h2 className="text-2xl sm:text-3xl font-semibold text-slate-900">
@@ -78,22 +100,26 @@ export default function BrandsPage() {
             Trusted by leading brands across industries.
           </p>
 
-          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 max-w-5xl mx-auto px-4 sm:px-6">
-            {[
-              "Flipkart","Tata Cliq","boAt","Samsung",
-              "Go Colors","Snapdeal","Sebamed","Puma",
-            ].map((brand) => (
-              <div
-                key={brand}
-                className="flex items-center justify-center p-4 sm:p-6 rounded-2xl bg-gradient-to-br from-slate-50 to-white shadow-md hover:shadow-xl hover:scale-[1.05] transition"
-              >
-                <span className="text-slate-700 font-semibold text-sm sm:text-base">
-                  {brand}
-                </span>
-              </div>
-            ))}
-          </div>
+          <div className="mt-12 max-w-6xl mx-auto px-4 sm:px-6">
 
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8">
+
+              {brands.map((brand) => (
+                <div
+                  key={brand.name}
+                  className="group flex items-center justify-center p-4 sm:p-6 rounded-2xl bg-white shadow-md hover:shadow-xl transition hover:scale-[1.05]"
+                >
+                  <img
+                    src={brand.img}
+                    alt={brand.name}
+                    className="max-h-10 sm:max-h-12 md:max-h-14 object-contain grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition duration-300"
+                  />
+                </div>
+              ))}
+
+            </div>
+
+          </div>
         </section>
 
         {/* PROCESS */}
@@ -114,51 +140,6 @@ export default function BrandsPage() {
           </div>
         </section>
 
-        {/* CATEGORY (FIXED WRAPPER) */}
-        <section className="py-20 px-4 sm:px-6 max-w-5xl mx-auto space-y-6">
-
-          {[
-            {
-              title: "High Growth Niches",
-              items: ["AI & Tech","Finance & Investing","Health & Wellness","Sustainability"],
-            },
-            {
-              title: "Lifestyle Niches",
-              items: ["Fashion","Beauty & Skincare","Travel","Food & Nutrition"],
-            },
-            {
-              title: "Emerging Niches",
-              items: ["Gaming","Education","Parenting","Personal Branding"],
-            },
-          ].map((cat, i) => (
-
-            <div key={cat.title} className={`rounded-2xl p-[2px] ${i % 2 === 0 ? "rainbow-card" : ""}`}>
-
-              <div className="bg-white p-6 rounded-2xl transition hover:shadow-xl">
-
-                <h3 className="font-semibold text-slate-900 mb-4 hover:text-yellow-400 transition">
-                  {cat.title}
-                </h3>
-
-                <div className="flex flex-wrap gap-2 sm:gap-3">
-                  {cat.items.map((item) => (
-                    <span
-                      key={item}
-                      className="text-xs sm:text-sm px-3 py-1 rounded-full bg-slate-100 hover:bg-yellow-300 hover:scale-110 transition"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
-
-              </div>
-
-            </div>
-
-          ))}
-
-        </section>
-
         {/* FORM */}
         <section className="py-20 sm:py-28 bg-gradient-to-b from-white via-sky-50 to-white">
 
@@ -174,7 +155,7 @@ export default function BrandsPage() {
               </p>
             </div>
 
-            <div className="mt-12 rainbow-card rounded-3xl p-[2px]">
+            <div className="mt-12 rounded-3xl p-[2px] bg-gradient-to-r from-indigo-500 via-blue-500 to-cyan-400">
               <div className="bg-white rounded-3xl p-6 sm:p-8">
 
                 <form onSubmit={handleSubmit} className="space-y-6">
