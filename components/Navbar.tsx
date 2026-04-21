@@ -2,9 +2,44 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
+
+
+// ✅ LOGO COMPONENT (FIXED)
+const Logo = () => {
+  return (
+    <div className="flex items-center gap-2 select-none">
+
+      {/* LEFT */}
+      <span className="text-blue-600 text-xl sm:text-2xl font-bold leading-none">
+        vm
+      </span>
+
+      {/* CENTER SYMBOL */}
+      <div className="flex flex-col items-center justify-center leading-none">
+
+        <span className="w-6 h-[2px] bg-red-500 rounded-full"></span>
+
+        <div className="flex items-center">
+          <span className="w-2 h-[2px] bg-red-500"></span>
+          <span className="text-red-500 text-sm leading-none">➤</span>
+          <span className="w-2 h-[2px] bg-red-500"></span>
+        </div>
+
+        <span className="w-6 h-[4px] bg-red-500 rounded-full"></span>
+
+      </div>
+
+      {/* RIGHT */}
+      <span className="text-blue-600 text-xl sm:text-2xl font-bold leading-none">
+        rg
+      </span>
+
+    </div>
+  );
+};
+
 
 export default function Navbar() {
   const [mobileMenu, setMobileMenu] = useState(false);
@@ -38,7 +73,6 @@ export default function Navbar() {
     navItems.forEach((item) => router.prefetch(item.href));
   }, [router, navItems]);
 
-  // 🔥 LOCK SCROLL ON MOBILE MENU
   useEffect(() => {
     document.body.style.overflow = mobileMenu ? "hidden" : "auto";
   }, [mobileMenu]);
@@ -49,19 +83,13 @@ export default function Navbar() {
     <header className="fixed left-0 top-0 z-50 w-full">
 
       {/* NAV */}
-    <nav className="animate-gradient-sync shadow-md backdrop-blur-md">
+      <nav className="animate-gradient-sync shadow-md backdrop-blur-md">
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 py-3 flex items-center justify-between">
 
-          {/* LOGO */}
+          {/* ✅ LOGO */}
           <Link href="/" onClick={() => setMobileMenu(false)}>
-            <Image
-              src="/vmerge.jpeg"
-              alt="logo"
-              width={100}
-              height={40}
-              className="w-[90px] sm:w-[110px] h-auto"
-            />
+            <Logo />
           </Link>
 
           {/* DESKTOP */}
@@ -75,8 +103,8 @@ export default function Navbar() {
                   className={`text-sm font-semibold transition-all duration-300
                   ${
                     isActive(item.href)
-                      ? "text-blue-500 scale-110"
-                      : "text-black hover:text-blue-900 hover:scale-110"
+                      ? "text-black scale-125"
+                      : "text-black hover:scale-110"
                   }`}
                 >
                   {item.name}

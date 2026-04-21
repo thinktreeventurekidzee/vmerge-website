@@ -21,7 +21,7 @@ export default function HeroSection() {
   const [wordIndex, setWordIndex] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // text rotate
+  // TEXT ROTATION
   useEffect(() => {
     const wordInterval = setInterval(() => {
       setWordIndex((prev) => (prev + 1) % rotatingWords.length);
@@ -29,7 +29,7 @@ export default function HeroSection() {
     return () => clearInterval(wordInterval);
   }, []);
 
-  // image rotate
+  // IMAGE ROTATION
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % heroImages.length);
@@ -38,72 +38,83 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative min-h-[80vh] flex items-center bg-gradient-to-br from-indigo-600 via-blue-500 to-cyan-400 overflow-hidden text-white">
+    <section className="relative w-full min-h-screen flex items-start pt-24 bg-gradient-to-br from-indigo-600 via-blue-500 to-cyan-400 overflow-hidden text-white">
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 items-center">
+      {/* FADE */}
+      <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-white/10 to-transparent z-0"></div>
+
+      <div className="relative z-10 w-full px-6 sm:px-10 lg:px-20 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
 
         {/* LEFT */}
-        <div className="text-center lg:text-left">
+        <div className="max-w-2xl">
 
-<h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight md:whitespace-nowrap">
-  Influencer Marketing That Drives
-  <span className="block text-yellow-500 uppercase mt-2">
-    {rotatingWords[wordIndex]}
-  </span>
-</h1>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+            Influencer Marketing That Drives
+            <span className="block text-yellow-400 uppercase mt-3">
+              {rotatingWords[wordIndex]}
+            </span>
+          </h1>
 
-          <p className="mt-4 sm:mt-6 text-sm sm:text-lg text-white/80 max-w-xl mx-auto lg:mx-0">
+          <p className="mt-5 text-sm sm:text-lg text-white/80">
             VMERG helps brands discover creators, execute campaigns, and scale
             performance with measurable ROI.
           </p>
 
-          {/* BUTTONS */}
-          <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
-
+          <div className="mt-6 flex flex-wrap gap-4">
             <Link
               href="/contact"
-              className="w-full sm:w-auto px-6 py-3 bg-white text-black rounded-xl font-semibold text-center hover:scale-105 transition"
+              className="px-6 py-3 bg-white text-black rounded-xl font-semibold hover:scale-105 transition"
             >
               Start Campaign
             </Link>
 
             <Link
               href="/work"
-              className="w-full sm:w-auto px-6 py-3 border border-white/40 rounded-xl text-center hover:bg-white/10 transition"
+              className="px-6 py-3 border border-white/40 rounded-xl hover:bg-white/10 transition"
             >
               View Work
             </Link>
-
           </div>
         </div>
 
-     
-       {/* RIGHT IMAGES */}
-<div className="relative h-[260px] sm:h-[320px] lg:h-[400px] w-full flex justify-center lg:justify-end">
+        {/* RIGHT - CIRCULAR STACK */}
+      <div className="relative h-[420px] w-full flex items-center justify-center">
 
   {heroImages.map((img, i) => {
+    const total = heroImages.length;
     const position =
-      (i - currentIndex + heroImages.length) %
-      heroImages.length;
+      (i - currentIndex + total) % total;
+
+    // Only show 3 images (center + 2 behind)
+    if (position > 2) return null;
 
     return (
-      <img
+      <div
         key={i}
-        src={img}
-        alt="creator"
-        className={`absolute w-[220px] sm:w-[280px] lg:w-[340px] 
-        h-[180px] sm:h-[220px] lg:h-[260px] 
-        object-contain bg-white p-2 rounded-2xl shadow-2xl transition-all duration-700
+        className={`absolute transition-all duration-700 ease-in-out
 
         ${
           position === 0
-            ? "z-30 opacity-100 scale-100 translate-x-0 rotate-0"
+            ? "z-30 scale-110 opacity-100 translate-x-0"
             : position === 1
-            ? "z-20 opacity-60 scale-95 translate-x-6 sm:translate-x-10 rotate-6 blur-[1px]"
-            : "z-10 opacity-40 scale-90 translate-x-12 sm:translate-x-20 rotate-12 blur-[2px]"
+            ? "z-20 scale-95 opacity-40 translate-x-20 blur-sm"
+            : "z-10 scale-90 opacity-20 -translate-x-20 blur-md"
         }
         `}
-      />
+      >
+        {/* 💎 CARD */}
+        <div className="bg-white/90 backdrop-blur-md p-3 rounded-2xl shadow-2xl border border-white/30">
+
+          <img
+            src={img}
+            alt="creator"
+            className="w-[240px] sm:w-[300px] lg:w-[360px]
+            h-[200px] sm:h-[240px] lg:h-[260px]
+            object-contain rounded-xl"
+          />
+
+        </div>
+      </div>
     );
   })}
 

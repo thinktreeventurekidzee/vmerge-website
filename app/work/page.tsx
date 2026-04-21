@@ -156,12 +156,12 @@ export default function WorkPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16 items-center">
           <div>
-            <p className="inline-block bg-yellow-100 text-yellow-700 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-semibold">
+            <p className="inline-block bg-blue-100 text-blue-700 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-semibold">
               SELECTED WORK
             </p>
 
             <h1 className="mt-4 sm:mt-6 text-3xl sm:text-4xl md:text-5xl font-black leading-tight">
-              <span className="text-yellow-400">Campaigns built for</span>{" "}
+              <span className="text-blue-400">Campaigns built for</span>{" "}
               <span className="text-slate-900">measurable outcomes</span>
             </h1>
 
@@ -177,7 +177,7 @@ export default function WorkPage() {
                   onClick={() => setActive(item)}
                   className={`px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-medium transition ${
                     active === item
-                      ? "bg-yellow-400 text-black shadow scale-105"
+                      ? "bg-blue-400 text-black shadow scale-105"
                       : "bg-white border text-slate-700"
                   }`}
                 >
@@ -192,7 +192,7 @@ export default function WorkPage() {
             animate={{ opacity: 1, y: 0 }}
             className="relative"
           >
-            <div className="p-[2px] rounded-3xl bg-gradient-to-br from-yellow-400 via-blue-400 to-purple-500 shadow-2xl">
+            <div className="p-[2px] rounded-3xl bg-gradient-to-br from-blue-400 via-blue-400 to-purple-500 shadow-2xl">
               <div className="rounded-3xl overflow-hidden bg-white">
                 <Image
                   src="/hero.jpeg"
@@ -204,7 +204,7 @@ export default function WorkPage() {
               </div>
             </div>
 
-            <div className="absolute bottom-2 left-2 sm:-bottom-6 sm:-left-6 bg-yellow-400 px-3 sm:px-4 py-1 sm:py-2 rounded-xl shadow text-xs sm:text-sm font-semibold">
+            <div className="absolute bottom-2 left-2 sm:-bottom-6 sm:-left-6 bg-blue-400 px-3 sm:px-4 py-1 sm:py-2 rounded-xl shadow text-xs sm:text-sm font-semibold">
               High ROI Campaigns
             </div>
           </motion.div>
@@ -217,7 +217,7 @@ export default function WorkPage() {
               whileHover={{ y: -10 }}
               className="group rounded-3xl"
             >
-              <div className="p-[1.5px] rounded-3xl bg-gradient-to-br from-yellow-400 via-blue-400 to-purple-500">
+              <div className="p-[1.5px] rounded-3xl bg-gradient-to-br from-blue-400 via-blue-400 to-purple-500">
                 <div className="rounded-3xl overflow-hidden bg-white shadow-sm group-hover:shadow-xl transition">
                   <Image
                     src={item.image}
@@ -232,7 +232,7 @@ export default function WorkPage() {
                       {item.title}
                     </h3>
 
-                    <p className="text-yellow-500 text-xs sm:text-sm font-semibold mt-1">
+                    <p className="text-blue-500 text-xs sm:text-sm font-semibold mt-1">
                       {item.stat}
                     </p>
 

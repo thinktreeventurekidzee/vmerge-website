@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import { motion } from "framer-motion";
 
@@ -13,28 +13,6 @@ export default function CreatorsPage() {
     niche: "",
   });
 
-  const [errors, setErrors] = useState({
-    name: "",
-    email: "",
-    social: "",
-  });
-
-  const [placeholderIndex, setPlaceholderIndex] = useState(0);
-
-  const handles = [
-    "@instagram",
-    "youtube channel link",
-    "twitter / x handle",
-    "linkedin profile",
-  ];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setPlaceholderIndex((prev) => (prev + 1) % handles.length);
-    }, 2000);
-    return () => clearInterval(interval);
-  }, []);
-
   const handleChange = (e: any) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -43,29 +21,59 @@ export default function CreatorsPage() {
     e.preventDefault();
 
     if (!form.name || !form.email || !form.social || !form.niche) {
-      setErrors({
-        name: !form.name ? "Required" : "",
-        email: !form.email ? "Required" : "",
-        social: !form.social ? "Required" : "",
-      });
+      alert("Please fill all fields");
       return;
     }
 
     window.open("https://wa.me/918660783740");
-
-    setForm({
-      name: "",
-      email: "",
-      social: "",
-      niche: "",
-    });
-
-    setErrors({
-      name: "",
-      email: "",
-      social: "",
-    });
   };
+
+  const categories = [
+    {
+      title: "Finance & Investing",
+      creators: [
+        { name: "Rachana Ranade", img: "/Rachana Ranade.jpeg" },
+        { name: "Neha Nagar", img: "/Neha Nagar.jpeg" },
+        { name: "Ankur Warikoo", img: "/Ankur Warikoo.jpeg" },
+        { name: "Sharan Hegde", img: "/Sharan Hegde.jpeg" },
+        { name: "Prakash Gaba", img: "/Prakash Gaba.jpeg" },
+        { name: "Ayush Thakur", img: "/Ayush Thakur.jpeg" },
+      ],
+    },
+    {
+      title: "Crypto",
+      creators: [
+        { name: "Yashika Crypto", img: "/Yashika Crypto.jpeg" },
+        { name: "Crypto Aman", img: "/Crypto Aman.jpeg" },
+        { name: "Jeet Crypto", img: "/Jeet Crypto.jpeg" },
+        { name: "Markets With Mack", img: "/Markets with Mack.jpeg" },
+        { name: "Crypto Universe Shivam", img: "/Shivam.jpeg" },
+      ],
+    },
+    {
+      title: "Tech & Education",
+      creators: [
+        { name: "Dhruv Rathee", img: "/Dhruv Rathee.jpeg" },
+        { name: "Ankur Warikoo", img: "/Ankur Warikoo.jpeg" },
+      ],
+    },
+    {
+      title: "Entertainment",
+      creators: [
+        { name: "Ashish Chanchlani", img: "/Ashish Chanchlani.jpeg" },
+        { name: "Round2hell", img: "/Round2hell.jpeg" },
+        { name: "Lakshay Chaudhary", img: "/Lakshay Chaudhary.jpeg" },
+      ],
+    },
+    {
+      title: "Lifestyle",
+      creators: [
+        { name: "Garima Chaurasia", img: "/Garima Chaurasia.jpeg" },
+        { name: "iam.savithri", img: "/iam.savithri.jpeg" },
+        { name: "navyanoor_astrotarot", img: "/Navyanoor.jpeg" },
+      ],
+    },
+  ];
 
   return (
     <>
@@ -82,7 +90,7 @@ export default function CreatorsPage() {
             className="text-3xl sm:text-4xl md:text-6xl font-extrabold text-blue-900 leading-tight"
           >
             1 Million+ Influencers <br className="hidden sm:block" />
-            <span className="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
+            <span className="text-yellow-400">
               Across India
             </span>
           </motion.h1>
@@ -90,29 +98,6 @@ export default function CreatorsPage() {
           <p className="mt-4 sm:mt-6 text-slate-600 max-w-2xl mx-auto text-base sm:text-lg">
             Join creators who are building their audience and monetizing content.
           </p>
-
-          {/* MARQUEE */}
-          <div className="mt-8 sm:mt-10 overflow-hidden">
-            <div className="flex gap-6 sm:gap-10 w-max animate-marquee">
-              {[...[ 
-                "Fashion / Lifestyle","Travel","Food","Beauty","Fitness",
-                "Tech","Edutech","Parenting","Finance","Gaming"
-              ],
-              ...[ 
-                "Fashion / Lifestyle","Travel","Food","Beauty","Fitness",
-                "Tech","Edutech","Parenting","Finance","Gaming"
-              ]].map((item, i) => (
-                <span
-                  key={i}
-                  className="text-sm sm:text-lg font-semibold whitespace-nowrap 
-                  bg-gradient-to-r from-red-500 via-yellow-400 via-green-400 via-blue-400 to-purple-500 
-                  bg-clip-text text-transparent"
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
-          </div>
 
         </section>
 
@@ -125,67 +110,17 @@ export default function CreatorsPage() {
               Creators across categories
             </h2>
 
-            <p className="text-center text-slate-600 mt-4 max-w-2xl mx-auto text-sm sm:text-base">
-              From finance to fashion to tech — creators are growing, building,
-              and monetizing their content with us.
+            <p className="text-center text-slate-600 mt-4 max-w-2xl mx-auto">
+              From finance to fashion to tech — creators are growing with us.
             </p>
 
-            <div className="mt-12 sm:mt-16 space-y-12 sm:space-y-16">
+            <div className="mt-12 space-y-12">
 
-              {[
-               {
-  title: "Finance & Investing",
-  creators: [
-    { name: "Rachana Ranade", img: "/Rachana Ranade.jpeg" },
-    { name: "Neha Nagar", img: "/Neha Nagar.jpeg" },
-    { name: "Ankur Warikoo", img: "/Ankur Warikoo.jpeg" },
-    { name: "Prakash Gaba", img: "/Prakash Gaba.jpeg" },
-    { name: "Finance by Ankita", img: "/Financebyankita.jpeg" },
-    { name: "Markets with M", img: "/Markets with M.jpeg" },
-    { name: "Wealth in Whiteboard", img: "/Wealth in Whiteboard.jpeg" },
-    { name: "Threestock", img: "/Threestock.jpeg" },
-  ],
-},
-{
-  title: "Crypto",
-  creators: [
-    { name: "Yashika Crypto", img: "/Yashika Crypto.jpeg" },
-    { name: "Crypto Aman", img: "/Crypto Aman.jpeg" },
-    { name: "Jeet Crypto", img: "/Jeet Crypto.jpeg" },
-    { name: "Lakshay Chaudhary", img: "/Lakshay Chaudhary.jpeg" },
-  ],
-},
-{
-  title: "Tech & Education",
-  creators: [
-    { name: "Dhruv Rathee", img: "/Dhruv Rathee.jpeg" },
-    { name: "Sharan Hegde", img: "/Sharan Hegde.jpeg" },
-    { name: "Navya Noor", img: "/Navyanoor.jpeg" },
-    { name: "Smit Thakkar", img: "/Smit Thakkar.jpeg" },
-  ],
-},
-{
-  title: "Entertainment",
-  creators: [
-    { name: "Ashish Chanchlani", img: "/Ashish Chanchlani.jpeg" },
-    { name: "Round2hell", img: "/Round2hell.jpeg" },
-  ],
-},
-{
-  title: "Lifestyle",
-  creators: [
-    { name: "Garima chaurasia", img: "/Garima chaurasia.jpeg" },
-    { name: "iam.savithri", img: "/iam.savithri.jpeg" },
-    { name: "Hold with Priya", img: "/Hold with Priya.jpeg" },
-    { name: "Bhagyashree", img: "/Bhagyashree Th.jpeg" },
-    { name: "Budhil Vyas", img: "/Budhil Vyass.jpeg" },
-  ],
-},
-              ].map((category) => (
+              {categories.map((category) => (
 
                 <div key={category.title}>
 
-                  <h3 className="text-xl sm:text-2xl font-semibold text-blue-900 mb-4 sm:mb-6 border-l-4 border-yellow-400 pl-3 sm:pl-4">
+                  <h3 className="text-xl sm:text-2xl font-semibold text-blue-900 mb-4 border-l-4 border-blue-500 pl-4">
                     {category.title}
                   </h3>
 
@@ -203,7 +138,7 @@ export default function CreatorsPage() {
                           className="w-full h-32 sm:h-44 object-cover group-hover:scale-110 transition duration-500"
                         />
 
-                        <div className="p-2 sm:p-3 text-center text-sm sm:text-base font-medium">
+                        <div className="p-3 text-center font-medium">
                           {creator.name}
                         </div>
                       </div>
@@ -231,13 +166,13 @@ export default function CreatorsPage() {
               Apply as a creator
             </h2>
 
-            <p className="text-slate-600 mt-2 sm:mt-3 text-sm sm:text-base">
+            <p className="text-slate-600 mt-2">
               Start your journey with brands
             </p>
 
             <form
               onSubmit={handleSubmit}
-              className="mt-6 sm:mt-8 bg-white p-5 sm:p-8 rounded-3xl shadow-xl space-y-4 sm:space-y-5"
+              className="mt-6 bg-white p-6 sm:p-8 rounded-3xl shadow-xl space-y-5"
             >
 
               <input
@@ -245,7 +180,7 @@ export default function CreatorsPage() {
                 value={form.name}
                 placeholder="Full Name"
                 onChange={handleChange}
-                className="w-full p-3 rounded-xl border border-yellow-300"
+                className="w-full p-3 rounded-xl border border-blue-300 focus:ring-2 focus:ring-blue-400 outline-none"
               />
 
               <input
@@ -253,22 +188,22 @@ export default function CreatorsPage() {
                 value={form.email}
                 placeholder="Email"
                 onChange={handleChange}
-                className="w-full p-3 rounded-xl border border-yellow-300"
+                className="w-full p-3 rounded-xl border border-blue-300 focus:ring-2 focus:ring-blue-400 outline-none"
               />
 
               <input
                 name="social"
                 value={form.social}
-                placeholder={handles[placeholderIndex]}
+                placeholder="Instagram / YouTube / LinkedIn"
                 onChange={handleChange}
-                className="w-full p-3 rounded-xl border border-yellow-300"
+                className="w-full p-3 rounded-xl border border-blue-300 focus:ring-2 focus:ring-blue-400 outline-none"
               />
 
               <select
                 name="niche"
                 value={form.niche}
                 onChange={handleChange}
-                className="w-full p-3 rounded-xl border border-yellow-300"
+                className="w-full p-3 rounded-xl border border-blue-300 focus:ring-2 focus:ring-blue-400 outline-none"
               >
                 <option value="">Select Niche</option>
                 {["Fashion","Finance","Crypto","Tech","Fitness","Lifestyle"].map((n) => (
@@ -276,7 +211,7 @@ export default function CreatorsPage() {
                 ))}
               </select>
 
-              <button className="w-full bg-red-500 text-white py-3 rounded-xl font-semibold">
+              <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-semibold transition">
                 Apply Now →
               </button>
 

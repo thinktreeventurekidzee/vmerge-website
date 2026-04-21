@@ -63,7 +63,7 @@ export default function ServicesSection() {
 
         {/* HEADER */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-yellow-400 leading-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-blue-700 leading-tight">
             Services designed for growth
           </h2>
 
@@ -79,7 +79,7 @@ export default function ServicesSection() {
             <div key={service.id} className="group">
 
               <div className="p-[1px] rounded-2xl bg-transparent 
-              sm:group-hover:bg-gradient-to-br sm:group-hover:from-yellow-400 sm:group-hover:to-orange-400
+              sm:group-hover:bg-gradient-to-br sm:group-hover:from-blue-500 sm:group-hover:to-cyan-400
               transition-all duration-300">
 
                 <div className="rounded-2xl p-5 sm:p-6 bg-white shadow-sm
@@ -87,8 +87,8 @@ export default function ServicesSection() {
 
                   {/* ICON */}
                   <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-xl mb-4
-                  bg-yellow-100 text-yellow-600
-                  sm:group-hover:bg-gradient-to-br sm:group-hover:from-yellow-400 sm:group-hover:to-orange-400 sm:group-hover:text-white transition">
+                  bg-blue-100 text-blue-600
+                  sm:group-hover:bg-gradient-to-br sm:group-hover:from-blue-500 sm:group-hover:to-cyan-400 sm:group-hover:text-white transition">
                     <service.icon size={20} />
                   </div>
 
@@ -103,11 +103,11 @@ export default function ServicesSection() {
                   </p>
 
                   {/* CTA */}
-                  <div className="mt-3 sm:mt-4 flex items-center gap-2 text-yellow-500 text-sm font-medium sm:group-hover:translate-x-1 transition">
+                  <div className="mt-3 sm:mt-4 flex items-center gap-2 text-blue-600 text-sm font-medium sm:group-hover:translate-x-1 transition">
                     Learn more <ArrowRight size={16} />
                   </div>
 
-                  {/* 🔥 MOBILE FIX (always visible) */}
+                  {/* DETAILS */}
                   <div className="mt-4 sm:mt-0 sm:overflow-hidden sm:max-h-0 sm:group-hover:max-h-40 transition-all duration-500">
 
                     <div className="border-t border-slate-200 pt-4 mt-4">
@@ -115,7 +115,7 @@ export default function ServicesSection() {
                       <ul className="space-y-2 text-sm text-slate-600">
                         {service.note.split("•").map((feature, i) => (
                           <li key={i} className="flex gap-2">
-                            <span className="text-yellow-500">✔</span>
+                            <span className="text-blue-600">✔</span>
                             <span>{feature.trim()}</span>
                           </li>
                         ))}
@@ -137,7 +137,7 @@ export default function ServicesSection() {
         <div className="mt-12 sm:mt-20 text-center">
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-5 sm:px-6 py-3 rounded-xl bg-yellow-400 text-black font-semibold hover:bg-yellow-300 transition"
+            className="inline-flex items-center gap-2 px-5 sm:px-6 py-3 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700 transition"
           >
             Start Your Project <ArrowRight size={16} />
           </Link>

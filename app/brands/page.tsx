@@ -33,7 +33,7 @@ export default function BrandsPage() {
     { name: "Fast&Up", img: "/logo/Fast&up LOGO.jpeg" },
 
     { name: "KuKu FM", img: "/logo/KuKuFM LOGO.jpeg" },
-    { name: "Lenomm", img: "/logo/lenomm LOGO.jpeg" },
+    { name: "Lenomm", img: "/logo/lenonn LOGO.jpeg" },
     { name: "Masai School", img: "/logo/Masai School.jpeg" },
     { name: "Oziva", img: "/logo/Oziva LOGO.jpeg" },
     { name: "Porter", img: "/logo/PORTER LOGO.jpeg" },
@@ -99,27 +99,38 @@ export default function BrandsPage() {
           <p className="mt-4 text-slate-600">
             Trusted by leading brands across industries.
           </p>
-
           <div className="mt-12 max-w-6xl mx-auto px-4 sm:px-6">
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8">
+  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8">
 
-              {brands.map((brand) => (
-                <div
-                  key={brand.name}
-                  className="group flex items-center justify-center p-4 sm:p-6 rounded-2xl bg-white shadow-md hover:shadow-xl transition hover:scale-[1.05]"
-                >
-                  <img
-                    src={brand.img}
-                    alt={brand.name}
-                    className="max-h-10 sm:max-h-12 md:max-h-14 object-contain grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition duration-300"
-                  />
-                </div>
-              ))}
+    {brands.map((brand) => (
+      <div
+        key={brand.name}
+        className="group flex items-center justify-center 
+        h-[80px] sm:h-[100px] 
+        rounded-2xl bg-white/80 backdrop-blur-md
+        border border-slate-200 
+        shadow-sm hover:shadow-lg 
+        transition-all duration-300 hover:scale-[1.05]"
+      >
 
-            </div>
+        <img
+          src={brand.img}
+          alt={brand.name}
+          className="max-h-10 sm:max-h-12 md:max-h-14 
+          object-contain 
+          transition duration-300 group-hover:scale-105"
+        />
 
-          </div>
+      </div>
+    ))}
+
+  </div>
+
+</div>
+         
+
+          
         </section>
 
         {/* PROCESS */}
