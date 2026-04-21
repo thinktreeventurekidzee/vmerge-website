@@ -30,12 +30,15 @@ export default function Footer() {
             className="space-y-3 sm:space-y-4 flex flex-col items-center sm:items-start"
           >
 
-            <div className="inline-block">
-              <div className="h-[3px] w-16 sm:w-20 bg-red-500 mb-1 rounded-full"></div>
-              <div className="text-2xl sm:text-3xl font-bold tracking-wide text-[#1e3a8a]">
-                vmerg
-              </div>
-            </div>
+          <div className="flex items-center justify-center sm:justify-start">
+
+  <img
+    src="/vmerg-logo.png"
+    alt="vmerg logo"
+    className="h-[70px] sm:h-[80px] w-auto object-contain scale-110"
+  />
+
+</div>
 
             <p className="text-xs sm:text-sm text-slate-700 leading-relaxed max-w-xs">
               Performance-driven influencer marketing platform helping brands

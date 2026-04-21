@@ -76,7 +76,7 @@ export default function ProcessSection() {
                   {step.number}
                 </div>
 
-                <h3 className="text-sm sm:text-lg font-semibold text-slate-900 leading-snug">
+                <h3 className="text-sm sm:text-lg font-semibold text-blue-700 leading-snug">
                   {step.title}
                 </h3>
 

@@ -38,7 +38,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative w-full min-h-screen flex items-start pt-24 bg-gradient-to-br from-indigo-600 via-blue-500 to-cyan-400 overflow-hidden text-white">
+    <section className="relative w-full min-h-screen flex items-start pt-24 bg-gradient-to-br from-indigo-100 via-blue-300 to-cyan-300 overflow-hidden text-white">
 
       {/* FADE */}
       <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-white/10 to-transparent z-0"></div>

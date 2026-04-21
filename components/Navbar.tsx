@@ -6,41 +6,16 @@ import { Menu, X } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 
 
-// ✅ LOGO COMPONENT (FIXED)
+// ✅ LOGO COMPONENT (FIXED PATH + SIZE)
 const Logo = () => {
   return (
-    <div className="flex items-center gap-2 select-none">
-
-      {/* LEFT */}
-      <span className="text-blue-600 text-xl sm:text-2xl font-bold leading-none">
-        vm
-      </span>
-
-      {/* CENTER SYMBOL */}
-      <div className="flex flex-col items-center justify-center leading-none">
-
-        <span className="w-6 h-[2px] bg-red-500 rounded-full"></span>
-
-        <div className="flex items-center">
-          <span className="w-2 h-[2px] bg-red-500"></span>
-          <span className="text-red-500 text-sm leading-none">➤</span>
-          <span className="w-2 h-[2px] bg-red-500"></span>
-        </div>
-
-        <span className="w-6 h-[4px] bg-red-500 rounded-full"></span>
-
-      </div>
-
-      {/* RIGHT */}
-      <span className="text-blue-600 text-xl sm:text-2xl font-bold leading-none">
-        rg
-      </span>
-
-    </div>
+    <img
+      src="/vmerg-logo.png"
+      alt="vmerg logo"
+      className="h-[60px] sm:h-[70px] w-auto object-contain scale-110"
+    />
   );
 };
-
-
 export default function Navbar() {
   const [mobileMenu, setMobileMenu] = useState(false);
   const pathname = usePathname();
@@ -60,11 +35,12 @@ export default function Navbar() {
           { title: "Website Development", desc: "High-converting websites" },
         ],
       },
-      { name: "Work", href: "/work" },
-      { name: "About", href: "/about" },
+     
+    
       { name: "Brands", href: "/brands" },
       { name: "Creators", href: "/creators" },
       { name: "Contact", href: "/contact" },
+        { name: "About Us", href: "/about" },
     ],
     []
   );
@@ -85,22 +61,23 @@ export default function Navbar() {
       {/* NAV */}
       <nav className="animate-gradient-sync shadow-md backdrop-blur-md">
 
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-3 flex items-center justify-between">
+        {/* ✅ COMPACT HEIGHT */}
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-2 flex items-center justify-between">
 
-          {/* ✅ LOGO */}
+          {/* LOGO */}
           <Link href="/" onClick={() => setMobileMenu(false)}>
             <Logo />
           </Link>
 
-          {/* DESKTOP */}
-          <div className="hidden md:flex items-center gap-6 lg:gap-8">
+          {/* DESKTOP NAV */}
+          <div className="hidden md:flex items-center gap-8 lg:gap-10">
 
             {navItems.map((item) => (
               <div key={item.name} className="relative group">
 
                 <Link
                   href={item.href}
-                  className={`text-sm font-semibold transition-all duration-300
+                  className={`text-base font-semibold transition-all duration-300
                   ${
                     isActive(item.href)
                       ? "text-black scale-125"
@@ -120,19 +97,19 @@ export default function Navbar() {
                     <div className="bg-gradient-to-br from-blue-100 via-sky-100 to-blue-50 
                     rounded-2xl shadow-xl p-4 sm:p-5 border border-blue-200">
 
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
                         {item.dropdown.map((d, i) => (
                           <Link
                             key={i}
                             href="/services"
                             className="p-3 rounded-xl transition 
-                            hover:bg-blue-500 hover:scale-105 hover:shadow-md"
+                            hover:bg-blue-500 hover:text-white hover:scale-105 hover:shadow-md"
                           >
-                            <p className="font-semibold text-sm text-black">
+                            <p className="font-semibold text-sm">
                               {d.title}
                             </p>
-                            <p className="text-xs text-slate-600 mt-1">
+                            <p className="text-xs mt-1 opacity-80">
                               {d.desc}
                             </p>
                           </Link>
@@ -149,7 +126,7 @@ export default function Navbar() {
             {/* CTA */}
             <Link
               href="/contact"
-              className="ml-3 lg:ml-4 px-5 py-2.5 rounded-xl 
+              className="ml-4 px-5 py-2.5 rounded-xl 
               bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 
               text-white font-semibold shadow-lg 
               hover:scale-110 hover:shadow-xl transition"
@@ -159,12 +136,12 @@ export default function Navbar() {
 
           </div>
 
-          {/* MOBILE BTN */}
+          {/* MOBILE BUTTON (BIGGER ICON) */}
           <button
             onClick={() => setMobileMenu(!mobileMenu)}
             className="md:hidden text-black"
           >
-            {mobileMenu ? <X size={26} /> : <Menu size={26} />}
+            {mobileMenu ? <X size={30} /> : <Menu size={30} />}
           </button>
 
         </div>
@@ -172,19 +149,19 @@ export default function Navbar() {
 
       {/* MOBILE MENU */}
       <div
-        className={`fixed inset-0 top-[60px] bg-sky-100 px-6 py-8 md:hidden 
+        className={`fixed inset-0 top-[56px] bg-sky-100 px-6 py-8 md:hidden 
         transform transition-all duration-300
         ${mobileMenu ? "translate-x-0" : "translate-x-full"}`}
       >
 
-        <div className="space-y-5">
+        <div className="space-y-6">
 
           {navItems.map((item) => (
             <Link
               key={item.name}
               href={item.href}
               onClick={() => setMobileMenu(false)}
-              className="block text-lg font-medium text-black hover:text-blue-500 transition"
+              className="block text-xl font-semibold text-black hover:text-blue-600 transition"
             >
               {item.name}
             </Link>

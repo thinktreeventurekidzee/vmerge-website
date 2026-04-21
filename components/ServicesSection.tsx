@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
@@ -14,148 +13,135 @@ import {
 
 const services = [
   {
+    id: "01",
     title: "Influencer Marketing",
     icon: Users,
-    desc: "Find and partner with creators aligned to your audience.",
-    color: "from-sky-400 to-blue-500",
+    desc: "Find and partner with the right creators who match your brand.",
+    note: "Creator sourcing & vetting • Product seeding and gifting programs • Whitelisting / partnership ads • Affiliate tracking & campaign reporting",
   },
   {
-    title: "UGC Content",
+    id: "02",
+    title: "UGC Content Creation",
     icon: Video,
-    desc: "High-converting content for ads and social media.",
-    color: "from-pink-400 to-rose-500",
+    desc: "Produce authentic content for ads and social media.",
+    note: "UGC for paid social ads • Hook/script angle development • Multi-creator content pipelines • Ad testing and iteration support",
   },
   {
-    title: "Video Production",
+    id: "03",
+    title: "On-Site Video Shoots",
     icon: Camera,
-    desc: "Professional shoots with editing & direction.",
-    color: "from-purple-400 to-indigo-500",
+    desc: "Professional shoots for creators and brands.",
+    note: "Product and founder shoots • Testimonial and case-study videos • Reels, ads and launch-day assets • Editing, motion graphics and cutdowns",
   },
   {
-    title: "Social Management",
+    id: "04",
+    title: "Social Media Management",
     icon: Smartphone,
     desc: "Strategy, posting, and engagement.",
-    color: "from-emerald-400 to-teal-500",
+    note: "Platform-native content strategy • Publishing and community management • Paid social support with creatives • Analytics, reporting and optimization",
   },
   {
+    id: "05",
     title: "Website Development",
     icon: Code,
-    desc: "Modern high-performance websites.",
-    color: "from-orange-400 to-amber-500",
+    desc: "Modern websites optimized for conversions.",
+    note: "Landing pages for campaign traffic • Conversion-focused UX and CRO • Technical SEO and site-speed setup • Shopify / Next.js growth builds",
   },
 ];
 
 export default function ServicesSection() {
-  const [active, setActive] = useState<number | null>(0);
-
   return (
-    <section className="relative overflow-hidden py-16 sm:py-20 md:py-24 bg-gradient-to-br from-sky-50 via-white to-blue-50">
-
-      {/* BG BLOBS */}
+    <section className="relative overflow-hidden bg-[#eaf4ff] py-16 sm:py-20 md:py-28">
+      {/* BG */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-20 left-10 w-40 sm:w-72 h-40 sm:h-72 bg-sky-300/20 blur-3xl rounded-full" />
-        <div className="absolute bottom-10 right-10 w-48 sm:w-80 h-48 sm:h-80 bg-purple-300/20 blur-3xl rounded-full" />
+        <div className="absolute top-10 left-10 w-40 h-40 sm:w-72 sm:h-72 rounded-full bg-blue-300/20 blur-3xl" />
+        <div className="absolute bottom-10 right-10 w-48 h-48 sm:w-80 sm:h-80 rounded-full bg-sky-300/20 blur-3xl" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-
         {/* HEADER */}
-        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16 md:mb-20">
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-slate-900 leading-tight">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-blue-700 leading-tight">
             Services designed for growth
           </h2>
 
-          <p className="mt-3 sm:mt-4 text-sm sm:text-lg text-slate-600">
-            Scale your brand with strategy, creators, and execution.
+          <p className="mt-3 sm:mt-4 text-base sm:text-lg text-slate-700">
+            Everything you need to scale with creators.
           </p>
         </div>
 
         {/* GRID */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 md:gap-8">
-
-          {services.map((service, index) => {
-            const isActive = active === index;
-
-            return (
-              <motion.div
-                key={index}
-                onClick={() => setActive(index)}
-                whileHover={{ y: -6 }}
-                className="group cursor-pointer"
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {services.map((service, index) => (
+            <motion.div
+              key={service.id}
+              className="group"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.45, delay: index * 0.08 }}
+            >
+              <div
+                className="p-[1px] rounded-2xl bg-transparent
+                sm:group-hover:bg-gradient-to-br sm:group-hover:from-blue-500 sm:group-hover:to-cyan-400
+                transition-all duration-300"
               >
-
-                {/* OUTER */}
                 <div
-                  className={`p-[1px] rounded-xl sm:rounded-2xl transition-all duration-300
-                  ${
-                    isActive
-                      ? `bg-gradient-to-br ${service.color}`
-                      : "bg-transparent sm:group-hover:bg-gradient-to-br sm:group-hover:from-sky-200 sm:group-hover:to-purple-200"
-                  }`}
+                  className="rounded-2xl p-5 sm:p-6 bg-white shadow-sm
+                  transition-all duration-300 sm:group-hover:shadow-2xl sm:group-hover:-translate-y-1"
                 >
-
-                  {/* INNER */}
+                  {/* ICON */}
                   <div
-                    className={`rounded-xl sm:rounded-2xl p-4 sm:p-6 h-full transition-all duration-300
-                    ${
-                      isActive
-                        ? "bg-white shadow-xl"
-                        : "bg-white/80 backdrop-blur-md"
-                    }`}
+                    className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-xl mb-4
+                    bg-blue-100 text-blue-600
+                    sm:group-hover:bg-gradient-to-br sm:group-hover:from-blue-500 sm:group-hover:to-cyan-400 sm:group-hover:text-white transition"
                   >
+                    <service.icon size={20} />
+                  </div>
 
-                    {/* ICON */}
-                    <div
-                      className={`w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-lg sm:rounded-xl mb-3 sm:mb-4
-                      ${
-                        isActive
-                          ? `bg-gradient-to-br ${service.color} text-white`
-                          : "bg-slate-100 text-slate-600"
-                      }`}
-                    >
-                      <service.icon size={20} />
+                  {/* TITLE */}
+                  <h3 className="text-lg sm:text-xl font-semibold text-slate-900">
+                    {service.title}
+                  </h3>
+
+                  {/* DESC */}
+                  <p className="mt-2 text-slate-600 text-sm leading-relaxed">
+                    {service.desc}
+                  </p>
+
+                  {/* CTA */}
+                  <div className="mt-3 sm:mt-4 flex items-center gap-2 text-blue-600 text-sm font-medium sm:group-hover:translate-x-1 transition">
+                    Learn more <ArrowRight size={16} />
+                  </div>
+
+                  {/* DETAILS */}
+                  <div className="mt-4 sm:mt-0 sm:overflow-hidden sm:max-h-0 sm:group-hover:max-h-40 transition-all duration-500">
+                    <div className="border-t border-slate-200 pt-4 mt-4">
+                      <ul className="space-y-2 text-sm text-slate-600">
+                        {service.note.split("•").map((feature, i) => (
+                          <li key={i} className="flex gap-2">
+                            <span className="text-blue-600">✔</span>
+                            <span>{feature.trim()}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-
-                    {/* TITLE */}
-                    <h3 className="text-base sm:text-xl font-semibold text-slate-900">
-                      {service.title}
-                    </h3>
-
-                    {/* DESC */}
-                    <p className="mt-1.5 sm:mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
-                      {service.desc}
-                    </p>
-
-                    {/* CTA */}
-                    <div
-                      className={`mt-3 sm:mt-5 flex items-center gap-2 text-xs sm:text-sm font-medium transition
-                      ${isActive ? "text-slate-900" : "text-sky-600"}
-                      sm:group-hover:translate-x-1`}
-                    >
-                      Learn more <ArrowRight size={14} />
-                    </div>
-
                   </div>
                 </div>
-
-              </motion.div>
-            );
-          })}
-
+              </div>
+            </motion.div>
+          ))}
         </div>
 
         {/* CTA */}
-        <div className="mt-14 sm:mt-20 md:mt-24 text-center">
+        <div className="mt-12 sm:mt-20 text-center">
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-5 sm:px-7 py-3 rounded-full
-            bg-gradient-to-r from-blue-900 to-blue-700 text-white
-            hover:scale-105 transition shadow-lg"
+            className="inline-flex items-center gap-2 px-5 sm:px-6 py-3 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700 transition"
           >
             Start Your Project <ArrowRight size={16} />
           </Link>
         </div>
-
       </div>
     </section>
   );

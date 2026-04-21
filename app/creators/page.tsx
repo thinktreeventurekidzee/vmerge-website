@@ -63,6 +63,15 @@ export default function CreatorsPage() {
         { name: "Ashish Chanchlani", img: "/Ashish Chanchlani.jpeg" },
         { name: "Round2hell", img: "/Round2hell.jpeg" },
         { name: "Lakshay Chaudhary", img: "/Lakshay Chaudhary.jpeg" },
+         { name: "Lakshay Chaudhary", img: "/Anushree.jpeg" },
+          { name: "Lakshay Chaudhary", img: "/Archanachandhoke.jpeg" },
+           { name: "Lakshay Chaudhary", img: "/Bharti singh.jpeg" },
+            { name: "Lakshay Chaudhary", img: "/ddneelakandan.jpeg" },
+             { name: "Lakshay Chaudhary", img: "/Gracy goswami.jpeg" },
+              { name: "Lakshay Chaudhary", img: "/Lavi yadav.jpeg" },
+               { name: "Lakshay Chaudhary", img: "/Mythri iyer.jpeg" },
+                { name: "Lakshay Chaudhary", img: "/Vaishnavi.jpeg" },
+
       ],
     },
     {

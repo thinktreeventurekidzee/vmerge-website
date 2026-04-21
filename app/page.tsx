@@ -3,10 +3,8 @@
 import { useEffect, useState } from "react";
 import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
-
-import WorkGallery from "@/components/WorkGallery";
 import AboutSection from "@/components/AboutSection";
-
+import ImpactSection from "@/components/ImpactSection";
 import ProcessSection from "@/components/ProcessSection";
 
 
@@ -61,7 +59,6 @@ const SECTIONS = [
   "home",
   "services",
   "trust",
-  "work",
   "about",
   "contact",
 ];
@@ -111,9 +108,8 @@ export default function HomePage() {
 
       <HeroSection />
       <ServicesSection />
-
-      <WorkGallery />
       <ProcessSection />
+      <ImpactSection />
       <AboutSection />
       
 
