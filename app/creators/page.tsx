@@ -37,40 +37,30 @@ export default function CreatorsPage() {
         { name: "Ankur Warikoo", img: "/Ankur Warikoo.jpeg" },
         { name: "Sharan Hegde", img: "/Sharan Hegde.jpeg" },
         { name: "Prakash Gaba", img: "/Prakash Gaba.jpeg" },
-        { name: "Ayush Thakur", img: "/Ayush Thakur.jpeg" },
-      ],
-    },
-    {
-      title: "Crypto",
-      creators: [
-        { name: "Yashika Crypto", img: "/Yashika Crypto.jpeg" },
+         { name: "Yashika Crypto", img: "/Yashika Crypto.jpeg" },
         { name: "Crypto Aman", img: "/Crypto Aman.jpeg" },
         { name: "Jeet Crypto", img: "/Jeet Crypto.jpeg" },
         { name: "Markets With Mack", img: "/Markets with Mack.jpeg" },
-        { name: "Crypto Universe Shivam", img: "/Shivam.jpeg" },
-      ],
-    },
-    {
-      title: "Tech & Education",
-      creators: [
-        { name: "Dhruv Rathee", img: "/Dhruv Rathee.jpeg" },
-        { name: "Ankur Warikoo", img: "/Ankur Warikoo.jpeg" },
+      
       ],
     },
     {
       title: "Entertainment",
       creators: [
+        
+        { name: "Dhruv Rathee", img: "/Dhruv Rathee.jpeg" },
+        { name: "Ankur Warikoo", img: "/Ankur Warikoo.jpeg" },
         { name: "Ashish Chanchlani", img: "/Ashish Chanchlani.jpeg" },
         { name: "Round2hell", img: "/Round2hell.jpeg" },
         { name: "Lakshay Chaudhary", img: "/Lakshay Chaudhary.jpeg" },
-         { name: "Lakshay Chaudhary", img: "/Anushree.jpeg" },
-          { name: "Lakshay Chaudhary", img: "/Archanachandhoke.jpeg" },
-           { name: "Lakshay Chaudhary", img: "/Bharti singh.jpeg" },
-            { name: "Lakshay Chaudhary", img: "/ddneelakandan.jpeg" },
-             { name: "Lakshay Chaudhary", img: "/Gracy goswami.jpeg" },
-              { name: "Lakshay Chaudhary", img: "/Lavi yadav.jpeg" },
-               { name: "Lakshay Chaudhary", img: "/Mythri iyer.jpeg" },
-                { name: "Lakshay Chaudhary", img: "/Vaishnavi.jpeg" },
+         { name: "Anushree", img: "/Anushree.jpeg" },
+          { name: "Archanachandhoke", img: "/Archanachandhoke.jpeg" },
+           { name: "Bharti Singh", img: "/Bharti singh.jpeg" },
+            { name: "ddneelakandan", img: "/ddneelakandan.jpeg" },
+             { name: "Gracy Goswami", img: "/Gracy goswami.jpeg" },
+              { name: "Lavi yadav", img: "/Lavi yadav.jpeg" },
+               { name: "Mythri Iyer", img: "/Mythri iyer.jpeg" },
+                { name: "Vaishnavi", img: "/Vaishnavi.jpeg" },
 
       ],
     },
