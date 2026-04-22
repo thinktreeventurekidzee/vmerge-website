@@ -57,7 +57,7 @@ export default function CreatorsPage() {
           { name: "Archanachandhoke", img: "/Archanachandhoke.jpeg" },
            { name: "Bharti Singh", img: "/Bharti singh.jpeg" },
             { name: "ddneelakandan", img: "/ddneelakandan.jpeg" },
-             { name: "Gracy Goswami", img: "/Gracy goswami.jpeg" },
+             { name: "Gracy Goswami", img: "/Gracy Goswami.jpeg" },
               { name: "Lavi yadav", img: "/Lavi yadav.jpeg" },
                { name: "Mythri Iyer", img: "/Mythri iyer.jpeg" },
                 { name: "Vaishnavi", img: "/Vaishnavi.jpeg" },
