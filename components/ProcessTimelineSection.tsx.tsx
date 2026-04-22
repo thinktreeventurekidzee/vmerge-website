@@ -1,90 +1,179 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const steps = [
   {
     id: "01",
-    title: "Influencer Discovery",
+    title: "Influencer Discovery 🔎",
     desc: "Identify and shortlist influencers who align with the brand’s target audience, niche, and campaign objectives.",
     img: "/section/a1.jpeg",
   },
   {
     id: "02",
-    title: "Creator Matchmaking",
+    title: "Creator Matchmaking 🤝",
     desc: "Connect brands with the most suitable creators to ensure authentic collaborations and impactful storytelling.",
     img: "/section/a2.jpeg",
   },
   {
     id: "03",
-    title: "Campaign Management",
+    title: "Campaign Management 📋",
     desc: "Plan, execute, and coordinate influencer campaigns from briefing and content creation to publishing.",
     img: "/section/a3.jpeg",
   },
   {
     id: "04",
-    title: "Performance Tracking",
+    title: "Performance Tracking 📊",
     desc: "Monitor campaign performance through insights, engagement metrics, and detailed reporting to measure results.",
     img: "/section/a4.jpeg",
   },
 ];
 
-export default function ProcessTimelineSection() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [progress, setProgress] = useState(0);
+export default function ZigzagTimeline() {
+  const sectionRef = useRef<HTMLElement | null>(null);
 
-  const stepIds = useMemo(() => steps.map((s) => `step-${s.id}`), []);
+  const desktopDotRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const mobileDotRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  const [activeDesktop, setActiveDesktop] = useState(0);
+  const [activeMobile, setActiveMobile] = useState(0);
+
+  const [desktopLine, setDesktopLine] = useState({
+    top: 0,
+    height: 0,
+    progress: 0,
+  });
+
+  const [mobileLine, setMobileLine] = useState({
+    top: 0,
+    height: 0,
+    progress: 0,
+  });
 
   useEffect(() => {
+    const getCenterInSection = (el: HTMLElement, section: HTMLElement) => {
+      const elRect = el.getBoundingClientRect();
+      const sectionRect = section.getBoundingClientRect();
+      return elRect.top - sectionRect.top + elRect.height / 2;
+    };
+
+    const calculateMetrics = () => {
+      const section = sectionRef.current;
+      if (!section) return;
+
+      const isDesktop = window.innerWidth >= 768;
+      const refs = isDesktop ? desktopDotRefs.current : mobileDotRefs.current;
+      const validDots = refs.filter(Boolean) as HTMLDivElement[];
+
+      if (validDots.length < 2) return;
+
+      const first = validDots[0];
+      const last = validDots[validDots.length - 1];
+
+      const top = getCenterInSection(first, section);
+      const bottom = getCenterInSection(last, section);
+      const height = Math.max(0, bottom - top);
+
+      if (isDesktop) {
+        setDesktopLine((prev) => ({ ...prev, top, height }));
+      } else {
+        setMobileLine((prev) => ({ ...prev, top, height }));
+      }
+    };
+
     const handleScroll = () => {
-      const elements = stepIds
-        .map((id) => document.getElementById(id))
-        .filter(Boolean) as HTMLElement[];
+      const section = sectionRef.current;
+      if (!section) return;
 
-      if (!elements.length) return;
+      const isDesktop = window.innerWidth >= 768;
+      const refs = isDesktop ? desktopDotRefs.current : mobileDotRefs.current;
+      const validDots = refs.filter(Boolean) as HTMLDivElement[];
+      if (validDots.length === 0) return;
 
-      const trigger = window.innerHeight * 0.45;
+      const triggerY = window.innerHeight * 0.5;
+
+      // current active dot
       let current = 0;
-
-      elements.forEach((el, i) => {
-        if (el.getBoundingClientRect().top <= trigger) current = i;
+      validDots.forEach((dot, i) => {
+        const center = dot.getBoundingClientRect().top + dot.offsetHeight / 2;
+        if (center <= triggerY) current = i;
       });
 
-      setActiveIndex(current);
+      // segment-wise progress (dot se dot)
+      const segmentHeights = validDots.map((dot, i) => {
+        if (i === validDots.length - 1) return 0;
+        const currentCenter =
+          dot.getBoundingClientRect().top + dot.offsetHeight / 2;
+        const nextCenter =
+          validDots[i + 1].getBoundingClientRect().top +
+          validDots[i + 1].offsetHeight / 2;
+        return nextCenter - currentCenter;
+      });
 
-      const first = elements[0].offsetTop;
-      const last = elements[elements.length - 1].offsetTop;
+      let accumulated = 0;
+      for (let i = 0; i < segmentHeights.length; i++) {
+        if (i < current) {
+          accumulated += segmentHeights[i];
+        } else if (i === current) {
+          const currentCenter =
+            validDots[i].getBoundingClientRect().top +
+            validDots[i].offsetHeight / 2;
 
-      const scrollY = window.scrollY + window.innerHeight * 0.4;
-      const total = last - first;
-      const currentProgress = scrollY - first;
+          const partial = Math.min(
+            Math.max(triggerY - currentCenter, 0),
+            segmentHeights[i]
+          );
 
-      const percent = Math.max(
-        0,
-        Math.min(100, (currentProgress / total) * 100)
-      );
+          accumulated += partial;
+          break;
+        }
+      }
 
-      setProgress(percent);
+      const clampedProgress = accumulated;
+
+      if (isDesktop) {
+        setDesktopLine((prev) => ({ ...prev, progress: clampedProgress }));
+        setActiveDesktop(current);
+      } else {
+        setMobileLine((prev) => ({ ...prev, progress: clampedProgress }));
+        setActiveMobile(current);
+      }
     };
 
-    handleScroll();
+    const syncAll = () => {
+      calculateMetrics();
+      handleScroll();
+    };
+
+    syncAll();
+
+    const resizeObserver = new ResizeObserver(() => {
+      syncAll();
+    });
+
+    if (sectionRef.current) resizeObserver.observe(sectionRef.current);
+    desktopDotRefs.current.forEach((el) => el && resizeObserver.observe(el));
+    mobileDotRefs.current.forEach((el) => el && resizeObserver.observe(el));
+
     window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("resize", handleScroll);
+    window.addEventListener("resize", syncAll);
 
     return () => {
+      resizeObserver.disconnect();
       window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
+      window.removeEventListener("resize", syncAll);
     };
-  }, [stepIds]);
+  }, []);
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-white via-slate-50 to-[#f8f6ef] py-24">
-
-      <div className="max-w-6xl mx-auto px-6">
-
-        {/* HEADER */}
-        <div className="text-center mb-20">
-          <p className="text-sm uppercase tracking-[0.25em] text-blue-600 font-semibold">
+    <section
+      ref={sectionRef}
+      id="timeline-section"
+      className="relative overflow-hidden bg-gradient-to-b from-white via-slate-50 to-[#f8f6ef] py-16 md:py-24"
+    >
+      <div className="mx-auto max-w-6xl px-4 md:px-6">
+        <div className="mb-14 md:mb-20 text-center">
+          <p className="text-xs md:text-sm uppercase tracking-[0.3em] text-blue-600 font-semibold">
             Our Process
           </p>
           <h2 className="mt-4 text-3xl md:text-5xl font-bold text-slate-900">
@@ -93,142 +182,269 @@ export default function ProcessTimelineSection() {
         </div>
 
         <div className="relative">
+          {/* DESKTOP CENTER LINE */}
+          <div
+            className="pointer-events-none absolute left-1/2 hidden -translate-x-1/2 md:block"
+            style={{
+              top: `${desktopLine.top - 206}px`,
+              height: `${desktopLine.height + 186}px`,
+            }}
+          >
+            <div className="relative h-full w-[10px] overflow-hidden rounded-full bg-slate-200">
+              <div
+                className="absolute left-1/2 top-0 w-[4px] -translate-x-1/2 rounded-full transition-[height] duration-150 ease-out"
+                style={{
+                  height: `${Math.max(
+                    0,
+                    Math.min(desktopLine.progress, desktopLine.height)
+                  )}px`,
+                  background:
+                    "linear-gradient(to bottom, #60a5fa, #3b82f6, #1d4ed8)",
+                  boxShadow: "0 0 18px rgba(59,130,246,0.75)",
+                }}
+              />
+              <div
+                className="absolute left-1/2 h-4 w-4 -translate-x-1/2 rounded-full bg-blue-400/80 blur-[2px] transition-all duration-150"
+                style={{
+                  top: `${Math.max(
+                    -2,
+                    Math.min(desktopLine.progress - 6, desktopLine.height - 8)
+                  )}px`,
+                  opacity: desktopLine.progress > 0 ? 1 : 0,
+                }}
+              />
+            </div>
+          </div>
 
-     {/* 🔵 TIMELINE */}
-<div className="absolute left-1/2 top-0 -translate-x-1/2 hidden md:block h-full">
+          {/* MOBILE LEFT LINE */}
+          <div
+            className="pointer-events-none absolute left-5 block md:hidden"
+            style={{
+              top: `${mobileLine.top - 176 }px`,
+              height: `${mobileLine.height + 186}px`,
+            }}
+          >
+            <div className="relative h-full w-[8px] overflow-hidden rounded-full bg-slate-200">
+              <div
+                className="absolute left-1/2 top-0 w-[4px] -translate-x-1/2 rounded-full transition-[height] duration-150 ease-out"
+                style={{
+                  height: `${Math.max(
+                    0,
+                    Math.min(mobileLine.progress, mobileLine.height)
+                  )}px`,
+                  background:
+                    "linear-gradient(to bottom, #60a5fa, #3b82f6, #1d4ed8)",
+                  boxShadow: "0 0 16px rgba(59,130,246,0.7)",
+                }}
+              />
+              <div
+                className="absolute left-1/2 h-4 w-4 -translate-x-1/2 rounded-full bg-blue-400/80 blur-[2px] transition-all duration-150"
+                style={{
+                  top: `${Math.max(
+                    -2,
+                    Math.min(mobileLine.progress - 6, mobileLine.height - 8)
+                  )}px`,
+                  opacity: mobileLine.progress > 0 ? 1 : 0,
+                }}
+              />
+            </div>
+          </div>
 
-  {/* OUTER PIPE */}
-  <div className="relative w-[10px] h-full bg-slate-200 rounded-full flex justify-center">
-
-    {/* INNER BLUE LINE */}
-    <div
-      className="absolute top-0 w-[4px] rounded-full transition-all duration-500
-      bg-gradient-to-b from-blue-400 via-blue-600 to-blue-800
-      shadow-[0_0_20px_rgba(59,130,246,0.6)]"
-      style={{ height: `${progress}%` }}
-    />
-
-  </div>
-</div>
-
-          {/* STEPS */}
-          <div className="space-y-28">
-
+          {/* DESKTOP STEPS */}
+          <div className="hidden space-y-28 md:block">
             {steps.map((step, index) => {
-              const isActive = index <= activeIndex;
               const reverse = index % 2 !== 0;
+              const isActive = index <= activeDesktop;
+              const isCurrent = index === activeDesktop;
 
               return (
                 <div
                   key={step.id}
-                  id={`step-${step.id}`}
-                  className="relative grid md:grid-cols-[1fr_80px_1fr] gap-10 items-center"
+                  className="relative grid items-center gap-10 md:grid-cols-[1fr_80px_1fr]"
                 >
-
-                  {/* LEFT */}
                   <div className="hidden md:block">
                     {!reverse ? (
-                      <ContentCard step={step} isActive={isActive} />
+                      <Content step={step} isActive={isActive} />
                     ) : (
-                      <ImageCard step={step} isActive={isActive} align="right" />
+                      <ImageCard
+                        step={step}
+                        align="right"
+                        isActive={isActive}
+                      />
                     )}
                   </div>
 
-                  {/* CENTER DOT */}
-                  <div className="hidden md:flex justify-center">
-                    <div className="relative z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-md">
-
-                      <div
-                        className={`w-4 h-4 rounded-full transition-all duration-300 ${
-                          isActive
-                            ? "bg-blue-600 scale-110 shadow-[0_0_15px_rgba(59,130,246,0.8)]"
-                            : "bg-slate-300"
-                        }`}
-                      />
-
-                    </div>
+                  <div
+                    className="hidden justify-center md:flex"
+                    ref={(el) => {
+                      desktopDotRefs.current[index] = el;
+                    }}
+                  >
+                    <Dot isActive={isActive} isCurrent={isCurrent} />
                   </div>
 
-                  {/* RIGHT */}
                   <div className="hidden md:block">
                     {reverse ? (
-                      <ContentCard step={step} isActive={isActive} />
+                      <Content step={step} isActive={isActive} />
                     ) : (
-                      <ImageCard step={step} isActive={isActive} />
+                      <ImageCard
+                        step={step}
+                        align="left"
+                        isActive={isActive}
+                      />
                     )}
                   </div>
-
-                   {/* MOBILE */}
-                  <div className="md:hidden">
-                    <ContentCard step={step} isActive={isActive} />
-                    <ImageCard step={step} isActive={isActive} />
-                  </div>
-
                 </div>
               );
             })}
+          </div>
 
+          {/* MOBILE STEPS */}
+          <div className="space-y-10 md:hidden">
+            {steps.map((step, index) => {
+              const isActive = index <= activeMobile;
+              const isCurrent = index === activeMobile;
+
+              return (
+                <div key={step.id} className="relative pl-14">
+                  <div
+                    ref={(el) => {
+                      mobileDotRefs.current[index] = el;
+                    }}
+                    className="absolute left-5 top-6 z-10 -translate-x-1/2"
+                  >
+                    <Dot isActive={isActive} isCurrent={isCurrent} small />
+                  </div>
+
+                  <div
+                    className={`rounded-2xl bg-white p-5 shadow-[0_10px_30px_rgba(0,0,0,0.07)] transition-all duration-500 ${
+                      isActive
+                        ? "translate-y-0 opacity-100"
+                        : "translate-y-3 opacity-70"
+                    }`}
+                  >
+                    <h3 className="text-xl font-bold text-blue-700">
+                      {step.title}
+                    </h3>
+                    <p className="mt-3 leading-relaxed text-slate-700">
+                      {step.desc}
+                    </p>
+
+                    <div className="mt-5 overflow-hidden rounded-2xl">
+                      <img
+                        src={step.img}
+                        alt={step.title}
+                        className="h-auto w-full object-contain transition-transform duration-500"
+                      />
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes pulseGlow {
+          0%,
+          100% {
+            box-shadow: 0 0 0 rgba(59, 130, 246, 0),
+              0 0 0 rgba(59, 130, 246, 0);
+          }
+          50% {
+            box-shadow: 0 0 12px rgba(59, 130, 246, 0.55),
+              0 0 28px rgba(59, 130, 246, 0.35);
+          }
+        }
+      `}</style>
     </section>
   );
 }
 
-function ContentCard({ step, isActive }: any) {
+function Dot({
+  isActive,
+  isCurrent,
+  small = false,
+}: {
+  isActive: boolean;
+  isCurrent?: boolean;
+  small?: boolean;
+}) {
   return (
-    <div className={`group relative max-w-md transition-all duration-500 ${isActive ? "opacity-100 translate-y-0" : "opacity-60 translate-y-4"}`}>
-
-      <div className="absolute inset-0 rounded-2xl bg-white border border-slate-200 shadow-[0_10px_40px_rgba(0,0,0,0.06)] group-hover:shadow-[0_20px_60px_rgba(0,0,0,0.12)] transition-all" />
-
-      <div className="relative p-6">
-
-        {/* STEP */}
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 text-white font-bold shadow-md">
-            {step.id}
-          </div>
-          <p className="text-xs uppercase tracking-[0.2em] text-slate-500">
-            Step {step.id}
-          </p>
-        </div>
-
-        <h3 className="mt-4 text-xl md:text-2xl font-bold text-slate-900">
-          {step.title}
-        </h3>
-
-        <div className="mt-2 w-12 h-[3px] bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full" />
-
-        <p className="mt-4 text-slate-600 leading-relaxed">
-          {step.desc}
-        </p>
-
+    <div className="relative z-10 flex items-center justify-center">
+      <div
+        className={[
+          small ? "w-7 h-7" : "w-8 h-8",
+          "rounded-full flex items-center justify-center border-2 transition-all duration-300",
+          isActive
+            ? "border-blue-500 bg-blue-100 scale-110"
+            : "border-slate-300 bg-white scale-100",
+          isCurrent ? "shadow-[0_0_24px_rgba(59,130,246,0.45)]" : "",
+        ].join(" ")}
+        style={{
+          animation: isCurrent ? "pulseGlow 1.6s ease-in-out infinite" : "none",
+        }}
+      >
+        <div
+          className={[
+            small ? "w-3 h-3" : "w-3.5 h-3.5",
+            "rounded-full transition-all duration-300",
+            isActive
+              ? "bg-blue-600 shadow-[0_0_12px_rgba(59,130,246,0.8)]"
+              : "bg-transparent",
+          ].join(" ")}
+        />
       </div>
     </div>
   );
 }
 
-function ImageCard({ step, isActive, align = "left" }: any) {
+function Content({
+  step,
+  isActive,
+}: {
+  step: (typeof steps)[number];
+  isActive: boolean;
+}) {
   return (
-    <div className={`group relative max-w-md ${align === "right" ? "ml-auto" : ""}`}>
+    <div
+      className={`max-w-md transition-all duration-500 ${
+        isActive ? "translate-y-0 opacity-100" : "translate-y-4 opacity-60"
+      }`}
+    >
+      <div className="rounded-2xl bg-white p-6 shadow-[0_10px_40px_rgba(0,0,0,0.08)]">
+        <h3 className="text-xl md:text-2xl font-bold text-blue-700">
+          {step.title}
+        </h3>
+        <p className="mt-3 leading-relaxed text-slate-900">{step.desc}</p>
+      </div>
+    </div>
+  );
+}
 
-   <img
-  src={step.img}
-  alt={step.title}
-  className="
-    w-full 
-    h-auto 
-    max-h-[300px]
-    object-contain   // 🔥 IMPORTANT (no cut)
-    rounded-2xl
-    transition-all duration-500
-    group-hover:scale-[1.05]   // sirf thoda zoom
-  "
-/>
-
-      {/* overlay */}
-      <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition" />
-
+function ImageCard({
+  step,
+  align = "left",
+  isActive,
+}: {
+  step: (typeof steps)[number];
+  align?: "left" | "right";
+  isActive: boolean;
+}) {
+  return (
+    <div
+      className={`group transition-all duration-500 ${
+        align === "right" ? "ml-auto" : ""
+      } ${
+        isActive ? "translate-y-0 opacity-100" : "translate-y-4 opacity-70"
+      }`}
+    >
+      <img
+        src={step.img}
+        alt={step.title}
+        className="h-auto w-full max-h-[300px] rounded-2xl object-contain shadow-[0_20px_50px_rgba(0,0,0,0.15)] transition-all duration-500 group-hover:scale-[1.05]"
+      />
     </div>
   );
 }
