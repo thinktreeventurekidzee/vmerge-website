@@ -9,6 +9,9 @@ import {
   Camera,
   Smartphone,
   Code,
+  ShoppingCart,
+  Target,
+  BarChart3,
 } from "lucide-react";
 
 const services = [
@@ -16,38 +19,63 @@ const services = [
     id: "01",
     title: "Influencer Marketing",
     icon: Users,
-    desc: "Find and partner with the right creators who match your brand.",
-    note: "Creator sourcing & vetting • Product seeding and gifting programs • Whitelisting / partnership ads • Affiliate tracking & campaign reporting",
+    desc: "Strategic creator partnerships to drive awareness, trust, and conversions.",
+    note: "Creator sourcing & vetting • Campaign strategy & execution • Product seeding & gifting • Whitelisting & paid partnerships • Affiliate tracking & ROI reporting",
   },
   {
     id: "02",
     title: "UGC Content Creation",
     icon: Video,
-    desc: "Produce authentic content for ads and social media.",
-    note: "UGC for paid social ads • Hook/script angle development • Multi-creator content pipelines • Ad testing and iteration support",
+    desc: "High-performing user-generated content built for ads and organic growth.",
+    note: "UGC for paid ads (Meta, Google, TikTok) • Hook & script development • Multi-creator content pipeline • Performance testing & iteration",
   },
   {
     id: "03",
-    title: "On-Site Video Shoots",
+    title: "On-Site Video Production",
     icon: Camera,
-    desc: "Professional shoots for creators and brands.",
-    note: "Product and founder shoots • Testimonial and case-study videos • Reels, ads and launch-day assets • Editing, motion graphics and cutdowns",
+    desc: "Premium brand shoots designed for storytelling and conversions.",
+    note: "Product & lifestyle shoots • Founder & testimonial videos • Reels, ads & launch assets • Editing, motion graphics & short-form cuts",
   },
   {
     id: "04",
     title: "Social Media Management",
     icon: Smartphone,
-    desc: "Strategy, posting, and engagement.",
-    note: "Platform-native content strategy • Publishing and community management • Paid social support with creatives • Analytics, reporting and optimization",
+    desc: "End-to-end social media growth with strategy and execution.",
+    note: "Content strategy & planning • Creative content creation • Community management • Paid social creatives • Performance tracking & analytics",
   },
   {
     id: "05",
     title: "Website Development",
     icon: Code,
-    desc: "Modern websites optimized for conversions.",
-    note: "Landing pages for campaign traffic • Conversion-focused UX and CRO • Technical SEO and site-speed setup • Shopify / Next.js growth builds",
+    desc: "Conversion-focused, high-performance websites for modern brands.",
+    note: "Custom website design • Mobile-responsive development • SEO & performance optimization • Secure & scalable architecture • Landing pages & CRO optimization",
+  },
+
+  // 🔥 NEW TRENDING SERVICES (ADD VALUE)
+  {
+    id: "06",
+    title: "Performance Marketing",
+    icon: BarChart3,    
+    desc: "Data-driven paid campaigns focused on ROI and scalable growth.",
+    note: "Meta & Google Ads management • Funnel strategy & optimization • Creative testing & scaling • Conversion tracking & attribution",
+  },
+  {
+    id: "07",
+    title: "Brand Strategy & Positioning",
+    icon: Target,
+    desc: "Build a strong brand identity that connects and converts.",
+    note: "Brand messaging & storytelling • Audience research • Positioning strategy • Go-to-market planning",
+  },
+  {
+    id: "08",
+    title: "Creator Commerce & Affiliate Growth",
+    icon: ShoppingCart,
+    desc: "Turn creators into revenue channels with scalable systems.",
+    note: "Affiliate program setup • Creator storefronts • Commission tracking • Influencer-led sales funnels",
   },
 ];
+
+
 
 export default function ServicesSection() {
   return (
