@@ -80,81 +80,96 @@ export default function CreatorsPage() {
 
       <main className="bg-[#eaf4ff]">
 
-        {/* HERO */}
-        <section className="py-20 sm:py-28 text-center px-4 sm:px-6">
+       {/* HERO */}
+<section className="py-20 sm:py-28 text-center px-4 sm:px-6">
 
-          <motion.h1
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-3xl sm:text-4xl md:text-6xl font-extrabold text-blue-900 leading-tight"
-          >
-            1 Million+ Influencers <br className="hidden sm:block" />
-            <span className="text-yellow-400">
-              Across India
-            </span>
-          </motion.h1>
+  <motion.h1
+    initial={{ opacity: 0, y: 40 }}
+    animate={{ opacity: 1, y: 0 }}
+    className="text-3xl sm:text-4xl md:text-6xl font-extrabold text-blue-900 leading-tight"
+  >
+    1 Million+ Influencers <br className="hidden sm:block" />
+    <span className="text-blue-600">
+      Across India
+    </span>
+  </motion.h1>
 
-          <p className="mt-4 sm:mt-6 text-slate-600 max-w-2xl mx-auto text-base sm:text-lg">
-            Join creators who are building their audience and monetizing content.
-          </p>
+  <p className="mt-4 sm:mt-6 text-slate-600 max-w-2xl mx-auto text-base sm:text-lg">
+    Join creators who are building their audience and monetizing content.
+  </p>
 
-        </section>
+</section>
 
-        {/* CREATOR SHOWCASE */}
-        <section className="py-20 sm:py-28 bg-white">
 
-          <div className="max-w-7xl mx-auto px-4 sm:px-6">
+{/* CREATOR SHOWCASE */}
+<section className="py-20 sm:py-28 bg-white">
 
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-blue-900">
-              Creators across categories
-            </h2>
+  <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
-            <p className="text-center text-slate-600 mt-4 max-w-2xl mx-auto">
-              From finance to fashion to tech — creators are growing with us.
-            </p>
+    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-blue-900">
+      Creators across categories
+    </h2>
 
-            <div className="mt-12 space-y-12">
+    <p className="text-center text-slate-600 mt-4 max-w-2xl mx-auto">
+      From finance to fashion to tech — creators are growing with us.
+    </p>
 
-              {categories.map((category) => (
+    <div className="mt-12 space-y-12">
 
-                <div key={category.title}>
+      {categories.map((category) => (
 
-                  <h3 className="text-xl sm:text-2xl font-semibold text-blue-900 mb-4 border-l-4 border-blue-500 pl-4">
-                    {category.title}
-                  </h3>
+        <div key={category.title}>
 
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6">
+          {/* CATEGORY TITLE */}
+          <h3 className="text-xl sm:text-2xl font-semibold text-blue-900 mb-6 border-l-4 border-blue-500 pl-4">
+            {category.title}
+          </h3>
 
-                    {category.creators.map((creator) => (
+          {/* GRID */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6">
 
-                      <div
-                        key={creator.name}
-                        className="group rounded-2xl overflow-hidden bg-white shadow hover:shadow-xl transition"
-                      >
-                        <img
-                          src={creator.img}
-                          alt={creator.name}
-                          className="w-full h-32 sm:h-44 object-cover group-hover:scale-110 transition duration-500"
-                        />
+            {category.creators.map((creator, index) => (
 
-                        <div className="p-3 text-center font-medium">
-                          {creator.name}
-                        </div>
-                      </div>
+              <div
+                key={`${creator.name}-${index}`}
+                className="group rounded-2xl overflow-hidden bg-white shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-1"
+              >
 
-                    ))}
+                {/* IMAGE */}
+                <div className="relative h-[180px] sm:h-[220px] bg-gradient-to-br from-blue-50 to-sky-100 flex items-center justify-center overflow-hidden">
 
-                  </div>
+                  <img
+                    src={creator.img}
+                    alt={creator.name}
+                    className="max-h-full max-w-full object-contain transition duration-500 group-hover:scale-105"
+                  />
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition" />
 
                 </div>
 
-              ))}
+                {/* NAME */}
+                <div className="p-4 text-center">
+                  <p className="font-semibold text-slate-900 group-hover:text-blue-600 transition">
+                    {creator.name}
+                  </p>
+                </div>
 
-            </div>
+              </div>
+
+            ))}
 
           </div>
 
-        </section>
+        </div>
+
+      ))}
+
+    </div>
+
+  </div>
+
+</section>
 
         {/* FORM */}
         <section className="py-16 sm:py-20">

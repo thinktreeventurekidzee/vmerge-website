@@ -4,8 +4,8 @@ import { ThemeProvider } from "./context/ThemeContext";
 import { Inter, Poppins } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ScrollTimeline from "@/components/ScrollTimeline"; // ✅ ADD THIS
 
-// 🔤 FONTS
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -19,14 +19,13 @@ const poppins = Poppins({
   display: "swap",
 });
 
-// 📄 SEO
 export const metadata: Metadata = {
   title: {
     default: "Vmerg - Influencer Marketing Platform",
     template: "%s | Vmerg",
   },
   description:
-    "Turn creator partnerships into measurable brand growth. Scale influencer campaigns with verified creators and data-driven strategies.",
+    "Turn creator partnerships into measurable brand growth.",
 };
 
 export default function RootLayout({
@@ -43,6 +42,9 @@ export default function RootLayout({
       <body className="flex flex-col min-h-screen bg-slate-50 text-slate-900 antialiased font-sans">
 
         <ThemeProvider>
+
+          {/* ✅ TIMELINE ADD HERE */}
+          <ScrollTimeline />
 
           {/* NAVBAR */}
           <Navbar />

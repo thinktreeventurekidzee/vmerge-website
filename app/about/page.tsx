@@ -85,19 +85,57 @@ export default function AboutPage() {
 
       </section>
 
-      {/* CTA */}
-      <section className="bg-blue-500 text-white text-center py-16">
-        <h2 className="text-2xl font-semibold">
-          Ready to work with us?
-        </h2>
+{/* CTA */}
+<section className="py-24 sm:py-32 bg-white text-center">
 
-        <Link
-          href="/contact"
-          className="inline-block mt-6 bg-red-500 px-6 py-3 rounded-xl"
-        >
-          Contact Us
-        </Link>
-      </section>
+  <div className="max-w-5xl mx-auto px-4">
+
+    {/* TOP TEXT */}
+    <p className="text-sm sm:text-base text-slate-500 tracking-widest uppercase">
+      Is your brand feeling bland?
+    </p>
+
+    {/* MAIN HEADING */}
+    <h2 className="
+      mt-4 
+      text-4xl sm:text-6xl md:text-7xl 
+      font-extrabold 
+      leading-tight
+      tracking-tight
+    ">
+      <span className="text-slate-900">LET’S</span>{" "}
+      <span className="text-blue-600">TALK</span>
+    </h2>
+
+    {/* SUBTEXT */}
+    <p className="mt-4 text-slate-600 max-w-xl mx-auto">
+      We craft high-performing campaigns that actually drive results.
+    </p>
+
+    {/* BUTTON */}
+    <Link
+      href="/contact"
+      className="
+      inline-block mt-8
+      bg-blue-600 hover:bg-blue-700
+      text-white
+      px-8 py-4
+      rounded-xl
+      font-semibold
+      transition-all duration-300
+      hover:scale-105
+      shadow-lg
+      hover:shadow-[0_10px_30px_rgba(37,99,235,0.4)]
+      "
+    >
+      Start a Conversation →
+    </Link>
+
+  </div>
+
+</section>
+
+
 
     </main>
   );

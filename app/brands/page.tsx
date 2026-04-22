@@ -105,59 +105,158 @@ export default function BrandsPage() {
 
         </section>
 
-        {/* BRANDS */}
-        <section className="py-20 text-center">
+      
+{/* BRANDS */}
+<section className="py-28 bg-gradient-to-b from-slate-50 via-blue-50/60 to-white text-center">
 
-          <h2 className="text-3xl font-semibold text-slate-900">
-            Brands we’ve worked with
-          </h2>
+  {/* HEADING */}
+  <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-slate-900 tracking-tight">
+    Brands we’ve worked with
+  </h2>
 
-          <div className="mt-16 flex flex-wrap justify-center gap-8 max-w-5xl mx-auto">
+  <p className="mt-4 text-slate-600 max-w-2xl mx-auto">
+    Trusted by fast-growing startups and industry leaders
+  </p>
 
-            {brands.map((b, i) => (
-              <div
-                key={b.name}
-                className={`w-[110px] h-[110px] bg-white rounded-xl shadow-md flex items-center justify-center
-                ${i % 2 ? "translate-y-4" : ""}`}
-              >
-                <img src={b.img} className="w-[80px] object-contain" />
-              </div>
-            ))}
+ {/* GRID */}
+<div className="mt-20 max-w-6xl mx-auto px-4">
+
+  {(() => {
+    const chunkSize = 5; // per row (lg screens)
+    const rows = [];
+
+    for (let i = 0; i < brands.length; i += chunkSize) {
+      rows.push(brands.slice(i, i + chunkSize));
+    }
+
+    return rows.map((row, rowIndex) => (
+      <div
+        key={rowIndex}
+       className="flex justify-center gap-10 md:gap-12 mb-16 md:mb-20"
+      >
+        {row.map((b, i) => (
+          <div
+            key={b.name}
+            className={`flex items-center justify-center ${
+              (rowIndex + i) % 2 === 0 ? "md:translate-y-4" : ""
+            }`}
+          >
+
+            <div
+              className="
+              group relative
+              px-5 py-4
+              rounded-xl
+              bg-white
+
+              shadow-[0_18px_30px_rgba(0,0,0,0.12),-10px_10px_20px_rgba(0,0,0,0.08)]
+              hover:shadow-[0_28px_60px_rgba(0,0,0,0.18),-14px_14px_30px_rgba(0,0,0,0.12)]
+
+              transition-all duration-500 ease-out
+              hover:-translate-y-3 hover:scale-110
+              "
+            >
+
+              {/* reflection */}
+              <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/40 to-transparent opacity-40 pointer-events-none" />
+
+              {/* LOGO */}
+              <img
+                src={b.img}
+                alt={b.name}
+                className="h-[70px] sm:h-[80px] md:h-[90px] w-auto object-contain transition duration-500 group-hover:scale-110"
+              />
+
+            </div>
+
+          </div>
+        ))}
+      </div>
+    ));
+  })()}
+
+</div>
+
+      
+
+</section>
+
+{/* OUR PROCESS */}
+<section className="py-20 sm:py-28 bg-gradient-to-b from-sky-50 via-blue-50 to-white text-center">
+
+  <h2 className="text-3xl sm:text-4xl font-bold text-slate-900">
+    Our <span className="text-blue-600">Process</span>
+  </h2>
+
+  <p className="mt-4 text-slate-600">
+    A structured approach to scale campaigns
+  </p>
+
+  <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-12 max-w-5xl mx-auto px-4">
+
+    {["Plan", "Match", "Launch", "Scale"].map((step, i) => {
+
+      const isHighlight = i === 2;
+
+      return (
+        <div key={step} className="group perspective-[800px] flex justify-center">
+
+          <div
+            className={`
+            relative w-[160px] h-[110px]
+            transform-style-preserve-3d
+            transition-all duration-500
+
+            ${
+              isHighlight
+                ? "scale-110 -translate-y-2"
+                : "group-hover:-translate-y-2"
+            }
+
+            group-hover:rotate-x-6 group-hover:-rotate-y-6
+            `}
+          >
+
+            {/* 🔥 FRONT FACE */}
+            <div className="absolute inset-0 bg-white rounded-xl shadow-[0_15px_30px_rgba(0,0,0,0.15)] flex flex-col items-center justify-center z-10">
+
+              <p className="text-blue-600 text-sm font-semibold">
+                0{i + 1}
+              </p>
+
+              <h3 className={`mt-1 font-semibold ${
+                isHighlight ? "text-blue-700" : "text-slate-900"
+              }`}>
+                {step}
+              </h3>
+
+            </div>
+
+            {/* 🔥 TOP FACE */}
+            <div className="
+              absolute inset-0 
+              bg-slate-200 rounded-xl
+              transform -translate-y-[12px] skew-x-[-20deg]
+              opacity-80
+            " />
+
+            {/* 🔥 SIDE FACE */}
+            <div className="
+              absolute inset-0 
+              bg-slate-300 rounded-xl
+              transform translate-x-[12px] skew-y-[-20deg]
+              opacity-80
+            " />
 
           </div>
 
-        </section>
+        </div>
+      );
+    })}
 
-        {/* OUR PROCESS */}
-        <section className="py-20 sm:py-28 bg-sky-50 text-center">
+  </div>
 
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900">
-            Our <span className="text-blue-600">Process</span>
-          </h2>
-
-          <p className="mt-3 text-slate-600">
-            A structured approach to scale campaigns
-          </p>
-
-          <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto px-4">
-
-            {["Plan", "Match", "Launch", "Scale"].map((step, i) => (
-              <div
-                key={step}
-                className="p-6 rounded-2xl bg-white shadow hover:shadow-lg transition"
-              >
-                <p className="text-blue-600 text-sm font-semibold">
-                  0{i + 1}
-                </p>
-                <h3 className="text-lg font-semibold text-slate-900 mt-2">
-                  {step}
-                </h3>
-              </div>
-            ))}
-
-          </div>
-
-        </section>
+</section>
 
       {/* FORM (UNCHANGED) */}
         <section className="py-20 sm:py-28 bg-gradient-to-b from-white via-sky-50 to-white">

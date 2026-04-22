@@ -12,7 +12,7 @@ const Logo = () => {
     <img
       src="/vmerg-logo.png"
       alt="vmerg logo"
-      className="h-[60px] sm:h-[70px] w-auto object-contain scale-110"
+      className="h-[70px] sm:h-[80px] w-auto object-contain scale-110"
     />
   );
 };

@@ -71,25 +71,39 @@ export default function AboutSection() {
           </p>
         </motion.div>
 
-        {/* METRICS */}
-        <motion.div
-          {...fadeUp}
-          className="mt-8 grid grid-cols-3 gap-3 sm:gap-4 max-w-md"
-        >
-          {metrics.map((item) => (
-            <div
-              key={item.label}
-              className="bg-white p-3 rounded-xl text-center shadow-sm border border-slate-100"
-            >
-              <p className="text-lg font-bold text-blue-700">
-                {item.value}
-              </p>
-              <p className="text-xs text-slate-600">
-                {item.label}
-              </p>
-            </div>
-          ))}
-        </motion.div>
+       {/* METRICS */}
+<motion.div
+  {...fadeUp}
+  className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6 max-w-2xl"
+>
+  {metrics.map((item) => (
+    <div
+      key={item.label}
+      className="
+      bg-white 
+      p-6 sm:p-8 
+      rounded-2xl 
+      text-center 
+      shadow-md 
+      border border-slate-100
+
+      hover:shadow-xl 
+      hover:-translate-y-1
+      transition-all duration-300
+      "
+    >
+      {/* VALUE */}
+      <p className="text-2xl sm:text-3xl font-extrabold text-blue-700">
+        {item.value}
+      </p>
+
+      {/* LABEL */}
+      <p className="mt-2 text-sm sm:text-base text-slate-600 font-medium">
+        {item.label}
+      </p>
+    </div>
+  ))}
+</motion.div>
 
         {/* FEATURES (VERTICAL STACK) */}
         <div className="mt-10 space-y-4 max-w-3xl">

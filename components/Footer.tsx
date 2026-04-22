@@ -18,32 +18,43 @@ export default function Footer() {
       {/* BG */}
       <div className="absolute inset-0 animate-gradient-sync"></div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-14 sm:py-20 text-[#0b1a3a]">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-20 text-[#0b1a3a]">
 
         {/* GRID */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12 text-center sm:text-left">
 
-          {/* LOGO */}
+          {/* LOGO + INFO */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="space-y-3 sm:space-y-4 flex flex-col items-center sm:items-start"
+            className="space-y-3 sm:space-y-4 flex flex-col items-center sm:items-start -mt-2"
           >
 
-          <div className="flex items-center justify-center sm:justify-start">
+            {/* LOGO */}
+            <div className="flex items-center justify-center sm:justify-start">
+              <img
+                src="/vmerg-logo.png"
+                alt="vmerg logo"
+                className="
+                  h-[80px] sm:h-[90px]
+                  w-auto object-contain
+                  transition duration-300
+                  hover:scale-105
+                "
+              />
+            </div>
 
-  <img
-    src="/vmerg-logo.png"
-    alt="vmerg logo"
-    className="h-[70px] sm:h-[80px] w-auto object-contain scale-110"
-  />
+            {/* TAGLINE */}
+            <p className="text-sm sm:text-base font-semibold text-slate-900 tracking-wide">
+              End-to-end influencer marketing solutions
+            </p>
 
-</div>
-
-            <p className="text-xs sm:text-sm text-slate-700 leading-relaxed max-w-xs">
+            {/* DESCRIPTION */}
+            <p className="text-sm sm:text-base text-slate-800 leading-relaxed max-w-sm">
               Performance-driven influencer marketing platform helping brands
               scale through creators and data-backed campaigns.
             </p>
+
           </motion.div>
 
           {/* COMPANY */}
@@ -51,12 +62,12 @@ export default function Footer() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
           >
-            <h4 className="font-semibold mb-3 sm:mb-4 text-[#0b1a3a]">
+            <h4 className="font-semibold mb-4 text-[#0b1a3a] text-base">
               Company
             </h4>
 
-            <ul className="space-y-2 text-xs sm:text-sm text-slate-700">
-              {["About", "Services", "Work", "Creators"].map((item) => (
+            <ul className="space-y-3 text-sm text-slate-800">
+              {["About", "Services", "Brands", "Creators"].map((item) => (
                 <li key={item}>
                   <Link
                     href={`/${item.toLowerCase()}`}
@@ -74,23 +85,25 @@ export default function Footer() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
           >
-            <h4 className="font-semibold mb-3 sm:mb-4 text-[#0b1a3a]">
+            <h4 className="font-semibold mb-4 text-[#0b1a3a] text-base">
               Contact
             </h4>
 
-            <div className="space-y-2 sm:space-y-3 text-xs sm:text-sm text-slate-700">
+            <div className="space-y-3 text-sm text-slate-800">
 
-              <div className="flex items-center justify-center sm:justify-start gap-2 sm:gap-3">
-                <Phone size={14} className="text-blue-800" />
+              <div className="flex items-center justify-center sm:justify-start gap-3">
+                <Phone size={16} className="text-blue-700" />
                 <span>+91 86607 83740</span>
               </div>
 
-              <div className="flex items-center justify-center sm:justify-start gap-2 sm:gap-3">
-                <Mail size={14} className="text-blue-800" />
+              <div className="flex items-center justify-center sm:justify-start gap-3">
+                <Mail size={16} className="text-blue-700" />
                 <span className="break-all">vmergmedia@gmail.com</span>
               </div>
 
-              <div>Bengaluru, India</div>
+              <div className="text-slate-700">
+                Bengaluru, India
+              </div>
 
             </div>
           </motion.div>
@@ -100,26 +113,30 @@ export default function Footer() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
           >
-            <h4 className="font-semibold mb-3 sm:mb-4 text-[#0b1a3a]">
+            <h4 className="font-semibold mb-4 text-[#0b1a3a] text-base">
               Follow Us
             </h4>
 
-            <div className="flex justify-center sm:justify-start gap-3 sm:gap-4 flex-wrap">
+            <div className="flex justify-center sm:justify-start gap-4 flex-wrap">
 
-              {[ 
-                { icon: <Instagram size={16} />, link: "https://www.instagram.com/vmerg_/" },
-                { icon: <Twitter size={16} />, link: "https://x.com/vmerg_" },
-                { icon: <Linkedin size={16} />, link: "https://www.linkedin.com/company/vmerg/" },
-                { icon: <Facebook size={16} />, link: "https://www.facebook.com/people/Vmerg/100075742935785/" },
+              {[
+                { icon: <Instagram size={18} />, link: "https://www.instagram.com/vmerg_/" },
+                { icon: <Twitter size={18} />, link: "https://x.com/vmerg_" },
+                { icon: <Linkedin size={18} />, link: "https://www.linkedin.com/company/vmerg/" },
+                { icon: <Facebook size={18} />, link: "https://www.facebook.com/people/Vmerg/100075742935785/" },
               ].map((item, i) => (
                 <a
                   key={i}
                   href={item.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2.5 sm:p-3 rounded-xl bg-white shadow-md 
-                  hover:bg-blue-600 hover:text-black 
-                  transition hover:scale-110"
+                  className="
+                    p-3 rounded-xl bg-white shadow-md
+                    hover:bg-blue-600 hover:text-white
+                    transition duration-300
+                    hover:scale-110
+                    hover:shadow-lg
+                  "
                 >
                   {item.icon}
                 </a>
@@ -131,13 +148,13 @@ export default function Footer() {
         </div>
 
         {/* BOTTOM */}
-        <div className="mt-12 sm:mt-16 border-t border-blue-200 pt-4 sm:pt-6 flex flex-col md:flex-row justify-between items-center gap-3 sm:gap-4 text-xs sm:text-sm text-slate-700 text-center md:text-left">
+        <div className="mt-14 border-t border-blue-200 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-700 text-center md:text-left">
 
           <p>
             © 2026 Vmerg Media Pvt Ltd. All rights reserved.
           </p>
 
-          <div className="flex gap-4 sm:gap-6">
+          <div className="flex gap-6">
 
             <Link href="/privacy-policy" className="hover:text-blue-700 transition">
               Privacy Policy

@@ -129,4 +129,33 @@
   0% { background-position: 0%; }
   100% { background-position: 100%; }
 }
- 
+ /* 🔥 FLOWING ENERGY ANIMATION */
+.energy-flow {
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  animation: flowDown 2.5s linear infinite;
+  filter: blur(8px);
+}
+
+@keyframes flowDown {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(200%);
+  }
+}
+
+
+/* 🔵 ACTIVE DOT GLOW */
+.active-dot {
+  box-shadow:
+    0 0 10px rgba(59, 130, 246, 0.9),
+    0 0 25px rgba(59, 130, 246, 0.5);
+}
