@@ -67,7 +67,7 @@ export default function CreatorsPage() {
     {
       title: "Lifestyle",
       creators: [
-        { name: "Garima Chaurasia", img: "/garima-chaurasia.jpeg" },
+        { name: "Garima Chaurasia", img: "/garima.jpeg" },
         { name: "iam.savithri", img: "/iam.savithri.jpeg" },
         { name: "navyanoor_astrotarot", img: "/Navyanoor.jpeg" },
       ],
