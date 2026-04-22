@@ -7,6 +7,9 @@ import AboutSection from "@/components/AboutSection";
 import ImpactSection from "@/components/ImpactSection";
 import ProcessSection from "@/components/ProcessSection";
 
+import ProcessTimelineSection from "@/components/ProcessTimelineSection.tsx";
+
+
 
 const ContactSection = () => (
   <section
@@ -108,6 +111,7 @@ export default function HomePage() {
 
       <HeroSection />
       <ServicesSection />
+      <ProcessTimelineSection />
       <ProcessSection />
       <ImpactSection />
       <AboutSection />
