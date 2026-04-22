@@ -57,7 +57,7 @@ export default function CreatorsPage() {
           { name: "Archanachandhoke", img: "/Archanachandhoke.jpeg" },
            { name: "Bharti Singh", img: "/Bharti singh.jpeg" },
             { name: "ddneelakandan", img: "/ddneelakandan.jpeg" },
-             { name: "Gracy Goswami", img: "/Gracy Goswami.jpeg" },
+             { name: "Gracy Goswami", img: "/gracy-goswami.jpeg" },
               { name: "Lavi yadav", img: "/Lavi yadav.jpeg" },
                { name: "Mythri Iyer", img: "/Mythri iyer.jpeg" },
                 { name: "Vaishnavi", img: "/Vaishnavi.jpeg" },
@@ -67,7 +67,7 @@ export default function CreatorsPage() {
     {
       title: "Lifestyle",
       creators: [
-        { name: "Garima Chaurasia", img: "/Garima Chaurasia.jpeg" },
+        { name: "Garima Chaurasia", img: "/garima-chaurasia.jpeg" },
         { name: "iam.savithri", img: "/iam.savithri.jpeg" },
         { name: "navyanoor_astrotarot", img: "/Navyanoor.jpeg" },
       ],
