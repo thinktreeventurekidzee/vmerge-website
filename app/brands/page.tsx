@@ -20,19 +20,25 @@ export default function BrandsPage() {
   };
 
   const brands = [
-    { name: "Bear House", img: "/logo/Bear House LOGO.jpeg" },
-    { name: "British Biologicals", img: "/logo/Britishbiological LOGO.jpeg" },
-    { name: "Kotak", img: "/logo/Kotak Mahindra BANK LOGO.jpeg" },
-    { name: "Bybit", img: "/logo/bybit LOGO.jpeg" },
-    { name: "CoinSwitch", img: "/logo/CoinSwitch LOGO.jpeg" },
-    { name: "Fast&Up", img: "/logo/Fast&up LOGO.jpeg" },
-    { name: "Masai", img: "/logo/Masai School.jpeg" },
-    { name: "Oziva", img: "/logo/oziva.jpeg" },
-    { name: "Porter", img: "/logo/PORTER LOGO.jpeg" },
-    { name: "Snitch", img: "/logo/Snitch LOGO.jpeg" },
-    { name: "Uniqlo", img: "/logo/Uniqlo LOGO.jpeg" },
-    { name: "Unocoin", img: "/logo/Unocoin LOGO.jpeg" },
-  ];
+  { name: "Bear House", img: "/logo/bear-house.jpeg" },
+  { name: "British Biologicals", img: "/logo/british-biologicals.jpeg" },
+  { name: "Kotak", img: "/logo/kotak.jpeg" },
+  { name: "Bybit", img: "/logo/bybit.jpeg" },
+  { name: "CoinSwitch", img: "/logo/coinswitch.jpeg" },
+  { name: "Fast&Up", img: "/logo/fastup.jpeg" },
+  { name: "Masai", img: "/logo/masai.jpeg" },
+  { name: "Oziva", img: "/logo/oziva.jpeg" }, // 👈 fixed
+  { name: "Porter", img: "/logo/porter.jpeg" },
+  { name: "Snitch", img: "/logo/snitch.jpeg" },
+  { name: "Uniqlo", img: "/logo/uniqlo.jpeg" },
+  { name: "Unocoin", img: "/logo/unocoin.jpeg" },
+  { name: "Density Exchange", img: "/logo/densityexchange.jpeg" },
+  { name: "Devine Talk", img: "/logo/devinetalk.jpeg" },
+  { name: "Kuku FM", img: "/logo/kukufm.jpeg" },
+  { name: "Lemon", img: "/logo/lemon.jpeg" },
+  { name: "Precise", img: "/logo/precise.jpeg" },
+  { name: "Skydo", img: "/logo/skydo.jpeg" },
+];
 
   return (
     <>
