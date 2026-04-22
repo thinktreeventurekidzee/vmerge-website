@@ -27,7 +27,7 @@ export default function BrandsPage() {
     { name: "CoinSwitch", img: "/logo/CoinSwitch LOGO.jpeg" },
     { name: "Fast&Up", img: "/logo/Fast&up LOGO.jpeg" },
     { name: "Masai", img: "/logo/Masai School.jpeg" },
-    { name: "Oziva", img: "/logo/Oziva LOGO.jpeg" },
+    { name: "Oziva", img: "/logo/oziva.jpeg" },
     { name: "Porter", img: "/logo/PORTER LOGO.jpeg" },
     { name: "Snitch", img: "/logo/Snitch LOGO.jpeg" },
     { name: "Uniqlo", img: "/logo/Uniqlo LOGO.jpeg" },
