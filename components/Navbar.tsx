@@ -104,7 +104,7 @@ export default function Navbar() {
                             key={i}
                             href="/services"
                             className="p-3 rounded-xl transition 
-                            hover:bg-yellow-600 hover:text-white hover:scale-105 hover:shadow-md"
+                            hover:bg-blue-500 hover:text-white hover:scale-105 hover:shadow-md"
                           >
                             <p className="font-semibold text-sm">
                               {d.title}
@@ -127,7 +127,7 @@ export default function Navbar() {
             <Link
               href="/contact"
               className="ml-4 px-5 py-2.5 rounded-xl 
-              bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 
+              bg-gradient-to-r from-yellow-400 via-yellow-700 to-yellow-600 
               text-white font-semibold shadow-lg 
               hover:scale-110 hover:shadow-xl transition"
             >
