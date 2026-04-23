@@ -1,7 +1,7 @@
 "use client";
 
+import React, { useState } from "react";
 import Navbar from "@/components/Navbar";
-import { useState } from "react";
 
 type BrandType = {
   name: string;
@@ -22,28 +22,31 @@ function BrandBadge({
       className={`
         group relative flex items-center justify-center
         transition-all duration-500 ease-out
-        ${large ? "h-[88px] w-[88px]" : "h-[70px] w-[70px]"}
-        ${active ? "scale-105 opacity-100" : "scale-100 opacity-95"}
+        ${large ? "h-[84px] w-[84px]" : "h-[70px] w-[70px]"}
+        ${active ? "scale-[1.04] opacity-100" : "scale-100 opacity-95"}
       `}
     >
       <div
         className={`
           flex items-center justify-center rounded-[22px] bg-white/95
-          shadow-[0_10px_30px_rgba(2,6,23,0.18)]
+          shadow-[0_10px_28px_rgba(2,6,23,0.18)]
           transition-all duration-500
-          ${large ? "h-[88px] w-[88px]" : "h-[70px] w-[70px]"}
-          ${active ? "shadow-[0_16px_40px_rgba(2,6,23,0.24)]" : ""}
+          ${large ? "h-[84px] w-[84px] p-[10px]" : "h-[70px] w-[70px] p-[8px]"}
+          ${active ? "shadow-[0_14px_36px_rgba(2,6,23,0.22)]" : ""}
         `}
       >
-        <img
-          src={brand.img}
-          alt={brand.name}
+        <div
           className={`
-            w-auto object-contain transition-all duration-500
-            ${large ? "h-[46px] max-w-[52px]" : "h-[36px] max-w-[42px]"}
-            ${active ? "scale-105" : ""}
+            flex items-center justify-center
+            ${large ? "h-[60px] w-[60px]" : "h-[52px] w-[52px]"}
           `}
-        />
+        >
+          <img
+            src={brand.img}
+            alt={brand.name}
+            className="max-h-full max-w-full object-contain transition-all duration-500 group-hover:scale-105"
+          />
+        </div>
       </div>
 
       <div className="pointer-events-none absolute -bottom-9 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-slate-950/80 px-3 py-1 text-[11px] font-medium text-white opacity-0 blur-sm transition-all duration-300 group-hover:-bottom-11 group-hover:opacity-100 group-hover:blur-0">
@@ -235,93 +238,98 @@ export default function BrandsPage() {
                 </svg>
               </div>
 
+              {/* Center */}
               <div className="absolute left-1/2 top-1/2 z-30 -translate-x-1/2 -translate-y-1/2">
                 <div
-                  className="relative flex h-[240px] w-[240px] items-center justify-center rounded-full"
+                  className="relative flex h-[210px] w-[210px] items-center justify-center rounded-full"
                   onMouseEnter={() => setIsCenterHovered(true)}
                   onMouseLeave={() => setIsCenterHovered(false)}
                 >
                   <div
-                    className={`pointer-events-none absolute inset-[12%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.30)_0%,rgba(147,197,253,0.22)_28%,rgba(59,130,246,0.12)_52%,transparent_72%)] blur-2xl transition-all duration-700 ${
+                    className={`pointer-events-none absolute inset-[14%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.26)_0%,rgba(147,197,253,0.18)_30%,rgba(59,130,246,0.10)_54%,transparent_72%)] blur-2xl transition-all duration-700 ${
                       isCenterHovered
-                        ? "scale-[1.18] opacity-100"
+                        ? "scale-[1.12] opacity-100"
                         : "scale-100 opacity-80"
                     }`}
                   />
 
                   <div
-                    className={`pointer-events-none absolute inset-[24%] rounded-full border border-white/20 transition-all duration-700 ${
+                    className={`pointer-events-none absolute inset-[25%] rounded-full border border-white/20 transition-all duration-700 ${
                       isCenterHovered
-                        ? "scale-110 shadow-[0_0_60px_rgba(255,255,255,0.24),0_0_120px_rgba(96,165,250,0.30)]"
-                        : "shadow-[0_0_32px_rgba(255,255,255,0.12),0_0_72px_rgba(96,165,250,0.16)]"
+                        ? "scale-105 shadow-[0_0_40px_rgba(255,255,255,0.20),0_0_90px_rgba(96,165,250,0.22)]"
+                        : "shadow-[0_0_24px_rgba(255,255,255,0.10),0_0_60px_rgba(96,165,250,0.14)]"
                     }`}
                   />
 
-                  <div className="relative flex h-[112px] w-[112px] items-center justify-center rounded-full bg-white shadow-[0_20px_50px_rgba(2,6,23,0.36)] transition-all duration-500">
+                  <div className="relative flex h-[104px] w-[104px] items-center justify-center rounded-full bg-white shadow-[0_18px_40px_rgba(2,6,23,0.30)]">
                     <img
                       src="/vmerg-logo.png"
                       alt="Vmerg Logo"
-                      className="h-[88px] w-[88px] rounded-full object-cover"
+                      className="h-[80px] w-[80px] rounded-full object-cover"
                     />
                   </div>
+
+                
                 </div>
               </div>
 
               {/* Outer ring */}
-              <div className="absolute left-[10%] top-[14%] z-10 hidden sm:block">
+              <div className="absolute left-[6%] top-[14%] z-10 hidden sm:block">
                 <BrandBadge brand={brands[0]} large active={isCenterHovered} />
               </div>
-              <div className="absolute left-[28%] top-[6%] z-10 hidden sm:block">
+              <div className="absolute left-[24%] top-[4%] z-10 hidden sm:block">
                 <BrandBadge brand={brands[1]} large active={isCenterHovered} />
               </div>
-              <div className="absolute left-1/2 top-[4%] z-10 hidden -translate-x-1/2 sm:block">
+              <div className="absolute left-1/2 top-[2%] z-10 hidden -translate-x-1/2 sm:block">
                 <BrandBadge brand={brands[2]} large active={isCenterHovered} />
               </div>
-              <div className="absolute right-[28%] top-[6%] z-10 hidden sm:block">
+              <div className="absolute right-[24%] top-[4%] z-10 hidden sm:block">
                 <BrandBadge brand={brands[3]} large active={isCenterHovered} />
               </div>
-              <div className="absolute right-[10%] top-[14%] z-10 hidden sm:block">
+              <div className="absolute right-[6%] top-[14%] z-10 hidden sm:block">
                 <BrandBadge brand={brands[4]} large active={isCenterHovered} />
               </div>
-              <div className="absolute right-[6%] top-[39%] z-10 hidden sm:block">
+
+              <div className="absolute right-[2%] top-[40%] z-10 hidden sm:block">
                 <BrandBadge brand={brands[5]} large active={isCenterHovered} />
               </div>
-              <div className="absolute right-[12%] bottom-[14%] z-10 hidden sm:block">
+              <div className="absolute right-[8%] bottom-[12%] z-10 hidden sm:block">
                 <BrandBadge brand={brands[6]} large active={isCenterHovered} />
               </div>
-              <div className="absolute left-1/2 bottom-[4%] z-10 hidden -translate-x-1/2 sm:block">
+              <div className="absolute left-1/2 bottom-[2%] z-10 hidden -translate-x-1/2 sm:block">
                 <BrandBadge brand={brands[7]} large active={isCenterHovered} />
               </div>
-              <div className="absolute left-[12%] bottom-[14%] z-10 hidden sm:block">
+              <div className="absolute left-[8%] bottom-[12%] z-10 hidden sm:block">
                 <BrandBadge brand={brands[8]} large active={isCenterHovered} />
               </div>
-              <div className="absolute left-[6%] top-[39%] z-10 hidden sm:block">
+              <div className="absolute left-[2%] top-[40%] z-10 hidden sm:block">
                 <BrandBadge brand={brands[9]} large active={isCenterHovered} />
               </div>
 
-              {/* Middle ring */}
-              <div className="absolute left-[22%] top-[24%] z-10 hidden md:block">
+              {/* Inner ring */}
+              <div className="absolute left-[29%] top-[27%] z-10 hidden md:block">
                 <BrandBadge brand={brands[10]} active={isCenterHovered} />
               </div>
-              <div className="absolute left-[36%] top-[18%] z-10 hidden md:block">
+              <div className="absolute left-[40%] top-[22%] z-10 hidden md:block">
                 <BrandBadge brand={brands[11]} active={isCenterHovered} />
               </div>
-              <div className="absolute right-[36%] top-[18%] z-10 hidden md:block">
+              <div className="absolute right-[40%] top-[22%] z-10 hidden md:block">
                 <BrandBadge brand={brands[12]} active={isCenterHovered} />
               </div>
-              <div className="absolute right-[22%] top-[24%] z-10 hidden md:block">
+              <div className="absolute right-[29%] top-[27%] z-10 hidden md:block">
                 <BrandBadge brand={brands[13]} active={isCenterHovered} />
               </div>
-              <div className="absolute right-[20%] bottom-[24%] z-10 hidden md:block">
+
+              <div className="absolute right-[28%] bottom-[27%] z-10 hidden md:block">
                 <BrandBadge brand={brands[14]} active={isCenterHovered} />
               </div>
-              <div className="absolute left-[36%] bottom-[16%] z-10 hidden md:block">
+              <div className="absolute left-[40%] bottom-[20%] z-10 hidden md:block">
                 <BrandBadge brand={brands[15]} active={isCenterHovered} />
               </div>
-              <div className="absolute right-[36%] bottom-[16%] z-10 hidden md:block">
+              <div className="absolute right-[40%] bottom-[20%] z-10 hidden md:block">
                 <BrandBadge brand={brands[16]} active={isCenterHovered} />
               </div>
-              <div className="absolute left-[20%] bottom-[24%] z-10 hidden md:block">
+              <div className="absolute left-[28%] bottom-[27%] z-10 hidden md:block">
                 <BrandBadge brand={brands[17]} active={isCenterHovered} />
               </div>
 
@@ -471,7 +479,10 @@ export default function BrandsPage() {
                     className="input-new h-28"
                   />
 
-                  <button className="w-full rounded-xl bg-red-500 py-3 font-semibold text-white transition hover:scale-105 hover:bg-red-600">
+                  <button
+                    type="submit"
+                    className="w-full rounded-xl bg-red-500 py-3 font-semibold text-white transition hover:scale-105 hover:bg-red-600"
+                  >
                     Get Campaign Strategy →
                   </button>
                 </form>
