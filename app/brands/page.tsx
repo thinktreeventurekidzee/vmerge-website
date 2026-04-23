@@ -10,8 +10,8 @@ type BrandType = {
 
 function BrandBadge({
   brand,
-  large,
-  active,
+  large = false,
+  active = false,
 }: {
   brand: BrandType;
   large?: boolean;
@@ -21,29 +21,32 @@ function BrandBadge({
     <div
       className={`
         group relative flex items-center justify-center
-        ${large ? "h-[76px] w-[124px]" : "h-[64px] w-[104px]"}
-        transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]
-        ${active ? "scale-[1.04] opacity-100" : "scale-100 opacity-95"}
+        transition-all duration-500 ease-out
+        ${large ? "h-[88px] w-[88px]" : "h-[70px] w-[70px]"}
+        ${active ? "scale-105 opacity-100" : "scale-100 opacity-95"}
       `}
     >
-      <img
-        src={brand.img}
-        alt={brand.name}
+      <div
         className={`
-          w-auto object-contain
-          transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]
-          drop-shadow-[0_10px_24px_rgba(2,6,23,0.30)]
-          ${large ? "h-[78px]" : "h-[76px]"}
-          ${
-            active
-              ? "[filter:brightness(1.1)_saturate(1.08)_drop-shadow(0_0_10px_rgba(255,255,255,0.16))_drop-shadow(0_0_24px_rgba(96,165,250,0.22))]"
-              : ""
-          }
-          group-hover:scale-105
+          flex items-center justify-center rounded-[22px] bg-white/95
+          shadow-[0_10px_30px_rgba(2,6,23,0.18)]
+          transition-all duration-500
+          ${large ? "h-[88px] w-[88px]" : "h-[70px] w-[70px]"}
+          ${active ? "shadow-[0_16px_40px_rgba(2,6,23,0.24)]" : ""}
         `}
-      />
+      >
+        <img
+          src={brand.img}
+          alt={brand.name}
+          className={`
+            w-auto object-contain transition-all duration-500
+            ${large ? "h-[46px] max-w-[52px]" : "h-[36px] max-w-[42px]"}
+            ${active ? "scale-105" : ""}
+          `}
+        />
+      </div>
 
-      <div className="pointer-events-none absolute -bottom-9 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-slate-950/75 px-3 py-1 text-[11px] font-medium text-white opacity-0 blur-sm transition-all duration-300 group-hover:-bottom-11 group-hover:opacity-100 group-hover:blur-0">
+      <div className="pointer-events-none absolute -bottom-9 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-slate-950/80 px-3 py-1 text-[11px] font-medium text-white opacity-0 blur-sm transition-all duration-300 group-hover:-bottom-11 group-hover:opacity-100 group-hover:blur-0">
         {brand.name}
       </div>
     </div>
@@ -115,22 +118,14 @@ export default function BrandsPage() {
     { name: "Skydo", img: "/logo/skydo.jpeg" },
   ];
 
-  const orbitBrandClass = (extra = "") =>
-    `absolute z-10 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]
-     ${
-       isCenterHovered
-         ? "scale-[1.08] opacity-100 [filter:brightness(1.12)_saturate(1.12)_drop-shadow(0_0_16px_rgba(255,255,255,0.14))_drop-shadow(0_0_26px_rgba(96,165,250,0.20))]"
-         : "scale-100 opacity-95"
-     } ${extra}`;
-
   return (
     <>
       <Navbar />
 
       <main>
         {/* HERO */}
-        <section className="py-20 sm:py-28 text-center text-white bg-gradient-to-br from-indigo-600 via-blue-500 to-cyan-400">
-          <h1 className="text-3xl sm:text-5xl font-bold">
+        <section className="bg-gradient-to-br from-indigo-600 via-blue-500 to-cyan-400 py-20 text-center text-white sm:py-28">
+          <h1 className="text-3xl font-bold sm:text-5xl">
             We scale brands through creators
           </h1>
           <p className="mt-4 text-white/80">
@@ -139,8 +134,8 @@ export default function BrandsPage() {
         </section>
 
         {/* WHY BRANDS */}
-        <section className="py-20 sm:py-28 bg-gradient-to-b from-white via-blue-50 to-white text-center">
-          <h2 className="text-3xl sm:text-4xl font-semibold text-slate-900">
+        <section className="bg-gradient-to-b from-white via-blue-50 to-white py-20 text-center sm:py-28">
+          <h2 className="text-3xl font-semibold text-slate-900 sm:text-4xl">
             Why brands choose <span className="text-blue-600">Vmerg</span>
           </h2>
 
@@ -148,7 +143,7 @@ export default function BrandsPage() {
             Built for performance, scale, and clarity
           </p>
 
-          <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto px-4">
+          <div className="mx-auto mt-14 grid max-w-6xl grid-cols-1 gap-6 px-4 md:grid-cols-3">
             {[
               {
                 icon: "🚀",
@@ -168,204 +163,177 @@ export default function BrandsPage() {
             ].map((item) => (
               <div
                 key={item.title}
-                className="group rounded-2xl bg-white/80 border shadow-md hover:shadow-xl transition hover:-translate-y-2"
+                className="group rounded-2xl border bg-white/80 shadow-md transition hover:-translate-y-2 hover:shadow-xl"
               >
-                <div className="h-24 flex items-center justify-center bg-blue-50">
+                <div className="flex h-24 items-center justify-center bg-blue-50">
                   <div className="text-3xl">{item.icon}</div>
                 </div>
 
                 <div className="p-5 text-left">
                   <h3 className="font-semibold text-slate-900">{item.title}</h3>
-                  <p className="text-sm text-slate-600 mt-2">{item.desc}</p>
+                  <p className="mt-2 text-sm text-slate-600">{item.desc}</p>
                 </div>
               </div>
             ))}
           </div>
         </section>
 
-        {/* BRANDS - ORBIT */}
-        <section className="py-28 bg-gradient-to-b from-slate-50 via-blue-50/60 to-white text-center overflow-hidden">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-slate-900 tracking-tight">
+        {/* BRANDS */}
+        <section className="overflow-hidden bg-gradient-to-b from-slate-50 via-blue-50/60 to-white py-28 text-center">
+          <h2 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
             Brands we’ve worked with
           </h2>
 
-          <p className="mt-4 text-slate-600 max-w-2xl mx-auto">
+          <p className="mx-auto mt-4 max-w-2xl text-slate-600">
             Trusted by fast-growing startups and industry leaders
           </p>
 
-          <div className="mt-16 max-w-7xl mx-auto px-4">
-            <div className="relative mx-auto h-[900px] w-full max-w-[1180px] overflow-hidden rounded-[2.4rem] border border-blue-200/40 bg-[radial-gradient(circle_at_center,#1d4ed8_0%,#1d4ed8_22%,#1e3a8a_54%,#0b1f4f_90%)] shadow-[0_35px_100px_rgba(30,64,175,0.4)]">
-              {/* ambient lighting */}
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.12),transparent_20%),radial-gradient(circle_at_18%_22%,rgba(147,197,253,0.13),transparent_28%),radial-gradient(circle_at_82%_24%,rgba(191,219,254,0.12),transparent_26%),radial-gradient(circle_at_50%_88%,rgba(59,130,246,0.18),transparent_30%)]" />
+          <div className="mx-auto mt-16 max-w-7xl px-4">
+            <div className="relative mx-auto h-[860px] w-full max-w-[1180px] overflow-hidden rounded-[2.4rem] border border-blue-200/40 bg-[radial-gradient(circle_at_center,#2f6df6_0%,#1f49d8_24%,#1533ab_50%,#0b1d69_78%,#071448_100%)] shadow-[0_35px_100px_rgba(37,99,235,0.28)]">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.10),transparent_18%),radial-gradient(circle_at_18%_22%,rgba(147,197,253,0.12),transparent_24%),radial-gradient(circle_at_82%_24%,rgba(191,219,254,0.10),transparent_24%),radial-gradient(circle_at_50%_88%,rgba(59,130,246,0.14),transparent_26%)]" />
 
-              {/* scattered bubbles */}
               <FloatingBubble size="large" className="left-[8%] top-[14%]" />
-              <FloatingBubble size="small" className="left-[10%] top-[24%]" />
+              <FloatingBubble size="small" className="left-[18%] top-[24%]" />
               <FloatingBubble size="medium" className="left-[9%] bottom-[20%]" />
               <FloatingBubble size="small" className="left-[26%] bottom-[10%]" />
               <FloatingBubble size="large" className="right-[9%] top-[13%]" />
               <FloatingBubble size="small" className="right-[18%] top-[30%]" />
               <FloatingBubble size="medium" className="right-[10%] bottom-[16%]" />
               <FloatingBubble size="small" className="right-[26%] bottom-[12%]" />
-              <FloatingBubble size="medium" className="top-[8%] left-[48%]" />
-              <FloatingBubble size="small" className="bottom-[8%] left-[52%]" />
+              <FloatingBubble size="medium" className="left-[48%] top-[8%]" />
+              <FloatingBubble size="small" className="left-[52%] bottom-[8%]" />
 
-              {/* spiral dotted path */}
               <div className="pointer-events-none absolute inset-0">
                 <svg
-                  viewBox="0 0 1180 900"
+                  viewBox="0 0 1180 860"
                   className="h-full w-full"
                   preserveAspectRatio="none"
                 >
                   <path
-                    d="M592 450
-                       C 640 430, 675 440, 702 475
-                       C 730 512, 724 564, 676 598
-                       C 614 642, 528 644, 451 601
-                       C 372 557, 331 470, 350 384
-                       C 373 278, 479 199, 611 200
-                       C 763 202, 874 307, 898 440
-                       C 930 616, 797 754, 589 768
-                       C 370 783, 183 636, 149 442
-                       C 109 214, 287 68, 546 59
-                       C 835 49, 1059 236, 1069 473"
+                    d="M592 430
+                       C 640 412, 676 420, 702 452
+                       C 728 484, 726 534, 686 566
+                       C 632 610, 552 620, 476 592
+                       C 396 562, 344 494, 346 414
+                       C 348 306, 446 224, 584 214
+                       C 742 202, 866 296, 900 422
+                       C 940 582, 822 712, 618 736
+                       C 402 760, 196 648, 154 456
+                       C 112 252, 260 96, 514 80
+                       C 818 60, 1046 234, 1060 458"
                     fill="none"
-                    strokeWidth="2.2"
-                    strokeDasharray="2 12"
-                    strokeLinecap="round"
-                    className={`transition-all duration-1000 ${
+                    stroke={
                       isCenterHovered
-                        ? "stroke-[rgba(255,236,184,0.55)] drop-shadow-[0_0_10px_rgba(251,191,36,0.16)]"
-                        : "stroke-[rgba(255,255,255,0.26)]"
-                    }`}
+                        ? "rgba(255,255,255,0.55)"
+                        : "rgba(255,255,255,0.24)"
+                    }
+                    strokeWidth="2.2"
+                    strokeDasharray="2 14"
+                    strokeLinecap="round"
+                    className="transition-all duration-500"
                   />
                 </svg>
               </div>
 
-              {/* center sun hub */}
               <div className="absolute left-1/2 top-1/2 z-30 -translate-x-1/2 -translate-y-1/2">
                 <div
+                  className="relative flex h-[240px] w-[240px] items-center justify-center rounded-full"
                   onMouseEnter={() => setIsCenterHovered(true)}
                   onMouseLeave={() => setIsCenterHovered(false)}
-                  className="group relative flex h-[220px] w-[220px] items-center justify-center rounded-full"
                 >
-                  {/* slow outer lumination */}
                   <div
-                    className={`
-                      pointer-events-none absolute inset-[8%] rounded-full blur-2xl
-                      transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]
-                      ${
-                        isCenterHovered
-                          ? "scale-[1.18] opacity-100"
-                          : "scale-100 opacity-70"
-                      }
-                      bg-[radial-gradient(circle,rgba(255,255,255,0.34)_0%,rgba(147,197,253,0.22)_28%,rgba(59,130,246,0.14)_48%,transparent_72%)]
-                    `}
+                    className={`pointer-events-none absolute inset-[12%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.30)_0%,rgba(147,197,253,0.22)_28%,rgba(59,130,246,0.12)_52%,transparent_72%)] blur-2xl transition-all duration-700 ${
+                      isCenterHovered
+                        ? "scale-[1.18] opacity-100"
+                        : "scale-100 opacity-80"
+                    }`}
                   />
 
-                  {/* sun ring */}
                   <div
-                    className={`
-                      pointer-events-none absolute inset-[20%] rounded-full border border-white/20
-                      transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)]
-                      ${
-                        isCenterHovered
-                          ? "scale-110 shadow-[0_0_40px_rgba(255,255,255,0.24),0_0_100px_rgba(96,165,250,0.34)]"
-                          : "scale-100 shadow-[0_0_24px_rgba(255,255,255,0.12),0_0_60px_rgba(96,165,250,0.18)]"
-                      }
-                    `}
+                    className={`pointer-events-none absolute inset-[24%] rounded-full border border-white/20 transition-all duration-700 ${
+                      isCenterHovered
+                        ? "scale-110 shadow-[0_0_60px_rgba(255,255,255,0.24),0_0_120px_rgba(96,165,250,0.30)]"
+                        : "shadow-[0_0_32px_rgba(255,255,255,0.12),0_0_72px_rgba(96,165,250,0.16)]"
+                    }`}
                   />
 
-                  {/* center logo */}
-                  <div
-                    className={`
-                      relative flex h-[116px] w-[116px] items-center justify-center rounded-full bg-white
-                      transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]
-                      ${
-                        isCenterHovered
-                          ? "scale-[1.05] shadow-[0_18px_50px_rgba(2,6,23,0.42),0_0_30px_rgba(255,255,255,0.20)]"
-                          : "scale-100 shadow-[0_18px_44px_rgba(2,6,23,0.34)]"
-                      }
-                    `}
-                  >
+                  <div className="relative flex h-[112px] w-[112px] items-center justify-center rounded-full bg-white shadow-[0_20px_50px_rgba(2,6,23,0.36)] transition-all duration-500">
                     <img
                       src="/vmerg-logo.png"
                       alt="Vmerg Logo"
-                      className="h-[92px] w-[92px] rounded-full object-cover"
+                      className="h-[88px] w-[88px] rounded-full object-cover"
                     />
                   </div>
-
-                  
                 </div>
               </div>
 
-              {/* logos on orbit – bigger, spaced, no overlap */}
-              <div className={orbitBrandClass("left-[14%] top-[10%] hidden sm:block")}>
+              {/* Outer ring */}
+              <div className="absolute left-[10%] top-[14%] z-10 hidden sm:block">
                 <BrandBadge brand={brands[0]} large active={isCenterHovered} />
               </div>
-              <div className={orbitBrandClass("left-[33%] top-[6%] hidden sm:block")}>
+              <div className="absolute left-[28%] top-[6%] z-10 hidden sm:block">
                 <BrandBadge brand={brands[1]} large active={isCenterHovered} />
               </div>
-              <div className={orbitBrandClass("left-[56%] top-[7%] hidden sm:block")}>
+              <div className="absolute left-1/2 top-[4%] z-10 hidden -translate-x-1/2 sm:block">
                 <BrandBadge brand={brands[2]} large active={isCenterHovered} />
               </div>
-              <div className={orbitBrandClass("right-[13%] top-[16%] hidden sm:block")}>
+              <div className="absolute right-[28%] top-[6%] z-10 hidden sm:block">
                 <BrandBadge brand={brands[3]} large active={isCenterHovered} />
               </div>
-
-              <div className={orbitBrandClass("right-[11%] top-[38%] hidden sm:block")}>
+              <div className="absolute right-[10%] top-[14%] z-10 hidden sm:block">
                 <BrandBadge brand={brands[4]} large active={isCenterHovered} />
               </div>
-              <div className={orbitBrandClass("right-[18%] bottom-[15%] hidden sm:block")}>
+              <div className="absolute right-[6%] top-[39%] z-10 hidden sm:block">
                 <BrandBadge brand={brands[5]} large active={isCenterHovered} />
               </div>
-              <div className={orbitBrandClass("left-[55%] bottom-[7%] hidden sm:block")}>
+              <div className="absolute right-[12%] bottom-[14%] z-10 hidden sm:block">
                 <BrandBadge brand={brands[6]} large active={isCenterHovered} />
               </div>
-              <div className={orbitBrandClass("left-[34%] bottom-[7%] hidden sm:block")}>
+              <div className="absolute left-1/2 bottom-[4%] z-10 hidden -translate-x-1/2 sm:block">
                 <BrandBadge brand={brands[7]} large active={isCenterHovered} />
               </div>
-              <div className={orbitBrandClass("left-[14%] bottom-[15%] hidden sm:block")}>
+              <div className="absolute left-[12%] bottom-[14%] z-10 hidden sm:block">
                 <BrandBadge brand={brands[8]} large active={isCenterHovered} />
               </div>
-              <div className={orbitBrandClass("left-[6%] top-[38%] hidden sm:block")}>
+              <div className="absolute left-[6%] top-[39%] z-10 hidden sm:block">
                 <BrandBadge brand={brands[9]} large active={isCenterHovered} />
               </div>
 
-              <div className={orbitBrandClass("left-[22%] top-[26%] hidden md:block")}>
+              {/* Middle ring */}
+              <div className="absolute left-[22%] top-[24%] z-10 hidden md:block">
                 <BrandBadge brand={brands[10]} active={isCenterHovered} />
               </div>
-              <div className={orbitBrandClass("left-[38%] top-[22%] hidden md:block")}>
+              <div className="absolute left-[36%] top-[18%] z-10 hidden md:block">
                 <BrandBadge brand={brands[11]} active={isCenterHovered} />
               </div>
-              <div className={orbitBrandClass("right-[29%] top-[24%] hidden md:block")}>
+              <div className="absolute right-[36%] top-[18%] z-10 hidden md:block">
                 <BrandBadge brand={brands[12]} active={isCenterHovered} />
               </div>
-              <div className={orbitBrandClass("right-[27%] bottom-[26%] hidden md:block")}>
+              <div className="absolute right-[22%] top-[24%] z-10 hidden md:block">
                 <BrandBadge brand={brands[13]} active={isCenterHovered} />
               </div>
-              <div className={orbitBrandClass("left-[40%] bottom-[23%] hidden md:block")}>
+              <div className="absolute right-[20%] bottom-[24%] z-10 hidden md:block">
                 <BrandBadge brand={brands[14]} active={isCenterHovered} />
               </div>
-              <div className={orbitBrandClass("left-[27%] bottom-[30%] hidden md:block")}>
+              <div className="absolute left-[36%] bottom-[16%] z-10 hidden md:block">
                 <BrandBadge brand={brands[15]} active={isCenterHovered} />
               </div>
-              <div className={orbitBrandClass("right-[38%] bottom-[17%] hidden md:block")}>
+              <div className="absolute right-[36%] bottom-[16%] z-10 hidden md:block">
                 <BrandBadge brand={brands[16]} active={isCenterHovered} />
               </div>
-              <div className={orbitBrandClass("right-[38%] top-[40%] hidden md:block")}>
+              <div className="absolute left-[20%] bottom-[24%] z-10 hidden md:block">
                 <BrandBadge brand={brands[17]} active={isCenterHovered} />
               </div>
 
-              {/* mobile fallback */}
+              {/* Mobile fallback */}
               <div className="absolute inset-x-0 bottom-0 p-4 sm:hidden">
                 <div className="rounded-[1.5rem] border border-white/15 bg-white/10 p-4 backdrop-blur-md">
                   <div className="mb-4 flex items-center justify-center">
-                    <div className="relative flex h-16 w-16 items-center justify-center rounded-[1.25rem] bg-white shadow-lg">
+                    <div className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-2xl bg-white shadow-lg">
                       <img
                         src="/vmerg-logo.png"
                         alt="Vmerg Logo"
-                        className="h-12 w-12 rounded-[1rem] object-contain"
+                        className="h-full w-full object-cover"
                       />
                     </div>
                   </div>
@@ -374,12 +342,12 @@ export default function BrandsPage() {
                     {brands.slice(0, 9).map((b) => (
                       <div
                         key={b.name}
-                        className="group flex items-center justify-center rounded-[1.35rem] bg-white px-3 py-3 shadow-[0_14px_30px_rgba(15,23,42,0.24)] transition hover:-translate-y-1"
+                        className="group flex items-center justify-center rounded-xl bg-white/95 px-3 py-3 shadow-sm transition hover:-translate-y-1"
                       >
                         <img
                           src={b.img}
                           alt={b.name}
-                          className="h-10 w-auto object-contain"
+                          className="h-10 w-auto object-contain transition group-hover:scale-105"
                         />
                       </div>
                     ))}
@@ -391,8 +359,8 @@ export default function BrandsPage() {
         </section>
 
         {/* OUR PROCESS */}
-        <section className="py-20 sm:py-28 bg-gradient-to-b from-sky-50 via-blue-50 to-white text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900">
+        <section className="bg-gradient-to-b from-sky-50 via-blue-50 to-white py-20 text-center sm:py-28">
+          <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl">
             Our <span className="text-blue-600">Process</span>
           </h2>
 
@@ -400,18 +368,18 @@ export default function BrandsPage() {
             A structured approach to scale campaigns
           </p>
 
-          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-12 max-w-5xl mx-auto px-4">
+          <div className="mx-auto mt-16 grid max-w-5xl grid-cols-2 gap-12 px-4 md:grid-cols-4">
             {["Plan", "Match", "Launch", "Scale"].map((step, i) => {
               const isHighlight = i === 2;
 
               return (
                 <div
                   key={step}
-                  className="group perspective-[800px] flex justify-center"
+                  className="group flex justify-center perspective-[800px]"
                 >
                   <div
                     className={`
-                      relative w-[160px] h-[110px]
+                      relative h-[110px] w-[160px]
                       transform-style-preserve-3d
                       transition-all duration-500
                       ${
@@ -422,8 +390,8 @@ export default function BrandsPage() {
                       group-hover:rotate-x-6 group-hover:-rotate-y-6
                     `}
                   >
-                    <div className="absolute inset-0 bg-white rounded-xl shadow-[0_15px_30px_rgba(0,0,0,0.15)] flex flex-col items-center justify-center z-10">
-                      <p className="text-blue-600 text-sm font-semibold">
+                    <div className="absolute inset-0 z-10 flex flex-col items-center justify-center rounded-xl bg-white shadow-[0_15px_30px_rgba(0,0,0,0.15)]">
+                      <p className="text-sm font-semibold text-blue-600">
                         0{i + 1}
                       </p>
 
@@ -436,8 +404,8 @@ export default function BrandsPage() {
                       </h3>
                     </div>
 
-                    <div className="absolute inset-0 bg-slate-200 rounded-xl transform -translate-y-[12px] skew-x-[-20deg] opacity-80" />
-                    <div className="absolute inset-0 bg-slate-300 rounded-xl transform translate-x-[12px] skew-y-[-20deg] opacity-80" />
+                    <div className="absolute inset-0 -translate-y-[12px] skew-x-[-20deg] rounded-xl bg-slate-200 opacity-80" />
+                    <div className="absolute inset-0 translate-x-[12px] skew-y-[-20deg] rounded-xl bg-slate-300 opacity-80" />
                   </div>
                 </div>
               );
@@ -446,10 +414,10 @@ export default function BrandsPage() {
         </section>
 
         {/* FORM */}
-        <section className="py-20 sm:py-28 bg-gradient-to-b from-white via-sky-50 to-white">
-          <div className="max-w-5xl mx-auto px-4">
-            <div className="text-center max-w-2xl mx-auto">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-slate-900">
+        <section className="bg-gradient-to-b from-white via-sky-50 to-white py-20 sm:py-28">
+          <div className="mx-auto max-w-5xl px-4">
+            <div className="mx-auto max-w-2xl text-center">
+              <h2 className="text-2xl font-semibold text-slate-900 sm:text-3xl md:text-4xl">
                 Partner with us for your next campaign
               </h2>
 
@@ -458,10 +426,10 @@ export default function BrandsPage() {
               </p>
             </div>
 
-            <div className="mt-12 rounded-3xl p-[2px] bg-gradient-to-r from-indigo-500 via-blue-500 to-cyan-400">
-              <div className="bg-white rounded-3xl p-6 sm:p-8">
+            <div className="mt-12 rounded-3xl bg-gradient-to-r from-indigo-500 via-blue-500 to-cyan-400 p-[2px]">
+              <div className="rounded-3xl bg-white p-6 sm:p-8">
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                     <input
                       name="name"
                       placeholder="Full Name"
@@ -478,7 +446,7 @@ export default function BrandsPage() {
                     />
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                     <input
                       name="brand"
                       placeholder="Brand Name"
@@ -503,7 +471,7 @@ export default function BrandsPage() {
                     className="input-new h-28"
                   />
 
-                  <button className="w-full bg-red-500 hover:bg-red-600 text-white py-3 rounded-xl font-semibold transition hover:scale-105">
+                  <button className="w-full rounded-xl bg-red-500 py-3 font-semibold text-white transition hover:scale-105 hover:bg-red-600">
                     Get Campaign Strategy →
                   </button>
                 </form>

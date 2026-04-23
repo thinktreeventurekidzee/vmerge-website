@@ -127,7 +127,7 @@ export default function Navbar() {
             <Link
               href="/contact"
               className="ml-4 px-5 py-2.5 rounded-xl 
-              bg-gradient-to-r from-yellow-400 via-yellow-600 to-yellow-200 
+              bg-gradient-to-r from-black to-gray-800
               text-white font-semibold shadow-lg 
               hover:scale-110 hover:shadow-xl transition"
             >
