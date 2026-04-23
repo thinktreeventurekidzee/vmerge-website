@@ -187,7 +187,7 @@ export default function ZigzagTimeline() {
             className="pointer-events-none absolute left-1/2 hidden -translate-x-1/2 md:block"
             style={{
               top: `${desktopLine.top - 206}px`,
-              height: `${desktopLine.height + 186}px`,
+              height: `${desktopLine.height + 6}px`,
             }}
           >
             <div className="relative h-full w-[10px] overflow-hidden rounded-full bg-slate-200">
@@ -242,7 +242,7 @@ export default function ZigzagTimeline() {
                 style={{
                   top: `${Math.max(
                     -2,
-                    Math.min(mobileLine.progress - 6, mobileLine.height - 8)
+                    Math.min(mobileLine.progress - 7, mobileLine.height - 8)
                   )}px`,
                   opacity: mobileLine.progress > 0 ? 1 : 0,
                 }}
