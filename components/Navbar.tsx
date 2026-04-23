@@ -88,7 +88,7 @@ export default function Navbar() {
                 </Link>
 
                 {/* DROPDOWN */}
-                {item.dropdown && (
+                {item.dropdown && pathname !== "/services" && (
                   <div className="absolute left-1/2 -translate-x-1/2 top-full mt-4 
                   w-[90vw] max-w-[520px] opacity-0 invisible translate-y-4 
                   group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 
@@ -127,7 +127,7 @@ export default function Navbar() {
             <Link
               href="/contact"
               className="ml-4 px-5 py-2.5 rounded-xl 
-              bg-gradient-to-r from-yellow-400 via-yellow-700 to-yellow-600 
+              bg-gradient-to-r from-yellow-400 via-yellow-600 to-yellow-200 
               text-white font-semibold shadow-lg 
               hover:scale-110 hover:shadow-xl transition"
             >

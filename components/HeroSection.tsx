@@ -11,10 +11,10 @@ const rotatingWords = [
 
 const heroImages = [
   "/Rachana Ranade.jpeg",
-  "/Neha Nagar.jpeg",
+  "/Anushree.jpeg",
   "/Ankur Warikoo.jpeg",
-  "/Prakash Gaba.jpeg",
-  "/Financebyankita.jpeg",
+  "/Businessman Tushar.jpeg",
+  "/Sushmita Sen.jpeg",
 ];
 
 export default function HeroSection() {

@@ -28,11 +28,28 @@
     box-sizing: border-box;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     margin: 0;
     font-family: var(--font-inter);
     background: var(--color-bg);
     color: var(--color-text);
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
   }
 }
 
@@ -41,7 +58,6 @@
 ================================ */
 
 @layer components {
-
   .container {
     @apply max-w-7xl mx-auto px-6;
   }
@@ -51,21 +67,91 @@
   }
 
   .btn-primary {
-    @apply px-6 py-3 rounded-xl bg-red-500 text-white font-semibold 
-           hover:bg-red-600 transition-all;
+    @apply px-6 py-3 rounded-xl bg-red-500 text-white font-semibold hover:bg-red-600 transition-all;
   }
 
   .card {
-    @apply p-6 rounded-2xl bg-white shadow-sm border border-gray-200 
-           hover:shadow-md transition-all;
+    @apply p-6 rounded-2xl bg-white shadow-sm border border-gray-200 hover:shadow-md transition-all;
   }
 
-  /* 🔵 FINAL INPUT STYLE */
   .input-new {
-    @apply w-full px-4 py-3 rounded-xl border border-blue-300 
-    placeholder:text-slate-400 text-[#0b1a3a]
-    focus:border-blue-500 focus:ring-2 focus:ring-blue-200 
-    outline-none transition;
+    width: 100%;
+    border-radius: 0.95rem;
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    background: rgba(255, 255, 255, 0.95);
+    padding: 0.95rem 1rem;
+    font-size: 0.95rem;
+    color: rgb(15 23 42);
+    outline: none;
+    transition:
+      border-color 220ms ease,
+      box-shadow 220ms ease,
+      transform 220ms ease,
+      background-color 220ms ease;
+  }
+
+  .input-new::placeholder {
+    color: rgba(71, 85, 105, 0.7);
+  }
+
+  .input-new:focus {
+    border-color: rgba(59, 130, 246, 0.48);
+    box-shadow:
+      0 0 0 4px rgba(59, 130, 246, 0.10),
+      0 12px 30px rgba(59, 130, 246, 0.10);
+    background: #ffffff;
+  }
+
+  textarea.input-new {
+    resize: none;
+  }
+
+  .orbit-logo-smooth {
+    transition:
+      transform 500ms cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 500ms cubic-bezier(0.16, 1, 0.3, 1),
+      filter 500ms cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity, filter;
+    filter:
+      brightness(1.03)
+      saturate(1.03)
+      drop-shadow(0 10px 24px rgba(2, 6, 23, 0.24));
+  }
+
+  .brand-tooltip {
+    transition:
+      opacity 300ms ease,
+      transform 300ms ease,
+      filter 300ms ease;
+  }
+
+  .center-sun-core {
+    transition:
+      transform 500ms cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 500ms cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, box-shadow;
+  }
+
+  .center-sun-ring {
+    transition:
+      transform 700ms cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 700ms cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .center-sun-aura {
+    transition:
+      transform 700ms cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
+      filter 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .orbit-path {
+    transition:
+      stroke 700ms cubic-bezier(0.16, 1, 0.3, 1),
+      filter 700ms cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 700ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 }
 
@@ -74,7 +160,6 @@
 ================================ */
 
 @layer utilities {
-
   .text-muted {
     color: var(--color-muted);
   }
@@ -85,19 +170,25 @@
     -webkit-text-fill-color: transparent;
   }
 
-  /* 🌈 RAINBOW CARD */
   .rainbow-card {
-    background: linear-gradient(270deg, red, orange, yellow, green, blue, indigo, violet);
+    background: linear-gradient(
+      270deg,
+      red,
+      orange,
+      yellow,
+      green,
+      blue,
+      indigo,
+      violet
+    );
     background-size: 400% 400%;
     animation: rainbowMove 6s linear infinite;
   }
 
-  /* 🔁 MARQUEE */
   .animate-marquee {
     animation: marquee 18s linear infinite;
   }
 
-  /* 🌊 GLOBAL GRADIENT SYNC (USED FOR NAV + FOOTER) */
   .animate-gradient-sync {
     background: linear-gradient(
       270deg,
@@ -108,6 +199,92 @@
     background-size: 400% 400%;
     animation: gradientFlow 12s ease infinite;
   }
+
+  .energy-flow {
+    width: 100%;
+    height: 80px;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    animation: flowDown 2.5s linear infinite;
+    filter: blur(8px);
+  }
+
+  .active-dot {
+    box-shadow:
+      0 0 10px rgba(59, 130, 246, 0.9),
+      0 0 25px rgba(59, 130, 246, 0.5);
+  }
+
+  .animate-flow {
+    animation: flow 2s linear infinite;
+  }
+
+  .brand-orbit-idle {
+    animation: slow-float 5.8s ease-in-out infinite;
+  }
+
+  .center-sun-glow {
+    animation: soft-pulse-glow 4.2s ease-in-out infinite;
+  }
+
+  .sun-glass {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+  .brand-logo-glow {
+    filter:
+      brightness(1.04)
+      saturate(1.03)
+      drop-shadow(0 8px 22px rgba(2, 6, 23, 0.24));
+  }
+
+  .brand-logo-glow-strong {
+    filter:
+      brightness(1.12)
+      saturate(1.10)
+      drop-shadow(0 0 12px rgba(255, 234, 179, 0.14))
+      drop-shadow(0 0 20px rgba(251, 191, 36, 0.10))
+      drop-shadow(0 10px 24px rgba(2, 6, 23, 0.24));
+  }
+
+  .spiral-sun-bg {
+    background:
+      radial-gradient(circle at center, rgba(255, 248, 220, 0.10), transparent 20%),
+      radial-gradient(circle at 18% 22%, rgba(255, 237, 196, 0.08), transparent 26%),
+      radial-gradient(circle at 82% 24%, rgba(255, 228, 181, 0.08), transparent 24%),
+      radial-gradient(circle at 50% 88%, rgba(251, 191, 36, 0.08), transparent 28%);
+  }
+
+  .warm-sun-aura {
+    background: radial-gradient(
+      circle,
+      rgba(255, 248, 220, 0.34) 0%,
+      rgba(255, 232, 180, 0.22) 24%,
+      rgba(255, 210, 120, 0.12) 45%,
+      rgba(251, 191, 36, 0.07) 60%,
+      transparent 76%
+    );
+  }
+
+  .warm-sun-ring {
+    border-color: rgba(255, 232, 190, 0.22);
+    box-shadow:
+      0 0 25px rgba(255, 234, 179, 0.10),
+      0 0 55px rgba(251, 191, 36, 0.08);
+  }
+
+  .warm-sun-ring-strong {
+    border-color: rgba(255, 232, 190, 0.24);
+    box-shadow:
+      0 0 45px rgba(255, 226, 168, 0.16),
+      0 0 100px rgba(251, 191, 36, 0.14);
+  }
 }
 
 /* ================================
@@ -115,32 +292,33 @@
 ================================ */
 
 @keyframes gradientFlow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 @keyframes marquee {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 @keyframes rainbowMove {
-  0% { background-position: 0%; }
-  100% { background-position: 100%; }
-}
- /* 🔥 FLOWING ENERGY ANIMATION */
-.energy-flow {
-  width: 100%;
-  height: 80px;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgba(255, 255, 255, 0.4),
-    transparent
-  );
-  animation: flowDown 2.5s linear infinite;
-  filter: blur(8px);
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 100%;
+  }
 }
 
 @keyframes flowDown {
@@ -152,13 +330,7 @@
   }
 }
 
-
-/* 🔵 ACTIVE DOT GLOW */
-.active-dot {
-  box-shadow:
-    0 0 10px rgba(59, 130, 246, 0.9),
-    0 0 25px rgba(59, 130, 246, 0.5);
-} @keyframes flow {
+@keyframes flow {
   0% {
     transform: translateY(-100%);
     opacity: 0.2;
@@ -172,6 +344,122 @@
   }
 }
 
-.animate-flow {
-  animation: flow 2s linear infinite;
+@keyframes slow-float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes soft-pulse-glow {
+  0% {
+    opacity: 0.72;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0.72;
+    transform: scale(1);
+  }
+}
+
+/* ================================
+   REDUCED MOTION
+================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-flow,
+  .energy-flow,
+  .rainbow-card,
+  .animate-gradient-sync,
+  .brand-orbit-idle,
+  .center-sun-glow {
+    animation: none !important;
+  }
+
+  .orbit-logo-smooth,
+  .brand-tooltip,
+  .center-sun-core,
+  .center-sun-ring,
+  .center-sun-aura,
+  .orbit-path,
+  .input-new {
+    transition: none !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+.orbit-path {
+  transition:
+    stroke 700ms cubic-bezier(0.16,1,0.3,1),
+    filter 700ms cubic-bezier(0.16,1,0.3,1),
+    opacity 700ms cubic-bezier(0.16,1,0.3,1);
+}
+
+.orbit-logo-smooth {
+  transition:
+    transform 500ms cubic-bezier(0.16,1,0.3,1),
+    opacity 500ms cubic-bezier(0.16,1,0.3,1),
+    filter 500ms cubic-bezier(0.16,1,0.3,1);
+  filter:
+    brightness(1.04)
+    saturate(1.04)
+    drop-shadow(0 12px 26px rgba(15,23,42,0.26));
+}
+
+.brand-tooltip {
+  transition:
+    opacity 300ms ease,
+    transform 300ms ease,
+    filter 300ms ease;
+}
+
+.center-sun-aura,
+.center-sun-ring,
+.center-sun-core {
+  will-change: transform, box-shadow, opacity, filter;
+}
+
+.spiral-sun-bg {
+  background:
+    radial-gradient(circle at center, rgba(255,248,220,0.10), transparent 22%),
+    radial-gradient(circle at 18% 22%, rgba(96,165,250,0.18), transparent 32%),
+    radial-gradient(circle at 82% 24%, rgba(191,219,254,0.14), transparent 30%),
+    radial-gradient(circle at 50% 88%, rgba(37,99,235,0.20), transparent 32%);
+}
+
+.warm-sun-aura {
+  background: radial-gradient(
+    circle,
+    rgba(255,248,220,0.34) 0%,
+    rgba(255,232,180,0.22) 24%,
+    rgba(255,210,120,0.12) 45%,
+    rgba(251,191,36,0.07) 60%,
+    transparent 76%
+  );
+}
+
+.warm-sun-ring {
+  border-color: rgba(255,232,190,0.22);
+  box-shadow:
+    0 0 25px rgba(255,234,179,0.10),
+    0 0 55px rgba(251,191,36,0.08);
+}
+
+.warm-sun-ring-strong {
+  border-color: rgba(255,232,190,0.26);
+  box-shadow:
+    0 0 45px rgba(255,226,168,0.18),
+    0 0 110px rgba(251,191,36,0.15);
 }
