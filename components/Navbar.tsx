@@ -104,7 +104,7 @@ export default function Navbar() {
                             key={i}
                             href="/services"
                             className="p-3 rounded-xl transition 
-                            hover:bg-blue-500 hover:text-white hover:scale-105 hover:shadow-md"
+                            hover:bg-yellow-600 hover:text-white hover:scale-105 hover:shadow-md"
                           >
                             <p className="font-semibold text-sm">
                               {d.title}
