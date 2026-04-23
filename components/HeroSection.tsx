@@ -11,7 +11,7 @@ const rotatingWords = [
 
 const heroImages = [
   "/Rachana Ranade.jpeg",
-  "/Anushree.jpeg",
+  "/gracy-goswami.jpeg",
   "/Ankur Warikoo.jpeg",
   "/Businessman Tushar.jpeg",
   "/Sushmita Sen.jpeg",
