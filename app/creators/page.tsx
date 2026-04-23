@@ -40,7 +40,7 @@ export default function CreatorsPage() {
          { name: "Yashika Crypto", img: "/Yashika Crypto.jpeg" },
         { name: "Crypto Aman", img: "/Crypto Aman.jpeg" },
         { name: "Jeet Crypto", img: "/Jeet Crypto.jpeg" },
-        { name: "Markets With Mack", img: "/Markets with Mack.jpeg" },
+        
       
       ],
     },
@@ -48,7 +48,7 @@ export default function CreatorsPage() {
       title: "Entertainment",
       creators: [
         
-        { name: "Dhruv Rathee", img: "/Dhruv Rathee.jpeg" },
+      
         { name: "Ankur Warikoo", img: "/Ankur Warikoo.jpeg" },
         { name: "Ashish Chanchlani", img: "/Ashish Chanchlani.jpeg" },
         { name: "Round2hell", img: "/Round2hell.jpeg" },
