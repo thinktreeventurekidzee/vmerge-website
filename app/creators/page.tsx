@@ -51,7 +51,7 @@ const categories = [
        { name: "Anubhav Singh Bassi", img: "/anubhav singh bassi.jpeg" },
         { name: "Carry Minati", img: "/carry.jpeg" },
          { name: "Sourav Joshi", img: "/sourav joshi.jpeg" },
-          { name: "Triggered Insaan", img: "/triggered insaan.jpeg" },
+          { name: "Triggered Insaan", img: "/trigged.jpeg" },
         { name: "Bhuvan Bam", img: "/Bhuvan Bam.jpeg" },
     
     
