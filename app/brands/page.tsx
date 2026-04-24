@@ -143,7 +143,6 @@ export default function BrandsPage() {
       <Navbar />
 
       <main>
-        {/* HERO */}
         <section className="bg-gradient-to-br from-indigo-600 via-blue-500 to-cyan-400 py-16 text-center text-white sm:py-24">
           <h1 className="px-4 text-3xl font-bold sm:text-5xl">
             We scale brands through creators
@@ -153,7 +152,6 @@ export default function BrandsPage() {
           </p>
         </section>
 
-        {/* WHY BRANDS */}
         <section className="bg-gradient-to-b from-white via-blue-50 to-white py-16 text-center sm:py-24">
           <h2 className="px-4 text-3xl font-semibold text-slate-900 sm:text-4xl">
             Why brands choose <span className="text-blue-600">Vmerg</span>
@@ -198,7 +196,6 @@ export default function BrandsPage() {
           </div>
         </section>
 
-        {/* BRANDS */}
         <section className="overflow-hidden bg-gradient-to-b from-slate-50 via-blue-50/60 to-white py-16 text-center sm:py-24">
           <h2 className="px-4 text-2xl font-semibold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
             Brands we’ve worked with
@@ -208,26 +205,22 @@ export default function BrandsPage() {
             Trusted by fast-growing startups and industry leaders
           </p>
 
-          <div className="mx-auto mt-10 max-w-7xl px-2 sm:mt-16 sm:px-4">
+          <div className="mx-auto mt-10 max-w-7xl px-3 sm:mt-16 sm:px-4">
             <div className="relative mx-auto w-full max-w-[1180px]">
-              {/* responsive frame */}
-              <div className="relative aspect-[1180/860] w-full overflow-hidden rounded-[1.6rem] border border-blue-200/40 bg-[radial-gradient(circle_at_center,#2f6df6_0%,#1f49d8_24%,#1533ab_50%,#0b1d69_78%,#071448_100%)] shadow-[0_24px_70px_rgba(37,99,235,0.24)] sm:rounded-[2rem] lg:rounded-[2.4rem]">
-                {/* overlay */}
+              <div className="relative w-full overflow-hidden rounded-[1.8rem] border border-blue-200/40 bg-[radial-gradient(circle_at_center,#2f6df6_0%,#1f49d8_24%,#1533ab_50%,#0b1d69_78%,#071448_100%)] shadow-[0_24px_70px_rgba(37,99,235,0.24)] aspect-[1180/980] sm:aspect-[1180/860] sm:rounded-[2rem] lg:rounded-[2.4rem]">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.10),transparent_18%),radial-gradient(circle_at_18%_22%,rgba(147,197,253,0.12),transparent_24%),radial-gradient(circle_at_82%_24%,rgba(191,219,254,0.10),transparent_24%),radial-gradient(circle_at_50%_88%,rgba(59,130,246,0.14),transparent_26%)]" />
 
-                {/* floating bubbles */}
-                <FloatingBubble size="large" className="left-[8%] top-[14%]" />
-                <FloatingBubble size="small" className="left-[18%] top-[24%]" />
-                <FloatingBubble size="medium" className="left-[9%] bottom-[20%]" />
-                <FloatingBubble size="small" className="left-[26%] bottom-[10%]" />
-                <FloatingBubble size="large" className="right-[9%] top-[13%]" />
-                <FloatingBubble size="small" className="right-[18%] top-[30%]" />
-                <FloatingBubble size="medium" className="right-[10%] bottom-[16%]" />
-                <FloatingBubble size="small" className="right-[26%] bottom-[12%]" />
-                <FloatingBubble size="medium" className="left-[48%] top-[8%]" />
-                <FloatingBubble size="small" className="left-[52%] bottom-[8%]" />
+                <FloatingBubble size="large" className="left-[7%] top-[14%] opacity-70" />
+                <FloatingBubble size="small" className="left-[16%] top-[24%] opacity-60" />
+                <FloatingBubble size="medium" className="left-[8%] bottom-[18%] opacity-70" />
+                <FloatingBubble size="small" className="left-[24%] bottom-[9%] opacity-60" />
+                <FloatingBubble size="large" className="right-[8%] top-[14%] opacity-70" />
+                <FloatingBubble size="small" className="right-[16%] top-[30%] opacity-60" />
+                <FloatingBubble size="medium" className="right-[8%] bottom-[15%] opacity-70" />
+                <FloatingBubble size="small" className="right-[24%] bottom-[10%] opacity-60" />
+                <FloatingBubble size="medium" className="left-[48%] top-[7%] opacity-60" />
+                <FloatingBubble size="small" className="left-[52%] bottom-[7%] opacity-60" />
 
-                {/* path */}
                 <div className="pointer-events-none absolute inset-0">
                   <svg
                     viewBox="0 0 1180 860"
@@ -249,10 +242,10 @@ export default function BrandsPage() {
                       fill="none"
                       stroke={
                         isCenterHovered
-                          ? "rgba(255,255,255,0.55)"
-                          : "rgba(255,255,255,0.24)"
+                          ? "rgba(255,255,255,0.50)"
+                          : "rgba(255,255,255,0.18)"
                       }
-                      strokeWidth="2.2"
+                      strokeWidth="2"
                       strokeDasharray="2 14"
                       strokeLinecap="round"
                       className="transition-all duration-500"
@@ -260,94 +253,91 @@ export default function BrandsPage() {
                   </svg>
                 </div>
 
-                {/* Center logo */}
                 <div className="absolute left-1/2 top-1/2 z-30 -translate-x-1/2 -translate-y-1/2">
                   <div
-                    className="relative flex h-[108px] w-[108px] items-center justify-center rounded-full sm:h-[132px] sm:w-[132px] md:h-[170px] md:w-[170px] lg:h-[210px] lg:w-[210px]"
+                    className="relative flex h-[92px] w-[92px] items-center justify-center rounded-full sm:h-[132px] sm:w-[132px] md:h-[170px] md:w-[170px] lg:h-[210px] lg:w-[210px]"
                     onMouseEnter={() => setIsCenterHovered(true)}
                     onMouseLeave={() => setIsCenterHovered(false)}
                   >
                     <div
-                      className={`pointer-events-none absolute inset-[16%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.26)_0%,rgba(147,197,253,0.18)_30%,rgba(59,130,246,0.10)_54%,transparent_72%)] blur-lg sm:blur-xl lg:blur-2xl transition-all duration-700 ${
+                      className={`pointer-events-none absolute inset-[14%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.24)_0%,rgba(147,197,253,0.16)_30%,rgba(59,130,246,0.10)_54%,transparent_72%)] blur-lg sm:blur-xl lg:blur-2xl transition-all duration-700 ${
                         isCenterHovered
-                          ? "scale-[1.08] sm:scale-[1.12] opacity-100"
-                          : "scale-100 opacity-80"
+                          ? "scale-[1.06] sm:scale-[1.12] opacity-100"
+                          : "scale-100 opacity-75"
                       }`}
                     />
                     <div
-                      className={`pointer-events-none absolute inset-[24%] rounded-full border border-white/20 transition-all duration-700 ${
+                      className={`pointer-events-none absolute inset-[23%] rounded-full border border-white/20 transition-all duration-700 ${
                         isCenterHovered
-                          ? "scale-105 shadow-[0_0_24px_rgba(255,255,255,0.20),0_0_50px_rgba(96,165,250,0.22)] sm:shadow-[0_0_28px_rgba(255,255,255,0.20),0_0_60px_rgba(96,165,250,0.22)] lg:shadow-[0_0_32px_rgba(255,255,255,0.20),0_0_70px_rgba(96,165,250,0.22)]"
-                          : "shadow-[0_0_14px_rgba(255,255,255,0.10),0_0_32px_rgba(96,165,250,0.14)] sm:shadow-[0_0_18px_rgba(255,255,255,0.10),0_0_40px_rgba(96,165,250,0.14)] lg:shadow-[0_0_18px_rgba(255,255,255,0.10),0_0_48px_rgba(96,165,250,0.14)]"
+                          ? "scale-105 shadow-[0_0_20px_rgba(255,255,255,0.16),0_0_40px_rgba(96,165,250,0.18)] sm:shadow-[0_0_28px_rgba(255,255,255,0.20),0_0_60px_rgba(96,165,250,0.22)] lg:shadow-[0_0_32px_rgba(255,255,255,0.20),0_0_70px_rgba(96,165,250,0.22)]"
+                          : "shadow-[0_0_10px_rgba(255,255,255,0.08),0_0_24px_rgba(96,165,250,0.12)] sm:shadow-[0_0_18px_rgba(255,255,255,0.10),0_0_40px_rgba(96,165,250,0.14)] lg:shadow-[0_0_18px_rgba(255,255,255,0.10),0_0_48px_rgba(96,165,250,0.14)]"
                       }`}
                     />
-                    <div className="relative flex h-[54px] w-[54px] items-center justify-center rounded-full bg-white shadow-[0_10px_24px_rgba(2,6,23,0.30)] sm:h-[66px] sm:w-[66px] md:h-[82px] md:w-[82px] lg:h-[104px] lg:w-[104px]">
+                    <div className="relative flex h-[48px] w-[48px] items-center justify-center rounded-full bg-white shadow-[0_10px_24px_rgba(2,6,23,0.28)] sm:h-[66px] sm:w-[66px] md:h-[82px] md:w-[82px] lg:h-[104px] lg:w-[104px]">
                       <img
                         src="/vmerg-logo.png"
                         alt="Vmerg Logo"
-                        className="h-[42px] w-[42px] rounded-full object-cover sm:h-[50px] sm:w-[50px] md:h-[64px] md:w-[64px] lg:h-[80px] lg:w-[80px]"
+                        className="h-[36px] w-[36px] rounded-full object-cover sm:h-[50px] sm:w-[50px] md:h-[64px] md:w-[64px] lg:h-[80px] lg:w-[80px]"
                       />
                     </div>
                   </div>
                 </div>
 
-                {/* Outer ring */}
-                <div className="absolute left-[6%] top-[14%] z-10">
+                <div className="absolute left-[2%] top-[16%] z-10 scale-[0.80] sm:left-[6%] sm:top-[14%] sm:scale-100">
                   <BrandBadge brand={brands[0]} large active={isCenterHovered} />
                 </div>
-                <div className="absolute left-[24%] top-[4%] z-10">
+                <div className="absolute left-[21%] top-[5%] z-10 scale-[0.80] sm:left-[24%] sm:top-[4%] sm:scale-100">
                   <BrandBadge brand={brands[1]} large active={isCenterHovered} />
                 </div>
-                <div className="absolute left-1/2 top-[2%] z-10 -translate-x-1/2">
+                <div className="absolute left-1/2 top-[1.5%] z-10 -translate-x-1/2 scale-[0.80] sm:top-[2%] sm:scale-100">
                   <BrandBadge brand={brands[2]} large active={isCenterHovered} />
                 </div>
-                <div className="absolute right-[24%] top-[4%] z-10">
+                <div className="absolute right-[21%] top-[5%] z-10 scale-[0.80] sm:right-[24%] sm:top-[4%] sm:scale-100">
                   <BrandBadge brand={brands[3]} large active={isCenterHovered} />
                 </div>
-                <div className="absolute right-[6%] top-[14%] z-10">
+                <div className="absolute right-[2%] top-[16%] z-10 scale-[0.80] sm:right-[6%] sm:top-[14%] sm:scale-100">
                   <BrandBadge brand={brands[4]} large active={isCenterHovered} />
                 </div>
 
-                <div className="absolute right-[2%] top-[40%] z-10">
+                <div className="absolute right-[0%] top-[41%] z-10 scale-[0.80] sm:right-[2%] sm:top-[40%] sm:scale-100">
                   <BrandBadge brand={brands[5]} large active={isCenterHovered} />
                 </div>
-                <div className="absolute right-[8%] bottom-[12%] z-10">
+                <div className="absolute right-[5%] bottom-[11%] z-10 scale-[0.80] sm:right-[8%] sm:bottom-[12%] sm:scale-100">
                   <BrandBadge brand={brands[6]} large active={isCenterHovered} />
                 </div>
-                <div className="absolute left-1/2 bottom-[2%] z-10 -translate-x-1/2">
+                <div className="absolute left-1/2 bottom-[1.5%] z-10 -translate-x-1/2 scale-[0.80] sm:bottom-[2%] sm:scale-100">
                   <BrandBadge brand={brands[7]} large active={isCenterHovered} />
                 </div>
-                <div className="absolute left-[8%] bottom-[12%] z-10">
+                <div className="absolute left-[5%] bottom-[11%] z-10 scale-[0.80] sm:left-[8%] sm:bottom-[12%] sm:scale-100">
                   <BrandBadge brand={brands[8]} large active={isCenterHovered} />
                 </div>
-                <div className="absolute left-[2%] top-[40%] z-10">
+                <div className="absolute left-[0%] top-[41%] z-10 scale-[0.80] sm:left-[2%] sm:top-[40%] sm:scale-100">
                   <BrandBadge brand={brands[9]} large active={isCenterHovered} />
                 </div>
 
-                {/* Inner ring */}
-                <div className="absolute left-[29%] top-[27%] z-10">
+                <div className="absolute left-[24%] top-[28%] z-10 scale-[0.72] sm:left-[29%] sm:top-[27%] sm:scale-100">
                   <BrandBadge brand={brands[10]} active={isCenterHovered} />
                 </div>
-                <div className="absolute left-[40%] top-[22%] z-10">
+                <div className="absolute left-[36%] top-[21%] z-10 scale-[0.72] sm:left-[40%] sm:top-[22%] sm:scale-100">
                   <BrandBadge brand={brands[11]} active={isCenterHovered} />
                 </div>
-                <div className="absolute right-[40%] top-[22%] z-10">
+                <div className="absolute right-[36%] top-[21%] z-10 scale-[0.72] sm:right-[40%] sm:top-[22%] sm:scale-100">
                   <BrandBadge brand={brands[12]} active={isCenterHovered} />
                 </div>
-                <div className="absolute right-[29%] top-[27%] z-10">
+                <div className="absolute right-[24%] top-[28%] z-10 scale-[0.72] sm:right-[29%] sm:top-[27%] sm:scale-100">
                   <BrandBadge brand={brands[13]} active={isCenterHovered} />
                 </div>
 
-                <div className="absolute right-[28%] bottom-[27%] z-10">
+                <div className="absolute right-[24%] bottom-[28%] z-10 scale-[0.72] sm:right-[28%] sm:bottom-[27%] sm:scale-100">
                   <BrandBadge brand={brands[14]} active={isCenterHovered} />
                 </div>
-                <div className="absolute left-[40%] bottom-[20%] z-10">
+                <div className="absolute left-[36%] bottom-[18%] z-10 scale-[0.72] sm:left-[40%] sm:bottom-[20%] sm:scale-100">
                   <BrandBadge brand={brands[15]} active={isCenterHovered} />
                 </div>
-                <div className="absolute right-[40%] bottom-[20%] z-10">
+                <div className="absolute right-[36%] bottom-[18%] z-10 scale-[0.72] sm:right-[40%] sm:bottom-[20%] sm:scale-100">
                   <BrandBadge brand={brands[16]} active={isCenterHovered} />
                 </div>
-                <div className="absolute left-[28%] bottom-[27%] z-10">
+                <div className="absolute left-[24%] bottom-[28%] z-10 scale-[0.72] sm:left-[28%] sm:bottom-[27%] sm:scale-100">
                   <BrandBadge brand={brands[17]} active={isCenterHovered} />
                 </div>
               </div>
@@ -355,7 +345,6 @@ export default function BrandsPage() {
           </div>
         </section>
 
-        {/* OUR PROCESS */}
         <section className="bg-gradient-to-b from-sky-50 via-blue-50 to-white py-16 text-center sm:py-24">
           <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl">
             Our <span className="text-blue-600">Process</span>
@@ -410,7 +399,6 @@ export default function BrandsPage() {
           </div>
         </section>
 
-        {/* FORM */}
         <section className="bg-gradient-to-b from-white via-sky-50 to-white py-16 sm:py-24">
           <div className="mx-auto max-w-5xl px-4">
             <div className="mx-auto max-w-2xl text-center">
@@ -482,4 +470,4 @@ export default function BrandsPage() {
       </main>
     </>
   );
-}
+} 
