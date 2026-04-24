@@ -53,7 +53,7 @@ const categories = [
     ],
   },
   {
-    title: "Lifestyle",
+    title: " Beauty &Lifestyle",
     creators: [
       { name: "Garima Chaurasia", img: "/garima.jpeg" },
       { name: "iam.savithri", img: "/iam.savithri.jpeg" },
