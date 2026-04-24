@@ -10,7 +10,7 @@ export default function Terms() {
             Legal
           </span>
 
-          <h1 className="mt-6 text-3xl sm:text-4xl md:text-5xl font-bold text-yellow-500">
+          <h1 className="mt-6 text-3xl sm:text-4xl md:text-5xl font-bold text-blue-500">
             Terms & Conditions
           </h1>
 
@@ -56,7 +56,7 @@ export default function Terms() {
                   key={id}
                   href={`#${id}`}
                   className="block rounded-lg px-3 py-2 text-sm font-medium 
-                  text-slate-600 hover:bg-yellow-200 hover:text-black transition"
+                  text-slate-600 hover:bg-blue-200 hover:text-black transition"
                 >
                   {label}
                 </a>
