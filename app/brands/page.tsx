@@ -136,6 +136,7 @@ export default function BrandsPage() {
     { name: "Lemon", img: "/logo/lemon.jpeg" },
     { name: "Precise", img: "/logo/precise.jpeg" },
     { name: "Skydo", img: "/logo/skydo.jpeg" },
+    { name: "olay", img: "/logo/oll.jpeg" },
   ];
 
   return (
@@ -292,7 +293,7 @@ export default function BrandsPage() {
                   </div>
                 </div>
 
-                <div className="absolute left-[2%] top-[16%] z-10 scale-[0.80] sm:left-[6%] sm:top-[14%] sm:scale-100">
+                <div className="absolute left-[2%] top-[20%] z-10 scale-[0.80] sm:left-[6%] sm:top-[14%] sm:scale-100">
                   <BrandBadge brand={brands[0]} large active={isCenterHovered} />
                 </div>
                 <div className="absolute left-[21%] top-[5%] z-10 scale-[0.80] sm:left-[24%] sm:top-[4%] sm:scale-100">
@@ -308,19 +309,22 @@ export default function BrandsPage() {
                   <BrandBadge brand={brands[4]} large active={isCenterHovered} />
                 </div>
 
-                <div className="absolute right-[0%] top-[41%] z-10 scale-[0.80] sm:right-[2%] sm:top-[40%] sm:scale-100">
+                <div className="absolute right-[10%] top-[41%] z-10 scale-[0.80] sm:right-[12%] sm:top-[40%] sm:scale-100">
                   <BrandBadge brand={brands[5]} large active={isCenterHovered} />
                 </div>
-                <div className="absolute right-[5%] bottom-[11%] z-10 scale-[0.80] sm:right-[8%] sm:bottom-[12%] sm:scale-100">
+                <div className="absolute right-[5%] bottom-[37%] z-10 scale-[0.80] sm:right-[10%] sm:bottom-[12%] sm:scale-100">
                   <BrandBadge brand={brands[6]} large active={isCenterHovered} />
                 </div>
                 <div className="absolute left-1/2 bottom-[1.5%] z-10 -translate-x-1/2 scale-[0.80] sm:bottom-[2%] sm:scale-100">
                   <BrandBadge brand={brands[7]} large active={isCenterHovered} />
                 </div>
-                <div className="absolute left-[5%] bottom-[11%] z-10 scale-[0.80] sm:left-[8%] sm:bottom-[12%] sm:scale-100">
+                <div className="absolute left-[5%] bottom-[11%] z-10 scale-[0.80] sm:left-[16%] sm:bottom-[12%] sm:scale-100">
                   <BrandBadge brand={brands[8]} large active={isCenterHovered} />
                 </div>
-                <div className="absolute left-[0%] top-[41%] z-10 scale-[0.80] sm:left-[2%] sm:top-[40%] sm:scale-100">
+                <div className="absolute left-[63%] top-[10%] z-10 scale-[0.80] sm:left-[2%] sm:top-[44%] sm:scale-100">
+                  <BrandBadge brand={brands[18]} large active={isCenterHovered} />
+                </div>
+                <div className="absolute left-[20%] top-[41%] z-10 scale-[0.80] sm:left-[21%] sm:top-[43%] sm:scale-100">
                   <BrandBadge brand={brands[9]} large active={isCenterHovered} />
                 </div>
 
