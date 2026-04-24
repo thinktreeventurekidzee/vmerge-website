@@ -196,7 +196,7 @@ export default function BrandsPage() {
           </div>
         </section>
 
-        <section className="overflow-hidden bg-gradient-to-b from-slate-50 via-blue-50/60 to-white py-16 text-center sm:py-24">
+        <section className="overflow-hidden bg-gradient-to-b from-slate-50 via-blue-50/60 to-white pt-16 sm:pt-24 pb-16 text-center">
           <h2 className="px-4 text-2xl font-semibold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
             Brands we’ve worked with
           </h2>
@@ -205,9 +205,18 @@ export default function BrandsPage() {
             Trusted by fast-growing startups and industry leaders
           </p>
 
-          <div className="mx-auto mt-10 max-w-7xl px-3 sm:mt-16 sm:px-4">
-            <div className="relative mx-auto w-full max-w-[1180px]">
-              <div className="relative w-full overflow-hidden rounded-[1.8rem] border border-blue-200/40 bg-[radial-gradient(circle_at_center,#2f6df6_0%,#1f49d8_24%,#1533ab_50%,#0b1d69_78%,#071448_100%)] shadow-[0_24px_70px_rgba(37,99,235,0.24)] aspect-[1180/980] sm:aspect-[1180/860] sm:rounded-[2rem] lg:rounded-[2.4rem]">
+          <div className="mx-auto mt-8 w-full max-w-[100vw] px-0 sm:mt-10">
+            <div className="relative mx-auto w-full">
+              <div
+                className="
+                  relative w-full min-h-[calc(100vh-120px)]
+                  overflow-hidden
+                  border border-blue-200/40
+                  bg-[radial-gradient(circle_at_center,#2f6df6_0%,#1f49d8_24%,#1533ab_50%,#0b1d69_78%,#071448_100%)]
+                  shadow-[0_24px_70px_rgba(37,99,235,0.24)]
+                  rounded-none sm:rounded-[2rem] lg:rounded-[2.4rem]
+                "
+              >
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.10),transparent_18%),radial-gradient(circle_at_18%_22%,rgba(147,197,253,0.12),transparent_24%),radial-gradient(circle_at_82%_24%,rgba(191,219,254,0.10),transparent_24%),radial-gradient(circle_at_50%_88%,rgba(59,130,246,0.14),transparent_26%)]" />
 
                 <FloatingBubble size="large" className="left-[7%] top-[14%] opacity-70" />
@@ -470,4 +479,4 @@ export default function BrandsPage() {
       </main>
     </>
   );
-} 
+}

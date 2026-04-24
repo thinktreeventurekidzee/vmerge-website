@@ -48,6 +48,11 @@ const categories = [
       { name: "Ashish Chanchlani", img: "/Ashish Chanchlani.jpeg" },
       { name: "Round2hell", img: "/Round2hell.jpeg" },
       { name: "Lakshay Chaudhary", img: "/Lakshay Chaudhary.jpeg" },
+       { name: "Anubhav Singh Bassi", img: "/anubhav singh bassi.jpeg" },
+        { name: "Carry Minati", img: "/carry.jpeg" },
+         { name: "Sourav Joshi", img: "/sourav joshi.jpeg" },
+          { name: "Triggered Insaan", img: "/triggered insaan.jpeg" },
+        { name: "Bhuvan Bam", img: "/Bhuvan Bam.jpeg" },
     
     
     ],
