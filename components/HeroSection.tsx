@@ -38,81 +38,88 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative w-full min-h-screen flex items-start pt-24 bg-gradient-to-br from-blue-500 via-blue-300 to-blue-100 overflow-hidden text-white">
+    <section className="relative w-full min-h-screen flex items-center lg:items-start pt-20 lg:pt-28 
+    bg-gradient-to-br from-blue-600 via-blue-400 to-blue-100 overflow-hidden text-white">
 
       {/* FADE */}
-      <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-white/10 to-transparent z-0"></div>
+      <div className="absolute bottom-0 left-0 w-full h-32 sm:h-40 bg-gradient-to-t from-white/10 to-transparent z-0"></div>
 
-      <div className="relative z-10 w-full px-6 sm:px-10 lg:px-20 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+      <div className="relative z-10 w-full px-4 sm:px-8 lg:px-20 
+      grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
         {/* LEFT */}
-        <div className="max-w-2xl">
+        <div className="max-w-xl mx-auto lg:mx-0 text-center lg:text-left">
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+          <h1 className="font-bold leading-tight 
+          text-2xl sm:text-4xl md:text-5xl lg:text-6xl">
+
             Influencer Marketing That Drives
-            <span className="block text-yellow-400 uppercase mt-3">
+
+            <span className="block text-yellow-300 uppercase mt-3 
+            text-lg sm:text-2xl md:text-3xl lg:text-4xl transition-all duration-500">
               {rotatingWords[wordIndex]}
             </span>
           </h1>
 
-          <p className="mt-5 text-sm sm:text-lg text-white/80">
+          <p className="mt-4 sm:mt-6 text-sm sm:text-base lg:text-lg text-white/80 max-w-md mx-auto lg:mx-0">
             VMERG helps brands discover creators, execute campaigns, and scale
             performance with measurable ROI.
           </p>
 
-          <div className="mt-6 flex flex-wrap gap-4">
+          <div className="mt-6 flex justify-center lg:justify-start">
             <Link
               href="/contact"
-              className="px-6 py-3 bg-white text-black rounded-xl font-semibold hover:scale-105 transition"
+              className="px-5 py-3 sm:px-6 sm:py-3 
+              bg-white text-black rounded-xl font-semibold 
+              hover:scale-105 transition duration-300 shadow-lg"
             >
               Start Campaign
             </Link>
           </div>
         </div>
 
-        {/* RIGHT - CIRCULAR STACK */}
-      <div className="relative h-[420px] w-full flex items-center justify-center">
+        {/* RIGHT - IMAGE STACK */}
+        <div className="relative h-[260px] sm:h-[320px] md:h-[380px] lg:h-[450px] 
+        w-full flex items-center justify-center">
 
-  {heroImages.map((img, i) => {
-    const total = heroImages.length;
-    const position =
-      (i - currentIndex + total) % total;
+          {heroImages.map((img, i) => {
+            const total = heroImages.length;
+            const position = (i - currentIndex + total) % total;
 
-    // Only show 3 images (center + 2 behind)
-    if (position > 2) return null;
+            if (position > 2) return null;
 
-    return (
-      <div
-        key={i}
-        className={`absolute transition-all duration-700 ease-in-out
+            return (
+              <div
+                key={i}
+                className={`absolute transition-all duration-700 ease-in-out
 
-        ${
-          position === 0
-            ? "z-30 scale-110 opacity-100 translate-x-0"
-            : position === 1
-            ? "z-20 scale-95 opacity-40 translate-x-20 blur-sm"
-            : "z-10 scale-90 opacity-20 -translate-x-20 blur-md"
-        }
-        `}
-      >
-        {/* 💎 CARD */}
-        <div className="bg-white/90 backdrop-blur-md p-3 rounded-2xl shadow-2xl border border-white/30">
+                ${
+                  position === 0
+                    ? "z-30 scale-105 sm:scale-110 opacity-100 translate-x-0"
+                    : position === 1
+                    ? "z-20 scale-90 opacity-40 translate-x-10 sm:translate-x-16 blur-sm"
+                    : "z-10 scale-85 opacity-20 -translate-x-10 sm:-translate-x-16 blur-md"
+                }
+                `}
+              >
+                <div className="bg-white/90 backdrop-blur-md 
+                p-2 sm:p-3 rounded-2xl shadow-xl border border-white/30">
 
-          <img
-            src={img}
-            alt="creator"
-            className="w-[240px] sm:w-[300px] lg:w-[360px]
-            h-[200px] sm:h-[240px] lg:h-[260px]
-            object-contain rounded-xl"
-          />
+                  <img
+                    src={img}
+                    alt="creator"
+                    className="
+                    w-[180px] sm:w-[240px] md:w-[280px] lg:w-[340px]
+                    h-[140px] sm:h-[180px] md:h-[220px] lg:h-[260px]
+                    object-contain rounded-xl"
+                  />
+
+                </div>
+              </div>
+            );
+          })}
 
         </div>
-      </div>
-    );
-  })}
-
-</div>
-
       </div>
     </section>
   );
