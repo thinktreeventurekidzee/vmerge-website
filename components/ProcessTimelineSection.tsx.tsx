@@ -182,14 +182,15 @@ export default function ZigzagTimeline() {
         </div>
 
         <div className="relative">
-          {/* DESKTOP CENTER LINE */}
-          <div
-            className="pointer-events-none absolute left-1/2 hidden -translate-x-1/2 md:block"
-            style={{
-              top: `${desktopLine.top - 206}px`,
-              height: `${desktopLine.height + 6}px`,
-            }}
-          >
+        
+  {/* DESKTOP CENTER LINE */}
+<div
+  className="pointer-events-none absolute left-1/2 hidden -translate-x-1/2 md:block"
+  style={{
+    top: `${desktopLine.top - 248}px`,
+    height: `${desktopLine.height +12}px`,
+  }}
+>
             <div className="relative h-full w-[10px] overflow-hidden rounded-full bg-slate-200">
               <div
                 className="absolute left-1/2 top-0 w-[4px] -translate-x-1/2 rounded-full transition-[height] duration-150 ease-out"
@@ -208,7 +209,7 @@ export default function ZigzagTimeline() {
                 style={{
                   top: `${Math.max(
                     -2,
-                    Math.min(desktopLine.progress - 6, desktopLine.height - 8)
+                    Math.min(desktopLine.progress - 6, desktopLine.height + 2)
                   )}px`,
                   opacity: desktopLine.progress > 0 ? 1 : 0,
                 }}
@@ -220,8 +221,8 @@ export default function ZigzagTimeline() {
           <div
             className="pointer-events-none absolute left-5 block md:hidden"
             style={{
-              top: `${mobileLine.top - 176 }px`,
-              height: `${mobileLine.height + 186}px`,
+              top: `${mobileLine.top - 175 }px`,
+              height: `${mobileLine.height + 3}px`,
             }}
           >
             <div className="relative h-full w-[8px] overflow-hidden rounded-full bg-slate-200">

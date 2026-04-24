@@ -144,6 +144,7 @@ export default function BrandsPage() {
       <Navbar />
 
       <main>
+        {/* HERO */}
         <section className="bg-gradient-to-br from-indigo-600 via-blue-500 to-cyan-400 py-16 text-center text-white sm:py-24">
           <h1 className="px-4 text-3xl font-bold sm:text-5xl">
             We scale brands through creators
@@ -153,6 +154,7 @@ export default function BrandsPage() {
           </p>
         </section>
 
+        {/* WHY BRANDS CHOOSE */}
         <section className="bg-gradient-to-b from-white via-blue-50 to-white py-16 text-center sm:py-24">
           <h2 className="px-4 text-3xl font-semibold text-slate-900 sm:text-4xl">
             Why brands choose <span className="text-blue-600">Vmerg</span>
@@ -189,7 +191,9 @@ export default function BrandsPage() {
                 </div>
 
                 <div className="p-5 text-left">
-                  <h3 className="font-semibold text-slate-900">{item.title}</h3>
+                  <h3 className="font-semibold text-slate-900">
+                    {item.title}
+                  </h3>
                   <p className="mt-2 text-sm text-slate-600">{item.desc}</p>
                 </div>
               </div>
@@ -197,6 +201,7 @@ export default function BrandsPage() {
           </div>
         </section>
 
+        {/* BRAND ORBIT */}
         <section className="overflow-hidden bg-gradient-to-b from-slate-50 via-blue-50/60 to-white pt-16 sm:pt-24 pb-16 text-center">
           <h2 className="px-4 text-2xl font-semibold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
             Brands we’ve worked with
@@ -218,8 +223,10 @@ export default function BrandsPage() {
                   rounded-none sm:rounded-[2rem] lg:rounded-[2.4rem]
                 "
               >
+                {/* glow */}
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.10),transparent_18%),radial-gradient(circle_at_18%_22%,rgba(147,197,253,0.12),transparent_24%),radial-gradient(circle_at_82%_24%,rgba(191,219,254,0.10),transparent_24%),radial-gradient(circle_at_50%_88%,rgba(59,130,246,0.14),transparent_26%)]" />
 
+                {/* bubbles */}
                 <FloatingBubble size="large" className="left-[7%] top-[14%] opacity-70" />
                 <FloatingBubble size="small" className="left-[16%] top-[24%] opacity-60" />
                 <FloatingBubble size="medium" className="left-[8%] bottom-[18%] opacity-70" />
@@ -231,6 +238,7 @@ export default function BrandsPage() {
                 <FloatingBubble size="medium" className="left-[48%] top-[7%] opacity-60" />
                 <FloatingBubble size="small" className="left-[52%] bottom-[7%] opacity-60" />
 
+                {/* orbit path */}
                 <div className="pointer-events-none absolute inset-0">
                   <svg
                     viewBox="0 0 1180 860"
@@ -263,6 +271,7 @@ export default function BrandsPage() {
                   </svg>
                 </div>
 
+                {/* center logo */}
                 <div className="absolute left-1/2 top-1/2 z-30 -translate-x-1/2 -translate-y-1/2">
                   <div
                     className="relative flex h-[92px] w-[92px] items-center justify-center rounded-full sm:h-[132px] sm:w-[132px] md:h-[170px] md:w-[170px] lg:h-[210px] lg:w-[210px]"
@@ -293,64 +302,69 @@ export default function BrandsPage() {
                   </div>
                 </div>
 
-                <div className="absolute left-[2%] top-[20%] z-10 scale-[0.80] sm:left-[6%] sm:top-[14%] sm:scale-100">
+                {/* OUTER BIG BADGES
+                    mobile positions tuned; sm:* retains desktop orbit */}
+                <div className="absolute left-[8%] top-[10%] z-10 scale-[0.80] sm:left-[6%] sm:top-[14%] sm:scale-100">
                   <BrandBadge brand={brands[0]} large active={isCenterHovered} />
                 </div>
-                <div className="absolute left-[21%] top-[5%] z-10 scale-[0.80] sm:left-[24%] sm:top-[4%] sm:scale-100">
+                <div className="absolute left-[30%] top-[4%] z-10 scale-[0.80] sm:left-[24%] sm:top-[4%] sm:scale-100">
                   <BrandBadge brand={brands[1]} large active={isCenterHovered} />
                 </div>
-                <div className="absolute left-1/2 top-[1.5%] z-10 -translate-x-1/2 scale-[0.80] sm:top-[2%] sm:scale-100">
+                <div className="absolute left-1/2 top-[2%] z-10 -translate-x-1/2 scale-[0.80] sm:top-[1.5%] sm:scale-100">
                   <BrandBadge brand={brands[2]} large active={isCenterHovered} />
                 </div>
-                <div className="absolute right-[21%] top-[5%] z-10 scale-[0.80] sm:right-[24%] sm:top-[4%] sm:scale-100">
+                <div className="absolute right-[30%] top-[4%] z-10 scale-[0.80] sm:right-[24%] sm:top-[4%] sm:scale-100">
                   <BrandBadge brand={brands[3]} large active={isCenterHovered} />
                 </div>
-                <div className="absolute right-[2%] top-[16%] z-10 scale-[0.80] sm:right-[6%] sm:top-[14%] sm:scale-100">
+                <div className="absolute right-[8%] top-[10%] z-10 scale-[0.80] sm:right-[6%] sm:top-[14%] sm:scale-100">
                   <BrandBadge brand={brands[4]} large active={isCenterHovered} />
                 </div>
 
-                <div className="absolute right-[10%] top-[41%] z-10 scale-[0.80] sm:right-[12%] sm:top-[40%] sm:scale-100">
+                <div className="absolute right-[10%] top-[32%] z-10 scale-[0.80] sm:right-[12%] sm:top-[40%] sm:scale-100">
                   <BrandBadge brand={brands[5]} large active={isCenterHovered} />
                 </div>
-                <div className="absolute right-[5%] bottom-[37%] z-10 scale-[0.80] sm:right-[10%] sm:bottom-[12%] sm:scale-100">
+                <div className="absolute right-[8%] bottom-[30%] z-10 scale-[0.80] sm:right-[10%] sm:bottom-[12%] sm:scale-100">
                   <BrandBadge brand={brands[6]} large active={isCenterHovered} />
                 </div>
-                <div className="absolute left-1/2 bottom-[1.5%] z-10 -translate-x-1/2 scale-[0.80] sm:bottom-[2%] sm:scale-100">
+                <div className="absolute left-1/2 bottom-[4%] z-10 -translate-x-1/2 scale-[0.80] sm:bottom-[2%] sm:scale-100">
                   <BrandBadge brand={brands[7]} large active={isCenterHovered} />
                 </div>
-                <div className="absolute left-[5%] bottom-[11%] z-10 scale-[0.80] sm:left-[16%] sm:bottom-[12%] sm:scale-100">
+                <div className="absolute left-[8%] bottom-[32%] z-10 scale-[0.80] sm:left-[16%] sm:bottom-[12%] sm:scale-100">
                   <BrandBadge brand={brands[8]} large active={isCenterHovered} />
                 </div>
-                <div className="absolute left-[63%] top-[10%] z-10 scale-[0.80] sm:left-[2%] sm:top-[44%] sm:scale-100">
+
+                {/* olay near Snitch; tuned for mobile */}
+                <div className="absolute left-[18%] top-[32%] z-10 scale-[0.80] sm:left-[2%] sm:top-[44%] sm:scale-100">
                   <BrandBadge brand={brands[18]} large active={isCenterHovered} />
                 </div>
-                <div className="absolute left-[20%] top-[41%] z-10 scale-[0.80] sm:left-[21%] sm:top-[43%] sm:scale-100">
+                <div className="absolute left-[30%] top-[44%] z-10 scale-[0.80] sm:left-[21%] sm:top-[43%] sm:scale-100">
                   <BrandBadge brand={brands[9]} large active={isCenterHovered} />
                 </div>
 
-                <div className="absolute left-[24%] top-[28%] z-10 scale-[0.72] sm:left-[29%] sm:top-[27%] sm:scale-100">
+                {/* INNER SMALL BADGES */}
+                <div className="absolute left-[32%] top-[22%] z-10 scale-[0.72] sm:left-[29%] sm:top-[27%] sm:scale-100">
                   <BrandBadge brand={brands[10]} active={isCenterHovered} />
                 </div>
-                <div className="absolute left-[36%] top-[21%] z-10 scale-[0.72] sm:left-[40%] sm:top-[22%] sm:scale-100">
+                <div className="absolute left-[42%] top-[18%] z-10 scale-[0.72] sm:left-[40%] sm:top-[22%] sm:scale-100">
                   <BrandBadge brand={brands[11]} active={isCenterHovered} />
                 </div>
-                <div className="absolute right-[36%] top-[21%] z-10 scale-[0.72] sm:right-[40%] sm:top-[22%] sm:scale-100">
+                <div className="absolute right-[42%] top-[18%] z-10 scale-[0.72] sm:right-[40%] sm:top-[22%] sm:scale-100">
                   <BrandBadge brand={brands[12]} active={isCenterHovered} />
                 </div>
-                <div className="absolute right-[24%] top-[28%] z-10 scale-[0.72] sm:right-[29%] sm:top-[27%] sm:scale-100">
+                <div className="absolute right-[32%] top-[22%] z-10 scale-[0.72] sm:right-[29%] sm:top-[27%] sm:scale-100">
                   <BrandBadge brand={brands[13]} active={isCenterHovered} />
                 </div>
 
-                <div className="absolute right-[24%] bottom-[28%] z-10 scale-[0.72] sm:right-[28%] sm:bottom-[27%] sm:scale-100">
+                <div className="absolute right-[30%] bottom-[24%] z-10 scale-[0.72] sm:right-[28%] sm:bottom-[27%] sm:scale-100">
                   <BrandBadge brand={brands[14]} active={isCenterHovered} />
                 </div>
-                <div className="absolute left-[36%] bottom-[18%] z-10 scale-[0.72] sm:left-[40%] sm:bottom-[20%] sm:scale-100">
+                <div className="absolute left-[42%] bottom-[20%] z-10 scale-[0.72] sm:left-[40%] sm:bottom-[20%] sm:scale-100">
                   <BrandBadge brand={brands[15]} active={isCenterHovered} />
                 </div>
-                <div className="absolute right-[36%] bottom-[18%] z-10 scale-[0.72] sm:right-[40%] sm:bottom-[20%] sm:scale-100">
+                <div className="absolute right-[42%] bottom-[20%] z-10 scale-[0.72] sm:right-[40%] sm:bottom-[20%] sm:scale-100">
                   <BrandBadge brand={brands[16]} active={isCenterHovered} />
                 </div>
-                <div className="absolute left-[24%] bottom-[28%] z-10 scale-[0.72] sm:left-[28%] sm:bottom-[27%] sm:scale-100">
+                <div className="absolute left-[30%] bottom-[24%] z-10 scale-[0.72] sm:left-[28%] sm:bottom-[27%] sm:scale-100">
                   <BrandBadge brand={brands[17]} active={isCenterHovered} />
                 </div>
               </div>
@@ -358,6 +372,7 @@ export default function BrandsPage() {
           </div>
         </section>
 
+        {/* PROCESS */}
         <section className="bg-gradient-to-b from-sky-50 via-blue-50 to-white py-16 text-center sm:py-24">
           <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl">
             Our <span className="text-blue-600">Process</span>
@@ -412,6 +427,7 @@ export default function BrandsPage() {
           </div>
         </section>
 
+        {/* FORM */}
         <section className="bg-gradient-to-b from-white via-sky-50 to-white py-16 sm:py-24">
           <div className="mx-auto max-w-5xl px-4">
             <div className="mx-auto max-w-2xl text-center">
