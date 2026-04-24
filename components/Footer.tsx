@@ -11,69 +11,92 @@ import {
   Facebook,
 } from "lucide-react";
 
+const footerLinks = [
+  { label: "About", href: "/about" },
+  { label: "Services", href: "/services" },
+  { label: "Brands", href: "/brands" },
+  { label: "Creators", href: "/creators" },
+];
+
+const socialLinks = [
+  {
+    label: "Instagram",
+    icon: <Instagram size={18} />,
+    link: "https://www.instagram.com/vmerg_/",
+  },
+  {
+    label: "Twitter",
+    icon: <Twitter size={18} />,
+    link: "https://x.com/vmerg_",
+  },
+  {
+    label: "LinkedIn",
+    icon: <Linkedin size={18} />,
+    link: "https://www.linkedin.com/company/vmerg/",
+  },
+  {
+    label: "Facebook",
+    icon: <Facebook size={18} />,
+    link: "https://www.facebook.com/people/Vmerg/100075742935785/",
+  },
+];
+
 export default function Footer() {
   return (
-    <footer className="relative mt-16 sm:mt-24 overflow-hidden">
-
+    <footer className="relative mt-16 overflow-hidden sm:mt-24">
       {/* BG */}
-      <div className="absolute inset-0 animate-gradient-sync"></div>
+      <div className="absolute inset-0 animate-gradient-sync" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-20 text-[#0b1a3a]">
+      <div className="absolute inset-0 bg-white/70 backdrop-blur-[2px]" />
 
+      <div className="relative z-10 mx-auto max-w-7xl px-4 py-14 text-[#0b1a3a] sm:px-6 sm:py-18 lg:px-8 lg:py-20">
         {/* GRID */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12 text-center sm:text-left">
-
+        <div className="grid grid-cols-1 gap-10 text-center sm:grid-cols-2 sm:gap-12 sm:text-left lg:grid-cols-4">
           {/* LOGO + INFO */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="space-y-3 sm:space-y-4 flex flex-col items-center sm:items-start -mt-2"
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5 }}
+            className="flex flex-col items-center space-y-3 sm:items-start sm:space-y-4"
           >
-
-            {/* LOGO */}
             <div className="flex items-center justify-center sm:justify-start">
               <img
                 src="/vmerg-logo.png"
-                alt="vmerg logo"
-                className="
-                  h-[80px] sm:h-[90px]
-                  w-auto object-contain
-                  transition duration-300
-                  hover:scale-105
-                "
+                alt="Vmerg logo"
+                className="h-[72px] w-auto object-contain transition duration-300 hover:scale-105 sm:h-[86px]"
               />
             </div>
 
-            {/* TAGLINE */}
-            <p className="text-sm sm:text-base font-semibold text-slate-900 tracking-wide">
+            <p className="text-sm font-semibold tracking-wide text-slate-900 sm:text-base">
               End-to-end influencer marketing solutions
             </p>
 
-            {/* DESCRIPTION */}
-            <p className="text-sm sm:text-base text-slate-800 leading-relaxed max-w-sm">
+            <p className="max-w-sm text-sm leading-relaxed text-slate-800 sm:text-base">
               Performance-driven influencer marketing platform helping brands
               scale through creators and data-backed campaigns.
             </p>
-
           </motion.div>
 
           {/* COMPANY */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.05 }}
           >
-            <h4 className="font-semibold mb-4 text-[#0b1a3a] text-base">
+            <h4 className="mb-4 text-base font-semibold text-[#0b1a3a]">
               Company
             </h4>
 
-            <ul className="space-y-3 text-sm text-slate-800">
-              {["About", "Services", "Brands", "Creators"].map((item) => (
-                <li key={item}>
+            <ul className="space-y-3 text-sm text-slate-800 sm:text-[15px]">
+              {footerLinks.map((item) => (
+                <li key={item.label}>
                   <Link
-                    href={`/${item.toLowerCase()}`}
-                    className="hover:text-black transition"
+                    href={item.href}
+                    className="inline-block transition hover:text-blue-700"
                   >
-                    {item}
+                    {item.label}
                   </Link>
                 </li>
               ))}
@@ -84,27 +107,33 @@ export default function Footer() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <h4 className="font-semibold mb-4 text-[#0b1a3a] text-base">
+            <h4 className="mb-4 text-base font-semibold text-[#0b1a3a]">
               Contact
             </h4>
 
-            <div className="space-y-3 text-sm text-slate-800">
-
-              <div className="flex items-center justify-center sm:justify-start gap-3">
-                <Phone size={16} className="text-blue-700" />
+            <div className="space-y-4 text-sm text-slate-800 sm:text-[15px]">
+              <a
+                href="https://wa.me/918660783740"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-3 transition hover:text-blue-700 sm:justify-start"
+              >
+                <Phone size={16} className="shrink-0 text-blue-700" />
                 <span>+91 86607 83740</span>
-              </div>
+              </a>
 
-              <div className="flex items-center justify-center sm:justify-start gap-3">
-                <Mail size={16} className="text-blue-700" />
+              <a
+                href="mailto:vmergmedia@gmail.com"
+                className="flex items-center justify-center gap-3 transition hover:text-blue-700 sm:justify-start"
+              >
+                <Mail size={16} className="shrink-0 text-blue-700" />
                 <span className="break-all">vmergmedia@gmail.com</span>
-              </div>
+              </a>
 
-              <div className="text-slate-700">
-                Bengaluru, India
-              </div>
-
+              <div className="text-slate-700">Bengaluru, India</div>
             </div>
           </motion.div>
 
@@ -112,62 +141,52 @@ export default function Footer() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.15 }}
           >
-            <h4 className="font-semibold mb-4 text-[#0b1a3a] text-base">
+            <h4 className="mb-4 text-base font-semibold text-[#0b1a3a]">
               Follow Us
             </h4>
 
-            <div className="flex justify-center sm:justify-start gap-4 flex-wrap">
-
-              {[
-                { icon: <Instagram size={18} />, link: "https://www.instagram.com/vmerg_/" },
-                { icon: <Twitter size={18} />, link: "https://x.com/vmerg_" },
-                { icon: <Linkedin size={18} />, link: "https://www.linkedin.com/company/vmerg/" },
-                { icon: <Facebook size={18} />, link: "https://www.facebook.com/people/Vmerg/100075742935785/" },
-              ].map((item, i) => (
+            <div className="flex flex-wrap justify-center gap-3 sm:justify-start sm:gap-4">
+              {socialLinks.map((item) => (
                 <a
-                  key={i}
+                  key={item.label}
                   href={item.link}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={item.label}
                   className="
-                    p-3 rounded-xl bg-white shadow-md
-                    hover:bg-blue-600 hover:text-white
+                    flex h-11 w-11 items-center justify-center
+                    rounded-xl border border-white/70 bg-white shadow-md
                     transition duration-300
-                    hover:scale-110
-                    hover:shadow-lg
+                    hover:scale-110 hover:bg-blue-600 hover:text-white hover:shadow-lg
                   "
                 >
                   {item.icon}
                 </a>
               ))}
-
             </div>
           </motion.div>
-
         </div>
 
         {/* BOTTOM */}
-        <div className="mt-14 border-t border-blue-200 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-700 text-center md:text-left">
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-blue-200 pt-6 text-center text-sm text-slate-700 md:mt-14 md:flex-row md:text-left">
+          <p>© 2026 Vmerg Media Pvt Ltd. All rights reserved.</p>
 
-          <p>
-            © 2026 Vmerg Media Pvt Ltd. All rights reserved.
-          </p>
-
-          <div className="flex gap-6">
-
-            <Link href="/privacy-policy" className="hover:text-blue-700 transition">
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:justify-end">
+            <Link
+              href="/privacy-policy"
+              className="transition hover:text-blue-700"
+            >
               Privacy Policy
             </Link>
 
-            <Link href="/terms" className="hover:text-blue-700 transition">
+            <Link href="/terms" className="transition hover:text-blue-700">
               Terms
             </Link>
-
           </div>
-
         </div>
-
       </div>
     </footer>
   );
