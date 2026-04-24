@@ -67,13 +67,6 @@ export default function HeroSection() {
             >
               Start Campaign
             </Link>
-
-            <Link
-              href="/work"
-              className="px-6 py-3 border border-white/40 rounded-xl hover:bg-white/10 transition"
-            >
-              View Work
-            </Link>
           </div>
         </div>
 
