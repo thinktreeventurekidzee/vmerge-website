@@ -27,53 +27,48 @@ export default function CreatorsPage() {
 
     window.open("https://wa.me/918660783740");
   };
-
-  const categories = [
-    {
-      title: "Finance & Investing",
-      creators: [
-        { name: "Rachana Ranade", img: "/Rachana Ranade.jpeg" },
-        { name: "Neha Nagar", img: "/Neha Nagar.jpeg" },
-        { name: "Ankur Warikoo", img: "/Ankur Warikoo.jpeg" },
-        { name: "Sharan Hegde", img: "/Sharan Hegde.jpeg" },
-        { name: "Prakash Gaba", img: "/Prakash Gaba.jpeg" },
-         { name: "Yashika Crypto", img: "/Yashika Crypto.jpeg" },
-        { name: "Crypto Aman", img: "/Crypto Aman.jpeg" },
-        { name: "Jeet Crypto", img: "/Jeet Crypto.jpeg" },
-        
-      
-      ],
-    },
-    {
-      title: "Entertainment",
-      creators: [
-        
-      
-        { name: "Ankur Warikoo", img: "/Ankur Warikoo.jpeg" },
-        { name: "Ashish Chanchlani", img: "/Ashish Chanchlani.jpeg" },
-        { name: "Round2hell", img: "/Round2hell.jpeg" },
-        { name: "Lakshay Chaudhary", img: "/Lakshay Chaudhary.jpeg" },
-         { name: "Anushree", img: "/Anushree.jpeg" },
-          { name: "Archanachandhoke", img: "/Archanachandhoke.jpeg" },
-           { name: "Bharti Singh", img: "/Bharti singh.jpeg" },
-            { name: "ddneelakandan", img: "/ddneelakandan.jpeg" },
-             { name: "Gracy Goswami", img: "/gracy-goswami.jpeg" },
-              { name: "Lavi yadav", img: "/Lavi yadav.jpeg" },
-               { name: "Mythri Iyer", img: "/Mythri iyer.jpeg" },
-                { name: "Vaishnavi", img: "/Vaishnavi.jpeg" },
-
-      ],
-    },
-    {
-      title: "Lifestyle",
-      creators: [
-        { name: "Garima Chaurasia", img: "/garima.jpeg" },
-        { name: "iam.savithri", img: "/iam.savithri.jpeg" },
-        { name: "navyanoor_astrotarot", img: "/Navyanoor.jpeg" },
-      ],
-    },
-  ];
-
+const categories = [
+  {
+    title: "Finance & Investing",
+    creators: [
+      { name: "Rachana Ranade", img: "/Rachana Ranade.jpeg" },
+      { name: "Neha Nagar", img: "/Neha Nagar.jpeg" },
+      { name: "Ankur Warikoo", img: "/Ankur Warikoo.jpeg" },
+      { name: "Sharan Hegde", img: "/Sharan Hegde.jpeg" },
+      { name: "Prakash Gaba", img: "/Prakash Gaba.jpeg" },
+      { name: "Yashika Crypto", img: "/Yashika Crypto.jpeg" },
+      { name: "Crypto Aman", img: "/Crypto Aman.jpeg" },
+      { name: "Jeet Crypto", img: "/Jeet Crypto.jpeg" },
+       // TRS podcast - business, finance, self-improvement[web:35][web:38]
+    ],
+  },
+  {
+    title: "Entertainment",
+    creators: [
+      { name: "Ashish Chanchlani", img: "/Ashish Chanchlani.jpeg" },
+      { name: "Round2hell", img: "/Round2hell.jpeg" },
+      { name: "Lakshay Chaudhary", img: "/Lakshay Chaudhary.jpeg" },
+      { name: "Anushree", img: "/Anushree.jpeg" },
+      { name: "Archanachandhoke", img: "/Archanachandhoke.jpeg" },
+      { name: "Bharti Singh", img: "/Bharti singh.jpeg" },
+      { name: "ddneelakandan", img: "/ddneelakandan.jpeg" },
+      { name: "Gracy Goswami", img: "/gracy-goswami.jpeg" },
+      { name: "Lavi yadav", img: "/Lavi yadav.jpeg" },
+      { name: "Mythri Iyer", img: "/Mythri iyer.jpeg" },
+      { name: "Vaishnavi", img: "/Vaishnavi.jpeg" },
+    
+    ],
+  },
+  {
+    title: "Lifestyle",
+    creators: [
+      { name: "Garima Chaurasia", img: "/garima.jpeg" },
+      { name: "iam.savithri", img: "/iam.savithri.jpeg" },
+      { name: "navyanoor_astrotarot", img: "/Navyanoor.jpeg" },
+     
+    ],
+  },
+];
   return (
     <>
       <Navbar />

@@ -22,23 +22,31 @@ function BrandBadge({
       className={`
         group relative flex items-center justify-center
         transition-all duration-500 ease-out
-        ${large ? "h-[84px] w-[84px]" : "h-[70px] w-[70px]"}
+        ${
+          large
+            ? "h-[72px] w-[72px] sm:h-[84px] sm:w-[84px]"
+            : "h-[60px] w-[60px] sm:h-[70px] sm:w-[70px]"
+        }
         ${active ? "scale-[1.04] opacity-100" : "scale-100 opacity-95"}
       `}
     >
       <div
         className={`
-          flex items-center justify-center rounded-[22px] bg-white/95
+          flex items-center justify-center rounded-[18px] sm:rounded-[22px] bg-white/95
           shadow-[0_10px_28px_rgba(2,6,23,0.18)]
           transition-all duration-500
-          ${large ? "h-[84px] w-[84px] p-[10px]" : "h-[70px] w-[70px] p-[8px]"}
+          ${large ? "h-full w-full p-[8px] sm:p-[10px]" : "h-full w-full p-[6px] sm:p-[8px]"}
           ${active ? "shadow-[0_14px_36px_rgba(2,6,23,0.22)]" : ""}
         `}
       >
         <div
           className={`
             flex items-center justify-center
-            ${large ? "h-[60px] w-[60px]" : "h-[52px] w-[52px]"}
+            ${
+              large
+                ? "h-[52px] w-[52px] sm:h-[60px] sm:w-[60px]"
+                : "h-[46px] w-[46px] sm:h-[52px] sm:w-[52px]"
+            }
           `}
         >
           <img
@@ -49,7 +57,7 @@ function BrandBadge({
         </div>
       </div>
 
-      <div className="pointer-events-none absolute -bottom-9 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-slate-950/80 px-3 py-1 text-[11px] font-medium text-white opacity-0 blur-sm transition-all duration-300 group-hover:-bottom-11 group-hover:opacity-100 group-hover:blur-0">
+      <div className="pointer-events-none absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-slate-950/80 px-3 py-1 text-[10px] sm:text-[11px] font-medium text-white opacity-0 blur-sm transition-all duration-300 group-hover:-bottom-10 group-hover:opacity-100 group-hover:blur-0">
         {brand.name}
       </div>
     </div>
@@ -71,7 +79,11 @@ function FloatingBubble({
 
   return (
     <div
-      className={`absolute rounded-full border border-white/20 bg-white/10 backdrop-blur-md shadow-[0_10px_30px_rgba(255,255,255,0.08)] ${sizeMap[size]} ${className} animate-pulse`}
+      className={`
+        absolute rounded-full border border-white/20 bg-white/10 backdrop-blur-md
+        shadow-[0_10px_30px_rgba(255,255,255,0.08)]
+        ${sizeMap[size]} ${className} animate-pulse
+      `}
     >
       <div className="absolute inset-[18%] rounded-full bg-white/20 blur-[2px]" />
     </div>
@@ -127,26 +139,26 @@ export default function BrandsPage() {
 
       <main>
         {/* HERO */}
-        <section className="bg-gradient-to-br from-indigo-600 via-blue-500 to-cyan-400 py-20 text-center text-white sm:py-28">
-          <h1 className="text-3xl font-bold sm:text-5xl">
+        <section className="bg-gradient-to-br from-indigo-600 via-blue-500 to-cyan-400 py-16 text-center text-white sm:py-24">
+          <h1 className="px-4 text-3xl font-bold sm:text-5xl">
             We scale brands through creators
           </h1>
-          <p className="mt-4 text-white/80">
+          <p className="mt-3 px-4 text-sm text-white/80 sm:mt-4 sm:text-base">
             Structured influencer campaigns designed for real growth.
           </p>
         </section>
 
         {/* WHY BRANDS */}
-        <section className="bg-gradient-to-b from-white via-blue-50 to-white py-20 text-center sm:py-28">
-          <h2 className="text-3xl font-semibold text-slate-900 sm:text-4xl">
+        <section className="bg-gradient-to-b from-white via-blue-50 to-white py-16 text-center sm:py-24">
+          <h2 className="px-4 text-3xl font-semibold text-slate-900 sm:text-4xl">
             Why brands choose <span className="text-blue-600">Vmerg</span>
           </h2>
 
-          <p className="mt-3 text-slate-600">
+          <p className="mt-3 px-4 text-slate-600">
             Built for performance, scale, and clarity
           </p>
 
-          <div className="mx-auto mt-14 grid max-w-6xl grid-cols-1 gap-6 px-4 md:grid-cols-3">
+          <div className="mx-auto mt-10 grid max-w-6xl grid-cols-1 gap-5 px-4 sm:grid-cols-2 md:grid-cols-3">
             {[
               {
                 icon: "🚀",
@@ -168,7 +180,7 @@ export default function BrandsPage() {
                 key={item.title}
                 className="group rounded-2xl border bg-white/80 shadow-md transition hover:-translate-y-2 hover:shadow-xl"
               >
-                <div className="flex h-24 items-center justify-center bg-blue-50">
+                <div className="flex h-20 items-center justify-center bg-blue-50 sm:h-24">
                   <div className="text-3xl">{item.icon}</div>
                 </div>
 
@@ -182,19 +194,30 @@ export default function BrandsPage() {
         </section>
 
         {/* BRANDS */}
-        <section className="overflow-hidden bg-gradient-to-b from-slate-50 via-blue-50/60 to-white py-28 text-center">
-          <h2 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
+        <section className="overflow-hidden bg-gradient-to-b from-slate-50 via-blue-50/60 to-white py-16 sm:py-24 text-center">
+          <h2 className="px-4 text-2xl font-semibold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
             Brands we’ve worked with
           </h2>
 
-          <p className="mx-auto mt-4 max-w-2xl text-slate-600">
+          <p className="mx-auto mt-3 max-w-xl px-4 text-sm text-slate-600 sm:mt-4 sm:max-w-2xl sm:text-base">
             Trusted by fast-growing startups and industry leaders
           </p>
 
-          <div className="mx-auto mt-16 max-w-7xl px-4">
-            <div className="relative mx-auto h-[860px] w-full max-w-[1180px] overflow-hidden rounded-[2.4rem] border border-blue-200/40 bg-[radial-gradient(circle_at_center,#2f6df6_0%,#1f49d8_24%,#1533ab_50%,#0b1d69_78%,#071448_100%)] shadow-[0_35px_100px_rgba(37,99,235,0.28)]">
+          <div className="mx-auto mt-10 max-w-7xl px-3 sm:mt-16 sm:px-4">
+            <div
+              className="
+                relative mx-auto w-full max-w-[1180px]
+                overflow-hidden rounded-3xl sm:rounded-[2.4rem]
+                border border-blue-200/40
+                bg-[radial-gradient(circle_at_center,#2f6df6_0%,#1f49d8_24%,#1533ab_50%,#0b1d69_78%,#071448_100%)]
+                shadow-[0_24px_70px_rgba(37,99,235,0.24)]
+                h-[440px] sm:h-[620px] md:h-[720px] lg:h-[820px]
+              "
+            >
+              {/* Glow overlay */}
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.10),transparent_18%),radial-gradient(circle_at_18%_22%,rgba(147,197,253,0.12),transparent_24%),radial-gradient(circle_at_82%_24%,rgba(191,219,254,0.10),transparent_24%),radial-gradient(circle_at_50%_88%,rgba(59,130,246,0.14),transparent_26%)]" />
 
+              {/* Floating bubbles */}
               <FloatingBubble size="large" className="left-[8%] top-[14%]" />
               <FloatingBubble size="small" className="left-[18%] top-[24%]" />
               <FloatingBubble size="medium" className="left-[9%] bottom-[20%]" />
@@ -206,7 +229,8 @@ export default function BrandsPage() {
               <FloatingBubble size="medium" className="left-[48%] top-[8%]" />
               <FloatingBubble size="small" className="left-[52%] bottom-[8%]" />
 
-              <div className="pointer-events-none absolute inset-0">
+              {/* Path (desktop only) */}
+              <div className="pointer-events-none absolute inset-0 hidden sm:block">
                 <svg
                   viewBox="0 0 1180 860"
                   className="h-full w-full"
@@ -238,42 +262,38 @@ export default function BrandsPage() {
                 </svg>
               </div>
 
-              {/* Center */}
+              {/* Center logo */}
               <div className="absolute left-1/2 top-1/2 z-30 -translate-x-1/2 -translate-y-1/2">
                 <div
-                  className="relative flex h-[210px] w-[210px] items-center justify-center rounded-full"
+                  className="relative flex h-[160px] w-[160px] items-center justify-center rounded-full sm:h-[210px] sm:w-[210px]"
                   onMouseEnter={() => setIsCenterHovered(true)}
                   onMouseLeave={() => setIsCenterHovered(false)}
                 >
                   <div
-                    className={`pointer-events-none absolute inset-[14%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.26)_0%,rgba(147,197,253,0.18)_30%,rgba(59,130,246,0.10)_54%,transparent_72%)] blur-2xl transition-all duration-700 ${
+                    className={`pointer-events-none absolute inset-[18%] sm:inset-[14%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.26)_0%,rgba(147,197,253,0.18)_30%,rgba(59,130,246,0.10)_54%,transparent_72%)] blur-xl sm:blur-2xl transition-all duration-700 ${
                       isCenterHovered
-                        ? "scale-[1.12] opacity-100"
+                        ? "scale-[1.08] sm:scale-[1.12] opacity-100"
                         : "scale-100 opacity-80"
                     }`}
                   />
-
                   <div
-                    className={`pointer-events-none absolute inset-[25%] rounded-full border border-white/20 transition-all duration-700 ${
+                    className={`pointer-events-none absolute inset-[28%] sm:inset-[25%] rounded-full border border-white/20 transition-all duration-700 ${
                       isCenterHovered
-                        ? "scale-105 shadow-[0_0_40px_rgba(255,255,255,0.20),0_0_90px_rgba(96,165,250,0.22)]"
-                        : "shadow-[0_0_24px_rgba(255,255,255,0.10),0_0_60px_rgba(96,165,250,0.14)]"
+                        ? "scale-105 shadow-[0_0_32px_rgba(255,255,255,0.20),0_0_70px_rgba(96,165,250,0.22)]"
+                        : "shadow-[0_0_18px_rgba(255,255,255,0.10),0_0_48px_rgba(96,165,250,0.14)]"
                     }`}
                   />
-
-                  <div className="relative flex h-[104px] w-[104px] items-center justify-center rounded-full bg-white shadow-[0_18px_40px_rgba(2,6,23,0.30)]">
+                  <div className="relative flex h-[80px] w-[80px] items-center justify-center rounded-full bg-white shadow-[0_14px_30px_rgba(2,6,23,0.30)] sm:h-[104px] sm:w-[104px]">
                     <img
                       src="/vmerg-logo.png"
                       alt="Vmerg Logo"
-                      className="h-[80px] w-[80px] rounded-full object-cover"
+                      className="h-[64px] w-[64px] rounded-full object-cover sm:h-[80px] sm:w-[80px]"
                     />
                   </div>
-
-                
                 </div>
               </div>
 
-              {/* Outer ring */}
+              {/* Outer ring (desktop) */}
               <div className="absolute left-[6%] top-[14%] z-10 hidden sm:block">
                 <BrandBadge brand={brands[0]} large active={isCenterHovered} />
               </div>
@@ -306,7 +326,7 @@ export default function BrandsPage() {
                 <BrandBadge brand={brands[9]} large active={isCenterHovered} />
               </div>
 
-              {/* Inner ring */}
+              {/* Inner ring (desktop md+) */}
               <div className="absolute left-[29%] top-[27%] z-10 hidden md:block">
                 <BrandBadge brand={brands[10]} active={isCenterHovered} />
               </div>
@@ -333,32 +353,31 @@ export default function BrandsPage() {
                 <BrandBadge brand={brands[17]} active={isCenterHovered} />
               </div>
 
-              {/* Mobile fallback */}
-              <div className="absolute inset-x-0 bottom-0 p-4 sm:hidden">
-                <div className="rounded-[1.5rem] border border-white/15 bg-white/10 p-4 backdrop-blur-md">
-                  <div className="mb-4 flex items-center justify-center">
-                    <div className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-2xl bg-white shadow-lg">
-                      <img
-                        src="/vmerg-logo.png"
-                        alt="Vmerg Logo"
-                        className="h-full w-full object-cover"
-                      />
-                    </div>
-                  </div>
+              {/* Mobile grid – show all brands nicely */}
+              <div className="absolute inset-x-0 bottom-0 px-3 pb-4 pt-2 sm:hidden">
+                <div className="rounded-2xl border border-white/15 bg-black/10 p-3 backdrop-blur-md">
+                  <p className="mb-3 text-center text-xs font-medium uppercase tracking-wide text-sky-100/90">
+                    Trusted by {brands.length}+ brands
+                  </p>
 
-                  <div className="grid grid-cols-3 gap-3">
-                    {brands.slice(0, 9).map((b) => (
-                      <div
-                        key={b.name}
-                        className="group flex items-center justify-center rounded-xl bg-white/95 px-3 py-3 shadow-sm transition hover:-translate-y-1"
-                      >
-                        <img
-                          src={b.img}
-                          alt={b.name}
-                          className="h-10 w-auto object-contain transition group-hover:scale-105"
-                        />
-                      </div>
-                    ))}
+                  <div className="max-h-56 overflow-y-auto rounded-2xl border border-white/10 bg-slate-900/40 p-2">
+                    <div className="grid grid-cols-3 gap-2">
+                      {brands.map((b) => (
+                        <div
+                          key={b.name}
+                          className="group flex flex-col items-center justify-center rounded-xl bg-white/95 px-2 py-2 shadow-sm transition hover:-translate-y-1"
+                        >
+                          <img
+                            src={b.img}
+                            alt={b.name}
+                            className="h-9 w-auto object-contain transition group-hover:scale-105"
+                          />
+                          <p className="mt-1 line-clamp-1 text-center text-[11px] font-medium text-slate-700">
+                            {b.name}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -367,16 +386,16 @@ export default function BrandsPage() {
         </section>
 
         {/* OUR PROCESS */}
-        <section className="bg-gradient-to-b from-sky-50 via-blue-50 to-white py-20 text-center sm:py-28">
+        <section className="bg-gradient-to-b from-sky-50 via-blue-50 to-white py-16 text-center sm:py-24">
           <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl">
             Our <span className="text-blue-600">Process</span>
           </h2>
 
-          <p className="mt-4 text-slate-600">
+          <p className="mt-4 px-4 text-slate-600">
             A structured approach to scale campaigns
           </p>
 
-          <div className="mx-auto mt-16 grid max-w-5xl grid-cols-2 gap-12 px-4 md:grid-cols-4">
+          <div className="mx-auto mt-12 grid max-w-5xl grid-cols-2 gap-8 px-4 sm:grid-cols-4">
             {["Plan", "Match", "Launch", "Scale"].map((step, i) => {
               const isHighlight = i === 2;
 
@@ -387,7 +406,7 @@ export default function BrandsPage() {
                 >
                   <div
                     className={`
-                      relative h-[110px] w-[160px]
+                      relative h-[110px] w-[140px] sm:w-[160px]
                       transform-style-preserve-3d
                       transition-all duration-500
                       ${
@@ -422,7 +441,7 @@ export default function BrandsPage() {
         </section>
 
         {/* FORM */}
-        <section className="bg-gradient-to-b from-white via-sky-50 to-white py-20 sm:py-28">
+        <section className="bg-gradient-to-b from-white via-sky-50 to-white py-16 sm:py-24">
           <div className="mx-auto max-w-5xl px-4">
             <div className="mx-auto max-w-2xl text-center">
               <h2 className="text-2xl font-semibold text-slate-900 sm:text-3xl md:text-4xl">
@@ -434,8 +453,8 @@ export default function BrandsPage() {
               </p>
             </div>
 
-            <div className="mt-12 rounded-3xl bg-gradient-to-r from-indigo-500 via-blue-500 to-cyan-400 p-[2px]">
-              <div className="rounded-3xl bg-white p-6 sm:p-8">
+            <div className="mt-10 rounded-3xl bg-gradient-to-r from-indigo-500 via-blue-500 to-cyan-400 p-[2px] sm:mt-12">
+              <div className="rounded-3xl bg-white p-5 sm:p-8">
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                     <input
