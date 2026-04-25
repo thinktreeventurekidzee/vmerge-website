@@ -147,17 +147,17 @@ export default function BrandsPage() {
         {/* HERO */}
         <section className="bg-gradient-to-br from-indigo-600 via-blue-500 to-cyan-400 py-16 text-center text-white sm:py-24">
           <h1 className="px-4 text-3xl font-bold sm:text-5xl">
-            We scale brands through creators
+            We Scale Brands Through Creators
           </h1>
           <p className="mt-3 px-4 text-sm text-white/80 sm:mt-4 sm:text-base">
-            Structured influencer campaigns designed for real growth.
+            Structured Influencer Campaigns Designed For Real Growth.
           </p>
         </section>
 
         {/* WHY BRANDS CHOOSE */}
         <section className="bg-gradient-to-b from-white via-blue-50 to-white py-16 text-center sm:py-24">
           <h2 className="px-4 text-3xl font-semibold text-slate-900 sm:text-4xl">
-            Why brands choose <span className="text-blue-600">Vmerg</span>
+            Why Brands Choose <span className="text-blue-600">Vmerg</span>
           </h2>
 
           <p className="mt-3 px-4 text-slate-600">

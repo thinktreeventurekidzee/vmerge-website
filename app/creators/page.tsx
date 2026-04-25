@@ -71,6 +71,21 @@ const categories = [
      
     ],
   },
+   {
+    title: "Health & Fitness",
+    creators: [
+      { name: "Namrata Purohit", img: "/health/n.jpeg" },
+      { name: "kavya", img: "/health/k.jpeg" },
+      { name: "Dr Siddhant ", img: "/health/s2.jpeg" },
+       { name: "Gunjun Taneja", img: "/health/g.jpeg" },
+        { name: "Radhika Bose", img: "/health/r.jpeg" },
+         { name: "Sherry", img: "/health/s.jpeg" },
+          { name: "Dikhsa Malik", img: "/health/d.jpeg" },
+        { name: "Mushkan Mittal", img: "/health/m.jpeg" },
+    
+    
+    ],
+  },
 ];
   return (
     <>
@@ -105,7 +120,7 @@ const categories = [
   <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
     <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-blue-900">
-      Creators across categories
+      Creators Across Categories
     </h2>
 
     <p className="text-center text-slate-600 mt-4 max-w-2xl mx-auto">
@@ -175,7 +190,7 @@ const categories = [
           <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
 
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900">
-              Apply as a creator
+              Apply As A Creator
             </h2>
 
             <p className="text-slate-600 mt-2">
