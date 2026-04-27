@@ -218,39 +218,40 @@ export default function ZigzagTimeline() {
           </div>
 
           {/* MOBILE LEFT LINE */}
-          <div
-            className="pointer-events-none absolute left-5 block md:hidden"
-            style={{
-              top: `${mobileLine.top - 175 }px`,
-              height: `${mobileLine.height + 3}px`,
-            }}
-          >
-            <div className="relative h-full w-[8px] overflow-hidden rounded-full bg-slate-200">
-              <div
-                className="absolute left-1/2 top-0 w-[4px] -translate-x-1/2 rounded-full transition-[height] duration-150 ease-out"
-                style={{
-                  height: `${Math.max(
-                    0,
-                    Math.min(mobileLine.progress, mobileLine.height)
-                  )}px`,
-                  background:
-                    "linear-gradient(to bottom, #60a5fa, #3b82f6, #1d4ed8)",
-                  boxShadow: "0 0 16px rgba(59,130,246,0.7)",
-                }}
-              />
-              <div
-                className="absolute left-1/2 h-4 w-4 -translate-x-1/2 rounded-full bg-blue-400/80 blur-[2px] transition-all duration-150"
-                style={{
-                  top: `${Math.max(
-                    -2,
-                    Math.min(mobileLine.progress - 7, mobileLine.height - 8)
-                  )}px`,
-                  opacity: mobileLine.progress > 0 ? 1 : 0,
-                }}
-              />
-            </div>
-          </div>
+        <div
+  className="pointer-events-none absolute left-5 block md:hidden"
+  style={{
+    top: `${mobileLine.top - 175}px`,
+    height: `${mobileLine.height + 3}px`,
+  }}
+>
+  <div className="relative h-full w-[8px] overflow-hidden rounded-full bg-slate-200">
+    <div
+      className="absolute left-1/2 top-0 w-[4px] -translate-x-1/2 rounded-full transition-[height] duration-150 ease-out"
+      style={{
+        height: `${Math.max(
+          0,
+          Math.min(mobileLine.progress, mobileLine.height)
+        )}px`,
+        background: "linear-gradient(to bottom, #60a5fa, #3b82f6, #1d4ed8)",
+        boxShadow: "0 0 16px rgba(59,130,246,0.7)",
+      }}
+    />
 
+    <div
+      className="absolute h-4 w-4 rounded-full bg-blue-400/80 blur-[2px] transition-all duration-150"
+      style={{
+        left: "50%",
+        top: `${Math.max(
+          -2,
+          Math.min(mobileLine.progress - 8, mobileLine.height - 10)
+        )}px`,
+        transform: "translateX(calc(-50% + 0.4px))",
+        opacity: mobileLine.progress > 0 ? 1 : 0,
+      }}
+    />
+  </div>
+</div>
           {/* DESKTOP STEPS */}
           <div className="hidden space-y-28 md:block">
             {steps.map((step, index) => {
