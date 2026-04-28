@@ -9,6 +9,8 @@ import {
   Linkedin,
   Twitter,
   Facebook,
+  Globe,
+  MapPin,
 } from "lucide-react";
 
 const footerLinks = [
@@ -16,6 +18,8 @@ const footerLinks = [
   { label: "Services", href: "/services" },
   { label: "Brands", href: "/brands" },
   { label: "Creators", href: "/creators" },
+  { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "Terms", href: "/terms" },
 ];
 
 const socialLinks = [
@@ -44,15 +48,12 @@ const socialLinks = [
 export default function Footer() {
   return (
     <footer className="relative mt-16 overflow-hidden sm:mt-24">
-      {/* BG */}
       <div className="absolute inset-0 animate-gradient-sync" />
-
-      <div className="absolute inset-0 bg-white/70 backdrop-blur-[2px]" />
+      <div className="absolute inset-0 glass-sync sync-shadow-bottom" />
+      <div className="absolute inset-x-0 top-0 h-px bg-white/30" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 py-14 text-[#0b1a3a] sm:px-6 sm:py-18 lg:px-8 lg:py-20">
-        {/* GRID */}
         <div className="grid grid-cols-1 gap-10 text-center sm:grid-cols-2 sm:gap-12 sm:text-left lg:grid-cols-4">
-          {/* LOGO + INFO */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -74,11 +75,10 @@ export default function Footer() {
 
             <p className="max-w-sm text-sm leading-relaxed text-slate-800 sm:text-base">
               Performance-driven influencer marketing platform helping brands
-              scale through creators and data-backed campaigns.
+              grow through creators, strategy, and data-backed campaigns.
             </p>
           </motion.div>
 
-          {/* COMPANY */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -103,7 +103,6 @@ export default function Footer() {
             </ul>
           </motion.div>
 
-          {/* CONTACT */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -126,18 +125,30 @@ export default function Footer() {
               </a>
 
               <a
-                href="mailto:vmergmedia@gmail.com"
+                href="mailto:vinay@vmerg.com"
                 className="flex items-center justify-center gap-3 transition hover:text-blue-700 sm:justify-start"
               >
                 <Mail size={16} className="shrink-0 text-blue-700" />
-                <span className="break-all">vmergmedia@gmail.com</span>
+                <span className="break-all">vinay@vmerg.com</span>
               </a>
 
-              <div className="text-slate-700">Bengaluru, India</div>
+              <a
+                href="https://vmerg.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-3 transition hover:text-blue-700 sm:justify-start"
+              >
+                <Globe size={16} className="shrink-0 text-blue-700" />
+                <span className="break-all">www.vmerg.com</span>
+              </a>
+
+              <div className="flex items-center justify-center gap-3 text-slate-700 sm:justify-start">
+                <MapPin size={16} className="shrink-0 text-blue-700" />
+                <span>Bengaluru, Karnataka, India</span>
+              </div>
             </div>
           </motion.div>
 
-          {/* SOCIAL */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -156,12 +167,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={item.label}
-                  className="
-                    flex h-11 w-11 items-center justify-center
-                    rounded-xl border border-white/70 bg-white shadow-md
-                    transition duration-300
-                    hover:scale-110 hover:bg-blue-600 hover:text-white hover:shadow-lg
-                  "
+                  className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/55 bg-white/65 shadow-md transition duration-300 hover:scale-110 hover:bg-blue-600 hover:text-white hover:shadow-lg"
                 >
                   {item.icon}
                 </a>
@@ -170,8 +176,7 @@ export default function Footer() {
           </motion.div>
         </div>
 
-        {/* BOTTOM */}
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-blue-200 pt-6 text-center text-sm text-slate-700 md:mt-14 md:flex-row md:text-left">
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/25 pt-6 text-center text-sm text-slate-700 md:mt-14 md:flex-row md:text-left">
           <p>© 2026 Vmerg Media Pvt Ltd. All rights reserved.</p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:justify-end">
