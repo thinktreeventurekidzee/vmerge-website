@@ -50,6 +50,11 @@ export default function ZigzagTimeline() {
     progress: 0,
   });
 
+  const mobileRailLeft = 20;
+  const mobileCardPaddingLeft = 52;
+  const mobileLineTopOffset = 178;
+  const mobileGlowNudgeX = 0.2;
+
   useEffect(() => {
     const getCenterInSection = (el: HTMLElement, section: HTMLElement) => {
       const elRect = el.getBoundingClientRect();
@@ -92,14 +97,12 @@ export default function ZigzagTimeline() {
 
       const triggerY = window.innerHeight * 0.5;
 
-      // current active dot
       let current = 0;
       validDots.forEach((dot, i) => {
         const center = dot.getBoundingClientRect().top + dot.offsetHeight / 2;
         if (center <= triggerY) current = i;
       });
 
-      // segment-wise progress (dot se dot)
       const segmentHeights = validDots.map((dot, i) => {
         if (i === validDots.length - 1) return 0;
         const currentCenter =
@@ -172,25 +175,24 @@ export default function ZigzagTimeline() {
       className="relative overflow-hidden bg-gradient-to-b from-white via-slate-50 to-[#f8f6ef] py-16 md:py-24"
     >
       <div className="mx-auto max-w-6xl px-4 md:px-6">
-        <div className="mb-14 md:mb-20 text-center">
-          <p className="text-xs md:text-sm uppercase tracking-[0.3em] text-blue-600 font-semibold">
+        <div className="mb-14 text-center md:mb-20">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-blue-600 md:text-sm">
             Our Process
           </p>
-          <h2 className="mt-4 text-3xl md:text-5xl font-bold text-slate-900">
+          <h2 className="mt-4 text-3xl font-bold text-slate-900 md:text-5xl">
             How we execute campaigns
           </h2>
         </div>
 
         <div className="relative">
-        
-  {/* DESKTOP CENTER LINE */}
-<div
-  className="pointer-events-none absolute left-1/2 hidden -translate-x-1/2 md:block"
-  style={{
-    top: `${desktopLine.top - 248}px`,
-    height: `${desktopLine.height +12}px`,
-  }}
->
+          {/* DESKTOP CENTER LINE */}
+          <div
+            className="pointer-events-none absolute left-1/2 hidden -translate-x-1/2 md:block"
+            style={{
+              top: `${desktopLine.top - 248}px`,
+              height: `${desktopLine.height + 12}px`,
+            }}
+          >
             <div className="relative h-full w-[10px] overflow-hidden rounded-full bg-slate-200">
               <div
                 className="absolute left-1/2 top-0 w-[4px] -translate-x-1/2 rounded-full transition-[height] duration-150 ease-out"
@@ -217,41 +219,43 @@ export default function ZigzagTimeline() {
             </div>
           </div>
 
-          {/* MOBILE LEFT LINE */}
-        <div
-  className="pointer-events-none absolute left-5 block md:hidden"
-  style={{
-    top: `${mobileLine.top - 175}px`,
-    height: `${mobileLine.height + 3}px`,
-  }}
->
-  <div className="relative h-full w-[8px] overflow-hidden rounded-full bg-slate-200">
-    <div
-      className="absolute left-1/2 top-0 w-[4px] -translate-x-1/2 rounded-full transition-[height] duration-150 ease-out"
-      style={{
-        height: `${Math.max(
-          0,
-          Math.min(mobileLine.progress, mobileLine.height)
-        )}px`,
-        background: "linear-gradient(to bottom, #60a5fa, #3b82f6, #1d4ed8)",
-        boxShadow: "0 0 16px rgba(59,130,246,0.7)",
-      }}
-    />
+          {/* MOBILE LEFT RAIL */}
+          <div
+            className="pointer-events-none absolute md:hidden"
+            style={{
+              left: mobileRailLeft,
+              top: mobileLine.top - mobileLineTopOffset,
+              height: mobileLine.height,
+            }}
+          >
+            <div className="relative h-full w-[8px] overflow-hidden rounded-full bg-slate-200">
+              <div
+                className="absolute left-1/2 top-0 w-[4px] -translate-x-1/2 rounded-full transition-[height] duration-150 ease-out"
+                style={{
+                  height: Math.max(
+                    0,
+                    Math.min(mobileLine.progress, mobileLine.height)
+                  ),
+                  background:
+                    "linear-gradient(to bottom, #60a5fa, #3b82f6, #1d4ed8)",
+                  boxShadow: "0 0 16px rgba(59,130,246,0.7)",
+                }}
+              />
+              <div
+                className="absolute h-4 w-4 rounded-full bg-blue-400/80 blur-[2px] transition-all duration-150"
+                style={{
+                  left: "50%",
+                  top: Math.max(
+                    -2,
+                    Math.min(mobileLine.progress - 8, mobileLine.height - 10)
+                  ),
+                  transform: `translateX(calc(-50% + ${mobileGlowNudgeX}px))`,
+                  opacity: mobileLine.progress > 0 ? 1 : 0,
+                }}
+              />
+            </div>
+          </div>
 
-    <div
-      className="absolute h-4 w-4 rounded-full bg-blue-400/80 blur-[2px] transition-all duration-150"
-      style={{
-        left: "50%",
-        top: `${Math.max(
-          -2,
-          Math.min(mobileLine.progress - 8, mobileLine.height - 10)
-        )}px`,
-        transform: "translateX(calc(-50% + 0.4px))",
-        opacity: mobileLine.progress > 0 ? 1 : 0,
-      }}
-    />
-  </div>
-</div>
           {/* DESKTOP STEPS */}
           <div className="hidden space-y-28 md:block">
             {steps.map((step, index) => {
@@ -302,18 +306,23 @@ export default function ZigzagTimeline() {
           </div>
 
           {/* MOBILE STEPS */}
-          <div className="space-y-10 md:hidden">
+          <div className="space-y-8 md:hidden">
             {steps.map((step, index) => {
               const isActive = index <= activeMobile;
               const isCurrent = index === activeMobile;
 
               return (
-                <div key={step.id} className="relative pl-14">
+                <div
+                  key={step.id}
+                  className="relative"
+                  style={{ paddingLeft: mobileCardPaddingLeft }}
+                >
                   <div
                     ref={(el) => {
                       mobileDotRefs.current[index] = el;
                     }}
-                    className="absolute left-5 top-6 z-10 -translate-x-1/2"
+                    className="absolute top-6 z-10 -translate-x-1/2"
+                    style={{ left: mobileRailLeft + 4 }}
                   >
                     <Dot isActive={isActive} isCurrent={isCurrent} small />
                   </div>
@@ -325,10 +334,10 @@ export default function ZigzagTimeline() {
                         : "translate-y-3 opacity-70"
                     }`}
                   >
-                    <h3 className="text-xl font-bold text-blue-700">
+                    <h3 className="text-lg font-bold leading-snug text-blue-700 sm:text-xl">
                       {step.title}
                     </h3>
-                    <p className="mt-3 leading-relaxed text-slate-700">
+                    <p className="mt-3 text-sm leading-7 text-slate-700 sm:text-base">
                       {step.desc}
                     </p>
 
@@ -377,11 +386,11 @@ function Dot({
     <div className="relative z-10 flex items-center justify-center">
       <div
         className={[
-          small ? "w-7 h-7" : "w-8 h-8",
-          "rounded-full flex items-center justify-center border-2 transition-all duration-300",
+          small ? "h-7 w-7" : "h-8 w-8",
+          "flex items-center justify-center rounded-full border-2 transition-all duration-300",
           isActive
-            ? "border-blue-500 bg-blue-100 scale-110"
-            : "border-slate-300 bg-white scale-100",
+            ? "scale-110 border-blue-500 bg-blue-100"
+            : "scale-100 border-slate-300 bg-white",
           isCurrent ? "shadow-[0_0_24px_rgba(59,130,246,0.45)]" : "",
         ].join(" ")}
         style={{
@@ -390,7 +399,7 @@ function Dot({
       >
         <div
           className={[
-            small ? "w-3 h-3" : "w-3.5 h-3.5",
+            small ? "h-3 w-3" : "h-3.5 w-3.5",
             "rounded-full transition-all duration-300",
             isActive
               ? "bg-blue-600 shadow-[0_0_12px_rgba(59,130,246,0.8)]"
@@ -416,7 +425,7 @@ function Content({
       }`}
     >
       <div className="rounded-2xl bg-white p-6 shadow-[0_10px_40px_rgba(0,0,0,0.08)]">
-        <h3 className="text-xl md:text-2xl font-bold text-blue-700">
+        <h3 className="text-xl font-bold text-blue-700 md:text-2xl">
           {step.title}
         </h3>
         <p className="mt-3 leading-relaxed text-slate-900">{step.desc}</p>
@@ -445,7 +454,7 @@ function ImageCard({
       <img
         src={step.img}
         alt={step.title}
-        className="h-auto w-full max-h-[300px] rounded-2xl object-contain shadow-[0_20px_50px_rgba(0,0,0,0.15)] transition-all duration-500 group-hover:scale-[1.05]"
+        className="h-auto max-h-[300px] w-full rounded-2xl object-contain shadow-[0_20px_50px_rgba(0,0,0,0.15)] transition-all duration-500 group-hover:scale-[1.05]"
       />
     </div>
   );
