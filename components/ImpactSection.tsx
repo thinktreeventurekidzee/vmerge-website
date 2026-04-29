@@ -48,8 +48,8 @@ export default function ImpactSection() {
           </h2>
 
           <p className="mt-3 text-sm sm:text-base text-slate-600 max-w-2xl mx-auto">
-            Execute powerful influencer campaigns across formats that drive
-            awareness, engagement, and conversions.
+            Execute Powerful Influencer Campaigns Across Formats That Drive
+            Awareness, Engagement, And Conversions.
           </p>
         </div>
 

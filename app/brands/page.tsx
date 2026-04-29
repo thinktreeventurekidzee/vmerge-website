@@ -161,7 +161,7 @@ export default function BrandsPage() {
           </h2>
 
           <p className="mt-3 px-4 text-slate-600">
-            Built for performance, scale, and clarity
+            Built For Performance, Scale, and Clarity
           </p>
 
           <div className="mx-auto mt-10 grid max-w-6xl grid-cols-1 gap-5 px-4 sm:grid-cols-2 md:grid-cols-3">
@@ -204,11 +204,11 @@ export default function BrandsPage() {
           <div className="flex h-[100svh] min-h-[700px] flex-col">
             <div className="shrink-0 pt-6 sm:pt-8">
               <h2 className="px-4 text-center text-2xl font-semibold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
-                Brands we’ve worked with
+                Brands We’ve Worked With
               </h2>
 
               <p className="mx-auto mt-3 max-w-xl px-4 text-center text-sm text-slate-600 sm:mt-4 sm:max-w-2xl sm:text-base">
-                Trusted by fast-growing startups and industry leaders
+                Trusted By Fast-Growing Startups and Industry Leaders
               </p>
             </div>
 
@@ -385,7 +385,7 @@ export default function BrandsPage() {
           </h2>
 
           <p className="mt-4 px-4 text-slate-600">
-            A structured approach to scale campaigns
+            A Structured Approach To Scale Campaigns
           </p>
 
           <div className="mx-auto mt-12 grid max-w-5xl grid-cols-2 gap-8 px-4 sm:grid-cols-4">
@@ -432,11 +432,11 @@ export default function BrandsPage() {
           <div className="mx-auto max-w-5xl px-4">
             <div className="mx-auto max-w-2xl text-center">
               <h2 className="text-2xl font-semibold text-slate-900 sm:text-3xl md:text-4xl">
-                Partner with us for your next campaign
+                Partner With Us for Your Next Campaign
               </h2>
 
               <p className="mt-3 text-slate-600">
-                Share your goals — we’ll craft a high-performing strategy.
+                Share your Goals — we’ll Craft a High-Performing Strategy.
               </p>
             </div>
 

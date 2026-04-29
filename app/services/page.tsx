@@ -93,7 +93,7 @@ export default function ServicesSection() {
           </h2>
 
           <p className="mt-3 sm:mt-4 text-base sm:text-lg text-slate-700">
-            Everything you need to scale with creators.
+            Everything You Need To Scale With Creators.
           </p>
         </div>
 

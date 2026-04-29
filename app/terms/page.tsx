@@ -24,7 +24,7 @@ export default function Terms() {
               Last updated: April 17, 2026
             </span>
             <span className="rounded-full bg-slate-100 px-3 py-1">
-              Applicable to website visitors, brands, creators, partners, and leads
+              Applicable To Website Visitors, Brands, Creators, Partners, And Leads
             </span>
           </div>
 

@@ -134,7 +134,7 @@ export default function PrivacyPolicy() {
               </h2>
 
               <p className="mt-3 text-sm text-slate-600 sm:text-base">
-                We use your information for the following purposes:
+                We Use Your Information For The Following Purposes:
               </p>
 
               <ul className="mt-4 space-y-3 text-sm text-slate-700 sm:space-y-4 sm:text-base">
@@ -172,7 +172,7 @@ export default function PrivacyPolicy() {
               </h2>
 
               <p className="mt-3 text-sm text-slate-600 sm:text-base">
-                We may share your information only in the following situations:
+                We May Share Your Information Only In The Following Situations:
               </p>
 
               <ul className="mt-4 space-y-3 text-sm text-slate-700 sm:space-y-4 sm:text-base">
@@ -187,11 +187,11 @@ export default function PrivacyPolicy() {
                 <li>
                   With{" "}
                   <span className="font-semibold">
-                    trusted third-party service providers
+                    Trusted Third-Party Service Providers
                   </span>{" "}
-                  such as payment gateways, analytics tools, CRM platforms, ad
-                  platforms, or cloud hosting providers, strictly for business
-                  operations.
+                  Such As Payment Gateways, Analytics Tools, CRM platforms, ad
+                  Platforms,For Cloud Hosting Providers, Strictly For Business
+                  Operations.
                 </li>
                 <li>
                   With{" "}
@@ -329,7 +329,7 @@ export default function PrivacyPolicy() {
                 including the Information Technology Act, 2000, the relevant IT
                 Rules, and other applicable regulations, as updated from time to
                 time. Where required, we obtain your consent before collecting
-                or processing certain categories of data. [web:81][web:84]
+                or processing certain categories of data. 
               </p>
             </section>
 
@@ -370,8 +370,8 @@ export default function PrivacyPolicy() {
               </h2>
 
               <p className="mt-3 text-sm text-slate-600 sm:text-base">
-                If you have any questions, concerns, or requests regarding this
-                Privacy Policy or our data practices, you can contact us at:
+                If You Have Any Questions, Concerns, Or Requests Regarding This
+                Privacy Policy Or Our Data Practices, You Can Contact Us At:
               </p>
 
               <div className="mt-4 rounded-2xl border border-slate-200 bg-blue-50 p-4 sm:mt-5 sm:p-6">

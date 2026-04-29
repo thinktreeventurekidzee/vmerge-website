@@ -108,7 +108,7 @@ const categories = [
   </motion.h1>
 
   <p className="mt-4 sm:mt-6 text-slate-600 max-w-2xl mx-auto text-base sm:text-lg">
-    Join creators who are building their audience and monetizing content.
+    Join  Creators Who Are Building Their Audience And Monetizing Content.
   </p>
 
 </section>
@@ -124,7 +124,7 @@ const categories = [
     </h2>
 
     <p className="text-center text-slate-600 mt-4 max-w-2xl mx-auto">
-      From finance to fashion to tech — creators are growing with us.
+      From Finance To Fashion To Tech — Creators Are Growing With Us.
     </p>
 
     <div className="mt-12 space-y-12">
@@ -194,7 +194,7 @@ const categories = [
             </h2>
 
             <p className="text-slate-600 mt-2">
-              Start your journey with brands
+              Start Your Journey With Brands
             </p>
 
             <form

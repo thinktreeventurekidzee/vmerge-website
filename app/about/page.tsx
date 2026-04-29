@@ -265,7 +265,7 @@ export default function AboutPage() {
             <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.96),rgba(239,246,255,0.75),rgba(255,255,255,0.98))]" />
             <div className="relative z-10">
               <p className="text-sm uppercase tracking-[0.3em] text-slate-500">
-                Is your brand feeling bland?
+                Is Your Brand Feeling Bland?
               </p>
 
               <h2 className="mt-5 text-5xl font-black leading-none tracking-[-0.05em] text-slate-900 sm:text-6xl md:text-7xl">
@@ -274,14 +274,14 @@ export default function AboutPage() {
               </h2>
 
               <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-slate-600 sm:text-xl">
-                We craft high-performing campaigns that actually drive results.
+                We Craft High-Performing Campaigns That Actually Drive Results.
               </p>
 
               <Link
                 href="/contact"
                 className="group mt-9 inline-flex items-center justify-center rounded-2xl bg-blue-600 px-8 py-4 text-base font-semibold text-white shadow-[0_12px_30px_rgba(37,99,235,0.22)] transition-all duration-300 hover:scale-[1.03] hover:bg-blue-700"
               >
-                Start a Conversation
+                Start A Conversation
                 <span className="ml-2 transition-transform duration-300 group-hover:translate-x-1">
                   →
                 </span>

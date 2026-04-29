@@ -41,13 +41,14 @@ Message: ${form.message}`
           {/* HEADING */}
           <div className="mx-auto mb-10 max-w-3xl text-center sm:mb-14 lg:mb-16">
             <h1 className="text-3xl font-bold leading-tight text-[#0b1a3a] sm:text-4xl md:text-5xl lg:text-6xl">
-              Start your next{" "}
-              <span className="text-blue-600">creator campaign</span>
+              Start Your Next{" "}
+              <span className="text-blue-600">Creator Campaign</span>
+              
             </h1>
 
             <p className="mt-4 text-sm text-slate-600 sm:mt-5 sm:text-base md:text-lg">
-              Share your goals, and we’ll help you plan, launch, and scale your
-              campaigns.
+              Share your Goals, And We’ll Help You Plan, Launch, And Scale Your
+              Campaigns.
             </p>
           </div>
 
@@ -74,7 +75,7 @@ Message: ${form.message}`
                     </a>
 
                     <p className="mt-1 text-xs text-slate-500 sm:text-sm">
-                      For brand campaigns and collaborations
+                      For Brand Campaigns And Collaborations
                     </p>
                   </div>
                 </div>
@@ -101,7 +102,7 @@ Message: ${form.message}`
                     </a>
 
                     <p className="mt-1 text-xs text-slate-500 sm:text-sm">
-                      Quick response for campaigns
+                      Quick Response For Campaigns
                     </p>
                   </div>
                 </div>
@@ -123,7 +124,7 @@ Message: ${form.message}`
                     </p>
 
                     <p className="mt-1 text-xs text-slate-500 sm:text-sm">
-                      Operating across India
+                      Operating Across India
                     </p>
                   </div>
                 </div>
@@ -131,15 +132,15 @@ Message: ${form.message}`
 
               <div className="rounded-2xl border border-blue-100 bg-gradient-to-r from-blue-50 to-sky-50 p-5 sm:p-6">
                 <h3 className="text-base font-semibold text-[#0b1a3a] sm:text-lg">
-                  Best for brands looking to
+                  Best for Brands Looking To
                 </h3>
 
                 <div className="mt-3 flex flex-wrap gap-2">
                   {[
-                    "Launch creator campaigns",
-                    "Drive app installs",
-                    "Scale awareness",
-                    "Boost conversions",
+                    "Launch Creator Campaigns",
+                    "Drive App Installs",
+                    "Scale Awareness",
+                    "Boost Conversions",
                   ].map((item) => (
                     <span
                       key={item}

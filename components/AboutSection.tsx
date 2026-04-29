@@ -53,7 +53,7 @@ export default function AboutSection() {
           <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 px-3 py-1.5 text-xs sm:text-sm bg-white">
             <BadgeCheck size={14} className="text-blue-700" />
             <span className="text-blue-700 font-medium">
-              Trusted by growth-focused brands
+              Trusted by Growth-Focused Brands
             </span>
           </div>
 
@@ -61,13 +61,13 @@ export default function AboutSection() {
           <h2 className="mt-4 text-2xl sm:text-3xl md:text-5xl font-bold text-slate-900 leading-tight max-w-4xl">
             Built for{" "}
             <span className="text-blue-700">
-              structured, high-performance
+              Structured, High-Performance
             </span>{" "}
-            campaign execution
+            Campaign Execution
           </h2>
 
           <p className="mt-3 text-sm sm:text-base text-slate-600 max-w-2xl">
-            We design and execute creator-driven campaigns with a system-first approach.
+            We Design And Execute Creator-Driven Campaigns With A System-First Approach.
           </p>
         </motion.div>
 
