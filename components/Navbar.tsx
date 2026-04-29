@@ -2,22 +2,30 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { Menu, X, ChevronDown } from "lucide-react";
+import {
+  Menu,
+  X,
+  ChevronDown,
+  Megaphone,
+  Video,
+  Globe,
+  Users,
+} from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 
-const Logo = () => {
-  return (
-    <img
-      src="/vmerg-logo.png"
-      alt="vmerg logo"
-      className="h-[52px] w-auto object-contain sm:h-[62px] md:h-[70px] lg:h-[78px]"
-    />
-  );
-};
+const Logo = () => (
+  <img
+    src="/vmerg-logo.png"
+    alt="vmerg logo"
+    className="h-[52px] sm:h-[62px] md:h-[70px] lg:h-[78px]"
+  />
+);
 
 export default function Navbar() {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [desktopHover, setDesktopHover] = useState<string | null>(null);
+
   const pathname = usePathname();
   const router = useRouter();
 
@@ -28,26 +36,11 @@ export default function Navbar() {
         name: "Services",
         href: "/services",
         dropdown: [
-          {
-            title: "Influencer Marketing",
-            desc: "Find and partner with creators",
-          },
-          {
-            title: "UGC Content Creation",
-            desc: "Authentic content for ads",
-          },
-          {
-            title: "On-Site Video Shoots",
-            desc: "Professional shoots",
-          },
-          {
-            title: "Social Media Management",
-            desc: "Strategy & posting",
-          },
-          {
-            title: "Website Development",
-            desc: "High-converting websites",
-          },
+          { title: "Influencer Marketing", desc: "Find creators", icon: Megaphone },
+          { title: "UGC Content", desc: "Authentic ads", icon: Video },
+          { title: "Video Shoots", desc: "Professional shoots", icon: Video },
+          { title: "Social Media", desc: "Growth strategy", icon: Users },
+          { title: "Website Dev", desc: "High converting sites", icon: Globe },
         ],
       },
       { name: "Brands", href: "/brands" },
@@ -64,194 +57,187 @@ export default function Navbar() {
 
   useEffect(() => {
     document.body.style.overflow = mobileMenu ? "hidden" : "auto";
-    return () => {
-      document.body.style.overflow = "auto";
-    };
   }, [mobileMenu]);
 
   useEffect(() => {
     setMobileMenu(false);
     setMobileServicesOpen(false);
+    setDesktopHover(null);
   }, [pathname]);
 
   const isActive = (href: string) => pathname === href;
 
   return (
-    <header className="fixed left-0 top-0 z-50 w-full">
-      <nav className="relative overflow-hidden">
-        <div className="absolute inset-0 animate-gradient-sync" />
-        <div className="absolute inset-0 glass-sync sync-shadow-top" />
-        <div className="absolute inset-x-0 bottom-0 h-px bg-white/30" />
+    <header className="sticky top-0 z-50 w-full">
 
-        <div className="relative mx-auto flex h-[72px] max-w-7xl items-center justify-between px-4 sm:h-[80px] sm:px-6 lg:h-[88px] lg:px-8">
-          <Link
-            href="/"
-            onClick={() => setMobileMenu(false)}
-            className="flex shrink-0 items-center"
-          >
+      {/* 🔥 SYNCED NAVBAR */}
+      <nav className="relative overflow-visible border-b border-white/30">
+
+        {/* gradient (same as footer) */}
+        <div className="absolute inset-0 animate-gradient-sync" />
+
+        {/* glass layer */}
+        <div className="absolute inset-0 glass-sync sync-shadow-top" />
+
+        {/* CONTENT */}
+        <div className="relative z-10 max-w-7xl mx-auto flex h-[72px] items-center justify-between px-4 sm:h-[80px] lg:h-[88px]">
+
+          <Link href="/">
             <Logo />
           </Link>
 
-          <div className="hidden items-center gap-6 md:flex lg:gap-8">
+          {/* DESKTOP NAV */}
+          <div className="hidden md:flex items-center gap-8">
+
             {navItems.map((item) => (
-              <div key={item.name} className="group relative">
+              <div
+                key={item.name}
+                className="relative"
+                onMouseEnter={() => setDesktopHover(item.name)}
+                onMouseLeave={() => setDesktopHover(null)}
+              >
                 <Link
                   href={item.href}
-                  className={`inline-flex items-center gap-1 text-sm font-semibold transition-all duration-300 lg:text-base ${
-                    isActive(item.href)
-                      ? "scale-105 text-black"
-                      : "text-black/85 hover:scale-105 hover:text-black"
-                  }`}
+                  className={`
+                    flex items-center gap-1 text-[15px] transition-all duration-300
+                    ${
+                      isActive(item.href)
+                        ? "text-blue-900 font-semibold"
+                        : "text-black/80 hover:text-black hover:font-semibold"
+                    }
+                  `}
                 >
                   {item.name}
-                  {item.dropdown && <ChevronDown size={16} className="mt-[1px]" />}
+                  {item.dropdown && (
+                    <ChevronDown
+                      size={16}
+                      className={`transition ${
+                        desktopHover === item.name ? "rotate-180" : ""
+                      }`}
+                    />
+                  )}
                 </Link>
 
+                {/* DROPDOWN */}
                 {item.dropdown && pathname !== "/services" && (
-                  <div className="pointer-events-none absolute left-1/2 top-full z-50 w-[92vw] max-w-[560px] -translate-x-1/2 translate-y-4 opacity-0 transition-all duration-300 group-hover:pointer-events-auto group-hover:translate-y-3 group-hover:opacity-100">
-                    <div className="rounded-2xl border border-white/50 bg-white/70 p-4 shadow-2xl backdrop-blur-xl lg:p-5">
-                      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                        {item.dropdown.map((d, i) => (
+                  <div
+                    className={`absolute left-1/2 top-full z-[999]
+                      -translate-x-1/2 mt-5 w-[320px]
+                      transition-all duration-300 ease-out
+                      ${
+                        desktopHover === item.name
+                          ? "opacity-100 translate-y-0 scale-100"
+                          : "opacity-0 translate-y-4 scale-95 pointer-events-none"
+                      }
+                    `}
+                  >
+                    <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-r from-blue-500/30 via-cyan-400/30 to-indigo-500/30 blur-xl" />
+
+                    <div className="relative rounded-2xl border border-white/40 bg-white/85 backdrop-blur-xl shadow-[0_20px_60px_rgba(0,0,0,0.2)] p-3">
+
+                      {item.dropdown.map((d, i) => {
+                        const Icon = d.icon;
+                        return (
                           <Link
                             key={i}
                             href="/services"
-                            className="rounded-xl p-3 transition duration-300 hover:scale-[1.02] hover:bg-blue-500 hover:text-white hover:shadow-md"
+                            className="group flex gap-3 p-3 rounded-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-500 hover:to-cyan-500 hover:text-white hover:scale-[1.03]"
                           >
-                            <p className="text-sm font-semibold">{d.title}</p>
-                            <p className="mt-1 text-xs opacity-80">{d.desc}</p>
+                            <div className="h-9 w-9 flex items-center justify-center rounded-lg bg-blue-100 text-blue-600 group-hover:bg-white">
+                              <Icon size={18} />
+                            </div>
+
+                            <div>
+                              <p className="text-sm font-semibold">{d.title}</p>
+                              <p className="text-xs opacity-70 group-hover:opacity-100">
+                                {d.desc}
+                              </p>
+                            </div>
                           </Link>
-                        ))}
-                      </div>
+                        );
+                      })}
                     </div>
                   </div>
                 )}
               </div>
             ))}
 
+            {/* CTA */}
             <Link
               href="/contact"
-              className="ml-2 inline-flex items-center rounded-xl bg-gradient-to-r from-black to-gray-800 px-4 py-2.5 text-sm font-semibold text-white shadow-lg transition hover:scale-105 hover:shadow-xl lg:px-5 lg:text-base"
+              className="ml-4 rounded-xl bg-gradient-to-r from-black to-slate-800 px-4 py-2 text-white shadow-lg hover:scale-105 transition"
             >
               Get Strategy
             </Link>
           </div>
 
-          <button
-            onClick={() => setMobileMenu((prev) => !prev)}
-            aria-label={mobileMenu ? "Close menu" : "Open menu"}
-            aria-expanded={mobileMenu}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-xl text-black transition hover:bg-white/30 md:hidden"
-          >
-            {mobileMenu ? <X size={28} /> : <Menu size={28} />}
+          {/* MOBILE BTN */}
+          <button onClick={() => setMobileMenu(!mobileMenu)} className="md:hidden">
+            {mobileMenu ? <X size={26} /> : <Menu size={26} />}
           </button>
         </div>
       </nav>
 
+      {/* MOBILE MENU */}
       <div
-        className={`fixed inset-0 z-40 transition-all duration-300 md:hidden ${
-          mobileMenu
-            ? "pointer-events-auto visible bg-black/30 opacity-100"
-            : "pointer-events-none invisible bg-black/0 opacity-0"
-        }`}
-        onClick={() => setMobileMenu(false)}
-      />
-
-      <div
-        className={`fixed right-0 top-[72px] z-50 h-[calc(100dvh-72px)] w-full max-w-sm overflow-y-auto transition-transform duration-300 sm:top-[80px] sm:h-[calc(100dvh-80px)] ${
-          mobileMenu ? "translate-x-0" : "translate-x-full"
-        }`}
+        className={`fixed top-0 left-0 w-full h-screen z-50
+        bg-[linear-gradient(180deg,#6ca4ec,#8abdf0)]
+        transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]
+        ${mobileMenu ? "translate-y-0" : "-translate-y-full"}
+      `}
       >
-        <div className="absolute inset-0 animate-gradient-sync" />
-        <div className="absolute inset-0 glass-sync sync-shadow-top" />
-        <div className="relative z-10 h-full border-l border-white/30 px-5 py-6 sm:px-6">
-          <div className="space-y-2">
-            {navItems.map((item) => {
-              if (item.dropdown) {
-                return (
-                  <div
-                    key={item.name}
-                    className="rounded-2xl border border-white/40 bg-white/45 backdrop-blur-md"
-                  >
-                    <button
-                      onClick={() => setMobileServicesOpen((prev) => !prev)}
-                      className="flex w-full items-center justify-between px-4 py-4 text-left text-lg font-semibold text-black"
-                    >
-                      <span>{item.name}</span>
-                      <ChevronDown
-                        size={20}
-                        className={`transition-transform duration-300 ${
-                          mobileServicesOpen ? "rotate-180" : ""
-                        }`}
-                      />
-                    </button>
+        <div className="flex justify-between items-center p-4 border-b border-white/30">
+          <Logo />
+          <button onClick={() => setMobileMenu(false)}>
+            <X size={28} />
+          </button>
+        </div>
 
-                    <div
-                      className={`grid transition-all duration-300 ${
-                        mobileServicesOpen
-                          ? "grid-rows-[1fr] opacity-100"
-                          : "grid-rows-[0fr] opacity-0"
-                      }`}
-                    >
-                      <div className="overflow-hidden">
-                        <div className="space-y-2 px-4 pb-4">
-                          <Link
-                            href="/services"
-                            onClick={() => setMobileMenu(false)}
-                            className={`block rounded-xl px-3 py-3 text-base font-medium transition ${
-                              isActive("/services")
-                                ? "bg-blue-500 text-white"
-                                : "bg-white/70 text-black hover:bg-white"
-                            }`}
-                          >
-                            All Services
-                          </Link>
+        <div className="p-5 space-y-4">
 
-                          {item.dropdown.map((d, i) => (
-                            <Link
-                              key={i}
-                              href="/services"
-                              onClick={() => setMobileMenu(false)}
-                              className="block rounded-xl bg-white/70 px-3 py-3 transition hover:bg-white"
-                            >
-                              <p className="text-sm font-semibold text-black">
-                                {d.title}
-                              </p>
-                              <p className="mt-1 text-xs text-black/65">
-                                {d.desc}
-                              </p>
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                );
-              }
-
+          {navItems.map((item) => {
+            if (item.dropdown) {
               return (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  onClick={() => setMobileMenu(false)}
-                  className={`block rounded-2xl px-4 py-4 text-lg font-semibold transition ${
-                    isActive(item.href)
-                      ? "bg-blue-500 text-white shadow-md"
-                      : "bg-white/50 text-black hover:bg-white/80"
-                  }`}
-                >
-                  {item.name}
-                </Link>
-              );
-            })}
+                <div key={item.name} className="bg-white/60 rounded-xl backdrop-blur-md">
 
-            <Link
-              href="/contact"
-              onClick={() => setMobileMenu(false)}
-              className="mt-4 block rounded-2xl bg-gradient-to-r from-blue-500 via-blue-600 to-cyan-500 px-4 py-4 text-center text-base font-semibold text-white shadow-lg transition hover:scale-[1.01]"
-            >
-              Get Strategy →
-            </Link>
-          </div>
+                  <button
+                    onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                    className="w-full flex justify-between p-4 font-semibold"
+                  >
+                    {item.name}
+                    <ChevronDown className={`${mobileServicesOpen ? "rotate-180" : ""}`} />
+                  </button>
+
+                  {mobileServicesOpen && (
+                    <div className="px-4 pb-4 space-y-2">
+                      {item.dropdown.map((d, i) => (
+                        <Link
+                          key={i}
+                          href="/services"
+                          onClick={() => setMobileMenu(false)}
+                          className="block bg-white/80 p-3 rounded-lg"
+                        >
+                          <p className="text-sm font-semibold">{d.title}</p>
+                          <p className="text-xs">{d.desc}</p>
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            }
+
+            return (
+              <Link
+                key={item.name}
+                href={item.href}
+                onClick={() => setMobileMenu(false)}
+                className="block bg-white/70 p-4 rounded-xl font-semibold"
+              >
+                {item.name}
+              </Link>
+            );
+          })}
         </div>
       </div>
     </header>

@@ -51,7 +51,7 @@ export default function AboutPage() {
               </h1>
 
               <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-600 sm:text-xl">
-                We help brands grow through powerful creator-led campaigns.
+                We Help Brands Grow Through Powerful Creator-Led Campaigns.
               </p>
             </div>
           </motion.div>
@@ -81,19 +81,19 @@ export default function AboutPage() {
 
             <div className="space-y-6 text-base leading-8 text-slate-600 sm:text-lg">
               <p>
-                Founded in 2021, Vmerg is an influencer marketing and brand
-                partnership company dedicated to helping brands grow through
-                impactful digital collaborations.
+                Founded in 2021, Vmerg is an Influencer Marketing and Brand
+                Partnership Company Dedicated To Helping Brands Grow Through
+                Impactful Digital Collaborations.
               </p>
 
               <p>
-                At Vmerg, we believe influencer marketing is more than just
-                promotions—it is about creating genuine relationships between
+                At Vmerg, We Believe Influencer Marketing is More Than Just
+                Promotions—it is about creating genuine relationships between
                 brands and their audiences.
               </p>
 
               <p>
-                Vmerg was founded by{" "}
+                Vmerg Was Founded By{" "}
                 <a
                   href="https://www.linkedin.com/in/vinay-kumar-mishra-vmerg?utm_source=share_via&utm_content=profile&utm_medium=member_android"
                   target="_blank"
@@ -106,8 +106,8 @@ export default function AboutPage() {
               </p>
 
               <p>
-                With a strong focus on innovation, collaboration, and growth,
-                Vmerg continues to build meaningful partnerships.
+                With a Strong Focus On Innovation, Collaboration, And Growth,
+                Vmerg continues to Build Meaningful Partnerships.
               </p>
             </div>
           </motion.div>

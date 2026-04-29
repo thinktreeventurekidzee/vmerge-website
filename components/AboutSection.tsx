@@ -45,10 +45,11 @@ export default function AboutSection() {
   return (
     <section className="relative py-14 sm:py-20 md:py-24 bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100">
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+      {/* 🔥 CENTERED CONTAINER */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col items-center">
 
         {/* HEADER */}
-        <motion.div {...fadeUp}>
+        <motion.div {...fadeUp} className="text-center flex flex-col items-center">
 
           <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 px-3 py-1.5 text-xs sm:text-sm bg-white">
             <BadgeCheck size={14} className="text-blue-700" />
@@ -57,9 +58,8 @@ export default function AboutSection() {
             </span>
           </div>
 
-          {/* 🔥 FULL WIDTH HEADING */}
           <h2 className="mt-4 text-2xl sm:text-3xl md:text-5xl font-bold text-slate-900 leading-tight max-w-4xl">
-            Built for{" "}
+            Built For{" "}
             <span className="text-blue-700">
               Structured, High-Performance
             </span>{" "}
@@ -71,42 +71,39 @@ export default function AboutSection() {
           </p>
         </motion.div>
 
-       {/* METRICS */}
-<motion.div
-  {...fadeUp}
-  className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6 max-w-2xl"
->
-  {metrics.map((item) => (
-    <div
-      key={item.label}
-      className="
-      bg-white 
-      p-6 sm:p-8 
-      rounded-2xl 
-      text-center 
-      shadow-md 
-      border border-slate-100
+        {/* METRICS */}
+        <motion.div
+          {...fadeUp}
+          className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6 w-full max-w-2xl justify-items-center"
+        >
+          {metrics.map((item) => (
+            <div
+              key={item.label}
+              className="
+                bg-white 
+                p-6 sm:p-8 
+                rounded-2xl 
+                text-center 
+                shadow-md 
+                border border-slate-100
+                hover:shadow-xl 
+                hover:-translate-y-1
+                transition-all duration-300
+              "
+            >
+              <p className="text-2xl sm:text-3xl font-extrabold text-blue-700">
+                {item.value}
+              </p>
 
-      hover:shadow-xl 
-      hover:-translate-y-1
-      transition-all duration-300
-      "
-    >
-      {/* VALUE */}
-      <p className="text-2xl sm:text-3xl font-extrabold text-blue-700">
-        {item.value}
-      </p>
+              <p className="mt-2 text-sm sm:text-base text-slate-600 font-medium">
+                {item.label}
+              </p>
+            </div>
+          ))}
+        </motion.div>
 
-      {/* LABEL */}
-      <p className="mt-2 text-sm sm:text-base text-slate-600 font-medium">
-        {item.label}
-      </p>
-    </div>
-  ))}
-</motion.div>
-
-        {/* FEATURES (VERTICAL STACK) */}
-        <div className="mt-10 space-y-4 max-w-3xl">
+        {/* FEATURES */}
+        <div className="mt-10 space-y-4 w-full max-w-3xl">
           {features.map(({ icon: Icon, title, desc }) => (
             <motion.div
               key={title}
@@ -129,7 +126,7 @@ export default function AboutSection() {
         </div>
 
         {/* CTA */}
-        <motion.div {...fadeUp} className="mt-10">
+        <motion.div {...fadeUp} className="mt-10 flex justify-center">
           <Link
             href="/contact"
             className="inline-flex items-center gap-2 bg-red-500 text-white px-6 py-3 rounded-xl hover:bg-red-600 transition font-semibold shadow-md"
