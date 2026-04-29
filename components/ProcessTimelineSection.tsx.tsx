@@ -180,7 +180,7 @@ export default function ZigzagTimeline() {
             Our Process
           </p>
           <h2 className="mt-4 text-3xl font-bold text-slate-900 md:text-5xl">
-            How we execute campaigns
+            How we Execute Campaigns
           </h2>
         </div>
 
