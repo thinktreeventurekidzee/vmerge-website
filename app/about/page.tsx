@@ -148,7 +148,7 @@ export default function AboutPage() {
                     Strategy
                   </p>
                   <p className="mt-2 text-lg font-semibold text-white">
-                    Thoughtful campaign planning
+                    Thoughtful Campaign Planning
                   </p>
                 </div>
 
@@ -157,7 +157,7 @@ export default function AboutPage() {
                     Trust
                   </p>
                   <p className="mt-2 text-lg font-semibold text-white">
-                    Transparent brand relationships
+                    Transparent Brand Relationships
                   </p>
                 </div>
 
@@ -166,7 +166,7 @@ export default function AboutPage() {
                     Results
                   </p>
                   <p className="mt-2 text-lg font-semibold text-white">
-                    Performance that matters
+                    Performance That Matters
                   </p>
                 </div>
               </div>
@@ -188,7 +188,7 @@ export default function AboutPage() {
             The Direction We Follow
           </p>
           <h2 className="mt-3 text-3xl font-black tracking-[-0.04em] text-slate-900 sm:text-4xl md:text-5xl">
-            Driven by purpose, built for impact
+            Driven By Purpose, Built For Impact
           </h2>
         </div>
 
@@ -205,7 +205,7 @@ export default function AboutPage() {
                 Our Mission
               </p>
               <h3 className="mt-2 text-2xl font-bold tracking-[-0.03em] text-slate-900 sm:text-3xl">
-                Creating campaigns that truly perform
+                Creating Campaigns That Truly Perform
               </h3>
             </div>
 
@@ -237,7 +237,7 @@ export default function AboutPage() {
                 Our Vision
               </p>
               <h3 className="mt-2 text-2xl font-bold tracking-[-0.03em] text-slate-900 sm:text-3xl">
-                Redefining how brands connect with people
+                Redefining How Brands Connect With People
               </h3>
             </div>
 

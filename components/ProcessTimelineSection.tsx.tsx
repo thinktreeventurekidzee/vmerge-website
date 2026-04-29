@@ -52,7 +52,7 @@ export default function ZigzagTimeline() {
 
   const mobileRailLeft = 20;
   const mobileCardPaddingLeft = 52;
-  const mobileLineTopOffset = 178;
+
   const mobileGlowNudgeX = 0.2;
 
   useEffect(() => {
@@ -224,7 +224,7 @@ export default function ZigzagTimeline() {
             className="pointer-events-none absolute md:hidden"
             style={{
               left: mobileRailLeft,
-              top: mobileLine.top - mobileLineTopOffset,
+             top: Math.max(mobileLine.top - 180, 0),
               height: mobileLine.height,
             }}
           >
