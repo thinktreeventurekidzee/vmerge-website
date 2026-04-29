@@ -90,7 +90,7 @@ export default function ServicesSection() {
         {/* HEADER */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-blue-700 leading-tight">
-            Services designed for growth
+            Services Designed For Growth
           </h2>
 
           <p className="mt-3 sm:mt-4 text-base sm:text-lg text-slate-700">

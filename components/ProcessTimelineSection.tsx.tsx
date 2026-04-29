@@ -190,7 +190,7 @@ export default function ZigzagTimeline() {
             className="pointer-events-none absolute left-1/2 hidden -translate-x-1/2 md:block"
             style={{
               top: `${desktopLine.top - 248}px`,
-              height: `${desktopLine.height + 12}px`,
+              height: `${desktopLine.height + 4}px`,
             }}
           >
             <div className="relative h-full w-[10px] overflow-hidden rounded-full bg-slate-200">
