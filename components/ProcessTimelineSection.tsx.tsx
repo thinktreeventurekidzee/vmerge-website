@@ -224,7 +224,7 @@ export default function ZigzagTimeline() {
             className="pointer-events-none absolute md:hidden"
             style={{
               left: mobileRailLeft,
-             top: Math.max(mobileLine.top - 180, 0),
+             top: Math.max(mobileLine.top - 20, 0),
               height: mobileLine.height,
             }}
           >
