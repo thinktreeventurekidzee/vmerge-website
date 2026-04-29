@@ -141,7 +141,7 @@ export default function BrandsPage() {
 
   return (
     <>
-      <Navbar />
+     
 
       <main>
         {/* HERO */}

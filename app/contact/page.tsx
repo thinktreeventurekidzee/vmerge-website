@@ -34,7 +34,7 @@ Message: ${form.message}`
 
   return (
     <>
-      <Navbar />
+   
 
       <main className="min-h-dvh bg-gradient-to-br from-sky-100 via-blue-50 to-white">
         <section className="mx-auto max-w-7xl px-4 pb-14 pt-20 sm:px-6 sm:pb-20 sm:pt-24 lg:px-8 lg:pt-28">

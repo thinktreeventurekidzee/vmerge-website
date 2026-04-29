@@ -89,7 +89,7 @@ const categories = [
 ];
   return (
     <>
-      <Navbar />
+  
 
       <main className="bg-[#eaf4ff]">
 
