@@ -31,32 +31,32 @@ export default function AboutPage() {
       </div>
 
       {/* HERO */}
-      <section className="relative px-4 pt-28 pb-18 sm:pt-32 sm:pb-24">
-        <div className="mx-auto max-w-6xl">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-            className="relative overflow-hidden rounded-[2rem] border border-blue-100/70 bg-white/80 px-6 py-14 text-center shadow-[0_18px_50px_rgba(30,64,175,0.07)] backdrop-blur-md sm:px-10 md:px-16 md:py-20"
-          >
-            <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.86),rgba(239,246,255,0.76),rgba(255,255,255,0.94))]" />
+<section className="relative px-4 py-12 sm:py-16">
+  <div className="mx-auto max-w-6xl w-full">
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+      className="relative overflow-hidden rounded-[2rem] border border-blue-100/70 bg-white/80 px-6 py-10 sm:px-10 sm:py-12 md:px-16 md:py-16 text-center shadow-[0_18px_50px_rgba(30,64,175,0.07)] backdrop-blur-md"
+    >
+      <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.86),rgba(239,246,255,0.76),rgba(255,255,255,0.94))]" />
 
-            <div className="relative z-10">
-              <p className="mb-5 inline-flex rounded-full border border-blue-200/60 bg-blue-50/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-blue-700">
-                Creator-Led Growth
-              </p>
+      <div className="relative z-10">
+        <p className="mb-4 inline-flex rounded-full border border-blue-200/60 bg-blue-50/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-blue-700">
+          Creator-Led Growth
+        </p>
 
-              <h1 className="mx-auto max-w-4xl text-5xl font-black leading-[0.95] tracking-[-0.04em] text-slate-900 sm:text-6xl md:text-7xl">
-                About <span className="text-blue-700">Vmerg</span>
-              </h1>
+        <h1 className="mx-auto max-w-4xl text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] tracking-[-0.04em] text-slate-900">
+          About <span className="text-blue-700">Vmerg</span>
+        </h1>
 
-              <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-600 sm:text-xl">
-                We Help Brands Grow Through Powerful Creator-Led Campaigns.
-              </p>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+        <p className="mx-auto mt-5 max-w-xl sm:max-w-2xl text-sm sm:text-base md:text-lg leading-6 sm:leading-7 md:leading-8 text-slate-600">
+          We Help Brands Grow Through Powerful Creator-Led Campaigns.
+        </p>
+      </div>
+    </motion.div>
+  </div>
+</section>
 
       {/* STORY */}
       <motion.section
