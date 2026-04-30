@@ -40,7 +40,7 @@ export default function Navbar() {
           { title: "UGC Content", desc: "Authentic ads", icon: Video },
           { title: "Video Shoots", desc: "Professional shoots", icon: Video },
           { title: "Social Media", desc: "Growth strategy", icon: Users },
-          { title: "Website Dev", desc: "High converting sites", icon: Globe },
+          { title: "Website Development ", desc: "High converting sites", icon: Globe },
         ],
       },
       { name: "Brands", href: "/brands" },
