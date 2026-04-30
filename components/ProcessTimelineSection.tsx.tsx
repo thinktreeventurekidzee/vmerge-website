@@ -31,29 +31,15 @@ const steps = [
 
 export default function ZigzagTimeline() {
   const sectionRef = useRef<HTMLElement | null>(null);
-
   const desktopDotRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const mobileDotRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const [activeDesktop, setActiveDesktop] = useState(0);
-  const [activeMobile, setActiveMobile] = useState(0);
 
   const [desktopLine, setDesktopLine] = useState({
     top: 0,
     height: 0,
     progress: 0,
   });
-
-  const [mobileLine, setMobileLine] = useState({
-    top: 0,
-    height: 0,
-    progress: 0,
-  });
-
-  const mobileRailLeft = 20;
-  const mobileCardPaddingLeft = 52;
-
-  const mobileGlowNudgeX = 0.2;
 
   useEffect(() => {
     const getCenterInSection = (el: HTMLElement, section: HTMLElement) => {
@@ -67,8 +53,11 @@ export default function ZigzagTimeline() {
       if (!section) return;
 
       const isDesktop = window.innerWidth >= 768;
-      const refs = isDesktop ? desktopDotRefs.current : mobileDotRefs.current;
-      const validDots = refs.filter(Boolean) as HTMLDivElement[];
+      if (!isDesktop) return;
+
+      const validDots = desktopDotRefs.current.filter(
+        Boolean
+      ) as HTMLDivElement[];
 
       if (validDots.length < 2) return;
 
@@ -79,11 +68,7 @@ export default function ZigzagTimeline() {
       const bottom = getCenterInSection(last, section);
       const height = Math.max(0, bottom - top);
 
-      if (isDesktop) {
-        setDesktopLine((prev) => ({ ...prev, top, height }));
-      } else {
-        setMobileLine((prev) => ({ ...prev, top, height }));
-      }
+      setDesktopLine((prev) => ({ ...prev, top, height }));
     };
 
     const handleScroll = () => {
@@ -91,8 +76,12 @@ export default function ZigzagTimeline() {
       if (!section) return;
 
       const isDesktop = window.innerWidth >= 768;
-      const refs = isDesktop ? desktopDotRefs.current : mobileDotRefs.current;
-      const validDots = refs.filter(Boolean) as HTMLDivElement[];
+      if (!isDesktop) return;
+
+      const validDots = desktopDotRefs.current.filter(
+        Boolean
+      ) as HTMLDivElement[];
+
       if (validDots.length === 0) return;
 
       const triggerY = window.innerHeight * 0.5;
@@ -105,11 +94,13 @@ export default function ZigzagTimeline() {
 
       const segmentHeights = validDots.map((dot, i) => {
         if (i === validDots.length - 1) return 0;
+
         const currentCenter =
           dot.getBoundingClientRect().top + dot.offsetHeight / 2;
         const nextCenter =
           validDots[i + 1].getBoundingClientRect().top +
           validDots[i + 1].offsetHeight / 2;
+
         return nextCenter - currentCenter;
       });
 
@@ -132,15 +123,11 @@ export default function ZigzagTimeline() {
         }
       }
 
-      const clampedProgress = accumulated;
-
-      if (isDesktop) {
-        setDesktopLine((prev) => ({ ...prev, progress: clampedProgress }));
-        setActiveDesktop(current);
-      } else {
-        setMobileLine((prev) => ({ ...prev, progress: clampedProgress }));
-        setActiveMobile(current);
-      }
+      setDesktopLine((prev) => ({
+        ...prev,
+        progress: accumulated,
+      }));
+      setActiveDesktop(current);
     };
 
     const syncAll = () => {
@@ -156,7 +143,6 @@ export default function ZigzagTimeline() {
 
     if (sectionRef.current) resizeObserver.observe(sectionRef.current);
     desktopDotRefs.current.forEach((el) => el && resizeObserver.observe(el));
-    mobileDotRefs.current.forEach((el) => el && resizeObserver.observe(el));
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", syncAll);
@@ -219,43 +205,6 @@ export default function ZigzagTimeline() {
             </div>
           </div>
 
-          {/* MOBILE LEFT RAIL */}
-          <div
-            className="pointer-events-none absolute md:hidden"
-            style={{
-              left: mobileRailLeft,
-             top: Math.max(mobileLine.top - 12, 0),
-              height: mobileLine.height,
-            }}
-          >
-            <div className="relative h-full w-[8px] overflow-hidden rounded-full bg-slate-200">
-              <div
-                className="absolute left-1/2 top-0 w-[4px] -translate-x-1/2 rounded-full transition-[height] duration-150 ease-out"
-                style={{
-                  height: Math.max(
-                    0,
-                    Math.min(mobileLine.progress, mobileLine.height)
-                  ),
-                  background:
-                    "linear-gradient(to bottom, #60a5fa, #3b82f6, #1d4ed8)",
-                  boxShadow: "0 0 16px rgba(59,130,246,0.7)",
-                }}
-              />
-              <div
-                className="absolute h-4 w-4 rounded-full bg-blue-400/80 blur-[2px] transition-all duration-150"
-                style={{
-                  left: "50%",
-                  top: Math.max(
-                    -2,
-                    Math.min(mobileLine.progress - 8, mobileLine.height - 10)
-                  ),
-                  transform: `translateX(calc(-50% + ${mobileGlowNudgeX}px))`,
-                  opacity: mobileLine.progress > 0 ? 1 : 0,
-                }}
-              />
-            </div>
-          </div>
-
           {/* DESKTOP STEPS */}
           <div className="hidden space-y-28 md:block">
             {steps.map((step, index) => {
@@ -305,53 +254,48 @@ export default function ZigzagTimeline() {
             })}
           </div>
 
-          {/* MOBILE STEPS */}
-          <div className="space-y-8 md:hidden">
-            {steps.map((step, index) => {
-              const isActive = index <= activeMobile;
-              const isCurrent = index === activeMobile;
+          {/* MOBILE STACKED CARDS */}
+          <div className="space-y-5 md:hidden">
+            {steps.map((step) => (
+              <article
+                key={step.id}
+                className="mobile-process-card group relative overflow-hidden rounded-[22px] border border-slate-200 bg-white shadow-[0_8px_24px_rgba(15,23,42,0.08)]"
+              >
+                <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-blue-200 via-blue-500 to-indigo-400" />
 
-              return (
-                <div
-                  key={step.id}
-                  className="relative"
-                  style={{ paddingLeft: mobileCardPaddingLeft }}
-                >
-                  <div
-                    ref={(el) => {
-                      mobileDotRefs.current[index] = el;
-                    }}
-                    className="absolute top-6 z-10 -translate-x-1/2"
-                    style={{ left: mobileRailLeft + 4 }}
-                  >
-                    <Dot isActive={isActive} isCurrent={isCurrent} small />
+                <div className="pointer-events-none absolute inset-y-0 -left-1/2 w-1/2 -skew-x-12 bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-0 mobile-shine" />
+
+                <div className="p-4">
+                  <div className="mb-3 flex items-center justify-between gap-3">
+                    <span className="inline-flex rounded-full bg-blue-50 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-blue-700 ring-1 ring-blue-100 transition-colors duration-300">
+                      Step {step.id}
+                    </span>
+
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-slate-400 transition-colors duration-300">
+                      Process
+                    </span>
                   </div>
 
-                  <div
-                    className={`rounded-2xl bg-white p-5 shadow-[0_10px_30px_rgba(0,0,0,0.07)] transition-all duration-500 ${
-                      isActive
-                        ? "translate-y-0 opacity-100"
-                        : "translate-y-3 opacity-70"
-                    }`}
-                  >
-                    <h3 className="text-lg font-bold leading-snug text-blue-700 sm:text-xl">
-                      {step.title}
-                    </h3>
-                    <p className="mt-3 text-sm leading-7 text-slate-700 sm:text-base">
-                      {step.desc}
-                    </p>
+                  <h3 className="text-[1.02rem] font-bold leading-snug text-slate-900 transition-colors duration-300">
+                    {step.title}
+                  </h3>
 
-                    <div className="mt-5 overflow-hidden rounded-2xl">
-                      <img
-                        src={step.img}
-                        alt={step.title}
-                        className="h-auto w-full object-contain transition-transform duration-500"
-                      />
-                    </div>
+                  <p className="mt-2 text-[0.92rem] leading-7 text-slate-600 transition-colors duration-300">
+                    {step.desc}
+                  </p>
+
+                  <div className="mobile-image-shell mt-4 rounded-[16px] border border-slate-200 bg-slate-50">
+                    <img
+                      src={step.img}
+                      alt={step.title}
+                      loading="lazy"
+                      decoding="async"
+                      className="mobile-process-image h-full w-full object-contain"
+                    />
                   </div>
                 </div>
-              );
-            })}
+              </article>
+            ))}
           </div>
         </div>
       </div>
@@ -366,6 +310,84 @@ export default function ZigzagTimeline() {
           50% {
             box-shadow: 0 0 12px rgba(59, 130, 246, 0.55),
               0 0 28px rgba(59, 130, 246, 0.35);
+          }
+        }
+
+        @keyframes shineMove {
+          0% {
+            transform: translateX(-140%) skewX(-12deg);
+          }
+          100% {
+            transform: translateX(340%) skewX(-12deg);
+          }
+        }
+
+        .mobile-process-card {
+          transition:
+            transform 240ms cubic-bezier(0.22, 1, 0.36, 1),
+            box-shadow 240ms cubic-bezier(0.22, 1, 0.36, 1),
+            border-color 240ms cubic-bezier(0.22, 1, 0.36, 1),
+            background-color 240ms cubic-bezier(0.22, 1, 0.36, 1);
+          will-change: transform;
+          -webkit-tap-highlight-color: transparent;
+        }
+
+        .mobile-image-shell {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 190px;
+          max-height: 190px;
+          overflow: hidden;
+          padding: 8px;
+        }
+
+        .mobile-process-image {
+          display: block;
+          max-width: 100%;
+          max-height: 174px;
+          width: auto;
+          height: auto;
+          object-fit: contain;
+          will-change: transform;
+          transform: translateZ(0);
+          transition: transform 500ms ease;
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+          .mobile-process-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(96, 165, 250, 0.55);
+            box-shadow: 0 18px 38px rgba(15, 23, 42, 0.12);
+          }
+
+          .mobile-process-card:hover .mobile-process-image {
+            transform: scale(1.03);
+          }
+
+          .mobile-process-card:hover .mobile-shine {
+            opacity: 1;
+            animation: shineMove 850ms ease;
+          }
+
+          .mobile-process-card:hover h3 {
+            color: #1d4ed8;
+          }
+        }
+
+        @media (hover: none), (pointer: coarse) {
+          .mobile-process-card:active {
+            transform: scale(0.985);
+            border-color: rgba(59, 130, 246, 0.35);
+            box-shadow: 0 10px 24px rgba(15, 23, 42, 0.1);
+          }
+
+          .mobile-process-card:active .mobile-process-image {
+            transform: scale(1.02);
+          }
+
+          .mobile-process-card:active h3 {
+            color: #1d4ed8;
           }
         }
       `}</style>
