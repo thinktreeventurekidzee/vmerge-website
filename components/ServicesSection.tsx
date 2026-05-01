@@ -20,7 +20,7 @@ const services = [
     title: "Influencer Marketing",
     icon: Users,
     desc: "Strategic creator partnerships to drive awareness, trust, and conversions.",
-    note: "Creator sourcing & vetting • Campaign strategy & execution • Product seeding & gifting • Whitelisting & paid partnerships • Affiliate tracking & ROI reporting",
+    note: "Creator sourcing & vetting • Campaign strategy & execution • Product seeding & gifting • Whitelisting & paid partnerships  ",
   },
   {
     id: "02",
@@ -48,7 +48,7 @@ const services = [
     title: "Website Development",
     icon: Code,
     desc: "Conversion-focused, high-performance websites for modern brands.",
-    note: "Custom website design • Mobile-responsive development • SEO & performance optimization • Secure & scalable architecture • Landing pages & CRO optimization",
+    note: "Custom website design • Mobile-responsive development • SEO & performance optimization • Secure & scalable architecture ",
   },
 
   // 🔥 NEW TRENDING SERVICES (ADD VALUE)

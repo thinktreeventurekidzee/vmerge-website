@@ -15,7 +15,7 @@ export default function ProcessSection() {
       number: "01",
       title: "Share Your Campaign Goal",
       description:
-        "Tell us Your Category, Your Audience, Your Budget and Your Campaign Objective so we can define success clearly.",
+        "Tell Us Your Category, Your Audience, Your Budget and Your Campaign Objective so we can define success clearly.",
     },
     {
       number: "02",

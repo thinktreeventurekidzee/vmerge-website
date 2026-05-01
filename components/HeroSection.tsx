@@ -62,7 +62,7 @@ export default function HeroSection() {
           </h1>
 
           <p className="mt-4 sm:mt-6 text-sm sm:text-base lg:text-lg text-white/80 max-w-md mx-auto lg:mx-0">
-            VMERG helps Brands Discover Creators, Execute Campaigns, And Scale
+            VMERG Helps Brands Discover Creators, Execute Campaigns, And Scale
             Performance With Measurable ROI.
           </p>
 

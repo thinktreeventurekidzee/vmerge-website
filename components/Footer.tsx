@@ -70,12 +70,12 @@ export default function Footer() {
             </div>
 
             <p className="text-sm font-semibold tracking-wide text-slate-900 sm:text-base">
-              End-to-end influencer marketing solutions
+              End-To-End Influencer Marketing Solutions
             </p>
 
             <p className="max-w-sm text-sm leading-relaxed text-slate-800 sm:text-base">
-              Performance-driven influencer marketing platform helping brands
-              grow through creators, strategy, and data-backed campaigns.
+              Performance-Driven Influencer Marketing Platform Helping Brands
+              Grow Through Creators, Strategy, And Data-Backed Campaigns.
             </p>
           </motion.div>
 
@@ -177,7 +177,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/25 pt-6 text-center text-sm text-slate-700 md:mt-14 md:flex-row md:text-left">
-          <p>© 2026 Vmerg Media Pvt Ltd. All rights reserved.</p>
+          <p>© 2026 Vmerg Media Pvt Ltd. All Rights Reserved.</p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:justify-end">
             <Link

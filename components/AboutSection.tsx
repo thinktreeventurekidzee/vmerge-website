@@ -20,25 +20,25 @@ const fadeUp = {
 const features = [
   {
     icon: Users,
-    title: "Structured creator matching",
+    title: "Structured Creator Matching",
     desc: "We align brands with creators based on audience relevance, content fit, and campaign intent.",
   },
   {
     icon: Globe,
-    title: "System-driven execution",
-    desc: "Every campaign follows a clear workflow for approvals, timelines, and delivery coordination.",
+    title: "System-Driven Execution",
+    desc: "Every Campaign Follows A Clear Workflow For Approvals, Timelines, And Delivery Coordination.",
   },
   {
     icon: LineChart,
-    title: "Performance-focused delivery",
+    title: "Performance-Focused Delivery",
     desc: "Execution is optimized around engagement quality, reach efficiency, and measurable outcomes.",
   },
 ];
 
 const metrics = [
-  { value: "500+", label: "Brand collaborations" },
-  { value: "100+", label: "Content categories" },
-  { value: "2x", label: "Faster execution" },
+  { value: "500+", label: "Brand Collaborations" },
+  { value: "100+", label: "Content Categories" },
+  { value: "2x", label: "Faster Execution" },
 ];
 
 export default function AboutSection() {
@@ -54,7 +54,7 @@ export default function AboutSection() {
           <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 px-3 py-1.5 text-xs sm:text-sm bg-white">
             <BadgeCheck size={14} className="text-blue-700" />
             <span className="text-blue-700 font-medium">
-              Trusted by Growth-Focused Brands
+              Trusted By Growth-Focused Brands
             </span>
           </div>
 
@@ -131,7 +131,7 @@ export default function AboutSection() {
             href="/contact"
             className="inline-flex items-center gap-2 bg-red-500 text-white px-6 py-3 rounded-xl hover:bg-red-600 transition font-semibold shadow-md"
           >
-            Start a conversation
+            Start A Conversation
             <ArrowUpRight size={16} />
           </Link>
         </motion.div>

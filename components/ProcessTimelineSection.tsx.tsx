@@ -166,7 +166,7 @@ export default function ZigzagTimeline() {
             Our Process
           </p>
           <h2 className="mt-4 text-3xl font-bold text-slate-900 md:text-5xl">
-            How we Execute Campaigns
+            How We Execute Campaigns
           </h2>
         </div>
 
