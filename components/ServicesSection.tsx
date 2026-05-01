@@ -20,7 +20,7 @@ const services = [
     title: "Influencer Marketing",
     icon: Users,
     desc: "Strategic creator partnerships to drive awareness, trust, and conversions.",
-    note: "Creator sourcing & vetting • Campaign strategy & execution • Product seeding & gifting • Whitelisting & paid partnerships  ",
+    note: "Creator sourcing & vetting • Campaign strategy & execution • Product seeding & gifting • Whitelisting & paid partnerships",
   },
   {
     id: "02",
@@ -48,14 +48,12 @@ const services = [
     title: "Website Development",
     icon: Code,
     desc: "Conversion-focused, high-performance websites for modern brands.",
-    note: "Custom website design • Mobile-responsive development • SEO & performance optimization • Secure & scalable architecture ",
+    note: "Custom website design • Mobile-responsive development • SEO & performance optimization • Secure & scalable architecture",
   },
-
-  // 🔥 NEW TRENDING SERVICES (ADD VALUE)
   {
     id: "06",
     title: "Performance Marketing",
-    icon: BarChart3,    
+    icon: BarChart3,
     desc: "Data-driven paid campaigns focused on ROI and scalable growth.",
     note: "Meta & Google Ads management • Funnel strategy & optimization • Creative testing & scaling • Conversion tracking & attribution",
   },
@@ -75,24 +73,23 @@ const services = [
   },
 ];
 
-
-
 export default function ServicesSection() {
   return (
-    <section className="relative overflow-hidden bg-[#eaf4ff] py-16 sm:py-20 md:py-28">
+    <section className="relative bg-[#eaf4ff] py-16 sm:py-20 md:py-28">
+      
       {/* BG */}
-      <div className="absolute inset-0 -z-10">
+      <div className="absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute top-10 left-10 w-40 h-40 sm:w-72 sm:h-72 rounded-full bg-blue-300/20 blur-3xl" />
         <div className="absolute bottom-10 right-10 w-48 h-48 sm:w-80 sm:h-80 rounded-full bg-sky-300/20 blur-3xl" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        
         {/* HEADER */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-blue-700 leading-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-blue-700">
             Services Designed For Growth
           </h2>
-
           <p className="mt-3 sm:mt-4 text-base sm:text-lg text-slate-700">
             Everything you need to scale with creators.
           </p>
@@ -103,27 +100,19 @@ export default function ServicesSection() {
           {services.map((service, index) => (
             <motion.div
               key={service.id}
-              className="group"
+              className="group h-full"
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.45, delay: index * 0.08 }}
             >
-              <div
-                className="p-[1px] rounded-2xl bg-transparent
-                sm:group-hover:bg-gradient-to-br sm:group-hover:from-blue-500 sm:group-hover:to-cyan-400
-                transition-all duration-300"
-              >
-                <div
-                  className="rounded-2xl p-5 sm:p-6 bg-white shadow-sm
-                  transition-all duration-300 sm:group-hover:shadow-2xl sm:group-hover:-translate-y-1"
-                >
+              <div className="p-[1px] rounded-2xl sm:group-hover:bg-gradient-to-br sm:group-hover:from-blue-500 sm:group-hover:to-cyan-400 transition-all duration-300">
+                
+                {/* CARD */}
+                <div className="rounded-2xl p-5 sm:p-6 bg-white shadow-sm h-full flex flex-col transition-all duration-300 sm:group-hover:shadow-2xl sm:group-hover:-translate-y-1">
+                  
                   {/* ICON */}
-                  <div
-                    className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-xl mb-4
-                    bg-blue-100 text-blue-600
-                    sm:group-hover:bg-gradient-to-br sm:group-hover:from-blue-500 sm:group-hover:to-cyan-400 sm:group-hover:text-white transition"
-                  >
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-xl mb-4 bg-blue-100 text-blue-600 sm:group-hover:bg-gradient-to-br sm:group-hover:from-blue-500 sm:group-hover:to-cyan-400 sm:group-hover:text-white transition">
                     <service.icon size={20} />
                   </div>
 
@@ -143,7 +132,7 @@ export default function ServicesSection() {
                   </div>
 
                   {/* DETAILS */}
-                  <div className="mt-4 sm:mt-0 sm:overflow-hidden sm:max-h-0 sm:group-hover:max-h-40 transition-all duration-500">
+                  <div className="mt-4 sm:mt-0 overflow-hidden sm:max-h-0 sm:group-hover:max-h-[500px] transition-all duration-500">
                     <div className="border-t border-slate-200 pt-4 mt-4">
                       <ul className="space-y-2 text-sm text-slate-600">
                         {service.note.split("•").map((feature, i) => (
@@ -155,6 +144,7 @@ export default function ServicesSection() {
                       </ul>
                     </div>
                   </div>
+
                 </div>
               </div>
             </motion.div>
