@@ -50,7 +50,7 @@ export default function ProcessSection() {
           </p>
 
           <h2 className="mt-2 sm:mt-3 text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 leading-snug">
-            A simple Path From Idea To Execution
+            A Simple Path From Idea To Execution
           </h2>
 
           <p className="mt-3 sm:mt-4 text-sm sm:text-base text-slate-600">
